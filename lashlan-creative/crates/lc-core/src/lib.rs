@@ -12,17 +12,23 @@
 
 pub mod color;
 pub mod error;
+#[cfg(feature = "files")]
 pub mod export;
+pub mod fastmath;
 pub mod history;
+#[cfg(feature = "files")]
 pub mod icc;
 pub mod imagebuf;
 pub mod pipeline;
 pub mod recipe;
 
 pub use error::{CoreError, Result};
+#[cfg(feature = "files")]
 pub use export::{export, ExportFormat, ExportOptions, ExportResult};
 pub use history::History;
-pub use imagebuf::{decode, ImageBuf, ImageMeta, Orientation};
+pub use imagebuf::ImageBuf;
+#[cfg(feature = "files")]
+pub use imagebuf::{decode, ImageMeta, Orientation};
 pub use pipeline::render;
 pub use recipe::{Adjustments, Control, Crop, EditRecipe, Rotate, RECIPE_SCHEMA_VERSION};
 

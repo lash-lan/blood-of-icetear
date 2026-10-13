@@ -8,6 +8,7 @@ pub enum CoreError {
     #[error("unsupported or unrecognised image format: {0}")]
     UnsupportedFormat(PathBuf),
 
+    #[cfg(feature = "files")]
     #[error("the file is corrupted or truncated ({path}): {source}")]
     Decode {
         path: PathBuf,
@@ -22,6 +23,7 @@ pub enum CoreError {
         source: std::io::Error,
     },
 
+    #[cfg(feature = "files")]
     #[error("failed to encode {path}: {source}")]
     Encode {
         path: PathBuf,

@@ -1,0 +1,43 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Darkroom engine benchmark</title>
+<body>
+<pre id="out">running</pre>
+<script type="module">
+  import { loadEngine } from "./engine.js"
+
+  const sizes = [
+    { name: "0.3 MP (phone screen preview)", w: 780, h: 422 },
+    { name: "1 MP (phone screen, sharp)", w: 1170, h: 844 },
+    { name: "12 MP (phone photo, full)", w: 4000, h: 3000 },
+    { name: "24 MP (camera photo, full)", w: 6000, h: 4000 },
+  ]
+  const scenarios = {
+    "one slider": { exposure_ev: 0.5 },
+    "every slider": {
+      exposure_ev: 0.5, contrast: 0.3, highlights: -0.3, shadows: 0.4,
+      temperature: 0.2, tint: -0.1, saturation: 0.2, vibrance: 0.3,
+    },
+  }
+
+  const engine = await loadEngine()
+  const results = []
+  for (const s of sizes) {
+    const canvas = new OffscreenCanvas(s.w, s.h)
+    const ctx = canvas.getContext("2d", { willReadFrequently: true })
+    // A gradient stands in for a photograph: the engine does the same work
+    // per pixel whatever the picture is.
+    const grad = ctx.createLinearGradient(0, 0, s.w, s.h)
+    grad.addColorStop(0, "#1b2a4a"); grad.addColorStop(0.5, "#c47a3a"); grad.addColorStop(1, "#f2efe6")
+    ctx.fillStyle = grad; ctx.fillRect(0, 0, s.w, s.h)
+    const data = ctx.getImageData(0, 0, s.w, s.h)
+
+    for (const [label, adjustments] of Object.entries(scenarios)) {
+      const runs = []
+      for (let i = 0; i < 3; i++) runs.push(engine.render(data, adjustments))
+      results.push({ ...s, scenario: label, megapixels: +(s.w * s.h / 1e6).toFixed(2), ms: +Math.min(...runs).toFixed(1) })
+    }
+  }
+  document.getElementById("out").textContent = JSON.stringify({ version: engine.version, results }, null, 2)
+  window.__bench = { version: engine.version, results }
+</script>

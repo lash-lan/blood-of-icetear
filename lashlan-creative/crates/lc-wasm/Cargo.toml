@@ -1,0 +1,16 @@
+[package]
+name = "lc-wasm"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+# No file handling: in a browser the browser itself decodes the photograph,
+# which is faster than anything we could ship and costs no download size.
+[dependencies]
+lc-core = { path = "../lc-core", default-features = false }
+
+[package.metadata]
+note = "Built with: cargo build -p lc-wasm --target wasm32-unknown-unknown --release"

@@ -27,6 +27,21 @@ git push
 Then delete the `lashlan-creative/` folder from the website branch so the two
 projects stop sharing a repository.
 
+## Run the benchmark on your actual phone first
+
+Five minutes, and it changes what gets built next. On the Windows laptop, in
+the `lashlan-creative` folder:
+
+```sh
+./scripts/build-wasm.sh
+./scripts/bench-wasm.sh
+```
+
+It prints an address. Open that address on your phone, on the same wifi, and
+send back the numbers. Everything written about mobile so far rests on an
+estimate made by slowing a desktop processor four times. One real handset
+replaces all of it with fact.
+
 ## The next implementation step, in order of value
 
 **1. Decide the shell (ADR-0001).** This is the gate. Build a throwaway Tauri 2

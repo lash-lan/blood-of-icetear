@@ -12,7 +12,8 @@
 // order explicit and matches the maths being implemented.
 #![allow(clippy::needless_range_loop)]
 
-use crate::color::{clamp01, linear_to_srgb, luminance, smoothstep, srgb_to_linear};
+use crate::color::{clamp01, luminance, smoothstep};
+use crate::fastmath;
 use crate::imagebuf::ImageBuf;
 use crate::recipe::{Adjustments, Crop, EditRecipe, Rotate};
 use crate::{CoreError, Result};
@@ -110,10 +111,10 @@ pub fn white_balance_gains(temperature: f32, tint: f32) -> [f32; 3] {
 pub fn apply_adjustments(buf: &mut ImageBuf, a: &Adjustments) {
     let gains = white_balance_gains(a.temperature, a.tint);
     let wb_active = a.temperature != 0.0 || a.tint != 0.0;
-    let exposure_gain = 2f32.powf(a.exposure_ev.clamp(-5.0, 5.0));
+    let exposure_gain = a.exposure_ev.clamp(-5.0, 5.0).exp2();
     let hi = a.highlights.clamp(-1.0, 1.0);
     let sh = a.shadows.clamp(-1.0, 1.0);
-    let contrast_k = 2f32.powf(a.contrast.clamp(-1.0, 1.0));
+    let contrast_k = a.contrast.clamp(-1.0, 1.0).exp2();
     let sat = a.saturation.clamp(-1.0, 1.0);
     let vib = a.vibrance.clamp(-1.0, 1.0);
 
@@ -136,11 +137,11 @@ pub fn apply_adjustments(buf: &mut ImageBuf, a: &Adjustments) {
 
         // 5. highlights / shadows, masked on display-referred luminance
         if hi != 0.0 || sh != 0.0 {
-            let l = linear_to_srgb(clamp01(luminance(p[0], p[1], p[2])));
+            let l = fastmath::encode(clamp01(luminance(p[0], p[1], p[2])));
             let mask_hi = smoothstep(0.45, 1.0, l);
             let mask_sh = 1.0 - smoothstep(0.0, 0.55, l);
             // Full deflection is two stops, applied through the tonal mask.
-            let gain = 2f32.powf(HS_STOPS * (hi * mask_hi + sh * mask_sh));
+            let gain = (HS_STOPS * (hi * mask_hi + sh * mask_sh)).exp2();
             for c in 0..3 {
                 p[c] *= gain;
             }
@@ -149,8 +150,8 @@ pub fn apply_adjustments(buf: &mut ImageBuf, a: &Adjustments) {
         // 6. contrast, pivoted on mid grey in the display-encoded domain
         if contrast_k != 1.0 {
             for c in 0..3 {
-                let e = linear_to_srgb(clamp01(p[c]));
-                p[c] = srgb_to_linear(clamp01(0.5 + (e - 0.5) * contrast_k));
+                let e = fastmath::encode(clamp01(p[c]));
+                p[c] = fastmath::decode(clamp01(0.5 + (e - 0.5) * contrast_k));
             }
         }
 
@@ -185,6 +186,7 @@ pub fn apply_adjustments(buf: &mut ImageBuf, a: &Adjustments) {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::color::{linear_to_srgb, srgb_to_linear};
     use crate::recipe::Control;
 
     fn grey(v_srgb: f32) -> ImageBuf {

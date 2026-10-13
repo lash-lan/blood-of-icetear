@@ -18,8 +18,12 @@ exactly what is built, what is tested, and what is not.
 ```
 crates/lc-core      colour, decoding, edit recipes, render pipeline, export
 crates/lc-catalog   SQLite catalog: imports, edits, undo history, relinking
-crates/darkroom-cli the `darkroom` command — the current user-facing surface
+crates/darkroom-cli the `darkroom` command, the current user-facing surface
+crates/lc-wasm      the same engine compiled for a browser (31 KB)
+web/                a page that loads it, and the benchmark
 ```
+
+The browser build is how this reaches a phone. See `docs/ADR/0004-mobile-strategy.md`.
 
 ## Setup
 

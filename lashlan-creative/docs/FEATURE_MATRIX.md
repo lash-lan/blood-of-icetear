@@ -34,6 +34,10 @@ fail if it broke. A feature that is implemented but untested is not finished.
 | ICC conversion from non-sRGB | v0.2 | **no** | — | flagged as UNMANAGED with a warning, never guessed |
 | RAW decoding | v0.2 | **no** | — | refused on import with a reason |
 | Graphical interface | — | **no** | — | see ADR-0001 |
+| Engine running in a browser, on phone or desktop | v0.1 | yes | yes | 31 KB WebAssembly module, `crates/lc-wasm`, demo page in `web/` |
+| Photographs stay on the device in the browser build | v0.1 | yes | yes | the module is given no network or filesystem capability; nothing to disable because nothing is granted |
+| Smooth slider dragging on a phone | v0.2 | **no** | — | measured at 8 to 16 passes a second against the 30 needed; see ADR-0004 |
+| Measured on a real handset | v0.2 | **no** | — | only an estimate exists, made by slowing a desktop processor |
 | Histogram, clipping warnings | v0.2 | no | — | |
 | Batch export, presets, ratings, search | v0.2 | no | — | |
 | Masks, healing, curves, HSL | v0.3 | no | — | |

@@ -1,5 +1,5 @@
 [workspace]
-members = ["crates/lc-core", "crates/lc-catalog", "crates/darkroom-cli"]
+members = ["crates/lc-core", "crates/lc-catalog", "crates/darkroom-cli", "crates/lc-wasm"]
 resolver = "2"
 
 [workspace.package]

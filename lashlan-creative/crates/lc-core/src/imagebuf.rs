@@ -1,11 +1,18 @@
 //! Decoding, orientation, and the float working buffer.
 
-use crate::color::{linear_to_srgb, srgb_to_linear};
+#[cfg(feature = "files")]
+use crate::color::srgb_to_linear;
+#[cfg(feature = "files")]
 use crate::icc::{self, IccStatus};
+#[cfg(feature = "files")]
 use crate::{CoreError, Result};
+#[cfg(feature = "files")]
 use std::fs::File;
+#[cfg(feature = "files")]
 use std::io::BufReader;
-use std::path::{Path, PathBuf};
+use std::path::Path;
+#[cfg(feature = "files")]
+use std::path::PathBuf;
 
 /// Linear-light sRGB-primaries RGB buffer, 32-bit float per channel.
 /// Values may legitimately exceed 1.0 mid-pipeline; clipping happens on encode.
@@ -41,13 +48,13 @@ impl ImageBuf {
     }
 
     /// Encode to 8-bit sRGB for display or export.
+    #[cfg(feature = "files")]
     pub fn to_rgb8(&self) -> image::RgbImage {
         let mut out = image::RgbImage::new(self.width, self.height);
         for (i, px) in out.pixels_mut().enumerate() {
             let s = i * 3;
             for c in 0..3 {
-                let v = linear_to_srgb(self.pixels[s + c].clamp(0.0, 1.0));
-                px[c] = (v * 255.0 + 0.5).clamp(0.0, 255.0) as u8;
+                px[c] = crate::fastmath::to_u8(self.pixels[s + c]);
             }
         }
         out
@@ -55,15 +62,18 @@ impl ImageBuf {
 }
 
 /// EXIF orientation, 1..=8 as defined by the EXIF specification.
+#[cfg(feature = "files")]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct Orientation(pub u16);
 
+#[cfg(feature = "files")]
 impl Default for Orientation {
     fn default() -> Self {
         Orientation(1)
     }
 }
 
+#[cfg(feature = "files")]
 #[derive(Debug, Clone)]
 pub struct ImageMeta {
     pub path: PathBuf,
@@ -77,6 +87,7 @@ pub struct ImageMeta {
     pub bit_depth: u16,
 }
 
+#[cfg(feature = "files")]
 pub struct Decoded {
     pub image: ImageBuf,
     pub meta: ImageMeta,
@@ -92,6 +103,7 @@ pub fn is_supported_extension(path: &Path) -> bool {
         .unwrap_or(false)
 }
 
+#[cfg(feature = "files")]
 /// Read EXIF orientation without decoding pixels. Any failure means "no EXIF",
 /// which is a normal condition, not an error.
 pub fn read_orientation(path: &Path) -> Orientation {
@@ -111,6 +123,7 @@ pub fn read_orientation(path: &Path) -> Orientation {
 
 /// Decode a file into the linear float working buffer, applying EXIF
 /// orientation. The source file is opened read-only and never written.
+#[cfg(feature = "files")]
 pub fn decode(path: &Path) -> Result<Decoded> {
     if !path.exists() {
         return Err(CoreError::NotFound(path.to_path_buf()));
@@ -178,6 +191,7 @@ pub fn decode(path: &Path) -> Result<Decoded> {
 }
 
 /// Apply one of the eight EXIF orientations, producing an upright image.
+#[cfg(feature = "files")]
 pub fn apply_orientation(src: &ImageBuf, o: Orientation) -> ImageBuf {
     if o.0 == 1 {
         return src.clone();
@@ -205,7 +219,7 @@ pub fn apply_orientation(src: &ImageBuf, o: Orientation) -> ImageBuf {
     out
 }
 
-#[cfg(test)]
+#[cfg(all(test, feature = "files"))]
 mod tests {
     use super::*;
 
