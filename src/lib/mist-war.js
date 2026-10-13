@@ -489,3 +489,111 @@ export function movesForSeat(state, seatIndex) {
 
 export const livingOf = (state, seatIndex) =>
   state.pieces.filter((p) => p.alive && p.seat === seatIndex);
+
+// ─── playing it across several devices ──────────────────────────────────────
+// Everything below exists so a war can be held on a server while each phone
+// is told only what its own host can see. It is the same fog as the hot-seat
+// game, enforced at the wire instead of by politeness.
+
+/**
+ * What one seat is allowed to know.
+ *
+ * Ground it has never seen is sent as open, not as a wall, so a host may
+ * always walk into the dark. What is really there is settled by the server
+ * when the move lands, which is what resolveMove is for.
+ */
+export function viewFor(state, seatIndex) {
+  const seeAll = seatIndex === null || seatIndex === undefined;
+  const vis = seeAll ? null : visibleTo(state, seatIndex);
+  const seat = seeAll ? null : state.seats[seatIndex];
+  const shown = seeAll
+    ? state.pieces.filter((p) => p.alive)
+    : piecesVisibleTo(state, seatIndex, vis);
+
+  const terrain = state.terrain.map((t, i) =>
+    seeAll || seat.seen[i] ? t : 'open');
+  const known = seeAll
+    ? state.terrain.map(() => 1)
+    : Array.from(seat.seen);
+  const lit = seeAll ? known : Array.from(vis);
+
+  return {
+    seed: state.seed, size: state.size, terrain, known, lit,
+    pieces: shown.map((p) => ({
+      id: p.id, seat: p.seat, role: p.role, glyph: p.glyph,
+      sight: p.sight, traits: p.traits, move: p.move, x: p.x, y: p.y, alive: true,
+    })),
+    seats: state.seats.map((s) => ({
+      i: s.i, hostId: s.hostId, kind: s.kind, name: s.name, alive: s.alive,
+      movesLeft: s.movesLeft,
+      standing: state.pieces.filter((p) => p.alive && p.seat === s.i).length,
+      shrines: shrinesHeld(state, s.i),
+      taken: !!s.taken,
+    })),
+    turn: state.turn, round: state.round, extraFor: state.extraFor,
+    log: state.log, over: state.over, you: seeAll ? null : seatIndex,
+  };
+}
+
+/**
+ * Where a move actually ends up, once the fog is taken into account.
+ *
+ * A host aiming into ground it cannot see is aiming at a guess. A piece that
+ * slides stops at the first thing it meets on the way, which may be a crag
+ * nobody had seen or an enemy nobody had found. A piece that steps or leaps
+ * either lands or does not, and learns something either way.
+ *
+ * Returns {x, y, takes} for the square it truly reaches, or null if the move
+ * cannot be made at all.
+ */
+export function resolveMove(state, piece, tx, ty) {
+  if (!piece || !piece.alive) return null;
+  const { size } = state;
+  const legal = legalMoves(state, piece).find((m) => m.x === tx && m.y === ty);
+  if (legal) return legal;
+
+  // Not legal in truth. For a slider, walk as far along that line as it can
+  // actually get, which is the honest result of charging into fog.
+  if (piece.move.kind !== 'slide') return null;
+  const dx = Math.sign(tx - piece.x), dy = Math.sign(ty - piece.y);
+  if (!dx && !dy) return null;
+  const straight = (dx === 0 || dy === 0 || Math.abs(tx - piece.x) === Math.abs(ty - piece.y));
+  if (!straight) return null;
+  const allowed = piece.move.dirs.some(([ax, ay]) => ax === dx && ay === dy);
+  if (!allowed) return null;
+
+  const reach = legalMoves(state, piece)
+    .filter((m) => Math.sign(m.x - piece.x) === dx && Math.sign(m.y - piece.y) === dy)
+    .sort((a, b) => cheb(piece.x, piece.y, b.x, b.y) - cheb(piece.x, piece.y, a.x, a.y));
+  return reach[0] || null;
+}
+
+/** Take a seat's turn from a move that may have been aimed into the dark. */
+export function submitMove(state, seatIndex, pieceId, x, y) {
+  if (state.over) return { ok: false, why: 'over' };
+  if (state.turn !== seatIndex) return { ok: false, why: 'not your turn' };
+  const piece = state.pieces.find((p) => p.id === pieceId);
+  if (!piece || !piece.alive || piece.seat !== seatIndex) return { ok: false, why: 'not your piece' };
+  if (state.extraFor && state.extraFor !== pieceId) return { ok: false, why: 'the Nightmare is still riding' };
+  const landing = resolveMove(state, piece, x, y);
+  if (!landing) return { ok: false, why: 'blocked', bumped: true };
+  const result = applyMove(state, pieceId, landing.x, landing.y);
+  if (!result) return { ok: false, why: 'blocked' };
+  return { ok: true, landing, result, short: landing.x !== x || landing.y !== y };
+}
+
+/** Pack a game for storage, and get it back again. Uint8Arrays do not survive JSON. */
+export function pack(state) {
+  return JSON.stringify({
+    ...state,
+    seats: state.seats.map((s) => ({ ...s, seen: Array.from(s.seen) })),
+  });
+}
+
+export function unpack(text) {
+  const raw = typeof text === 'string' ? JSON.parse(text) : text;
+  return {
+    ...raw,
+    seats: raw.seats.map((s) => ({ ...s, seen: Uint8Array.from(s.seen) })),
+  };
+}

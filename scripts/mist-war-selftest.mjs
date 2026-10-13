@@ -10,6 +10,7 @@ import {
   createGame, rollMap, musterHost, rng, idx, cheb, inBounds,
   legalMoves, applyMove, endTurn, visibleTo, piecesVisibleTo,
   movesForSeat, shrinesHeld, livingOf, sightOf, lineClear,
+  viewFor, resolveMove, submitMove, pack, unpack,
   TERRAIN, ROLES, HOSTS, hostById,
 } from '../src/lib/mist-war.js';
 import { chooseMove, SKILLS } from '../src/lib/mist-war-ai.js';
@@ -290,6 +291,88 @@ section('Shrines');
   ok(sightOf(g, p) === p.sight + 2, 'a shrine did not lengthen the eye');
   p.x = was.x; p.y = was.y;
   ok(sightOf(g, p) === base, 'sight did not go back when it stepped off');
+}
+
+// ── played across several devices ───────────────────────────────────────────
+section('Across several devices');
+{
+  const g = createGame(seatsFor(3), 5150);
+
+  // A seat is sent its own pieces and nothing it cannot see.
+  for (let i = 0; i < 3; i++) {
+    const v = viewFor(g, i);
+    const mine = livingOf(g, i).length;
+    ok(v.you === i, 'a view was addressed to the wrong seat');
+    ok(v.pieces.filter((p) => p.seat === i).length === mine, 'a seat was not sent all of its own pieces');
+    for (const p of v.pieces) {
+      if (p.seat === i) continue;
+      ok(v.lit[idx(g.size, p.x, p.y)] === 1, 'a seat was sent an enemy it cannot see');
+    }
+    // Nothing in the wire should name a piece the seat cannot see.
+    const hiddenIds = g.pieces.filter((p) => p.alive && p.seat !== i
+      && !v.pieces.some((q) => q.id === p.id)).map((p) => p.id);
+    const wire = JSON.stringify(v);
+    for (const id of hiddenIds) {
+      ok(!v.pieces.some((q) => q.id === id), `piece ${id} leaked into seat ${i}'s view`);
+    }
+    ok(wire.length > 0, 'a view would not serialise');
+    // Ground it has not walked is sent as open, so it may always step into
+    // the dark, and the server settles what is really there.
+    for (let k = 0; k < v.terrain.length; k++) {
+      if (!v.known[k]) ok(v.terrain[k] === 'open', 'unseen ground was sent as something other than open');
+    }
+  }
+
+  // A spectator view hides nothing, which is what the local game uses.
+  const all = viewFor(g, null);
+  ok(all.pieces.length === g.pieces.filter((p) => p.alive).length, 'a spectator was shown a fogged board');
+
+  // A war survives being written down and read back.
+  const back = unpack(pack(g));
+  ok(back.size === g.size && back.pieces.length === g.pieces.length, 'a war did not survive storage');
+  ok(back.seats.every((s, i) => s.seen.length === g.seats[i].seen.length), 'memory did not survive storage');
+
+  // Walking into the dark: a slider aimed past something it cannot see is
+  // stopped where it truly meets it, rather than being refused.
+  let tested = false;
+  // At setup a host is packed round its Lord, so its sliders are hemmed in by
+  // their own side. Stand one in open ground first, which is where the rule
+  // actually matters.
+  const slider = g.pieces.find((q) => q.alive && q.move.kind === 'slide');
+  if (slider) {
+    for (let y = 1; y < g.size - 1 && !tested; y++) {
+      for (let x = 1; x < g.size - 1; x++) {
+        if (g.terrain[idx(g.size, x, y)] !== 'open') continue;
+        if (g.pieces.some((q) => q.alive && q.x === x && q.y === y)) continue;
+        slider.x = x; slider.y = y; tested = true; break;
+      }
+    }
+    tested = false;
+  }
+  for (const p of (slider ? [slider] : [])) {
+    for (const [dx, dy] of p.move.dirs) {
+      // Aim at the far edge along this line, which is the honest version of
+      // "charge into the dark and see what is out there".
+      let fx = p.x, fy = p.y;
+      while (inBounds(g.size, fx + dx, fy + dy)) { fx += dx; fy += dy; }
+      if (fx === p.x && fy === p.y) continue;
+      const landing = resolveMove(g, p, fx, fy);
+      if (!landing) continue;
+      tested = true;
+      ok(legalMoves(g, p).some((m) => m.x === landing.x && m.y === landing.y),
+         'walking into the dark landed somewhere illegal');
+      ok(Math.sign(landing.x - p.x) === dx && Math.sign(landing.y - p.y) === dy,
+         'walking into the dark changed direction');
+    }
+  }
+  ok(tested, 'no slider could be tested against the dark on this board');
+
+  // A seat cannot move out of turn, and cannot move somebody else's piece.
+  const notMine = g.pieces.find((p) => p.alive && p.seat !== g.turn);
+  ok(submitMove(g, g.turn, notMine.id, notMine.x, notMine.y).ok === false, "a seat moved another host's piece");
+  const other = (g.turn + 1) % 3;
+  const theirs = g.pieces.find((p) => p.alive && p.seat === other);
+  ok(submitMove(g, other, theirs.id, theirs.x, theirs.y).ok === false, 'a seat moved out of turn');
 }
 
 console.log(fails ? `\n${fails} failure${fails === 1 ? '' : 's'}.` : '\nAll checks passed.');

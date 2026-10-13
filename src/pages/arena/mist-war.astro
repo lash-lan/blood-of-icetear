@@ -64,9 +64,38 @@ const skills = [
           <input type="text" id="seed" inputmode="numeric" placeholder="roll one" />
           <small>The same seed rolls the same ground and the same hosts. Leave it empty for a new war.</small>
         </label>
-        <button type="button" id="start" class="go">March</button>
+        <button type="button" id="start" class="go">March on this screen</button>
       </div>
       <p class="warn" id="setupWarn" hidden>Two banners at least, or there is nobody to fight.</p>
+
+      <div class="apart">
+        <h2>Or fight it from your own phones</h2>
+        <p class="lede">
+          Open a war and the board is kept on the server instead of on this
+          screen, so everyone plays on their own device and nobody can see
+          anyone else's fog. Mark a banner <strong>Player</strong> for each
+          person joining. The first belongs to you, the rest are left open for
+          whoever has the code.
+        </p>
+        <div class="apart-row">
+          <button type="button" id="open" class="go">Open a war</button>
+          <span class="or">or</span>
+          <label class="codebox">
+            <span>Join with a code</span>
+            <input type="text" id="joinCode" maxlength="6" placeholder="ABCD" autocomplete="off" />
+          </label>
+          <button type="button" id="joinGo" class="ghost">Join</button>
+        </div>
+        <p class="warn" id="netWarn" hidden></p>
+
+        <div class="lobby" id="lobby" hidden>
+          <p class="lobby-eyebrow">The war is open. Send this to the others.</p>
+          <strong class="lobby-code" id="lobbyCode">—</strong>
+          <button type="button" class="ghost" id="copyLink">Copy the link</button>
+          <ul class="lobby-seats" id="lobbySeats"></ul>
+          <p class="dim small" id="lobbyNote">Waiting for the banners to be taken.</p>
+        </div>
+      </div>
     </section>
 
     <!-- ── the war ──────────────────────────────────────────────────────── -->
@@ -175,11 +204,23 @@ const skills = [
   const $ = (id) => document.getElementById(id);
   const board = $('board');
 
-  let game = null;
-  let selected = null;      // piece id
-  let viewSeat = null;      // whose fog we are drawing, null means reveal all
+  // Two ways to play the same game. On this screen the whole board lives in
+  // this tab and the fog is kept by not drawing it. Across phones the board
+  // lives on the server and this tab is only ever sent what it may see, so
+  // there is nothing to peek at even in the network traffic.
+  let mode = 'local';          // 'local' | 'net'
+  let game = null;             // the whole board, local play only
+  let view = null;             // the fogged view, net play only
+  let net = null;              // { code, token, seat, version }
+  let poll = null;
+
+  let selected = null;
+  let viewSeat = null;
   let veiled = false;
   let thinking = false;
+
+  /** Whichever object the rules can be asked about right now. */
+  const S = () => (mode === 'net' ? view : game);
 
   // ── setting the field ─────────────────────────────────────────────────────
   const picks = new Map(HOSTS.map((h, i) => [h.id, i < 3 ? (i === 0 ? 'human' : 'captain') : 'off']));
@@ -201,8 +242,10 @@ const skills = [
   });
   paintPicks();
 
+  const chosenSeats = () => HOSTS.filter((h) => picks.get(h.id) !== 'off');
+
   $('start').addEventListener('click', () => {
-    const seats = HOSTS.filter((h) => picks.get(h.id) !== 'off').map((h) => {
+    const seats = chosenSeats().map((h) => {
       const kind = picks.get(h.id);
       return {
         hostId: h.id,
@@ -215,10 +258,12 @@ const skills = [
     $('setupWarn').hidden = true;
     const raw = $('seed').value.trim();
     const seed = raw ? ([...raw].reduce((n, c) => (n * 31 + c.charCodeAt(0)) >>> 0, 7)) : Math.floor(Math.random() * 1e9);
-    begin(seats, seed);
+    beginLocal(seats, seed);
   });
 
-  function begin(seats, seed) {
+  function beginLocal(seats, seed) {
+    mode = 'local';
+    stopPolling();
     game = createGame(seats, seed);
     game.seats.forEach((s, i) => { s.skill = seats[i].skill; });
     selected = null;
@@ -226,16 +271,123 @@ const skills = [
     $('war').hidden = false;
     $('over').hidden = true;
     $('seed').value = String(seed);
-    buildBoard();
+    buildBoard(game.size);
     openTurn();
   }
 
+  // ── across phones ─────────────────────────────────────────────────────────
+  const warn = (msg) => { const el = $('netWarn'); el.textContent = msg; el.hidden = !msg; };
+
+  async function api(body) {
+    const res = await fetch('/api/mist-war', {
+      method: 'POST', headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    return res.json();
+  }
+
+  $('open').addEventListener('click', async () => {
+    const chosen = chosenSeats();
+    if (chosen.length < 2) { warn('Two banners at least, or there is nobody to fight.'); return; }
+    // The first Player seat is yours. Every other Player seat is left open
+    // for whoever you send the code to.
+    let claimed = false;
+    const seats = chosen.map((h) => {
+      const k = picks.get(h.id);
+      if (k !== 'human') return { hostId: h.id, kind: k };
+      if (!claimed) { claimed = true; return { hostId: h.id, kind: 'you' }; }
+      return { hostId: h.id, kind: 'open' };
+    });
+    if (!claimed) { warn('Mark one banner as Player so you have something to hold.'); return; }
+    warn('');
+    $('open').disabled = true;
+    const out = await api({ action: 'create', seats });
+    $('open').disabled = false;
+    if (out.error) return warn(out.error);
+    net = { code: out.code, token: out.token, seat: out.seat, version: 0 };
+    showLobby();
+    startPolling();
+  });
+
+  $('joinGo').addEventListener('click', async () => {
+    const code = $('joinCode').value.trim().toUpperCase();
+    if (!code) return warn('A code first.');
+    warn('');
+    const out = await api({ action: 'join', code });
+    if (out.error) return warn(out.error);
+    net = { code: out.code, token: out.token, seat: out.seat, version: 0 };
+    showLobby();
+    startPolling();
+  });
+
+  $('copyLink').addEventListener('click', () => {
+    const link = `${location.origin}${location.pathname}?war=${net.code}`;
+    navigator.clipboard?.writeText(link);
+    $('copyLink').textContent = 'Copied';
+    setTimeout(() => { $('copyLink').textContent = 'Copy the link'; }, 1600);
+  });
+
+  function showLobby() {
+    $('lobby').hidden = false;
+    $('lobbyCode').textContent = net.code;
+  }
+
+  function paintLobby(info) {
+    $('lobbySeats').innerHTML = info.lobby.map((s) => {
+      const h = hostById[s.hostId];
+      const who = s.kind === 'open' ? 'open' : s.kind === 'captain' ? (s.skill || 'captain') : 'held';
+      const you = s.i === info.you ? ' (you)' : '';
+      return `<li><span class="pip" style="background:${h.colour}"></span>
+        <span>${h.name}${you}</span><span class="st">${who}</span></li>`;
+    }).join('');
+    $('lobbyNote').textContent = info.started
+      ? 'Every banner is held. The war has begun.'
+      : 'Waiting for the banners to be taken.';
+  }
+
+  function startPolling() {
+    stopPolling();
+    const tick = async () => {
+      if (!net) return;
+      let info;
+      try {
+        const res = await fetch(`/api/mist-war?code=${net.code}&token=${net.token}`, { cache: 'no-store' });
+        info = await res.json();
+      } catch { return; }
+      if (info.error) return warn(info.error);
+      if (!info.started) { paintLobby(info); return; }
+
+      if (mode !== 'net') {
+        mode = 'net';
+        $('setup').hidden = true;
+        $('war').hidden = false;
+        $('over').hidden = true;
+      }
+      if (info.version !== net.version || !view) {
+        net.version = info.version;
+        view = info.view;
+        viewSeat = info.you;
+        if (!board.children.length || board.children.length !== view.size * view.size) buildBoard(view.size);
+        if (selected && !view.pieces.some((p) => p.id === selected)) selected = null;
+        render();
+        if (view.over) showOver();
+      }
+    };
+    tick();
+    poll = setInterval(tick, 1700);
+  }
+  function stopPolling() { if (poll) clearInterval(poll); poll = null; }
+
+  // A link with ?war=CODE walks straight into the joining step.
+  const fromLink = new URLSearchParams(location.search).get('war');
+  if (fromLink) { $('joinCode').value = fromLink.toUpperCase(); $('lobby').hidden = true; }
+
   // ── the board ─────────────────────────────────────────────────────────────
-  function buildBoard() {
-    board.style.setProperty('--n', game.size);
+  function buildBoard(n) {
+    board.style.setProperty('--n', n);
     board.innerHTML = '';
-    for (let y = 0; y < game.size; y++) {
-      for (let x = 0; x < game.size; x++) {
+    for (let y = 0; y < n; y++) {
+      for (let x = 0; x < n; x++) {
         const b = document.createElement('button');
         b.type = 'button';
         b.className = 'tile';
@@ -249,107 +401,120 @@ const skills = [
 
   /** Whose eyes we are looking through. Null means nobody is hiding anything. */
   function whoSees() {
+    if (mode === 'net') return view ? view.you : null;
     if (game.over) return null;
     const cur = game.seats[game.turn];
     if (cur && cur.kind === 'human') return cur.i;
-    // During a Captain's turn the board stays on the last player who moved,
-    // so a human never watches the fog lift off someone else's army.
     const humans = humanSeats();
     if (!humans.length) return null;
     return viewSeat !== null && game.seats[viewSeat] && game.seats[viewSeat].alive
       ? viewSeat : humans[0].i;
   }
 
-  function render() {
-    if (!game) return;
+  /** The fog, worked out locally or taken from the server. */
+  function fogOf(st) {
+    if (mode === 'net') return { lit: view.lit, known: view.known, shown: view.pieces };
     viewSeat = whoSees();
-    const seeAll = viewSeat === null;
-    const vis = seeAll ? null : visibleTo(game, viewSeat);
-    const seat = seeAll ? null : game.seats[viewSeat];
-    const shown = seeAll
-      ? game.pieces.filter((p) => p.alive)
-      : piecesVisibleTo(game, viewSeat, vis);
-    const byTile = new Map(shown.map((p) => [idx(game.size, p.x, p.y), p]));
+    if (viewSeat === null) {
+      const all = new Uint8Array(st.size * st.size).fill(1);
+      return { lit: all, known: all, shown: st.pieces.filter((p) => p.alive) };
+    }
+    const lit = visibleTo(st, viewSeat);
+    return { lit, known: st.seats[viewSeat].seen, shown: piecesVisibleTo(st, viewSeat, lit) };
+  }
 
-    const sel = selected ? game.pieces.find((p) => p.id === selected && p.alive) : null;
-    const moves = sel ? legalMoves(game, sel) : [];
-    const moveSet = new Map(moves.map((m) => [idx(game.size, m.x, m.y), m]));
+  function render() {
+    const st = S();
+    if (!st) return;
+    const { lit, known, shown } = fogOf(st);
+    const byTile = new Map(shown.map((p) => [idx(st.size, p.x, p.y), p]));
+
+    const sel = selected ? shown.find((p) => p.id === selected) : null;
+    const mine = sel && sel.seat === (mode === 'net' ? view.you : viewSeat);
+    const moves = mine ? legalMoves(st, sel) : [];
+    const moveSet = new Map(moves.map((m) => [idx(st.size, m.x, m.y), m]));
 
     let i = 0;
-    for (let y = 0; y < game.size; y++) {
-      for (let x = 0; x < game.size; x++) {
-        const k = idx(game.size, x, y);
+    for (let y = 0; y < st.size; y++) {
+      for (let x = 0; x < st.size; x++) {
+        const k = idx(st.size, x, y);
         const el = board.children[i++];
-        const canSee = seeAll || vis[k] === 1;
-        const known = seeAll || seat.seen[k] === 1;
-        const ground = game.terrain[k];
+        if (!el) continue;
+        const canSee = !!lit[k];
+        const seen = !!known[k];
+        const ground = st.terrain[k];
         const piece = canSee ? byTile.get(k) : null;
 
         el.className = 'tile'
-          + (known ? ` g-${ground}` : ' g-dark')
-          + (canSee ? ' lit' : known ? ' memory' : '')
+          + (seen ? ` g-${ground}` : ' g-dark')
+          + (canSee ? ' lit' : seen ? ' memory' : '')
           + (piece ? ' has' : '')
-          + (sel && sel.id === (piece && piece.id) ? ' sel' : '')
+          + (sel && piece && sel.id === piece.id ? ' sel' : '')
           + (moveSet.has(k) ? (moveSet.get(k).takes ? ' hit' : ' go') : '');
 
         if (piece) {
-          const host = hostById[game.seats[piece.seat].hostId];
+          const host = hostById[st.seats[piece.seat].hostId];
           el.innerHTML = `<span class="pc" style="--host:${host.colour}">${piece.glyph}</span>`;
           el.setAttribute('aria-label',
-            `${x + 1},${y + 1}. ${host.short} ${rankName(game.seats[piece.seat], piece)}.`);
+            `${x + 1},${y + 1}. ${host.short} ${rankName(st.seats[piece.seat], piece)}.`);
         } else {
-          el.innerHTML = known ? `<span class="gr">${TERRAIN[ground].glyph}</span>` : '';
+          el.innerHTML = seen ? `<span class="gr">${TERRAIN[ground].glyph}</span>` : '';
           el.setAttribute('aria-label',
-            known ? `${x + 1},${y + 1}. ${TERRAIN[ground].name}.` : `${x + 1},${y + 1}. Unseen.`);
+            seen ? `${x + 1},${y + 1}. ${TERRAIN[ground].name}.` : `${x + 1},${y + 1}. Unseen.`);
         }
       }
     }
-    paintBanner();
-    paintRoster();
-    paintSelection(sel);
-    paintLog();
+    paintBanner(st);
+    paintRoster(st);
+    paintSelection(st, sel);
+    paintLog(st);
   }
 
-  function paintBanner() {
-    const seat = game.seats[game.turn];
+  function paintBanner(st) {
+    const seat = st.seats[st.turn];
     const host = hostById[seat.hostId];
     $('bannerPip').style.background = host.colour;
     $('bannerName').textContent = host.name;
-    const shrines = shrinesHeld(game, seat.i);
-    $('bannerNote').textContent = seat.kind === 'human'
-      ? (game.extraFor ? 'The Nightmare may ride again, or you may stop.' : `Move ${seat.movesLeft === 2 ? 'twice' : 'once'}.`)
-      : 'A Captain is thinking.';
+    const yours = mode === 'net' ? st.turn === view.you : seat.kind === 'human';
+    const shrines = mode === 'net' ? seat.shrines : shrinesHeld(st, seat.i);
+    const standing = mode === 'net' ? seat.standing : livingOf(st, seat.i).length;
+    $('bannerNote').textContent = st.over ? 'The war is over.'
+      : yours ? (st.extraFor ? 'The Nightmare may ride again, or you may stop.'
+                             : `Move ${seat.movesLeft === 2 ? 'twice' : 'once'}.`)
+      : mode === 'net' ? 'Waiting on another banner.' : 'A Captain is thinking.';
     $('bannerStats').innerHTML = [
-      `<span>Round ${game.round}</span>`,
-      `<span>${livingOf(game, seat.i).length} standing</span>`,
+      `<span>Round ${st.round}</span>`,
+      `<span>${standing} standing</span>`,
       `<span>${shrines} shrine${shrines === 1 ? '' : 's'}</span>`,
+      mode === 'net' ? `<span>Code ${net.code}</span>` : '',
     ].join('');
-    $('endTurn').hidden = seat.kind !== 'human' || !!game.over;
+    $('endTurn').hidden = !yours || !!st.over;
     document.querySelector('.banner').style.setProperty('--host', host.colour);
   }
 
-  function paintRoster() {
-    const rows = game.seats.map((s) => {
+  function paintRoster(st) {
+    const rows = st.seats.map((s) => {
       const host = hostById[s.hostId];
-      const n = livingOf(game, s.i).length;
-      const lord = game.pieces.some((p) => p.alive && p.seat === s.i && p.role === 'lord');
-      return `<li class="${s.alive ? '' : 'out'} ${s.i === game.turn ? 'now' : ''}">
+      const n = mode === 'net' ? s.standing : livingOf(st, s.i).length;
+      const you = mode === 'net' ? s.i === view.you : s.kind === 'human';
+      return `<li class="${s.alive ? '' : 'out'} ${s.i === st.turn ? 'now' : ''}">
         <span class="pip" style="background:${host.colour}"></span>
         <span class="rn">${host.short}</span>
-        <span class="rk">${s.kind === 'human' ? 'Player' : 'Captain'}</span>
-        <span class="rc">${s.alive ? `${n}${lord ? '' : ' ✕'}` : 'out'}</span>
+        <span class="rk">${mode === 'net' ? (you ? 'You' : s.kind === 'captain' ? 'Captain' : 'Player')
+                                          : (s.kind === 'human' ? 'Player' : 'Captain')}</span>
+        <span class="rc">${s.alive ? n : 'out'}</span>
       </li>`;
     }).join('');
     $('roster').innerHTML = `<h3>The banners</h3><ul class="rost">${rows}</ul>`;
   }
 
-  function paintSelection(sel) {
+  function paintSelection(st, sel) {
     const box = $('sel');
     if (!sel) {
       box.innerHTML = '<h3>Nothing chosen</h3><p class="dim">Touch one of your own pieces to see where it may go.</p>';
       return;
     }
-    const seat = game.seats[sel.seat];
+    const seat = st.seats[sel.seat];
     const host = hostById[seat.hostId];
     const def = sel.role === 'unique' ? host.unique : ROLES[sel.role];
     const traits = (sel.traits || []).length
@@ -359,51 +524,73 @@ const skills = [
       <p class="dim small">Sees ${sel.sight} ${sel.sight === 1 ? 'pace' : 'paces'} in clear ground.</p>`;
   }
 
-  function paintLog() {
-    $('log').innerHTML = game.log.slice(0, 14)
+  function paintLog(st) {
+    $('log').innerHTML = (st.log || []).slice(0, 14)
       .map((l) => `<li><span>${l.round}</span>${l.line}</li>`).join('')
       || '<li class="dim">Nothing yet.</li>';
   }
 
   // ── taking a turn ─────────────────────────────────────────────────────────
-  board.addEventListener('click', (e) => {
+  board.addEventListener('click', async (e) => {
     const t = e.target.closest('.tile');
-    if (!t || !game || game.over || veiled || thinking) return;
-    const seat = game.seats[game.turn];
-    if (seat.kind !== 'human') return;
+    const st = S();
+    if (!t || !st || st.over || veiled || thinking) return;
+    const yours = mode === 'net' ? st.turn === view.you : st.seats[st.turn].kind === 'human';
+    if (!yours) return;
     const x = +t.dataset.x, y = +t.dataset.y;
+    const { shown } = fogOf(st);
+    const sel = selected ? shown.find((p) => p.id === selected) : null;
 
-    const sel = selected ? game.pieces.find((p) => p.id === selected && p.alive) : null;
     if (sel) {
-      const m = legalMoves(game, sel).find((q) => q.x === x && q.y === y);
+      const m = legalMoves(st, sel).find((q) => q.x === x && q.y === y);
       if (m) {
-        applyMove(game, sel.id, x, y);
-        selected = game.extraFor || null;
-        render();
-        afterMove();
+        if (mode === 'net') {
+          thinking = true;
+          const out = await api({ action: 'move', code: net.code, token: net.token, pieceId: sel.id, x, y });
+          thinking = false;
+          if (out.error) { warn(out.error); return; }
+          net.version = out.version; view = out.view; selected = view.extraFor || null;
+          render();
+          if (out.note) $('bannerNote').textContent = out.note;
+          if (view.over) showOver();
+        } else {
+          applyMove(st, sel.id, x, y);
+          selected = st.extraFor || null;
+          render();
+          afterMove();
+        }
         return;
       }
     }
-    const here = game.pieces.find((p) => p.alive && p.x === x && p.y === y && p.seat === game.turn);
-    if (here && (!game.extraFor || game.extraFor === here.id)) selected = here.id;
-    else selected = null;
+    const mineHere = shown.find((p) => p.x === x && p.y === y && p.seat === st.turn);
+    selected = (mineHere && (!st.extraFor || st.extraFor === mineHere.id)) ? mineHere.id : null;
     render();
   });
 
-  $('endTurn').addEventListener('click', () => {
-    if (!game || game.over || thinking) return;
-    endTurn(game);
+  $('endTurn').addEventListener('click', async () => {
+    const st = S();
+    if (!st || st.over || thinking) return;
+    if (mode === 'net') {
+      thinking = true;
+      const out = await api({ action: 'end', code: net.code, token: net.token });
+      thinking = false;
+      if (out.error) return warn(out.error);
+      net.version = out.version; view = out.view; selected = null;
+      render();
+      if (view.over) showOver();
+      return;
+    }
+    endTurn(st);
     selected = null;
     render();
     afterMove();
   });
 
-  /** After anything happens: finish, veil, or let a Captain think. */
+  /** Local play only: finish, veil, or let a Captain think. */
   function afterMove() {
     if (game.over) return showOver();
     const seat = game.seats[game.turn];
     if (seat.kind === 'human') {
-      // Only veil when more than one person is actually sitting there.
       if (humanSeats().length > 1 && seat.i !== viewSeat) raiseVeil(seat);
       else render();
       return;
@@ -429,8 +616,7 @@ const skills = [
 
   function raiseVeil(seat) {
     veiled = true;
-    const host = hostById[seat.hostId];
-    $('veilName').textContent = host.name;
+    $('veilName').textContent = hostById[seat.hostId].name;
     $('veil').hidden = false;
     board.classList.add('hidden-board');
   }
@@ -450,25 +636,31 @@ const skills = [
   }
 
   function showOver() {
+    const st = S();
     render();
-    const w = game.over.winner;
-    $('overName').textContent = w === null ? 'Nobody' : hostById[game.seats[w].hostId].name;
-    $('overNote').textContent = game.over.reason === 'limit'
+    const w = st.over.winner;
+    $('overName').textContent = w === null ? 'Nobody' : hostById[st.seats[w].hostId].name;
+    $('overNote').textContent = st.over.reason === 'limit'
       ? 'The turns ran out. The ground held decided it.'
       : w === null ? 'Every host went into the mist and none came out.'
       : 'The last Lord standing.';
+    $('again').hidden = mode === 'net';
     $('over').hidden = false;
+    if (mode === 'net') stopPolling();
   }
 
   $('again').addEventListener('click', () => {
     const seats = game.seats.map((s) => ({ hostId: s.hostId, kind: s.kind, skill: s.skill, name: s.name }));
     $('over').hidden = true;
-    begin(seats, Math.floor(Math.random() * 1e9));
+    beginLocal(seats, Math.floor(Math.random() * 1e9));
   });
   $('back').addEventListener('click', () => {
+    stopPolling();
+    net = null; view = null; mode = 'local';
     $('over').hidden = true;
     $('war').hidden = true;
     $('setup').hidden = false;
+    $('lobby').hidden = true;
     game = null;
   });
 </script>
@@ -521,6 +713,27 @@ const skills = [
            padding: .45rem 1rem; border-radius: 8px; font-size: .82rem; }
   .ghost:hover { color: var(--textBright); border-color: var(--accent); }
   .warn { color: #d08; margin: .8rem 0 0; font-size: .86rem; }
+
+  .apart { margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+  .apart-row { display: flex; gap: .8rem; align-items: flex-end; flex-wrap: wrap; }
+  .or { color: var(--textDim); font-size: .8rem; padding-bottom: .55rem; }
+  .codebox { display: grid; gap: .25rem; }
+  .codebox span { font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; color: var(--textDim); }
+  .codebox input { background: rgba(0,0,0,.35); border: 1px solid var(--line); border-radius: 7px;
+                   color: var(--textBright); padding: .45rem .6rem; font: inherit; width: 7rem;
+                   text-transform: uppercase; letter-spacing: .3em; }
+  .lobby { margin-top: 1.2rem; border: 1px solid var(--line); border-radius: 11px;
+           padding: 1rem 1.1rem; background: rgba(0,0,0,.24); }
+  .lobby-eyebrow { margin: 0 0 .2rem; font-size: .76rem; letter-spacing: .14em;
+                   text-transform: uppercase; color: var(--textDim); }
+  .lobby-code { display: inline-block; font-size: 2rem; letter-spacing: .34em;
+                color: var(--accentLight); margin-right: .8rem; }
+  .lobby-seats { list-style: none; margin: .9rem 0 .6rem; padding: 0; display: grid; gap: .3rem; }
+  .lobby-seats li { display: flex; gap: .55rem; align-items: center; font-size: .86rem; color: var(--text); }
+  .lobby-seats .pip { width: 10px; height: 10px; border-radius: 3px; }
+  .lobby-seats .st { margin-left: auto; font-size: .76rem; color: var(--textDim);
+                     letter-spacing: .06em; text-transform: uppercase; }
+  .net-note { color: var(--accentLight); font-size: .82rem; margin: .4rem 0 0; }
 
   /* ── banner ── */
   .banner { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
