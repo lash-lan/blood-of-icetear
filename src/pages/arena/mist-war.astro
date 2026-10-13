@@ -279,7 +279,7 @@ const skills = [
   const warn = (msg) => { const el = $('netWarn'); el.textContent = msg; el.hidden = !msg; };
 
   async function api(body) {
-    const res = await fetch('/api/mist-war', {
+    const res = await fetch('/api/mist-war/', {
       method: 'POST', headers: { 'content-type': 'application/json' },
       body: JSON.stringify(body),
     });
@@ -351,7 +351,7 @@ const skills = [
       if (!net) return;
       let info;
       try {
-        const res = await fetch(`/api/mist-war?code=${net.code}&token=${net.token}`, { cache: 'no-store' });
+        const res = await fetch(`/api/mist-war/?code=${net.code}&token=${net.token}`, { cache: 'no-store' });
         info = await res.json();
       } catch { return; }
       if (info.error) return warn(info.error);
