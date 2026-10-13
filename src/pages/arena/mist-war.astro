@@ -1,0 +1,628 @@
+---
+import SectionLayout from '../../layouts/SectionLayout.astro';
+import { HOSTS, TERRAIN, ROLES } from '../../data/mist-war.js';
+
+// The board, the hosts and the fog are all built in the browser, because the
+// whole game is one person's private view of a shared map and there is no
+// server to keep a secret on. Everything this page knows about the rules
+// comes from src/lib/mist-war.js, which does not draw anything.
+const skills = [
+  ['recruit', 'Recruit', 'Blunders about. Will walk into a blade.'],
+  ['captain', 'Captain', 'Guards its Lord and takes trades that are worth taking.'],
+  ['warlord', 'Warlord', 'Patient. Will wait in a wood for you to walk past it.'],
+];
+---
+<SectionLayout
+  title="The Mist War | Blood of Icetear"
+  description="Chess under Akidna's fog. A rolled map, a drawn host, and up to five banners who can only see as far as their own eyes reach."
+  theme="gallery"
+  eyebrow="Blood of Icetear"
+  heading="The Mist War"
+  tagline="Akidna lies drowned beneath the northern sea, and her mist covers the only road between the continents. Five hosts walk into it."
+  compact={true}
+>
+  <div class="wrap">
+
+    <!-- ── setting the field ────────────────────────────────────────────── -->
+    <section class="setup" id="setup">
+      <h2>Call the hosts</h2>
+      <p class="lede">
+        Two to five banners. Give one to yourself and the rest to Captains, or
+        sit several people round the same screen and the board will veil
+        itself as it passes between you.
+      </p>
+
+      <ul class="hosts" id="hostList">
+        {HOSTS.map((h, i) => (
+          <li class="host" data-host={h.id} style={`--host:${h.colour};--ink:${h.ink}`}>
+            <div class="host-id">
+              <span class="host-pip"></span>
+              <div>
+                <strong>{h.name}</strong>
+                <span class="host-seat">{h.seat}</span>
+              </div>
+            </div>
+            <p class="host-blurb">{h.blurb}</p>
+            <p class="host-unique">
+              <span class="host-glyph">{h.unique.glyph}</span>
+              <span><strong>{h.unique.rank}.</strong> {h.unique.note}</span>
+            </p>
+            <div class="host-pick" role="radiogroup" aria-label={`Who plays ${h.name}`}>
+              <button type="button" data-seatkind="off" class="on">Empty</button>
+              <button type="button" data-seatkind="human">Player</button>
+              {skills.map(([id, name, note]) => (
+                <button type="button" data-seatkind={id} title={note}>{name}</button>
+              ))}
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      <div class="setup-foot">
+        <label class="seedbox">
+          <span>Seed</span>
+          <input type="text" id="seed" inputmode="numeric" placeholder="roll one" />
+          <small>The same seed rolls the same ground and the same hosts. Leave it empty for a new war.</small>
+        </label>
+        <button type="button" id="start" class="go">March</button>
+      </div>
+      <p class="warn" id="setupWarn" hidden>Two banners at least, or there is nobody to fight.</p>
+    </section>
+
+    <!-- ── the war ──────────────────────────────────────────────────────── -->
+    <section class="war" id="war" hidden>
+      <div class="banner" id="banner">
+        <span class="banner-pip" id="bannerPip"></span>
+        <div class="banner-who">
+          <strong id="bannerName">—</strong>
+          <span id="bannerNote">—</span>
+        </div>
+        <div class="banner-stats" id="bannerStats"></div>
+        <button type="button" id="endTurn" class="ghost">End turn</button>
+      </div>
+
+      <div class="field">
+        <div class="boardwrap">
+          <div class="board" id="board" role="grid" aria-label="The bridge"></div>
+          <div class="veil" id="veil" hidden>
+            <p class="veil-eyebrow">The mist closes</p>
+            <strong id="veilName">—</strong>
+            <p class="veil-note">Hand the board on. Nobody else should be looking at it.</p>
+            <button type="button" id="veilGo" class="go">I have it</button>
+          </div>
+          <div class="over" id="over" hidden>
+            <p class="over-eyebrow">The bridge is held</p>
+            <strong id="overName">—</strong>
+            <p id="overNote"></p>
+            <div class="over-btns">
+              <button type="button" id="again" class="go">March again</button>
+              <button type="button" id="back" class="ghost">Change the hosts</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="side">
+          <div class="panel" id="sel">
+            <h3>Nothing chosen</h3>
+            <p class="dim">Touch one of your own pieces to see where it may go.</p>
+          </div>
+
+          <div class="panel roster" id="roster"></div>
+
+          <div class="panel">
+            <h3>The ground</h3>
+            <ul class="legend">
+              {Object.values(TERRAIN).map((t) => (
+                <li>
+                  <span class={`sw sw-${t.id}`}>{t.glyph}</span>
+                  <span><strong>{t.name}.</strong> {t.note}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="panel">
+            <h3>The word from the field</h3>
+            <ol class="log" id="log"></ol>
+          </div>
+        </aside>
+      </div>
+
+      <details class="rules">
+        <summary>How it is played</summary>
+        <div class="rules-body">
+          <p>
+            A turn is one move. Hold two shrines at the start of your turn and
+            it is two. Take a piece by moving on to it. Lose your Lord and your
+            host leaves the field, every piece with it. The last Lord standing
+            holds the bridge.
+          </p>
+          <p>
+            <strong>You see only what your own pieces can see.</strong> Ground
+            you have walked stays on the map as memory, but what is standing on
+            it now does not. A wood or a mistwell blocks the eye, and a piece
+            standing inside one sees a single pace in any direction. A crag
+            stops both the eye and the foot.
+          </p>
+          <p>
+            A piece that slides must stop when it enters a wood or a mistwell,
+            because undergrowth and pooled fog break a charge. The Behemoth
+            does not care.
+          </p>
+          <ul class="pieces">
+            {Object.values(ROLES).map((r) => (
+              <li><span class="pg">{r.glyph}</span> <strong>{r.rank}.</strong> {r.note}</li>
+            ))}
+          </ul>
+          <p class="dim">
+            Every host also fields one piece that only it can field, drawn from
+            the same bag as the rest, so you may not get it at all.
+          </p>
+        </div>
+      </details>
+    </section>
+  </div>
+</SectionLayout>
+
+<script>
+  import {
+    createGame, legalMoves, applyMove, endTurn, visibleTo, piecesVisibleTo,
+    shrinesHeld, livingOf, rankName, idx,
+    TERRAIN, ROLES, HOSTS, hostById,
+  } from '../../lib/mist-war.js';
+  import { chooseMove } from '../../lib/mist-war-ai.js';
+
+  const $ = (id) => document.getElementById(id);
+  const board = $('board');
+
+  let game = null;
+  let selected = null;      // piece id
+  let viewSeat = null;      // whose fog we are drawing, null means reveal all
+  let veiled = false;
+  let thinking = false;
+
+  // ── setting the field ─────────────────────────────────────────────────────
+  const picks = new Map(HOSTS.map((h, i) => [h.id, i < 3 ? (i === 0 ? 'human' : 'captain') : 'off']));
+
+  function paintPicks() {
+    for (const li of document.querySelectorAll('.host')) {
+      const id = li.dataset.host;
+      li.classList.toggle('is-on', picks.get(id) !== 'off');
+      for (const b of li.querySelectorAll('[data-seatkind]')) {
+        b.classList.toggle('on', b.dataset.seatkind === picks.get(id));
+      }
+    }
+  }
+  $('hostList').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-seatkind]');
+    if (!b) return;
+    picks.set(b.closest('.host').dataset.host, b.dataset.seatkind);
+    paintPicks();
+  });
+  paintPicks();
+
+  $('start').addEventListener('click', () => {
+    const seats = HOSTS.filter((h) => picks.get(h.id) !== 'off').map((h) => {
+      const kind = picks.get(h.id);
+      return {
+        hostId: h.id,
+        kind: kind === 'human' ? 'human' : 'captain',
+        skill: kind === 'human' ? null : kind,
+        name: h.short,
+      };
+    });
+    if (seats.length < 2) { $('setupWarn').hidden = false; return; }
+    $('setupWarn').hidden = true;
+    const raw = $('seed').value.trim();
+    const seed = raw ? ([...raw].reduce((n, c) => (n * 31 + c.charCodeAt(0)) >>> 0, 7)) : Math.floor(Math.random() * 1e9);
+    begin(seats, seed);
+  });
+
+  function begin(seats, seed) {
+    game = createGame(seats, seed);
+    game.seats.forEach((s, i) => { s.skill = seats[i].skill; });
+    selected = null;
+    $('setup').hidden = true;
+    $('war').hidden = false;
+    $('over').hidden = true;
+    $('seed').value = String(seed);
+    buildBoard();
+    openTurn();
+  }
+
+  // ── the board ─────────────────────────────────────────────────────────────
+  function buildBoard() {
+    board.style.setProperty('--n', game.size);
+    board.innerHTML = '';
+    for (let y = 0; y < game.size; y++) {
+      for (let x = 0; x < game.size; x++) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'tile';
+        b.dataset.x = x; b.dataset.y = y;
+        board.appendChild(b);
+      }
+    }
+  }
+
+  const humanSeats = () => game.seats.filter((s) => s.kind === 'human' && s.alive);
+
+  /** Whose eyes we are looking through. Null means nobody is hiding anything. */
+  function whoSees() {
+    if (game.over) return null;
+    const cur = game.seats[game.turn];
+    if (cur && cur.kind === 'human') return cur.i;
+    // During a Captain's turn the board stays on the last player who moved,
+    // so a human never watches the fog lift off someone else's army.
+    const humans = humanSeats();
+    if (!humans.length) return null;
+    return viewSeat !== null && game.seats[viewSeat] && game.seats[viewSeat].alive
+      ? viewSeat : humans[0].i;
+  }
+
+  function render() {
+    if (!game) return;
+    viewSeat = whoSees();
+    const seeAll = viewSeat === null;
+    const vis = seeAll ? null : visibleTo(game, viewSeat);
+    const seat = seeAll ? null : game.seats[viewSeat];
+    const shown = seeAll
+      ? game.pieces.filter((p) => p.alive)
+      : piecesVisibleTo(game, viewSeat, vis);
+    const byTile = new Map(shown.map((p) => [idx(game.size, p.x, p.y), p]));
+
+    const sel = selected ? game.pieces.find((p) => p.id === selected && p.alive) : null;
+    const moves = sel ? legalMoves(game, sel) : [];
+    const moveSet = new Map(moves.map((m) => [idx(game.size, m.x, m.y), m]));
+
+    let i = 0;
+    for (let y = 0; y < game.size; y++) {
+      for (let x = 0; x < game.size; x++) {
+        const k = idx(game.size, x, y);
+        const el = board.children[i++];
+        const canSee = seeAll || vis[k] === 1;
+        const known = seeAll || seat.seen[k] === 1;
+        const ground = game.terrain[k];
+        const piece = canSee ? byTile.get(k) : null;
+
+        el.className = 'tile'
+          + (known ? ` g-${ground}` : ' g-dark')
+          + (canSee ? ' lit' : known ? ' memory' : '')
+          + (piece ? ' has' : '')
+          + (sel && sel.id === (piece && piece.id) ? ' sel' : '')
+          + (moveSet.has(k) ? (moveSet.get(k).takes ? ' hit' : ' go') : '');
+
+        if (piece) {
+          const host = hostById[game.seats[piece.seat].hostId];
+          el.innerHTML = `<span class="pc" style="--host:${host.colour}">${piece.glyph}</span>`;
+          el.setAttribute('aria-label',
+            `${x + 1},${y + 1}. ${host.short} ${rankName(game.seats[piece.seat], piece)}.`);
+        } else {
+          el.innerHTML = known ? `<span class="gr">${TERRAIN[ground].glyph}</span>` : '';
+          el.setAttribute('aria-label',
+            known ? `${x + 1},${y + 1}. ${TERRAIN[ground].name}.` : `${x + 1},${y + 1}. Unseen.`);
+        }
+      }
+    }
+    paintBanner();
+    paintRoster();
+    paintSelection(sel);
+    paintLog();
+  }
+
+  function paintBanner() {
+    const seat = game.seats[game.turn];
+    const host = hostById[seat.hostId];
+    $('bannerPip').style.background = host.colour;
+    $('bannerName').textContent = host.name;
+    const shrines = shrinesHeld(game, seat.i);
+    $('bannerNote').textContent = seat.kind === 'human'
+      ? (game.extraFor ? 'The Nightmare may ride again, or you may stop.' : `Move ${seat.movesLeft === 2 ? 'twice' : 'once'}.`)
+      : 'A Captain is thinking.';
+    $('bannerStats').innerHTML = [
+      `<span>Round ${game.round}</span>`,
+      `<span>${livingOf(game, seat.i).length} standing</span>`,
+      `<span>${shrines} shrine${shrines === 1 ? '' : 's'}</span>`,
+    ].join('');
+    $('endTurn').hidden = seat.kind !== 'human' || !!game.over;
+    document.querySelector('.banner').style.setProperty('--host', host.colour);
+  }
+
+  function paintRoster() {
+    const rows = game.seats.map((s) => {
+      const host = hostById[s.hostId];
+      const n = livingOf(game, s.i).length;
+      const lord = game.pieces.some((p) => p.alive && p.seat === s.i && p.role === 'lord');
+      return `<li class="${s.alive ? '' : 'out'} ${s.i === game.turn ? 'now' : ''}">
+        <span class="pip" style="background:${host.colour}"></span>
+        <span class="rn">${host.short}</span>
+        <span class="rk">${s.kind === 'human' ? 'Player' : 'Captain'}</span>
+        <span class="rc">${s.alive ? `${n}${lord ? '' : ' ✕'}` : 'out'}</span>
+      </li>`;
+    }).join('');
+    $('roster').innerHTML = `<h3>The banners</h3><ul class="rost">${rows}</ul>`;
+  }
+
+  function paintSelection(sel) {
+    const box = $('sel');
+    if (!sel) {
+      box.innerHTML = '<h3>Nothing chosen</h3><p class="dim">Touch one of your own pieces to see where it may go.</p>';
+      return;
+    }
+    const seat = game.seats[sel.seat];
+    const host = hostById[seat.hostId];
+    const def = sel.role === 'unique' ? host.unique : ROLES[sel.role];
+    const traits = (sel.traits || []).length
+      ? `<p class="trait">${sel.traits.map((t) => `<span>${t}</span>`).join('')}</p>` : '';
+    box.innerHTML = `<h3 style="color:${host.colour}">${rankName(seat, sel)}</h3>
+      <p class="dim">${def.note}</p>${traits}
+      <p class="dim small">Sees ${sel.sight} ${sel.sight === 1 ? 'pace' : 'paces'} in clear ground.</p>`;
+  }
+
+  function paintLog() {
+    $('log').innerHTML = game.log.slice(0, 14)
+      .map((l) => `<li><span>${l.round}</span>${l.line}</li>`).join('')
+      || '<li class="dim">Nothing yet.</li>';
+  }
+
+  // ── taking a turn ─────────────────────────────────────────────────────────
+  board.addEventListener('click', (e) => {
+    const t = e.target.closest('.tile');
+    if (!t || !game || game.over || veiled || thinking) return;
+    const seat = game.seats[game.turn];
+    if (seat.kind !== 'human') return;
+    const x = +t.dataset.x, y = +t.dataset.y;
+
+    const sel = selected ? game.pieces.find((p) => p.id === selected && p.alive) : null;
+    if (sel) {
+      const m = legalMoves(game, sel).find((q) => q.x === x && q.y === y);
+      if (m) {
+        applyMove(game, sel.id, x, y);
+        selected = game.extraFor || null;
+        render();
+        afterMove();
+        return;
+      }
+    }
+    const here = game.pieces.find((p) => p.alive && p.x === x && p.y === y && p.seat === game.turn);
+    if (here && (!game.extraFor || game.extraFor === here.id)) selected = here.id;
+    else selected = null;
+    render();
+  });
+
+  $('endTurn').addEventListener('click', () => {
+    if (!game || game.over || thinking) return;
+    endTurn(game);
+    selected = null;
+    render();
+    afterMove();
+  });
+
+  /** After anything happens: finish, veil, or let a Captain think. */
+  function afterMove() {
+    if (game.over) return showOver();
+    const seat = game.seats[game.turn];
+    if (seat.kind === 'human') {
+      // Only veil when more than one person is actually sitting there.
+      if (humanSeats().length > 1 && seat.i !== viewSeat) raiseVeil(seat);
+      else render();
+      return;
+    }
+    runCaptain();
+  }
+
+  function runCaptain() {
+    thinking = true;
+    render();
+    setTimeout(() => {
+      if (!game || game.over) { thinking = false; return showOver(); }
+      const seat = game.seats[game.turn];
+      if (seat.kind === 'human') { thinking = false; return afterMove(); }
+      const move = chooseMove(game, seat.i, seat.skill || 'captain');
+      if (move) applyMove(game, move.piece.id, move.x, move.y);
+      else endTurn(game);
+      thinking = false;
+      render();
+      afterMove();
+    }, 420);
+  }
+
+  function raiseVeil(seat) {
+    veiled = true;
+    const host = hostById[seat.hostId];
+    $('veilName').textContent = host.name;
+    $('veil').hidden = false;
+    board.classList.add('hidden-board');
+  }
+  $('veilGo').addEventListener('click', () => {
+    veiled = false;
+    $('veil').hidden = true;
+    board.classList.remove('hidden-board');
+    viewSeat = game.turn;
+    selected = null;
+    render();
+  });
+
+  function openTurn() {
+    const seat = game.seats[game.turn];
+    if (seat.kind === 'human') { viewSeat = seat.i; render(); }
+    else { render(); runCaptain(); }
+  }
+
+  function showOver() {
+    render();
+    const w = game.over.winner;
+    $('overName').textContent = w === null ? 'Nobody' : hostById[game.seats[w].hostId].name;
+    $('overNote').textContent = game.over.reason === 'limit'
+      ? 'The turns ran out. The ground held decided it.'
+      : w === null ? 'Every host went into the mist and none came out.'
+      : 'The last Lord standing.';
+    $('over').hidden = false;
+  }
+
+  $('again').addEventListener('click', () => {
+    const seats = game.seats.map((s) => ({ hostId: s.hostId, kind: s.kind, skill: s.skill, name: s.name }));
+    $('over').hidden = true;
+    begin(seats, Math.floor(Math.random() * 1e9));
+  });
+  $('back').addEventListener('click', () => {
+    $('over').hidden = true;
+    $('war').hidden = true;
+    $('setup').hidden = false;
+    game = null;
+  });
+</script>
+
+<style>
+  .wrap { max-width: 1240px; margin: 0 auto; padding: 0 1.25rem 5rem; }
+  h2 { font-size: 1.05rem; letter-spacing: .04em; text-transform: uppercase;
+       color: var(--accentLight); margin: 0 0 .6rem; }
+  h3 { font-size: .78rem; letter-spacing: .09em; text-transform: uppercase;
+       color: var(--textDim); margin: 0 0 .5rem; }
+  .dim { color: var(--textDim); }
+  .small { font-size: .82rem; }
+
+  /* ── setup ── */
+  .setup { border: 1px solid var(--line); background: var(--card); border-radius: 14px;
+           padding: 1.5rem 1.6rem; }
+  .lede { color: var(--text); line-height: 1.7; max-width: 62ch; margin: 0 0 1.4rem; }
+  .hosts { list-style: none; margin: 0 0 1.4rem; padding: 0; display: grid; gap: .7rem;
+           grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); }
+  .host { border: 1px solid var(--line); border-radius: 11px; padding: .9rem 1rem;
+          background: rgba(0,0,0,.22); opacity: .55; transition: opacity .15s ease, border-color .15s ease; }
+  .host.is-on { opacity: 1; border-color: color-mix(in srgb, var(--host) 55%, transparent); }
+  .host-id { display: flex; gap: .6rem; align-items: center; margin-bottom: .45rem; }
+  .host-pip { width: 12px; height: 12px; border-radius: 3px; background: var(--host); flex: none;
+              box-shadow: 0 0 10px color-mix(in srgb, var(--host) 60%, transparent); }
+  .host-id strong { display: block; color: var(--textBright); font-size: 1rem; }
+  .host-seat { font-size: .74rem; letter-spacing: .08em; text-transform: uppercase; color: var(--textDim); }
+  .host-blurb { margin: 0 0 .5rem; color: var(--text); font-size: .88rem; line-height: 1.55; }
+  .host-unique { display: flex; gap: .5rem; margin: 0 0 .7rem; color: var(--textDim);
+                 font-size: .82rem; line-height: 1.5; }
+  .host-glyph { color: var(--host); font-size: 1.3rem; line-height: 1; flex: none; }
+  .host-pick { display: flex; flex-wrap: wrap; gap: .3rem; }
+  .host-pick button { all: unset; cursor: pointer; padding: .3rem .6rem; border-radius: 6px;
+                      font-size: .78rem; letter-spacing: .03em; color: var(--textDim);
+                      border: 1px solid var(--line); }
+  .host-pick button:hover { color: var(--textBright); }
+  .host-pick button.on { background: var(--host); color: var(--ink); border-color: var(--host); font-weight: 600; }
+
+  .setup-foot { display: flex; gap: 1.2rem; align-items: flex-end; flex-wrap: wrap; }
+  .seedbox { display: grid; gap: .25rem; }
+  .seedbox span { font-size: .78rem; letter-spacing: .09em; text-transform: uppercase; color: var(--textDim); }
+  .seedbox input { background: rgba(0,0,0,.35); border: 1px solid var(--line); border-radius: 7px;
+                   color: var(--textBright); padding: .45rem .6rem; font: inherit; width: 12rem; }
+  .seedbox small { color: var(--textDim); font-size: .76rem; max-width: 34ch; }
+  .go { all: unset; cursor: pointer; background: var(--accent); color: #05080b; font-weight: 700;
+        letter-spacing: .06em; text-transform: uppercase; font-size: .85rem;
+        padding: .6rem 1.4rem; border-radius: 8px; }
+  .go:hover { filter: brightness(1.12); }
+  .ghost { all: unset; cursor: pointer; border: 1px solid var(--line); color: var(--text);
+           padding: .45rem 1rem; border-radius: 8px; font-size: .82rem; }
+  .ghost:hover { color: var(--textBright); border-color: var(--accent); }
+  .warn { color: #d08; margin: .8rem 0 0; font-size: .86rem; }
+
+  /* ── banner ── */
+  .banner { display: flex; align-items: center; gap: .8rem; flex-wrap: wrap;
+            border: 1px solid var(--line); border-left: 3px solid var(--host, var(--accent));
+            background: var(--card); border-radius: 11px; padding: .7rem 1rem; margin-bottom: 1rem; }
+  .banner-pip { width: 14px; height: 14px; border-radius: 4px; flex: none; }
+  .banner-who { flex: 1 1 14rem; min-width: 0; }
+  .banner-who strong { display: block; color: var(--textBright); }
+  .banner-who span { font-size: .82rem; color: var(--textDim); }
+  .banner-stats { display: flex; gap: .9rem; font-size: .8rem; color: var(--textDim); }
+
+  /* ── field ── */
+  .field { display: grid; gap: 1.1rem; grid-template-columns: minmax(0, 1fr) 19rem; align-items: start; }
+  @media (max-width: 920px) { .field { grid-template-columns: 1fr; } }
+
+  .boardwrap { position: relative; }
+  .board { container-type: inline-size;
+           display: grid; grid-template-columns: repeat(var(--n), 1fr);
+           gap: 2px; background: rgba(0,0,0,.5); padding: 2px; border-radius: 10px;
+           border: 1px solid var(--line); aspect-ratio: 1; }
+  .board.hidden-board { filter: blur(14px) saturate(.3); pointer-events: none; }
+
+  .tile { all: unset; position: relative; display: grid; place-items: center;
+          aspect-ratio: 1; cursor: default; border-radius: 2px;
+          font-size: clamp(11px, 3.4cqw, 34px); line-height: 1; }
+  /* The ground has to be told apart at a glance on a dark page, so each kind
+     is a different hue as well as a different weight, not five near-blacks. */
+  .g-dark { background: #04060a; }
+  .g-open { background: #202830; }
+  .g-wood { background: #1b3a26; }
+  .g-crag { background: #4a4f57; }
+  .g-mistwell { background: #2b3f52; }
+  .g-shrine { background: #42356e; }
+  .memory { filter: brightness(.45) saturate(.45); }
+  .lit { box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
+  .tile.go { cursor: pointer; box-shadow: inset 0 0 0 3px rgba(190,230,255,.6); }
+  .tile.hit { cursor: pointer; box-shadow: inset 0 0 0 3px rgba(226,74,74,.95); }
+  .tile.sel { box-shadow: inset 0 0 0 3px var(--accentLight); }
+  .tile.has { cursor: pointer; }
+  .gr { color: rgba(255,255,255,.28); font-size: .8em; }
+  /* A piece sits on its own disc so it reads against any ground under it. */
+  .pc { color: var(--host); font-size: 1.15em; width: 1.5em; height: 1.5em;
+        display: grid; place-items: center; border-radius: 50%;
+        background: radial-gradient(circle at 42% 34%, rgba(0,0,0,.35), rgba(0,0,0,.78));
+        box-shadow: 0 0 0 1.5px color-mix(in srgb, var(--host) 70%, transparent),
+                    0 2px 6px rgba(0,0,0,.75);
+        text-shadow: 0 1px 2px #000; }
+
+  /* ── veil and result ── */
+  .veil, .over { position: absolute; inset: 0; display: grid; place-content: center;
+                 text-align: center; gap: .5rem; padding: 2rem;
+                 background: rgba(5,8,11,.92); border-radius: 10px; z-index: 3; }
+  /* A class that sets display beats the hidden attribute, and these two sit
+     over the board, so without this the result panel covers the game. */
+  .veil[hidden], .over[hidden] { display: none; }
+  .veil-eyebrow, .over-eyebrow { margin: 0; font-size: .76rem; letter-spacing: .18em;
+                                 text-transform: uppercase; color: var(--textDim); }
+  .veil strong, .over strong { font-size: 1.6rem; color: var(--textBright); }
+  .veil-note { color: var(--textDim); max-width: 28ch; margin: 0 auto 1rem; }
+  .over p { color: var(--textDim); margin: 0 0 1rem; }
+  .over-btns { display: flex; gap: .6rem; justify-content: center; }
+
+  /* ── side ── */
+  .side { display: grid; gap: .8rem; }
+  .panel { border: 1px solid var(--line); background: var(--card); border-radius: 11px; padding: .85rem 1rem; }
+  .panel p { margin: 0 0 .4rem; line-height: 1.55; font-size: .86rem; }
+  .trait { display: flex; gap: .3rem; flex-wrap: wrap; margin: .4rem 0 .5rem; }
+  .trait span { font-size: .7rem; letter-spacing: .09em; text-transform: uppercase;
+                border: 1px solid var(--line); border-radius: 5px; padding: .1rem .4rem; color: var(--accentLight); }
+  .rost { list-style: none; margin: 0; padding: 0; display: grid; gap: .28rem; }
+  .rost li { display: grid; grid-template-columns: 12px 1fr auto auto; gap: .5rem;
+             align-items: center; font-size: .84rem; color: var(--text); }
+  .rost li.out { opacity: .35; text-decoration: line-through; }
+  .rost li.now { color: var(--textBright); font-weight: 600; }
+  .pip { width: 10px; height: 10px; border-radius: 3px; }
+  .rk { font-size: .72rem; color: var(--textDim); letter-spacing: .05em; }
+  .rc { color: var(--textDim); font-variant-numeric: tabular-nums; }
+  .legend { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
+  .legend li { display: grid; grid-template-columns: 1.5rem 1fr; gap: .5rem;
+               font-size: .8rem; color: var(--textDim); line-height: 1.45; }
+  .legend strong { color: var(--text); }
+  .sw { display: grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 4px;
+        color: rgba(255,255,255,.35); font-size: .8rem; }
+  .sw-open { background: #171d23; } .sw-wood { background: #16251b; }
+  .sw-crag { background: #2a2b2e; } .sw-mistwell { background: #1b232b; }
+  .sw-shrine { background: #2a2740; }
+  .log { list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem;
+         max-height: 14rem; overflow: auto; }
+  .log li { font-size: .8rem; color: var(--text); line-height: 1.4; }
+  .log li span { display: inline-block; min-width: 1.6rem; color: var(--textDim);
+                 font-variant-numeric: tabular-nums; }
+
+  /* ── rules ── */
+  .rules { margin-top: 1.2rem; border: 1px solid var(--line); background: var(--card);
+           border-radius: 11px; padding: .8rem 1rem; }
+  .rules summary { cursor: pointer; color: var(--accentLight); font-size: .85rem;
+                   letter-spacing: .05em; text-transform: uppercase; }
+  .rules-body { padding-top: .8rem; }
+  .rules-body p { color: var(--text); line-height: 1.7; max-width: 70ch; }
+  .pieces { list-style: none; margin: 1rem 0; padding: 0; display: grid; gap: .4rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .pieces li { font-size: .85rem; color: var(--textDim); line-height: 1.5; }
+  .pieces strong, .rules-body strong { color: var(--textBright); }
+  .pg { color: var(--accentLight); font-size: 1.1rem; }
+</style>
