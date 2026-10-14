@@ -130,11 +130,22 @@ import { BANNERS } from '../../lib/war-table.js';
 
   const $ = (id) => document.getElementById(id);
 
-  // Where painted pieces will live once they exist, keyed banner and rank.
-  // Until then every banner falls back to the chess glyphs, so the art can
-  // be dropped in one piece at a time without touching anything else.
-  const ART = {};
-  const faceOf = (bannerId, type) => ART[`${bannerId}-${type}`] || null;
+  // Painted pieces, listed one at a time as they are made. Anything not in
+  // here falls back to its chess glyph, so a half finished set still plays.
+  const PAINTED = new Set([
+    'rangers-k',
+  ]);
+  const faceOf = (bannerId, type) =>
+    PAINTED.has(`${bannerId}-${type}`) ? `/images/chess/${bannerId}-${type}.webp` : null;
+
+  // Below this, a painting is a smudge and a glyph is a shape, so the board
+  // goes back to glyphs on its own. Nine squares across a phone is about
+  // thirty eight pixels each, which no painted piece survives.
+  const ART_FLOOR = 58;
+  const squarePx = () => {
+    const b = document.querySelector('.board');
+    return b ? b.clientWidth / N : 0;
+  };
 
   let g = null;
   let foe = 'captain';
@@ -222,6 +233,7 @@ import { BANNERS } from '../../lib/war-table.js';
     }
 
     const alive = new Set();
+    const bigEnough = squarePx() >= ART_FLOOR;
     for (let i = 0; i < N * N; i++) {
       const p = g.board[i];
       if (!p) continue;
@@ -239,10 +251,13 @@ import { BANNERS } from '../../lib/war-table.js';
         requestAnimationFrame(() => { el.style.transition = ''; });
       }
       const b = bannerById[bannerId];
-      const art = faceOf(bannerId, p.type);
-      el.innerHTML = art
+      const art = bigEnough ? faceOf(bannerId, p.type) : null;
+      // The glow sits behind every piece, painted or not. With art it is the
+      // only thing keeping two dark armies apart at a glance.
+      el.innerHTML = (art
         ? `<img src="${art}" alt="" draggable="false" />`
-        : `<span class="gl">${GLYPH[p.type]}</span>`;
+        : `<span class="gl">${GLYPH[p.type]}</span>`);
+      el.classList.toggle('art', !!art);
       el.style.setProperty('--c', b.colour);
       el.dataset.side = p.side;
       el.style.transform = `translate(${(i % N) * 100}%, ${Math.floor(i / N) * 100}%)`;
@@ -496,12 +511,26 @@ import { BANNERS } from '../../lib/war-table.js';
          transition: transform .22s cubic-bezier(.3,.8,.3,1), opacity .2s ease;
          will-change: transform; }
   .wt .pce.gone{ opacity: 0; transform-origin: center; }
-  .wt .pce .gl{ font-size: clamp(14px, 6.2cqw, 42px); line-height: 1; color: var(--c);
+  /* The glow behind a piece. It is what tells two dark armies apart once
+     the glyphs are replaced by paintings. */
+  .wt .pce::before { content: ''; position: absolute; left: 8%; right: 8%; top: 6%; bottom: 6%;
+                     border-radius: 50%; background: radial-gradient(ellipse at 50% 58%,
+                       color-mix(in srgb, var(--c) 20%, transparent), transparent 68%);
+                     pointer-events: none; }
+  /* A painted piece carries no colour of its own, so it needs the full glow.
+     A glyph is already the banner colour and only needs a little. */
+  .wt .pce.art::before { background: radial-gradient(ellipse at 50% 60%,
+                       color-mix(in srgb, var(--c) 52%, transparent), transparent 70%); }
+  .wt .pce.art { align-items: end; }
+  .wt .pce .gl{ position: relative; font-size: clamp(14px, 6.2cqw, 42px); line-height: 1; color: var(--c);
              text-shadow: 0 1px 2px rgba(0,0,0,.9), 0 0 10px rgba(0,0,0,.6); }
   .wt .board{ container-type: inline-size; }
   .wt .pce[data-side='b'] .gl{ filter: brightness(1.1); }
-  .wt .pce img{ width: 84%; height: 84%; object-fit: contain;
-             filter: drop-shadow(0 2px 4px rgba(0,0,0,.8)); }
+  /* A painted piece stands on the square rather than floating in it, so it
+     is fitted by height and sat on the bottom edge. */
+  .wt .pce img{ position: relative; width: 100%; height: 100%; object-fit: contain;
+             object-position: 50% 92%;
+             filter: drop-shadow(0 2px 5px rgba(0,0,0,.85)); }
 
   .wt .files, .wt .ranks{ position: absolute; display: grid; color: var(--textDim);
                    font-size: .66rem; letter-spacing: .08em; }
