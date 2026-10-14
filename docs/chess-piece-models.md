@@ -16,10 +16,11 @@ So there are two ways to hand this over, and the first is better.
 **Give me the model files** (`.glb` preferred, `.fbx` or `.obj` fine). Then
 the turntables can be rendered properly, with one camera and one light for
 the whole set, which is the only way seven pieces end up looking like seven
-pieces of the same set. **If you open Blender with the MCP add-on running, I
-can do that part myself** and you never have to touch a render setting. I
-checked just now and Blender is not running, so that is an offer rather than
-a plan.
+pieces of the same set. **Open Blender and I do that part myself**, and you
+never touch a render setting. This is tested, not a hope: I have driven
+Blender from here, rendered a full eight view turntable off a model already
+in the file, and put every setting back afterwards without saving over
+anything.
 
 **Or give me the renders**, to the spec below. Works fine, just leaves the
 consistency on you.
@@ -40,6 +41,69 @@ consistency on you.
 - **PNG, about 512 wide by 1024 tall.**
 - Name them `rangers-k-0.png` through `rangers-k-7.png`, where the number is
   the yaw divided by 45.
+
+## If the model is being built from pictures, it needs more than one
+
+This is the thing that actually went wrong on the first attempt, so it is
+worth stating plainly.
+
+A model built from a single front on picture only has a front. The tool
+wraps that one image onto the shape it guesses, so everything the camera
+could see comes out right and everything it could not see comes out blank.
+I checked this on the model already built: the texture is 528 by 1021, which
+is the front picture and nothing else, and the back of the head is plain
+white. It looks correct until you turn it about 60 degrees, and then it is
+ruined. For a chess piece you walk around, that is fatal.
+
+**So each character needs three pictures, not one**, all of the same figure
+in the same pose, same clothes, same lighting, same distance:
+
+- **Front**, which is the A pose reference already drawn.
+- **Back**, straight behind, same height and framing.
+- **Side**, from her left, same height and framing.
+
+The A pose itself is right and should not change. Arms out is awkward for a
+chess piece but correct for building a model, because nothing overlaps
+anything else, and the arms can be brought down afterwards. The rig on the
+existing model has 58 bones with ordinary names, and I can set them from
+here, so the standing pose is mine to fix. The texture is not.
+
+### The two missing views, ready to paste
+
+Give these to the same generator that made the A poses, with the A pose
+attached as the reference image, one at a time.
+
+**Solenyra Gravespine, back view**
+
+```
+The exact same character from the attached reference, seen from directly behind, standing in the same A pose with arms out from the body. Full figure, head to feet, same height in frame, same distance, same flat even lighting, plain light grey background. A tall elven woman in blackened steel plate over crimson leather fitted close, small sapphire points set into the plates, deep crimson cloak hanging straight down her back. Long black hair falling down her back. Nothing cropped, feet included, arms not overlapping the body. Identical colours and materials to the reference.
+
+Negative prompt: three quarter view, turned head, front view, different pose, arms down, cropped, close up, dramatic lighting, cast shadow, busy background, different armour, different hair colour
+```
+
+**Solenyra Gravespine, side view**
+
+```
+The exact same character from the attached reference, seen from her left side in exact profile, standing in the same A pose with arms out from the body. Full figure, head to feet, same height in frame, same distance, same flat even lighting, plain light grey background. A tall elven woman in blackened steel plate over crimson leather fitted close, small sapphire points set into the plates, deep crimson cloak. Long black hair. The small pale star on her forehead visible in profile. Nothing cropped, feet included. Identical colours and materials to the reference.
+
+Negative prompt: three quarter view, front view, back view, turned head, different pose, arms down, cropped, close up, dramatic lighting, cast shadow, busy background, different armour, different hair colour
+```
+
+**Hannarial Icetear, back view**
+
+```
+The exact same character from the attached reference, seen from directly behind, standing in the same A pose with arms out from the body. Full figure, head to feet, same height in frame, same distance, same flat even lighting, plain light grey background. A tall elven woman in crimson leather in strapped panels under gold edged plate at the shoulders, forearms and thighs. Long blonde hair bound back tight to the head. Nothing cropped, feet included, arms not overlapping the body. Identical colours and materials to the reference.
+
+Negative prompt: three quarter view, turned head, front view, different pose, arms down, cropped, close up, dramatic lighting, cast shadow, busy background, different armour, different hair colour
+```
+
+**Hannarial Icetear, side view**
+
+```
+The exact same character from the attached reference, seen from her left side in exact profile, standing in the same A pose with arms out from the body. Full figure, head to feet, same height in frame, same distance, same flat even lighting, plain light grey background. A tall elven woman in crimson leather in strapped panels under gold edged plate at the shoulders, forearms and thighs. Long blonde hair bound back tight to the head. Nothing cropped, feet included. Identical colours and materials to the reference.
+
+Negative prompt: three quarter view, front view, back view, turned head, different pose, arms down, cropped, close up, dramatic lighting, cast shadow, busy background, different armour, different hair colour
+```
 
 ## What makes a model that survives this
 
@@ -71,13 +135,13 @@ the most skin and the King the least.**
 ### rangers-k, Solenyra Gravespine, the King
 
 ```
-A dark fantasy chess piece statuette on a round stone plinth, carved as a single connected shape. A tall elven woman standing perfectly still, both hands resting on the pommel of a sword planted point down in front of her. She wears crimson leather in strapped panels with blackened steel plates over the shoulders, forearms and thighs, a high collar, and a heavy cloak wrapped close around her body and falling straight to the plinth. Hair cut blunt at the jaw. Her left eye is a glowing sapphire set in her face. Narrow upright silhouette, roughly twice as tall as wide. Arms held in against the body, nothing protruding, no loose cloth, no fine chains. Tallest piece in the set.
+A dark fantasy chess piece statuette on a round stone plinth, carved as a single connected shape. A tall elven woman standing perfectly still, both hands resting on the pommel of a sword planted point down in front of her. She wears blackened steel plate over crimson leather, fitted close, with small sapphire points set into the plates, and a deep crimson cloak wrapped around her body and falling straight to the plinth. Long black hair. Her left eye is a glowing sapphire set in her face, and a small pale star sits on her forehead. Narrow upright silhouette, roughly twice as tall as wide. Arms held in against the body, nothing protruding, no loose cloth, no fine chains. Tallest piece in the set.
 ```
 
 ### rangers-q, Hannarial Icetear, the Queen
 
 ```
-A dark fantasy chess piece statuette on a round stone plinth, carved as a single connected shape, matching a set of crimson elven pieces. A tall elven woman standing still, a longbow held upright against her body in one hand with the string against her shoulder, the other hand closed at her side. Crimson leather in strapped panels with pale blue frost patterning on the steel, a tall narrow open crown of thin iron points. Pale hair bound back tight to the head. Cloak wrapped close, falling straight to the plinth. Narrow upright silhouette. Arms in, nothing protruding, no loose strands. Slightly shorter than the King.
+A dark fantasy chess piece statuette on a round stone plinth, carved as a single connected shape, matching a set of crimson elven pieces. A tall elven woman standing still, a longbow held upright against her body in one hand with the string against her shoulder, the other hand closed at her side. Crimson leather in strapped panels under gold edged plate at the shoulders, forearms and thighs, a tall narrow open crown of thin gold points. Long blonde hair bound back tight to the head. Cloak wrapped close, falling straight to the plinth. Narrow upright silhouette. Arms in, nothing protruding, no loose strands. Slightly shorter than the King.
 ```
 
 ### rangers-c, Anthurian Icetear, the Champion
