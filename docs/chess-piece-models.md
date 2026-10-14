@@ -1,5 +1,11 @@
 # Models for the War Table pieces
 
+> **Closed, not deleted.** Astra could not build these to a usable standard,
+> so the pieces are being made as flat pictures instead. See
+> `chess-piece-art.md`, which is the live one. Kept because the render spec
+> and the three views finding are both still correct if we ever come back to
+> models with a better tool.
+
 Prompts for Astra, and what I need back from it.
 
 ## Read this first, because it decides everything else

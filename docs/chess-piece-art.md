@@ -24,13 +24,37 @@ two, two and nine to a side, so those are ranks rather than people.
 the other twenty eight and wire all thirty five up. If it is wrong we have only
 burned seven.
 
+## Pictures, not models
+
+We tried building the pieces as 3D models so they could turn as you orbit the
+board. That route is closed, and it is not worth reopening. One flat picture
+per piece is what the board wants anyway, and it is already proven: Solenyra
+was made exactly this way and she is on the board now.
+
+Two things follow from that.
+
+**Attach the finished Solenyra to every prompt as a style reference.** She is
+the set now. Matching her is more important than matching the words below, so
+if the generator gives you something that looks good on its own but does not
+look like it came out of the same box as her, it is wrong.
+
+**Do them in order of rank, and keep each one shorter than the last.** The
+heights have to step down from King to Pawn, and the easiest way to lose that
+is to generate the Pawn on its own on a different day.
+
 ## What I need technically
 
-- **Square**, 1024 x 1024. Not portrait. Each piece lives in a square cell.
+- **Tall, exactly twice as tall as it is wide.** 1024 wide by 2048 tall is
+  ideal. **Not square.** This is the one that matters most, and the doc used
+  to say square, which was wrong. Solenyra is the only piece on the board so
+  far and she is 320 by 640. Anything wider than that ratio stands on the
+  square looking squat, and a spread cloak pushes it wide without making the
+  figure any taller.
 - **Transparent background.** If the tool will not do it, use **flat pure
   magenta `#FF00FF`** and I will cut it out exactly. Not a dark background,
   because half the banners are dark and the edges will smear.
-- **The whole piece inside the frame**, with a little air round it.
+- **The whole piece inside the frame**, with a little air round it, standing
+  on its own plinth at the bottom edge.
 - **Seen from the side, straight on**, like a piece standing on a table. Not a
   character portrait, not a three quarter view. All seven must share one
   camera and one light or they will not look like a set.
@@ -58,13 +82,13 @@ the top of the order.
 ### Solenyra Gravespine, the King
 
 ```
-A single carved chess piece on a transparent background, square image, seen from the side straight on like a piece standing on a table. This is the King of a crimson elven order of women, and she is Solenyra Gravespine, High Warden of the Red Rangers and the last of her House. Carve her as a tall still figure in crimson leather with blackened steel plates strapped over it at the shoulder, forearm and thigh, a high collar, and a long cloak falling to the base. Her head is bare and her hair is cut blunt at the jaw. Her left eye glows a cold sapphire blue and a faint blue light sits on that cheek, because her dead brother's soul is held in a stone behind it. One hand rests on a sheathed sword, the other is open at her side. Her face is composed and unreadable. Crimson, blackened steel, one point of sapphire blue. Painted, not photographic, visible brushwork, one strong light from the upper left. A strong simple silhouette that reads at fifty five pixels. Transparent background, no shadow on the ground. No text, no letters, no numbers, no watermark, no border.
+A single carved chess piece on a transparent background, square image, seen from the side straight on like a piece standing on a table. This is the King of a crimson elven order of women, and she is Solenyra Gravespine, High Warden of the Red Rangers and the last of her House. Carve her as a tall still figure in fitted blackened steel plate worn over crimson leather, small sapphire points set into the plates, and a deep crimson cloak falling straight to the base. Her head is bare, her hair is long and black, and a small pale star sits on her forehead. Her left eye glows a cold sapphire blue and a faint blue light sits on that cheek, because her dead brother's soul is held in a stone behind it. One hand rests on a sheathed sword, the other is open at her side. Her face is composed and unreadable. Crimson, blackened steel, one point of sapphire blue. Painted, not photographic, visible brushwork, one strong light from the upper left. A strong simple silhouette that reads at fifty five pixels. Transparent background, no shadow on the ground. No text, no letters, no numbers, no watermark, no border.
 ```
 
 ### Hannarial Icetear, the Queen
 
 ```
-A single carved chess piece on a transparent background, square image, seen from the side straight on, matching a set of crimson elven pieces. This is the Queen, and she is Hannarial Icetear, Captain of the Red Rangers, who lost her family the night Ashwinter burned and learned one name from it. Carve her slightly taller and narrower than the King: a standing elven woman in crimson leather with pale blue Icetear frostwork on the strapped plates, a tall open crown of thin iron points, and a long elven bow held upright in one hand with the string against her shoulder so the outline stays narrow. Her hair is pale and bound back hard. Her face is set and furious and controlled. Crimson and pale frost blue, one small point of white. Painted, not photographic, visible brushwork, one strong light from the upper left. A strong simple silhouette that reads at fifty five pixels. Transparent background, no shadow on the ground. No text, no letters, no numbers, no watermark, no border.
+A single carved chess piece on a transparent background, square image, seen from the side straight on, matching a set of crimson elven pieces. This is the Queen, and she is Hannarial Icetear, Captain of the Red Rangers, who lost her family the night Ashwinter burned and learned one name from it. Carve her slightly taller and narrower than the King: a standing elven woman in crimson leather in strapped panels under gold edged plate at the shoulder, forearm and thigh, a tall open crown of thin gold points, and a long elven bow held upright in one hand with the string against her shoulder so the outline stays narrow. Her hair is long and blonde and bound back hard. Her face is set and furious and controlled. Crimson and gold, one small point of white. Painted, not photographic, visible brushwork, one strong light from the upper left. A strong simple silhouette that reads at fifty five pixels. Transparent background, no shadow on the ground. No text, no letters, no numbers, no watermark, no border.
 ```
 
 ### Anthurian Icetear, the Champion
