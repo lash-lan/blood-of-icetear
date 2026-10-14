@@ -4,7 +4,7 @@
 
 import {
   newGame, movesFrom, allMoves, play, visible, viewFor, material,
-  sq, nameOf, BANNERS, bannerById, VALUE, kingOf, N, onBoard,
+  sq, nameOf, BANNERS, bannerById, VALUE, kingOf, N, onBoard, sensed,
 } from '../src/lib/war-table.js';
 import { chooseMove, SKILLS } from '../src/lib/war-table-ai.js';
 
@@ -181,6 +181,39 @@ section('The mist');
   });
   // The spectator view hides nothing, which is what a finished game shows.
   ok(viewFor(g, null).squares.every((s) => !s.fog), 'the spectator view was fogged');
+}
+
+section('What you can feel but cannot name');
+{
+  const g = empty();
+  put(g, sq(4, 4), 'w', 'r');          // mine, in the middle
+  put(g, sq(4, 2), 'b', 'q');          // two up, on a line the rook can see
+  put(g, sq(6, 6), 'b', 'n');          // two away corner wise, the rook cannot go
+  put(g, sq(0, 0), 'b', 'k');          // far off
+  put(g, sq(4, 8), 'w', 'k');
+  const v = viewFor(g, 'w');
+
+  ok(v.squares[sq(4, 2)].piece && v.squares[sq(4, 2)].piece.type === 'q',
+     'a piece in plain sight was not named');
+  const shape = v.squares[sq(6, 6)];
+  ok(shape.shadow, 'a piece two squares away was not felt at all');
+  ok(!shape.piece.type, 'a shape leaked what kind of piece it is');
+  ok(!shape.piece.side, 'a shape leaked whose side it is on');
+  ok(v.squares[sq(0, 0)].fog, 'something far off was felt anyway');
+
+  // The reach is two, and two exactly.
+  const f = sensed(g, 'w');
+  ok(f[sq(6, 6)], 'two squares away was not within reach of the senses');
+  ok(f[sq(4, 6)], 'the whole two square ring should be felt');
+  ok(!f[sq(4, 1)], 'the senses reached three squares');
+
+  // Nothing is felt where nothing stands.
+  const quiet = empty();
+  put(quiet, sq(4, 4), 'w', 'r');
+  ok(viewFor(quiet, 'w').squares.every((x) => !x.shadow), 'an empty square cast a shape');
+
+  // And a shape keeps its id, so it can slide rather than blink.
+  ok(typeof shape.piece.id === 'number', 'a shape has no id to animate by');
 }
 
 section('A King is taken, not trapped');

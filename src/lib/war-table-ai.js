@@ -5,7 +5,7 @@
 // knowing was there, exactly as you can. That is the game, and the self-test
 // checks it by moving a piece it cannot see and proving it does not react.
 
-import { movesFrom, allMoves, visible, VALUE, sq, onBoard, N } from './war-table.js';
+import { movesFrom, allMoves, visible, sensed, VALUE, sq, onBoard, N } from './war-table.js';
 
 const other = (s) => (s === 'w' ? 'b' : 'w');
 
@@ -51,6 +51,23 @@ export function chooseMove(g, side = g.turn, skill = 'captain', random = Math.ra
   if (!legal.length) return null;
 
   const danger = threatened(g, side);
+  // Squares the Captain can feel something on without being able to name it.
+  // It does not know what is there, so it treats the whole square as a risk
+  // rather than pricing it, which is the same thing a player does.
+  const felt = sensed(g, side);
+  const seenNow = visible(g, side);
+  const murk = new Set();
+  for (let i = 0; i < N * N; i++) {
+    const q = g.board[i];
+    if (q && q.side !== side && felt[i] && !seenNow[i]) {
+      const qx = i % N, qy = Math.floor(i / N);
+      for (let dx = -1; dx <= 1; dx++) {
+        for (let dy = -1; dy <= 1; dy++) {
+          if (onBoard(qx + dx, qy + dy)) murk.add(sq(qx + dx, qy + dy));
+        }
+      }
+    }
+  }
   const myKing = g.board.findIndex((p) => p && p.side === side && p.type === 'k');
   let best = null, bestScore = -Infinity;
 
@@ -73,6 +90,8 @@ export function chooseMove(g, side = g.turn, skill = 'captain', random = Math.ra
     }
     // Stepping out from under one.
     if (danger.has(m.from)) score += VALUE[p.type] * 3;
+    // Walking up to a shape it cannot name.
+    if (murk.has(m.to) && !m.takes) score -= VALUE[p.type] * 1.1 * cfg.keepsKingIn;
 
     // Ground.
     score += (CENTRE[m.to] - CENTRE[m.from]) * (p.type === 'n' ? 0.5 : 0.25);

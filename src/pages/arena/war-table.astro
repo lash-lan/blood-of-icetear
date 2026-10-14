@@ -76,12 +76,20 @@ import { BANNERS } from '../../lib/war-table.js';
 
       <div class="field">
         <div class="boardwrap">
-          <div class="board" id="board" style="--n:9">
-            <div class="squares" id="squares"></div>
-            <div class="pieces" id="piecelayer"></div>
+          <div class="stage" id="stage">
+            <div class="board" id="board" style="--n:9">
+              <div class="ground"></div>
+              <div class="squares" id="squares"></div>
+              <div class="pieces" id="piecelayer"></div>
+              <div class="files" id="files"></div>
+              <div class="ranks" id="ranks"></div>
+            </div>
           </div>
-          <div class="files" id="files"></div>
-          <div class="ranks" id="ranks"></div>
+          <div class="viewbar">
+            <span class="vhint">Drag to look around. Scroll or pinch to come closer.</span>
+            <button type="button" id="flat" class="ghost">Flat</button>
+            <button type="button" id="resetView" class="ghost">Reset view</button>
+          </div>
 
           <div class="veil" id="veil" hidden>
             <p class="eyebrow">The mist closes</p>
@@ -123,7 +131,7 @@ import { BANNERS } from '../../lib/war-table.js';
 
 <script>
   import {
-    newGame, movesFrom, allMoves, play, visible, material,
+    newGame, movesFrom, allMoves, play, visible, sensed, material,
     BANNERS, bannerById, GLYPH, FULL, VALUE, sq, nameOf, N,
   } from '../../lib/war-table.js';
   import { chooseMove } from '../../lib/war-table-ai.js';
@@ -146,6 +154,12 @@ import { BANNERS } from '../../lib/war-table.js';
     const b = document.querySelector('.board');
     return b ? b.clientWidth / N : 0;
   };
+
+  // Where the eye is. The board is a real plane tilted away from you, and
+  // everything standing on it is turned back to face you, which is the whole
+  // trick: one rotation out, one rotation back.
+  const cam = { spin: 0, tilt: 54, zoom: 1, panX: 0, panY: 0 };
+  const DEFAULT_CAM = { ...cam };
 
   let g = null;
   let foe = 'captain';
@@ -194,10 +208,32 @@ import { BANNERS } from '../../lib/war-table.js';
     $('table').hidden = false;
     $('over').hidden = true;
     buildBoard();
+    Object.assign(cam, DEFAULT_CAM);
+    applyCamera();
     draw(true);
   }
 
   // ── the board ─────────────────────────────────────────────────────────────
+  /** Push the camera on to the board, and turn every piece back to face it. */
+  function applyCamera() {
+    const b = document.querySelector('.board');
+    if (!b) return;
+    b.style.transform =
+      `translate(${cam.panX}px, ${cam.panY}px) scale(${cam.zoom})`
+      + ` rotateX(${cam.tilt}deg) rotateZ(${cam.spin}deg)`;
+    // Every piece is counter rotated in the opposite order, which is what
+    // keeps it standing upright however the board is turned.
+    const stand = `rotateZ(${-cam.spin}deg) rotateX(${-cam.tilt}deg)`;
+    document.querySelector('.pieces')?.style.setProperty('--stand', stand);
+    for (const el of document.querySelectorAll('.pce')) {
+      el.style.transform = `${el.dataset.place || ''} ${stand}`;
+    }
+    // The letters and numbers lie on the ground, so they turn with it, but
+    // they are mirrored back the right way up when you look from behind.
+    const flipped = Math.abs(((cam.spin % 360) + 360) % 360 - 180) < 90;
+    document.querySelector('.board')?.classList.toggle('behind', flipped);
+  }
+
   function buildBoard() {
     const squares = $('squares');
     document.querySelector('.board').style.setProperty('--n', N);
@@ -220,6 +256,8 @@ import { BANNERS } from '../../lib/war-table.js';
    *  rebuilding them, which is what lets a move slide instead of blink. */
   function draw(hard = false) {
     const seen = visible(g, viewSide);
+    // Two squares out you can feel something without being able to name it.
+    const felt = viewSide ? sensed(g, viewSide) : null;
     const squares = $('squares');
     const moves = selected !== null ? movesFrom(g, selected) : [];
     const dots = new Map(moves.map((m) => [m.to, m]));
@@ -237,8 +275,9 @@ import { BANNERS } from '../../lib/war-table.js';
     for (let i = 0; i < N * N; i++) {
       const p = g.board[i];
       if (!p) continue;
-      const hide = !g.over && !seen[i] && p.side !== viewSide;
-      if (hide) continue;
+      const known = g.over || seen[i] || p.side === viewSide;
+      const shape = !known && felt && felt[i] && p.side !== viewSide;
+      if (!known && !shape) continue;
       alive.add(p.id);
       let el = els.get(p.id);
       const bannerId = g.banners[p.side];
@@ -251,6 +290,19 @@ import { BANNERS } from '../../lib/war-table.js';
         requestAnimationFrame(() => { el.style.transition = ''; });
       }
       const b = bannerById[bannerId];
+      if (shape) {
+        // A shape, and nothing else. No banner, no rank, no colour, because
+        // none of that is yours to know yet.
+        el.innerHTML = '<span class="shade"></span>';
+        el.classList.add('is-shade');
+        el.classList.remove('art');
+        el.removeAttribute('title');
+        el.dataset.place = `translate(${(i % N) * 100}%, ${Math.floor(i / N) * 100}%)`;
+        el.style.transform = `${el.dataset.place} rotateZ(${-cam.spin}deg) rotateX(${-cam.tilt}deg)`;
+        el.setAttribute('aria-label', `${nameOf(i)}. Something is there.`);
+        continue;
+      }
+      el.classList.remove('is-shade');
       const art = bigEnough ? faceOf(bannerId, p.type) : null;
       // The glow sits behind every piece, painted or not. With art it is the
       // only thing keeping two dark armies apart at a glance.
@@ -260,7 +312,8 @@ import { BANNERS } from '../../lib/war-table.js';
       el.classList.toggle('art', !!art);
       el.style.setProperty('--c', b.colour);
       el.dataset.side = p.side;
-      el.style.transform = `translate(${(i % N) * 100}%, ${Math.floor(i / N) * 100}%)`;
+      el.dataset.place = `translate(${(i % N) * 100}%, ${Math.floor(i / N) * 100}%)`;
+      el.style.transform = `${el.dataset.place} rotateZ(${-cam.spin}deg) rotateX(${-cam.tilt}deg)`;
       el.title = `${b.short} ${b.ranks[p.type]}`;
     }
     // Anything no longer on the table, or no longer visible, leaves.
@@ -348,7 +401,72 @@ import { BANNERS } from '../../lib/war-table.js';
   });
 
   // ── taking a turn ─────────────────────────────────────────────────────────
+  // Dragging the board turns it. A drag that barely moves is a tap, so the
+  // same pointer does both without a modifier key.
+  const stage = $('stage');
+  let drag = null;
+  let dragged = false;
+  const pointers = new Map();
+  let pinch = 0;
+
+  stage.addEventListener('pointerdown', (e) => {
+    pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      pinch = Math.hypot(a.x - b.x, a.y - b.y);
+      drag = null;
+      return;
+    }
+    drag = { x: e.clientX, y: e.clientY, spin: cam.spin, tilt: cam.tilt,
+             panX: cam.panX, panY: cam.panY, pan: e.shiftKey || e.button === 2 };
+    dragged = false;
+  });
+
+  stage.addEventListener('pointermove', (e) => {
+    if (pointers.has(e.pointerId)) pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (pointers.size === 2) {
+      const [a, b] = [...pointers.values()];
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (pinch) { cam.zoom = clamp(cam.zoom * (d / pinch), 0.55, 2.6); applyCamera(); }
+      pinch = d;
+      dragged = true;
+      return;
+    }
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (Math.abs(dx) + Math.abs(dy) > 6) dragged = true;
+    if (drag.pan) {
+      cam.panX = drag.panX + dx;
+      cam.panY = drag.panY + dy;
+    } else {
+      cam.spin = drag.spin + dx * 0.4;
+      cam.tilt = clamp(drag.tilt + dy * 0.3, 8, 78);
+    }
+    applyCamera();
+  });
+
+  const letGo = (e) => { pointers.delete(e.pointerId); if (pointers.size < 2) pinch = 0; drag = null; };
+  stage.addEventListener('pointerup', letGo);
+  stage.addEventListener('pointercancel', letGo);
+  stage.addEventListener('contextmenu', (e) => e.preventDefault());
+
+  stage.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    cam.zoom = clamp(cam.zoom * (e.deltaY > 0 ? 0.92 : 1.08), 0.55, 2.6);
+    applyCamera();
+  }, { passive: false });
+
+  const clamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+
+  $('resetView').addEventListener('click', () => {
+    Object.assign(cam, DEFAULT_CAM); applyCamera();
+  });
+  $('flat').addEventListener('click', () => {
+    Object.assign(cam, { spin: 0, tilt: 0, zoom: 1, panX: 0, panY: 0 }); applyCamera();
+  });
+
   $('squares').addEventListener('click', (e) => {
+    if (dragged) { dragged = false; return; }
     const t = e.target.closest('.sqr');
     if (!t || !g || g.over || busy || veiled) return;
     if (foe !== 'human' && g.turn !== 'w') return;
@@ -444,8 +562,8 @@ import { BANNERS } from '../../lib/war-table.js';
   .wt .eyebrow{ margin: 0; font-size: .74rem; letter-spacing: .18em;
              text-transform: uppercase; color: var(--textDim); }
 
-  .wt /* ── setup ── */
-  .setup{ border: 1px solid var(--line); background: var(--card); border-radius: 14px;
+  /* ── setup ── */
+  .wt .setup{ border: 1px solid var(--line); background: var(--card); border-radius: 14px;
            padding: 1.4rem 1.5rem; display: grid; gap: 1.3rem; max-width: 46rem; }
   .wt .banners{ list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
   .wt .banners button{ all: unset; cursor: pointer; display: flex; align-items: center; gap: .45rem;
@@ -470,8 +588,8 @@ import { BANNERS } from '../../lib/war-table.js';
   .wt .ghost:hover{ color: var(--textBright); border-color: var(--accent); }
   .wt .warn{ color: #c55; font-size: .85rem; margin: 0; }
 
-  .wt /* ── bar ── */
-  .bar{ display: flex; align-items: center; gap: .75rem; flex-wrap: wrap;
+  /* ── bar ── */
+  .wt .bar{ display: flex; align-items: center; gap: .75rem; flex-wrap: wrap;
          border: 1px solid var(--line); border-left: 3px solid var(--c, var(--accent));
          background: var(--card); border-radius: 10px; padding: .6rem .9rem; margin-bottom: 1rem; }
   .wt .bar-pip{ width: 13px; height: 13px; border-radius: 4px; }
@@ -480,23 +598,42 @@ import { BANNERS } from '../../lib/war-table.js';
   .wt .bar-who span{ font-size: .8rem; color: var(--textDim); }
   .wt .bar-right{ display: flex; gap: .4rem; }
 
-  .wt /* ── field ── */
-  .field{ display: grid; gap: 1.1rem; grid-template-columns: minmax(0, 1fr) 16rem; align-items: start; }
+  /* ── field ── */
+  .wt .field{ display: grid; gap: 1.1rem; grid-template-columns: minmax(0, 1fr) 16rem; align-items: start; }
   @media (max-width: 860px) { .wt .field{ grid-template-columns: 1fr; } }
 
-  .wt .boardwrap{ position: relative; padding: 0 0 1.1rem 1.1rem; }
-  .wt .board{ position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden;
-           border: 1px solid var(--line); box-shadow: 0 10px 40px rgba(0,0,0,.5); }
+  .wt .boardwrap{ position: relative; }
+
+  /* The stage holds the eye. The board is a real plane inside it, tilted
+     away, and the pieces are turned back to face you. */
+  .wt .stage{ position: relative; aspect-ratio: 1 / .78; perspective: 1100px;
+           perspective-origin: 50% 42%; overflow: hidden; border-radius: 10px;
+           background: radial-gradient(ellipse at 50% 18%, #121a22 0%, #080b0f 62%, #05070a 100%);
+           border: 1px solid var(--line); touch-action: none; cursor: grab; }
+  .wt .stage:active{ cursor: grabbing; }
+
+  .wt .board{ position: absolute; left: 50%; top: 47%; width: 68%; aspect-ratio: 1;
+           margin: -34% 0 0 -34%;
+           transform-style: preserve-3d; transform-origin: 50% 50%;
+           transition: transform .12s linear;
+           box-shadow: 0 40px 90px rgba(0,0,0,.75); }
   .wt .board.blurred{ filter: blur(16px) saturate(.3); pointer-events: none; }
+
+  /* Ground beyond the edge of the board, so it reads as a field with a
+     fighting square marked on it rather than a board floating in the dark. */
+  .wt .ground{ position: absolute; inset: -34%; border-radius: 12%;
+           background: radial-gradient(ellipse at 50% 50%, #1a2029 0%, #0d1318 55%, rgba(5,7,10,0) 78%);
+           box-shadow: inset 0 0 120px rgba(0,0,0,.7); }
   .wt .squares{ position: absolute; inset: 0; display: grid;
              grid-template-columns: repeat(var(--n, 9), 1fr);
-             grid-template-rows: repeat(var(--n, 9), 1fr); }
+             grid-template-rows: repeat(var(--n, 9), 1fr);
+             border: 2px solid rgba(140,170,195,.18); border-radius: 3px; }
   .wt .sqr{ all: unset; cursor: pointer; position: relative; }
   .wt .lt{ background: #2e3a44; }
   .wt .dk{ background: #1d262e; }
-  .wt /* The mist is one flat colour over everything, .wt so the eye reads the board
+  /* The mist is one flat colour over everything, .wt so the eye reads the board
      as "lit" and "not lit" rather than as a third kind of square. */
-  .sqr.fog{ background: #090c10; cursor: default; }
+  .wt .sqr.fog{ background: #090c10; cursor: default; }
   .wt .sqr.fog::after{ content: ''; position: absolute; inset: 0;
                     background: radial-gradient(circle at 50% 40%, rgba(120,150,175,.07), transparent 70%); }
   .wt .sqr.from{ box-shadow: inset 0 0 0 3px var(--accentLight); }
@@ -504,10 +641,16 @@ import { BANNERS } from '../../lib/war-table.js';
                     background: rgba(190,225,250,.5); }
   .wt .sqr.hit{ box-shadow: inset 0 0 0 3px rgba(226,74,74,.9); }
 
-  .wt .pieces{ position: absolute; inset: 0; pointer-events: none; }
+  /* Lifted a hair off the ground plane. Without it the pieces are exactly
+     co-planar with the squares and the squares win, so the board comes up
+     empty. */
+  .wt .pieces{ position: absolute; inset: 0; pointer-events: none;
+            transform-style: preserve-3d; transform: translateZ(1px); }
+  /* One square wide, standing on its own base. Everything it draws rises
+     out of the square rather than sitting flat in it. */
   .wt .pce{ position: absolute; top: 0; left: 0;
          width: calc(100% / var(--n, 9)); height: calc(100% / var(--n, 9));
-         display: grid; place-items: center;
+         transform-origin: 50% 92%; transform-style: preserve-3d;
          transition: transform .22s cubic-bezier(.3,.8,.3,1), opacity .2s ease;
          will-change: transform; }
   .wt .pce.gone{ opacity: 0; transform-origin: center; }
@@ -522,32 +665,51 @@ import { BANNERS } from '../../lib/war-table.js';
   .wt .pce.art::before { background: radial-gradient(ellipse at 50% 60%,
                        color-mix(in srgb, var(--c) 52%, transparent), transparent 70%); }
   .wt .pce.art { align-items: end; }
-  .wt .pce .gl{ position: relative; font-size: clamp(14px, 6.2cqw, 42px); line-height: 1; color: var(--c);
+  .wt .pce .gl{ position: absolute; left: 0; right: 0; bottom: 6%; text-align: center;
+             font-size: clamp(14px, 7.4cqw, 50px); line-height: 1; color: var(--c);
              text-shadow: 0 1px 2px rgba(0,0,0,.9), 0 0 10px rgba(0,0,0,.6); }
-  .wt .board{ container-type: inline-size; }
+
+  /* Something is there, and that is all you are told. */
+  .wt .pce .shade{ position: absolute; left: 22%; right: 22%; bottom: 6%; height: 115%;
+               background: linear-gradient(180deg, #0b1016, #04060a);
+               border-radius: 50% 50% 22% 22% / 34% 34% 14% 14%;
+               box-shadow: 0 0 14px rgba(0,0,0,.9), inset 0 6px 14px rgba(120,150,180,.08);
+               opacity: .9; }
+  .wt .pce.is-shade::before{ background: radial-gradient(ellipse at 50% 70%,
+               rgba(150,180,205,.16), transparent 70%); }
+  .wt .stage{ container-type: inline-size; }
   .wt .pce[data-side='b'] .gl{ filter: brightness(1.1); }
   /* A painted piece stands on the square rather than floating in it, so it
      is fitted by height and sat on the bottom edge. */
-  .wt .pce img{ position: relative; width: 100%; height: 100%; object-fit: contain;
-             object-position: 50% 92%;
-             filter: drop-shadow(0 2px 5px rgba(0,0,0,.85)); }
+  /* A painted piece stands on its square and rises well above it, the way a
+     real piece on a board does. */
+  .wt .pce img{ position: absolute; left: 50%; bottom: 2%; transform: translateX(-50%);
+             height: 175%; width: auto; max-width: 240%;
+             filter: drop-shadow(0 3px 6px rgba(0,0,0,.9)); }
 
-  .wt .files, .wt .ranks{ position: absolute; display: grid; color: var(--textDim);
-                   font-size: .66rem; letter-spacing: .08em; }
-  .wt .files{ left: 1.1rem; right: 0; bottom: 0; grid-template-columns: repeat(var(--n, 9), 1fr); text-align: center; }
-  .wt .ranks{ top: 0; bottom: 1.1rem; left: 0; width: 1.1rem;
+  /* The coordinates lie on the ground, so they tilt with it. */
+  .wt .files, .wt .ranks{ position: absolute; display: grid;
+                   color: rgba(190,210,225,.42); font-size: 2.1cqw; letter-spacing: .08em; }
+  .wt .files{ left: 0; right: 0; bottom: -4.4%; grid-template-columns: repeat(var(--n, 9), 1fr); text-align: center; }
+  .wt .ranks{ top: 0; bottom: 0; left: -4.4%; width: 4%;
            grid-template-rows: repeat(var(--n, 9), 1fr); place-items: center; }
+  .wt .board.behind .files, .wt .board.behind .ranks{ transform: rotate(180deg); }
 
-  .wt /* ── veil and result ── */
-  .veil, .wt .over{ position: absolute; inset: 0 0 1.1rem 1.1rem; display: grid; place-content: center;
+  /* looking around */
+  .wt .viewbar{ display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+             margin-top: .5rem; }
+  .wt .vhint{ flex: 1 1 auto; color: var(--textDim); font-size: .76rem; }
+
+  /* ── veil and result ── */
+  .wt .veil, .wt .over{ position: absolute; inset: 0; display: grid; place-content: center;
                  text-align: center; gap: .45rem; padding: 2rem; z-index: 3;
                  background: rgba(5,8,11,.93); border-radius: 8px; }
   .wt .veil[hidden], .wt .over[hidden]{ display: none; }
   .wt .veil strong, .wt .over strong{ font-size: 1.5rem; color: var(--textBright); }
   .wt .over-btns{ display: flex; gap: .5rem; justify-content: center; margin-top: .8rem; }
 
-  .wt /* ── side ── */
-  .side{ display: grid; gap: .8rem; }
+  /* ── side ── */
+  .wt .side{ display: grid; gap: .8rem; }
   .wt .panel{ border: 1px solid var(--line); background: var(--card); border-radius: 10px; padding: .8rem .95rem; }
   .wt .panel p:last-child{ margin-bottom: 0; }
   .wt .tk{ list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }

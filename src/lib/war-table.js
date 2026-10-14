@@ -222,16 +222,44 @@ export function visible(g, side) {
   return seen;
 }
 
+/**
+ * Ground close enough to feel, which is two squares from any piece of yours.
+ *
+ * Sight tells you what a thing is. This only tells you that a thing is there.
+ * An enemy standing on a sensed square but not a seen one shows as a shape
+ * with no face and no banner, so you know something is coming and not what.
+ */
+export function sensed(g, side, reach = 2) {
+  const out = new Uint8Array(N * N);
+  for (let i = 0; i < N * N; i++) {
+    const p = g.board[i];
+    if (!p || p.side !== side) continue;
+    const px = i % N, py = Math.floor(i / N);
+    for (let dy = -reach; dy <= reach; dy++) {
+      for (let dx = -reach; dx <= reach; dx++) {
+        if (onBoard(px + dx, py + dy)) out[sq(px + dx, py + dy)] = 1;
+      }
+    }
+  }
+  return out;
+}
+
 /** The board as one side is allowed to know it. */
 export function viewFor(g, side) {
   const seen = side ? visible(g, side) : new Uint8Array(N * N).fill(1);
+  const felt = side ? sensed(g, side) : new Uint8Array(N * N);
   return {
     squares: Array.from({ length: N * N }, (_, i) => {
       const p = g.board[i];
-      if (!seen[i]) return { fog: true };
-      return { fog: false, piece: p ? { id: p.id, side: p.side, type: p.type } : null };
+      if (seen[i]) return { fog: false, piece: p ? { id: p.id, side: p.side, type: p.type } : null };
+      // Close enough to feel, far enough that it is only a shape. The id goes
+      // with it so the shape can slide rather than blink, but the type does
+      // not, because that is the part you are not allowed to know.
+      if (felt[i] && p && p.side !== side) return { fog: false, shadow: true, piece: { id: p.id } };
+      return { fog: true };
     }),
     seen: Array.from(seen),
+    felt: Array.from(felt),
     turn: g.turn, banners: g.banners, moves: g.moves,
     over: g.over, log: g.log, you: side || null,
     taken: g.history.filter((h) => h.takenType).map((h) => ({ side: other(h.side), type: h.takenType })),
