@@ -289,6 +289,15 @@ import { FIELDS } from '../../data/fields.js';
     document.querySelector('.stage').style.setProperty('--ground', f.ground);
     $('farPath').setAttribute('d', f.far);
     $('nearPath').setAttribute('d', f.near);
+    // Every field has a painted backdrop and a painted floor, named after
+    // the field. The drawn sky and horizon stay underneath as the colours
+    // the page falls back to while the pictures are still loading.
+    scene.style.setProperty('--skyimg', `url(/images/fields/${f.id}-sky.webp)`);
+    const stage = document.querySelector('.stage');
+    stage.style.setProperty('--groundimg', `url(/images/fields/${f.id}-ground.webp)`);
+    // The squares live in the board, not the scene, so the mist colour has
+    // to be set somewhere they can both see it.
+    stage.style.setProperty('--fog', f.fog);
     scene.dataset.fall = f.fall;
     // The things falling through the air are made once and left to drift.
     const n = f.fall === 'none' ? 0 : 46;
@@ -773,11 +782,19 @@ import { FIELDS } from '../../data/fields.js';
          background:
            radial-gradient(ellipse 80% 55% at 50% 2%, color-mix(in srgb, var(--light) 16%, transparent), transparent 70%),
            linear-gradient(180deg, var(--sky1) 0%, var(--sky2) 46%, var(--sky3) 100%); }
+  /* The painted backdrop, laid over the drawn one. Its horizon is halfway
+     down and so is the board, so the two line up at any stage size. */
+  .wt .sky::after{ content: ''; position: absolute; inset: 0;
+         background-image: var(--skyimg); background-size: cover;
+         background-position: 50% 50%; }
   .wt .horizon{ position: absolute; left: -4%; width: 108%; display: block; }
   .wt .horizon path{ fill: currentColor; }
   .wt .horizon.far{ bottom: 57%; height: 30%; opacity: .95; filter: blur(1px);
                  color: color-mix(in srgb, var(--sky3) 55%, #000); }
   .wt .horizon.near{ bottom: 50%; height: 26%; color: #020406; opacity: .96; }
+  /* The hand drawn horizon was standing in for a picture. Now that there is
+     one, it would only show through as a second skyline. */
+  .wt .scene .horizon{ display: none; }
   /* A band of mist sitting on the horizon, which is where the field meets
      the ground the board is standing on. */
   .wt .haze{ position: absolute; left: 0; right: 0; bottom: 38%; height: 30%;
@@ -814,16 +831,32 @@ import { FIELDS } from '../../data/fields.js';
              color-mix(in srgb, var(--ground, #0d1318) 70%, #000) 44%,
              rgba(5,7,10,0) 66%);
            box-shadow: inset 0 0 120px rgba(0,0,0,.7); }
+  /* The painted floor, lying on the same plane as the board and fading out
+     before it reaches the edge, so the field has no visible border. */
+  .wt .ground::after{ content: ''; position: absolute; inset: 0;
+           background-image: var(--groundimg); background-size: cover;
+           background-position: 50% 50%; border-radius: 12%;
+           -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 38%, transparent 64%);
+           mask-image: radial-gradient(ellipse at 50% 50%, #000 38%, transparent 64%); }
   .wt .squares{ position: absolute; inset: 0; display: grid;
              grid-template-columns: repeat(var(--n, 9), 1fr);
              grid-template-rows: repeat(var(--n, 9), 1fr);
              border: 2px solid rgba(140,170,195,.18); border-radius: 3px; }
   .wt .sqr{ all: unset; cursor: pointer; position: relative; }
-  .wt .lt{ background: #2e3a44; }
-  .wt .dk{ background: #1d262e; }
-  /* The mist is one flat colour over everything, .wt so the eye reads the board
+  /* A wash rather than a colour, so the painted floor shows through the
+     board and the grid reads as marked out on real ground. */
+  .wt .lt{ background: rgba(206,224,240,.16); }
+  .wt .dk{ background: rgba(5,10,15,.40); }
+  /* The mist is one flat colour over everything, so the eye reads the board
      as "lit" and "not lit" rather than as a third kind of square. */
-  .wt .sqr.fog{ background: #090c10; cursor: default; }
+  /* Mist, not a hole. The ground behind is blurred and dimmed rather than
+     painted over, so unseen country still reads as country. The tint comes
+     from the field, which is why it is white at Isdowrath and green in the
+     Wilds. */
+  .wt .sqr.fog{ background: linear-gradient(var(--fog), var(--fog)), rgba(7,11,16,.72);
+             cursor: default;
+             -webkit-backdrop-filter: blur(5px) brightness(.55) saturate(.6);
+             backdrop-filter: blur(5px) brightness(.55) saturate(.6); }
   .wt .sqr.fog::after{ content: ''; position: absolute; inset: 0;
                     background: radial-gradient(circle at 50% 40%, rgba(120,150,175,.07), transparent 70%); }
   .wt .sqr.from{ box-shadow: inset 0 0 0 3px var(--accentLight); }
