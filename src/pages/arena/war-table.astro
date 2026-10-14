@@ -176,11 +176,46 @@ import { FIELDS } from '../../data/fields.js';
 
   // Painted pieces, listed one at a time as they are made. Anything not in
   // here falls back to its chess glyph, so a half finished set still plays.
-  const PAINTED = new Set([
-    'rangers-k',
-  ]);
-  const faceOf = (bannerId, type) =>
-    PAINTED.has(`${bannerId}-${type}`) ? `/images/chess/${bannerId}-${type}.webp` : null;
+  //
+  // A piece is either one picture, or a turntable: several renders of the
+  // same model taken at different angles, and the board picks whichever one
+  // matches where you are standing. That is what makes a piece look like an
+  // object rather than a standee when you walk around it.
+  const PAINTED = {
+    'rangers-k': { frames: null },                 // one picture, any angle
+  };
+
+  /** The nearest angle we actually have a render for. */
+  function nearestFrame(frames, spin) {
+    let want = ((-spin % 360) + 360) % 360;
+    let best = frames[0], bestGap = 999;
+    for (const f of frames) {
+      const gap = Math.min(Math.abs(f - want), 360 - Math.abs(f - want));
+      if (gap < bestGap) { bestGap = gap; best = f; }
+    }
+    return best;
+  }
+
+  function faceOf(bannerId, type) {
+    const e = PAINTED[`${bannerId}-${type}`];
+    if (!e) return null;
+    if (!e.frames) return `/images/chess/${bannerId}-${type}.webp`;
+    return `/images/chess/${bannerId}-${type}-${nearestFrame(e.frames, cam.spin)}.webp`;
+  }
+
+  /** How far round the board may be turned. */
+  function spinLimit() {
+    // A turntable only covers the arc it was rendered over, so the board is
+    // held to that rather than letting you walk behind a piece that has no
+    // back. With no turntables on the field it turns the whole way round.
+    let widest = 0;
+    for (const e of Object.values(PAINTED)) {
+      if (!e.frames) continue;
+      const span = Math.max(...e.frames.map((f) => (f > 180 ? 360 - f : f)));
+      widest = Math.max(widest, span);
+    }
+    return widest ? widest + 22 : 999;
+  }
 
   // Below this, a painting is a smudge and a glyph is a shape, so the board
   // goes back to glyphs on its own. Nine squares across a phone is about
@@ -313,6 +348,19 @@ import { FIELDS } from '../../data/fields.js';
     // they are mirrored back the right way up when you look from behind.
     const flipped = Math.abs(((cam.spin % 360) + 360) % 360 - 180) < 90;
     document.querySelector('.board')?.classList.toggle('behind', flipped);
+    swapFrames();
+  }
+
+  // Swap any turntable piece to the render that matches where we are now.
+  // Only the src changes, so the piece keeps its place and does not blink.
+  let shownSpin = null;
+  function swapFrames() {
+    if (!g || Math.round(cam.spin / 8) === shownSpin) return;
+    shownSpin = Math.round(cam.spin / 8);
+    for (const el of document.querySelectorAll('.pce.art img')) {
+      const want = el.dataset.face && faceOf(...el.dataset.face.split('|'));
+      if (want && el.getAttribute('src') !== want) el.setAttribute('src', want);
+    }
   }
 
   function buildBoard() {
@@ -388,7 +436,7 @@ import { FIELDS } from '../../data/fields.js';
       // The glow sits behind every piece, painted or not. With art it is the
       // only thing keeping two dark armies apart at a glance.
       el.innerHTML = (art
-        ? `<img src="${art}" alt="" draggable="false" />`
+        ? `<img src="${art}" alt="" draggable="false" data-face="${bannerId}|${p.type}" />`
         : `<span class="gl">${GLYPH[p.type]}</span>`);
       el.classList.toggle('art', !!art);
       el.style.setProperty('--c', b.colour);
@@ -523,7 +571,8 @@ import { FIELDS } from '../../data/fields.js';
       cam.panX = drag.panX + dx;
       cam.panY = drag.panY + dy;
     } else {
-      cam.spin = drag.spin + dx * 0.4;
+      const lim = spinLimit();
+      cam.spin = clamp(drag.spin + dx * 0.4, -lim, lim);
       cam.tilt = clamp(drag.tilt + dy * 0.3, 8, 78);
     }
     applyCamera();
