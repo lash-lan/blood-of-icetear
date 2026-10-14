@@ -1,0 +1,533 @@
+---
+import SectionLayout from '../../layouts/SectionLayout.astro';
+import { BANNERS } from '../../lib/war-table.js';
+---
+<SectionLayout
+  title="The War Table | Blood of Icetear"
+  description="Chess, one against one, with Akidna's mist across the board. You see your own pieces and the squares they can reach. Everything else is fog."
+  theme="gallery"
+  eyebrow="Blood of Icetear"
+  heading="The War Table"
+  tagline="Ordinary chess, with one thing taken away. You can only see as far as your own pieces can reach."
+  compact={true}
+>
+  <div class="wt">
+
+    <!-- ── setting up ───────────────────────────────────────────────────── -->
+    <section class="setup" id="setup">
+      <div class="side-pick">
+        <h2>Your banner</h2>
+        <ul class="banners" id="mine">
+          {BANNERS.map((b, i) => (
+            <li>
+              <button type="button" data-id={b.id} class={i === 1 ? 'on' : ''}
+                      style={`--c:${b.colour};--ink:${b.ink}`}>
+                <span class="pip"></span>
+                <span class="bn">{b.short}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="side-pick">
+        <h2>Theirs</h2>
+        <ul class="banners" id="theirs">
+          {BANNERS.map((b, i) => (
+            <li>
+              <button type="button" data-id={b.id} class={i === 2 ? 'on' : ''}
+                      style={`--c:${b.colour};--ink:${b.ink}`}>
+                <span class="pip"></span>
+                <span class="bn">{b.short}</span>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="side-pick">
+        <h2>Who holds it</h2>
+        <div class="opts" id="foe">
+          <button type="button" data-foe="recruit">Recruit</button>
+          <button type="button" data-foe="captain" class="on">Captain</button>
+          <button type="button" data-foe="warlord">Warlord</button>
+          <button type="button" data-foe="human">A second player, here</button>
+        </div>
+        <p class="hint" id="foeHint">Guards its King and takes what is worth taking.</p>
+      </div>
+
+      <button type="button" id="start" class="go">Sit down</button>
+      <p class="warn" id="warn" hidden>Two different banners, please.</p>
+    </section>
+
+    <!-- ── the table ────────────────────────────────────────────────────── -->
+    <section class="table" id="table" hidden>
+      <div class="bar">
+        <span class="bar-pip" id="barPip"></span>
+        <div class="bar-who">
+          <strong id="barName">—</strong>
+          <span id="barNote">—</span>
+        </div>
+        <div class="bar-right">
+          <button type="button" id="sound" class="ghost" aria-pressed="true">Sound on</button>
+          <button type="button" id="leave" class="ghost">Leave the table</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="boardwrap">
+          <div class="board" id="board">
+            <div class="squares" id="squares"></div>
+            <div class="pieces" id="piecelayer"></div>
+          </div>
+          <div class="files" id="files"></div>
+          <div class="ranks" id="ranks"></div>
+
+          <div class="veil" id="veil" hidden>
+            <p class="eyebrow">The mist closes</p>
+            <strong id="veilName">—</strong>
+            <p class="dim">Hand the table over. Nobody else should be looking.</p>
+            <button type="button" id="veilGo" class="go">I have it</button>
+          </div>
+          <div class="over" id="over" hidden>
+            <p class="eyebrow" id="overWhy">The King is taken</p>
+            <strong id="overName">—</strong>
+            <div class="over-btns">
+              <button type="button" id="again" class="go">Again</button>
+              <button type="button" id="back" class="ghost">Change banners</button>
+            </div>
+          </div>
+        </div>
+
+        <aside class="side">
+          <div class="panel" id="taken"></div>
+          <div class="panel">
+            <h3>What the mist does</h3>
+            <p class="dim">
+              You see your own pieces and every square one of them could move
+              to. Nothing else. There is no check and no warning, so a King
+              can be walked into danger and taken. <strong>Taking the King
+              wins the table.</strong>
+            </p>
+            <p class="dim">Everything else is chess, castling and en passant included.</p>
+          </div>
+          <div class="panel">
+            <h3>The word from the field</h3>
+            <ol class="log" id="log"></ol>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+</SectionLayout>
+
+<script>
+  import {
+    newGame, movesFrom, allMoves, play, visible, material,
+    BANNERS, bannerById, GLYPH, FULL, VALUE, sq, nameOf,
+  } from '../../lib/war-table.js';
+  import { chooseMove } from '../../lib/war-table-ai.js';
+
+  const $ = (id) => document.getElementById(id);
+
+  // Where painted pieces will live once they exist, keyed banner and rank.
+  // Until then every banner falls back to the chess glyphs, so the art can
+  // be dropped in one piece at a time without touching anything else.
+  const ART = {};
+  const faceOf = (bannerId, type) => ART[`${bannerId}-${type}`] || null;
+
+  let g = null;
+  let foe = 'captain';
+  let mine = BANNERS[1].id, theirs = BANNERS[2].id;
+  let selected = null;
+  let viewSide = 'w';
+  let busy = false;
+  let veiled = false;
+  const els = new Map();        // piece id -> its element, so it can be moved
+
+  // ── setting up ────────────────────────────────────────────────────────────
+  const HINTS = {
+    recruit: 'Plays quickly and badly. Will leave pieces where they can be taken.',
+    captain: 'Guards its King and takes what is worth taking.',
+    warlord: 'Looks a move ahead, as far as the mist lets anyone look.',
+    human: 'Two of you on this screen. The board veils itself as it passes over.',
+  };
+  function pickFrom(listId, set) {
+    $(listId).addEventListener('click', (e) => {
+      const b = e.target.closest('[data-id]');
+      if (!b) return;
+      for (const x of $(listId).querySelectorAll('[data-id]')) x.classList.toggle('on', x === b);
+      set(b.dataset.id);
+    });
+  }
+  pickFrom('mine', (v) => { mine = v; });
+  pickFrom('theirs', (v) => { theirs = v; });
+  $('foe').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-foe]');
+    if (!b) return;
+    for (const x of $('foe').querySelectorAll('[data-foe]')) x.classList.toggle('on', x === b);
+    foe = b.dataset.foe;
+    $('foeHint').textContent = HINTS[foe];
+  });
+
+  $('start').addEventListener('click', () => {
+    if (mine === theirs) { $('warn').hidden = false; return; }
+    $('warn').hidden = true;
+    begin();
+  });
+
+  function begin() {
+    g = newGame(mine, theirs);
+    selected = null; viewSide = 'w'; veiled = false; busy = false;
+    $('setup').hidden = true;
+    $('table').hidden = false;
+    $('over').hidden = true;
+    buildBoard();
+    draw(true);
+  }
+
+  // ── the board ─────────────────────────────────────────────────────────────
+  function buildBoard() {
+    const squares = $('squares');
+    squares.innerHTML = '';
+    for (let i = 0; i < 64; i++) {
+      const d = document.createElement('button');
+      d.type = 'button';
+      d.className = 'sqr ' + ((Math.floor(i / 8) + i) % 2 ? 'dk' : 'lt');
+      d.dataset.i = i;
+      d.setAttribute('aria-label', nameOf(i));
+      squares.appendChild(d);
+    }
+    $('files').innerHTML = [...'abcdefgh'].map((f) => `<span>${f}</span>`).join('');
+    $('ranks').innerHTML = [8, 7, 6, 5, 4, 3, 2, 1].map((r) => `<span>${r}</span>`).join('');
+    $('piecelayer').innerHTML = '';
+    els.clear();
+  }
+
+  /** Draw, moving the pieces that are already on the table rather than
+   *  rebuilding them, which is what lets a move slide instead of blink. */
+  function draw(hard = false) {
+    const seen = visible(g, viewSide);
+    const squares = $('squares');
+    const moves = selected !== null ? movesFrom(g, selected) : [];
+    const dots = new Map(moves.map((m) => [m.to, m]));
+
+    for (let i = 0; i < 64; i++) {
+      const el = squares.children[i];
+      el.classList.toggle('fog', !seen[i] && !g.over);
+      el.classList.toggle('go', dots.has(i) && !dots.get(i).takes);
+      el.classList.toggle('hit', dots.has(i) && !!dots.get(i).takes);
+      el.classList.toggle('from', i === selected);
+    }
+
+    const alive = new Set();
+    for (let i = 0; i < 64; i++) {
+      const p = g.board[i];
+      if (!p) continue;
+      const hide = !g.over && !seen[i] && p.side !== viewSide;
+      if (hide) continue;
+      alive.add(p.id);
+      let el = els.get(p.id);
+      const bannerId = g.banners[p.side];
+      if (!el) {
+        el = document.createElement('div');
+        el.className = 'pce';
+        els.set(p.id, el);
+        $('piecelayer').appendChild(el);
+        el.style.transition = hard ? 'none' : '';
+        requestAnimationFrame(() => { el.style.transition = ''; });
+      }
+      const b = bannerById[bannerId];
+      const art = faceOf(bannerId, p.type);
+      el.innerHTML = art
+        ? `<img src="${art}" alt="" draggable="false" />`
+        : `<span class="gl">${GLYPH[p.type]}</span>`;
+      el.style.setProperty('--c', b.colour);
+      el.dataset.side = p.side;
+      el.style.transform = `translate(${(i % 8) * 100}%, ${Math.floor(i / 8) * 100}%)`;
+      el.title = `${b.short} ${b.ranks[p.type]}`;
+    }
+    // Anything no longer on the table, or no longer visible, leaves.
+    for (const [id, el] of els) {
+      if (alive.has(id)) continue;
+      el.classList.add('gone');
+      els.delete(id);
+      setTimeout(() => el.remove(), 240);
+    }
+    paintBar();
+    paintTaken();
+    paintLog();
+  }
+
+  function paintBar() {
+    const b = bannerById[g.banners[g.turn]];
+    $('barPip').style.background = b.colour;
+    $('barName').textContent = b.name;
+    const yours = g.turn === 'w' || foe === 'human';
+    $('barNote').textContent = g.over ? 'The table is settled.'
+      : yours ? `Move ${g.moves + 1}. ${selected !== null ? 'Where to?' : 'Choose a piece.'}`
+      : 'The Captain is thinking.';
+    document.querySelector('.bar').style.setProperty('--c', b.colour);
+  }
+
+  function paintTaken() {
+    const rows = ['w', 'b'].map((side) => {
+      const b = bannerById[g.banners[side]];
+      const lost = g.history.filter((h) => h.takenType && h.side !== side)
+        .map((h) => GLYPH[h.takenType]).join(' ');
+      const score = material(g, side);
+      return `<li><span class="pip" style="background:${b.colour}"></span>
+        <span class="tn">${b.short}</span>
+        <span class="tg" style="color:${b.colour}">${lost || '—'}</span>
+        <span class="ts">${score.toFixed(1)}</span></li>`;
+    }).join('');
+    $('taken').innerHTML = `<h3>Lost from the field</h3><ul class="tk">${rows}</ul>`;
+  }
+
+  function paintLog() {
+    $('log').innerHTML = (g.log || []).slice(0, 12)
+      .map((l) => `<li><span>${l.n}</span>${l.line}</li>`).join('')
+      || '<li class="dim">Nothing yet.</li>';
+  }
+
+  // ── sound ─────────────────────────────────────────────────────────────────
+  // Made on the spot rather than loaded, so there are no files to ship and
+  // nothing to wait for on the first move.
+  let ac = null, soundOn = true;
+  const audio = () => (ac ||= new (window.AudioContext || window.webkitAudioContext)());
+  function thunk({ freq = 150, dur = 0.14, kind = 'sine', gain = 0.22, noise = 0 } = {}) {
+    if (!soundOn) return;
+    try {
+      const c = audio();
+      const t = c.currentTime;
+      const g1 = c.createGain();
+      g1.gain.setValueAtTime(gain, t);
+      g1.gain.exponentialRampToValueAtTime(0.0008, t + dur);
+      g1.connect(c.destination);
+      const o = c.createOscillator();
+      o.type = kind; o.frequency.setValueAtTime(freq, t);
+      o.frequency.exponentialRampToValueAtTime(freq * 0.6, t + dur);
+      o.connect(g1); o.start(t); o.stop(t + dur);
+      if (noise) {
+        const buf = c.createBuffer(1, c.sampleRate * dur, c.sampleRate);
+        const d = buf.getChannelData(0);
+        for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
+        const n = c.createBufferSource(); n.buffer = buf;
+        const ng = c.createGain(); ng.gain.value = noise;
+        const f = c.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = 1800;
+        n.connect(f); f.connect(ng); ng.connect(c.destination); n.start(t);
+      }
+    } catch {}
+  }
+  const sfx = {
+    move: () => thunk({ freq: 190, dur: 0.11, gain: 0.16, noise: 0.05 }),
+    take: () => thunk({ freq: 110, dur: 0.22, kind: 'triangle', gain: 0.3, noise: 0.22 }),
+    castle: () => { thunk({ freq: 180, dur: 0.1, gain: 0.14 }); setTimeout(() => thunk({ freq: 150, dur: 0.12, gain: 0.14 }), 110); },
+    end: () => { thunk({ freq: 90, dur: 0.9, kind: 'sine', gain: 0.26 }); setTimeout(() => thunk({ freq: 60, dur: 1.2, gain: 0.2 }), 180); },
+  };
+  $('sound').addEventListener('click', () => {
+    soundOn = !soundOn;
+    $('sound').textContent = soundOn ? 'Sound on' : 'Sound off';
+    $('sound').setAttribute('aria-pressed', String(soundOn));
+  });
+
+  // ── taking a turn ─────────────────────────────────────────────────────────
+  $('squares').addEventListener('click', (e) => {
+    const t = e.target.closest('.sqr');
+    if (!t || !g || g.over || busy || veiled) return;
+    if (foe !== 'human' && g.turn !== 'w') return;
+    const i = +t.dataset.i;
+
+    if (selected !== null) {
+      const m = movesFrom(g, selected).find((q) => q.to === i);
+      if (m) return commit(selected, i);
+    }
+    const p = g.board[i];
+    selected = (p && p.side === g.turn) ? i : null;
+    draw();
+  });
+
+  function commit(from, to) {
+    const ev = play(g, from, to, 'q');
+    selected = null;
+    if (!ev) return draw();
+    if (ev.takenType) sfx.take();
+    else if (ev.castle) sfx.castle();
+    else sfx.move();
+    if (foe === 'human') viewSide = g.turn;
+    draw();
+    if (g.over) return finish();
+    if (foe === 'human') return passTo(g.turn);
+    captainMoves();
+  }
+
+  function captainMoves() {
+    busy = true;
+    paintBar();
+    setTimeout(() => {
+      if (!g || g.over) { busy = false; return; }
+      const m = chooseMove(g, 'b', foe);
+      busy = false;
+      if (!m) { g.over = { winner: 'w', reason: 'shut in' }; return finish(); }
+      const ev = play(g, m.from, m.to, 'q');
+      if (ev && ev.takenType) sfx.take();
+      else if (ev && ev.castle) sfx.castle();
+      else sfx.move();
+      draw();
+      if (g.over) finish();
+    }, 520);
+  }
+
+  function passTo(side) {
+    veiled = true;
+    $('veilName').textContent = bannerById[g.banners[side]].name;
+    $('veil').hidden = false;
+    document.querySelector('.board').classList.add('blurred');
+  }
+  $('veilGo').addEventListener('click', () => {
+    veiled = false;
+    $('veil').hidden = true;
+    document.querySelector('.board').classList.remove('blurred');
+    draw();
+  });
+
+  function finish() {
+    sfx.end();
+    viewSide = null;
+    draw();
+    const w = g.over.winner;
+    $('overWhy').textContent = g.over.reason === 'king' ? 'The King is taken'
+      : g.over.reason === 'shut in' ? 'Nowhere left to go'
+      : 'The mist outlasts them';
+    $('overName').textContent = w ? bannerById[g.banners[w]].name : 'Neither side';
+    $('over').hidden = false;
+  }
+
+  $('again').addEventListener('click', () => { $('over').hidden = true; begin(); });
+  $('back').addEventListener('click', () => {
+    $('over').hidden = true; $('table').hidden = true; $('setup').hidden = false; g = null;
+  });
+</script>
+
+<style is:global>
+  /* Global on purpose, and fenced behind .wt. The squares, the pieces and
+     the log rows are all built in JavaScript, and Astro's scoped styles only
+     ever match what is written in the template, so a scoped sheet would
+     leave the board unpainted. */
+
+  /* A class that sets display beats the hidden attribute, and most of this
+     page is shown and hidden by that attribute, so it is spelled out once. */
+  .wt [hidden] { display: none !important; }
+
+  .wt{ max-width: 1100px; margin: 0 auto; padding: 0 1.25rem 5rem; }
+  .wt h2{ font-size: .78rem; letter-spacing: .1em; text-transform: uppercase;
+       color: var(--textDim); margin: 0 0 .5rem; }
+  .wt h3{ font-size: .74rem; letter-spacing: .1em; text-transform: uppercase;
+       color: var(--textDim); margin: 0 0 .5rem; }
+  .wt .dim{ color: var(--textDim); line-height: 1.6; font-size: .86rem; margin: 0 0 .6rem; }
+  .wt .eyebrow{ margin: 0; font-size: .74rem; letter-spacing: .18em;
+             text-transform: uppercase; color: var(--textDim); }
+
+  .wt /* ── setup ── */
+  .setup{ border: 1px solid var(--line); background: var(--card); border-radius: 14px;
+           padding: 1.4rem 1.5rem; display: grid; gap: 1.3rem; max-width: 46rem; }
+  .wt .banners{ list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+  .wt .banners button{ all: unset; cursor: pointer; display: flex; align-items: center; gap: .45rem;
+                    padding: .4rem .75rem; border: 1px solid var(--line); border-radius: 8px;
+                    color: var(--textDim); font-size: .88rem; }
+  .wt .banners button:hover{ color: var(--textBright); }
+  .wt .banners button.on{ background: var(--c); color: var(--ink); border-color: var(--c); font-weight: 600; }
+  .wt .banners .pip{ width: 9px; height: 9px; border-radius: 2px; background: var(--c); }
+  .wt .banners button.on .pip{ background: var(--ink); opacity: .55; }
+  .wt .opts{ display: flex; flex-wrap: wrap; gap: .4rem; }
+  .wt .opts button{ all: unset; cursor: pointer; padding: .4rem .8rem; border: 1px solid var(--line);
+                 border-radius: 8px; color: var(--textDim); font-size: .85rem; }
+  .wt .opts button:hover{ color: var(--textBright); }
+  .wt .opts button.on{ background: var(--accent); color: #05080b; border-color: var(--accent); font-weight: 600; }
+  .wt .hint{ color: var(--textDim); font-size: .82rem; margin: .5rem 0 0; }
+  .wt .go{ all: unset; cursor: pointer; background: var(--accent); color: #05080b; font-weight: 700;
+        letter-spacing: .06em; text-transform: uppercase; font-size: .85rem;
+        padding: .6rem 1.5rem; border-radius: 8px; justify-self: start; }
+  .wt .go:hover{ filter: brightness(1.12); }
+  .wt .ghost{ all: unset; cursor: pointer; border: 1px solid var(--line); color: var(--text);
+           padding: .35rem .8rem; border-radius: 7px; font-size: .8rem; }
+  .wt .ghost:hover{ color: var(--textBright); border-color: var(--accent); }
+  .wt .warn{ color: #c55; font-size: .85rem; margin: 0; }
+
+  .wt /* ── bar ── */
+  .bar{ display: flex; align-items: center; gap: .75rem; flex-wrap: wrap;
+         border: 1px solid var(--line); border-left: 3px solid var(--c, var(--accent));
+         background: var(--card); border-radius: 10px; padding: .6rem .9rem; margin-bottom: 1rem; }
+  .wt .bar-pip{ width: 13px; height: 13px; border-radius: 4px; }
+  .wt .bar-who{ flex: 1 1 12rem; }
+  .wt .bar-who strong{ display: block; color: var(--textBright); }
+  .wt .bar-who span{ font-size: .8rem; color: var(--textDim); }
+  .wt .bar-right{ display: flex; gap: .4rem; }
+
+  .wt /* ── field ── */
+  .field{ display: grid; gap: 1.1rem; grid-template-columns: minmax(0, 1fr) 16rem; align-items: start; }
+  @media (max-width: 860px) { .wt .field{ grid-template-columns: 1fr; } }
+
+  .wt .boardwrap{ position: relative; padding: 0 0 1.1rem 1.1rem; }
+  .wt .board{ position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden;
+           border: 1px solid var(--line); box-shadow: 0 10px 40px rgba(0,0,0,.5); }
+  .wt .board.blurred{ filter: blur(16px) saturate(.3); pointer-events: none; }
+  .wt .squares{ position: absolute; inset: 0; display: grid;
+             grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr); }
+  .wt .sqr{ all: unset; cursor: pointer; position: relative; }
+  .wt .lt{ background: #2e3a44; }
+  .wt .dk{ background: #1d262e; }
+  .wt /* The mist is one flat colour over everything, .wt so the eye reads the board
+     as "lit" and "not lit" rather than as a third kind of square. */
+  .sqr.fog{ background: #090c10; cursor: default; }
+  .wt .sqr.fog::after{ content: ''; position: absolute; inset: 0;
+                    background: radial-gradient(circle at 50% 40%, rgba(120,150,175,.07), transparent 70%); }
+  .wt .sqr.from{ box-shadow: inset 0 0 0 3px var(--accentLight); }
+  .wt .sqr.go::before{ content: ''; position: absolute; inset: 38%; border-radius: 50%;
+                    background: rgba(190,225,250,.5); }
+  .wt .sqr.hit{ box-shadow: inset 0 0 0 3px rgba(226,74,74,.9); }
+
+  .wt .pieces{ position: absolute; inset: 0; pointer-events: none; }
+  .wt .pce{ position: absolute; top: 0; left: 0; width: 12.5%; height: 12.5%;
+         display: grid; place-items: center;
+         transition: transform .22s cubic-bezier(.3,.8,.3,1), opacity .2s ease;
+         will-change: transform; }
+  .wt .pce.gone{ opacity: 0; transform-origin: center; }
+  .wt .pce .gl{ font-size: clamp(16px, 7cqw, 46px); line-height: 1; color: var(--c);
+             text-shadow: 0 1px 2px rgba(0,0,0,.9), 0 0 10px rgba(0,0,0,.6); }
+  .wt .board{ container-type: inline-size; }
+  .wt .pce[data-side='b'] .gl{ filter: brightness(1.1); }
+  .wt .pce img{ width: 84%; height: 84%; object-fit: contain;
+             filter: drop-shadow(0 2px 4px rgba(0,0,0,.8)); }
+
+  .wt .files, .wt .ranks{ position: absolute; display: grid; color: var(--textDim);
+                   font-size: .66rem; letter-spacing: .08em; }
+  .wt .files{ left: 1.1rem; right: 0; bottom: 0; grid-template-columns: repeat(8, 1fr); text-align: center; }
+  .wt .ranks{ top: 0; bottom: 1.1rem; left: 0; width: 1.1rem;
+           grid-template-rows: repeat(8, 1fr); place-items: center; }
+
+  .wt /* ── veil and result ── */
+  .veil, .wt .over{ position: absolute; inset: 0 0 1.1rem 1.1rem; display: grid; place-content: center;
+                 text-align: center; gap: .45rem; padding: 2rem; z-index: 3;
+                 background: rgba(5,8,11,.93); border-radius: 8px; }
+  .wt .veil[hidden], .wt .over[hidden]{ display: none; }
+  .wt .veil strong, .wt .over strong{ font-size: 1.5rem; color: var(--textBright); }
+  .wt .over-btns{ display: flex; gap: .5rem; justify-content: center; margin-top: .8rem; }
+
+  .wt /* ── side ── */
+  .side{ display: grid; gap: .8rem; }
+  .wt .panel{ border: 1px solid var(--line); background: var(--card); border-radius: 10px; padding: .8rem .95rem; }
+  .wt .panel p:last-child{ margin-bottom: 0; }
+  .wt .tk{ list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
+  .wt .tk li{ display: grid; grid-template-columns: 10px 3.2rem 1fr auto; gap: .5rem;
+           align-items: center; font-size: .84rem; }
+  .wt .tk .pip{ width: 10px; height: 10px; border-radius: 3px; }
+  .wt .tk .tn{ color: var(--textDim); }
+  .wt .tk .tg{ font-size: 1rem; letter-spacing: .04em; line-height: 1.2; word-break: break-all; }
+  .wt .tk .ts{ color: var(--textDim); font-variant-numeric: tabular-nums; }
+  .wt .log{ list-style: none; margin: 0; padding: 0; display: grid; gap: .3rem;
+         max-height: 13rem; overflow: auto; }
+  .wt .log li{ font-size: .8rem; color: var(--text); line-height: 1.45; }
+  .wt .log li span{ display: inline-block; min-width: 1.5rem; color: var(--textDim);
+                 font-variant-numeric: tabular-nums; }
+</style>
