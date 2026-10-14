@@ -10,6 +10,36 @@
 
 import { HOSTS } from '../data/mist-war.js';
 
+// Nine files and nine ranks, not eight. An odd board has a true centre, which
+// gives the King a file of his own with the Queen on one hand and the
+// Champion on the other, and it gives every host one more Levy than chess
+// does.
+export const N = 9;
+
+// The Champion is the piece the Tournament of Domination is named for: one
+// fighter sent out ahead of the host to settle it in single combat. It steps
+// or vaults up to two squares in any direction, over anything in the way, so
+// it closes distance the way nothing else on the table can. In the mist that
+// makes it the piece you never see coming.
+const CHAMPION_STEPS = (() => {
+  const out = [];
+  for (let dx = -2; dx <= 2; dx++) {
+    for (let dy = -2; dy <= 2; dy++) {
+      if (dx || dy) out.push([dx, dy]);
+    }
+  }
+  return out;   // 24 squares, the full two-square ring, leaping over all of it
+})();
+
+// What each banner calls the fighter it sends out.
+const CHAMPIONS = {
+  rangers: 'Vice Captain',
+  grey: 'Dragon Core Captain',
+  dark: 'One of the Seven',
+  beasts: 'Behemoth',
+  order: 'Slayer',
+};
+
 // The five banners, borrowed from the Mist War so there is one list of hosts
 // in the world, with their ranks mapped on to the chess pieces.
 export const BANNERS = HOSTS.map((h) => ({
@@ -18,21 +48,25 @@ export const BANNERS = HOSTS.map((h) => ({
   ranks: {
     k: h.names.lord, q: h.names.herald, r: h.names.warden,
     b: h.names.seer, n: h.names.outrider, p: h.names.levy,
+    c: CHAMPIONS[h.id] || 'Champion',
   },
 }));
 export const bannerById = Object.fromEntries(BANNERS.map((b) => [b.id, b]));
 
-export const GLYPH = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟' };
-export const VALUE = { k: 0, q: 9, r: 5, b: 3.2, n: 3, p: 1 };
-export const FULL = { k: 'King', q: 'Queen', r: 'Rook', b: 'Bishop', n: 'Knight', p: 'Pawn' };
+export const GLYPH = { k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟', c: '✦' };
+export const VALUE = { k: 0, q: 9, r: 5, b: 3.2, n: 3, p: 1, c: 5.5 };
+export const FULL = { k: 'King', q: 'Queen', r: 'Rook', b: 'Bishop', n: 'Knight', p: 'Pawn', c: 'Champion' };
 
-export const sq = (x, y) => y * 8 + x;
-export const onBoard = (x, y) => x >= 0 && y >= 0 && x < 8 && y < 8;
-export const fileOf = (i) => 'abcdefgh'[i % 8];
-export const rankOf = (i) => String(8 - Math.floor(i / 8));
+export const sq = (x, y) => y * N + x;
+export const onBoard = (x, y) => x >= 0 && y >= 0 && x < N && y < N;
+export const fileOf = (i) => 'abcdefghi'[i % N];
+export const rankOf = (i) => String(N - Math.floor(i / N));
 export const nameOf = (i) => fileOf(i) + rankOf(i);
 
-const BACK = ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'];
+// Rook, Knight, Bishop, Queen, King, Champion, Bishop, Knight, Rook. The King
+// takes the true centre file, with the Queen on his left and the Champion on
+// his right.
+const BACK = ['r', 'n', 'b', 'q', 'k', 'c', 'b', 'n', 'r'];
 
 /**
  * A new game. White is the side at the bottom and moves first, exactly as in
@@ -40,13 +74,13 @@ const BACK = ['r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'];
  * and nothing else.
  */
 export function newGame(whiteBanner = 'grey', blackBanner = 'dark') {
-  const board = new Array(64).fill(null);
+  const board = new Array(N * N).fill(null);
   let id = 1;
-  for (let x = 0; x < 8; x++) {
+  for (let x = 0; x < N; x++) {
     board[sq(x, 0)] = { id: id++, side: 'b', type: BACK[x], moved: false };
     board[sq(x, 1)] = { id: id++, side: 'b', type: 'p', moved: false };
-    board[sq(x, 6)] = { id: id++, side: 'w', type: 'p', moved: false };
-    board[sq(x, 7)] = { id: id++, side: 'w', type: BACK[x], moved: false };
+    board[sq(x, N - 2)] = { id: id++, side: 'w', type: 'p', moved: false };
+    board[sq(x, N - 1)] = { id: id++, side: 'w', type: BACK[x], moved: false };
   }
   return {
     board,
@@ -73,7 +107,7 @@ export function movesFrom(g, from) {
   const p = g.board[from];
   if (!p) return [];
   const out = [];
-  const x = from % 8, y = Math.floor(from / 8);
+  const x = from % N, y = Math.floor(from / N);
   const add = (nx, ny, opts = {}) => {
     if (!onBoard(nx, ny)) return false;
     const t = g.board[sq(nx, ny)];
@@ -94,8 +128,8 @@ export function movesFrom(g, from) {
 
   if (p.type === 'p') {
     const dir = p.side === 'w' ? -1 : 1;
-    const start = p.side === 'w' ? 6 : 1;
-    const last = p.side === 'w' ? 0 : 7;
+    const start = p.side === 'w' ? N - 2 : 1;
+    const last = p.side === 'w' ? 0 : N - 1;
     if (onBoard(x, y + dir) && !g.board[sq(x, y + dir)]) {
       out.push({ from, to: sq(x, y + dir), takes: null, promote: y + dir === last });
       if (y === start && !g.board[sq(x, y + 2 * dir)]) {
@@ -119,6 +153,9 @@ export function movesFrom(g, from) {
     for (const [dx, dy] of [[1, 2], [2, 1], [-1, 2], [-2, 1], [1, -2], [2, -1], [-1, -2], [-2, -1]]) {
       add(x + dx, y + dy);
     }
+  } else if (p.type === 'c') {
+    // Two squares in any direction, over anything in the way.
+    for (const [dx, dy] of CHAMPION_STEPS) add(x + dx, y + dy);
   } else if (p.type === 'b') ride(DIAG);
   else if (p.type === 'r') ride(ORTHO);
   else if (p.type === 'q') ride([...ORTHO, ...DIAG]);
@@ -127,7 +164,7 @@ export function movesFrom(g, from) {
     // Castling. Through an attacked square is allowed, because in the mist
     // neither player can know a square is attacked.
     if (!p.moved) {
-      for (const [rookX, step, need] of [[7, 1, [5, 6]], [0, -1, [1, 2, 3]]]) {
+      for (const [rookX, step, need] of [[N - 1, 1, [5, 6, 7]], [0, -1, [1, 2, 3]]]) {
         const rook = g.board[sq(rookX, y)];
         if (!rook || rook.moved || rook.type !== 'r' || rook.side !== p.side) continue;
         if (need.some((nx) => g.board[sq(nx, y)])) continue;
@@ -141,7 +178,7 @@ export function movesFrom(g, from) {
 /** Everything the side to move may do. */
 export function allMoves(g, side = g.turn) {
   const out = [];
-  for (let i = 0; i < 64; i++) {
+  for (let i = 0; i < N * N; i++) {
     const p = g.board[i];
     if (p && p.side === side) out.push(...movesFrom(g, i));
   }
@@ -149,23 +186,36 @@ export function allMoves(g, side = g.turn) {
 }
 
 /**
- * What a side can see: the squares its own pieces stand on, and every square
- * one of them could move to. This is the usual rule for fog chess and it has
- * a pleasant side effect, that a piece which can go nowhere also sees
- * nothing beyond its own square.
+ * What a side can see. Three things, and the third is the important one:
+ *
+ *   the square a piece of yours is standing on,
+ *   every square one of them could move to,
+ *   and the ring of squares immediately around each of them.
+ *
+ * The ring is why a piece hemmed in by its own side is not blind, and why
+ * anything that creeps up next to you is seen before it strikes. Without it
+ * a Rook walled in behind its own pawns sees nothing at all, which reads as
+ * a bug however correct it is.
  */
 export function visible(g, side) {
-  const seen = new Uint8Array(64);
-  for (let i = 0; i < 64; i++) {
+  const seen = new Uint8Array(N * N);
+  for (let i = 0; i < N * N; i++) {
     const p = g.board[i];
     if (!p || p.side !== side) continue;
     seen[i] = 1;
     for (const m of movesFrom(g, i)) seen[m.to] = 1;
+    // The ring: one square in every direction, whether it can go there or not.
+    const px = i % N, py = Math.floor(i / N);
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -1; dy <= 1; dy++) {
+        if (onBoard(px + dx, py + dy)) seen[sq(px + dx, py + dy)] = 1;
+      }
+    }
     // A pawn watches the squares it could take on, whether or not anything
     // is standing there yet.
     if (p.type === 'p') {
       const dir = side === 'w' ? -1 : 1;
-      const x = i % 8, y = Math.floor(i / 8);
+      const x = i % N, y = Math.floor(i / N);
       for (const dx of [-1, 1]) if (onBoard(x + dx, y + dir)) seen[sq(x + dx, y + dir)] = 1;
     }
   }
@@ -174,9 +224,9 @@ export function visible(g, side) {
 
 /** The board as one side is allowed to know it. */
 export function viewFor(g, side) {
-  const seen = side ? visible(g, side) : new Uint8Array(64).fill(1);
+  const seen = side ? visible(g, side) : new Uint8Array(N * N).fill(1);
   return {
-    squares: Array.from({ length: 64 }, (_, i) => {
+    squares: Array.from({ length: N * N }, (_, i) => {
       const p = g.board[i];
       if (!seen[i]) return { fog: true };
       return { fog: false, piece: p ? { id: p.id, side: p.side, type: p.type } : null };
@@ -200,14 +250,14 @@ export function play(g, from, to, promoteTo = 'q') {
 
   const banner = bannerById[g.banners[p.side]];
   const victim = m.passant
-    ? g.board[sq(to % 8, Math.floor(from / 8))]
+    ? g.board[sq(to % N, Math.floor(from / N))]
     : g.board[to];
 
   const event = { side: p.side, from, to, type: p.type, takenType: victim ? victim.type : null };
 
   if (victim) {
     const theirs = bannerById[g.banners[victim.side]];
-    g.board[m.passant ? sq(to % 8, Math.floor(from / 8)) : to] = null;
+    g.board[m.passant ? sq(to % N, Math.floor(from / N)) : to] = null;
     say(g, `${banner.short} ${banner.ranks[p.type]} takes ${theirs.short} ${theirs.ranks[victim.type]} on ${nameOf(to)}.`);
     if (victim.type === 'k') {
       g.over = { winner: p.side, reason: 'king' };
@@ -219,9 +269,9 @@ export function play(g, from, to, promoteTo = 'q') {
   p.moved = true;
 
   if (m.castle !== undefined) {
-    const y = Math.floor(from / 8);
+    const y = Math.floor(from / N);
     const rookFrom = sq(m.castle, y);
-    const rookTo = sq(m.castle === 7 ? 5 : 3, y);
+    const rookTo = sq(m.castle === N - 1 ? 5 : 3, y);
     const rook = g.board[rookFrom];
     g.board[rookTo] = rook; g.board[rookFrom] = null;
     if (rook) rook.moved = true;
@@ -231,7 +281,7 @@ export function play(g, from, to, promoteTo = 'q') {
 
   if (m.promote) { p.type = promoteTo; event.promoted = promoteTo; say(g, `A ${banner.ranks.p} reaches the far rank and becomes a ${banner.ranks[promoteTo]}.`); }
 
-  g.passant = m.double ? sq(to % 8, (Math.floor(from / 8) + Math.floor(to / 8)) / 2) : null;
+  g.passant = m.double ? sq(to % N, (Math.floor(from / N) + Math.floor(to / N)) / 2) : null;
   g.moves += 1;
   g.history.push(event);
   g.turn = other(g.turn);

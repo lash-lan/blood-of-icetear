@@ -76,7 +76,7 @@ import { BANNERS } from '../../lib/war-table.js';
 
       <div class="field">
         <div class="boardwrap">
-          <div class="board" id="board">
+          <div class="board" id="board" style="--n:9">
             <div class="squares" id="squares"></div>
             <div class="pieces" id="piecelayer"></div>
           </div>
@@ -124,7 +124,7 @@ import { BANNERS } from '../../lib/war-table.js';
 <script>
   import {
     newGame, movesFrom, allMoves, play, visible, material,
-    BANNERS, bannerById, GLYPH, FULL, VALUE, sq, nameOf,
+    BANNERS, bannerById, GLYPH, FULL, VALUE, sq, nameOf, N,
   } from '../../lib/war-table.js';
   import { chooseMove } from '../../lib/war-table-ai.js';
 
@@ -189,17 +189,18 @@ import { BANNERS } from '../../lib/war-table.js';
   // ── the board ─────────────────────────────────────────────────────────────
   function buildBoard() {
     const squares = $('squares');
+    document.querySelector('.board').style.setProperty('--n', N);
     squares.innerHTML = '';
-    for (let i = 0; i < 64; i++) {
+    for (let i = 0; i < N * N; i++) {
       const d = document.createElement('button');
       d.type = 'button';
-      d.className = 'sqr ' + ((Math.floor(i / 8) + i) % 2 ? 'dk' : 'lt');
+      d.className = 'sqr ' + (((i % N) + Math.floor(i / N)) % 2 ? 'dk' : 'lt');
       d.dataset.i = i;
       d.setAttribute('aria-label', nameOf(i));
       squares.appendChild(d);
     }
-    $('files').innerHTML = [...'abcdefgh'].map((f) => `<span>${f}</span>`).join('');
-    $('ranks').innerHTML = [8, 7, 6, 5, 4, 3, 2, 1].map((r) => `<span>${r}</span>`).join('');
+    $('files').innerHTML = [...'abcdefghi'].slice(0, N).map((f) => `<span>${f}</span>`).join('');
+    $('ranks').innerHTML = Array.from({ length: N }, (_, i) => N - i).map((r) => `<span>${r}</span>`).join('');
     $('piecelayer').innerHTML = '';
     els.clear();
   }
@@ -212,7 +213,7 @@ import { BANNERS } from '../../lib/war-table.js';
     const moves = selected !== null ? movesFrom(g, selected) : [];
     const dots = new Map(moves.map((m) => [m.to, m]));
 
-    for (let i = 0; i < 64; i++) {
+    for (let i = 0; i < N * N; i++) {
       const el = squares.children[i];
       el.classList.toggle('fog', !seen[i] && !g.over);
       el.classList.toggle('go', dots.has(i) && !dots.get(i).takes);
@@ -221,7 +222,7 @@ import { BANNERS } from '../../lib/war-table.js';
     }
 
     const alive = new Set();
-    for (let i = 0; i < 64; i++) {
+    for (let i = 0; i < N * N; i++) {
       const p = g.board[i];
       if (!p) continue;
       const hide = !g.over && !seen[i] && p.side !== viewSide;
@@ -244,7 +245,7 @@ import { BANNERS } from '../../lib/war-table.js';
         : `<span class="gl">${GLYPH[p.type]}</span>`;
       el.style.setProperty('--c', b.colour);
       el.dataset.side = p.side;
-      el.style.transform = `translate(${(i % 8) * 100}%, ${Math.floor(i / 8) * 100}%)`;
+      el.style.transform = `translate(${(i % N) * 100}%, ${Math.floor(i / N) * 100}%)`;
       el.title = `${b.short} ${b.ranks[p.type]}`;
     }
     // Anything no longer on the table, or no longer visible, leaves.
@@ -473,7 +474,8 @@ import { BANNERS } from '../../lib/war-table.js';
            border: 1px solid var(--line); box-shadow: 0 10px 40px rgba(0,0,0,.5); }
   .wt .board.blurred{ filter: blur(16px) saturate(.3); pointer-events: none; }
   .wt .squares{ position: absolute; inset: 0; display: grid;
-             grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr); }
+             grid-template-columns: repeat(var(--n, 9), 1fr);
+             grid-template-rows: repeat(var(--n, 9), 1fr); }
   .wt .sqr{ all: unset; cursor: pointer; position: relative; }
   .wt .lt{ background: #2e3a44; }
   .wt .dk{ background: #1d262e; }
@@ -488,12 +490,13 @@ import { BANNERS } from '../../lib/war-table.js';
   .wt .sqr.hit{ box-shadow: inset 0 0 0 3px rgba(226,74,74,.9); }
 
   .wt .pieces{ position: absolute; inset: 0; pointer-events: none; }
-  .wt .pce{ position: absolute; top: 0; left: 0; width: 12.5%; height: 12.5%;
+  .wt .pce{ position: absolute; top: 0; left: 0;
+         width: calc(100% / var(--n, 9)); height: calc(100% / var(--n, 9));
          display: grid; place-items: center;
          transition: transform .22s cubic-bezier(.3,.8,.3,1), opacity .2s ease;
          will-change: transform; }
   .wt .pce.gone{ opacity: 0; transform-origin: center; }
-  .wt .pce .gl{ font-size: clamp(16px, 7cqw, 46px); line-height: 1; color: var(--c);
+  .wt .pce .gl{ font-size: clamp(14px, 6.2cqw, 42px); line-height: 1; color: var(--c);
              text-shadow: 0 1px 2px rgba(0,0,0,.9), 0 0 10px rgba(0,0,0,.6); }
   .wt .board{ container-type: inline-size; }
   .wt .pce[data-side='b'] .gl{ filter: brightness(1.1); }
@@ -502,9 +505,9 @@ import { BANNERS } from '../../lib/war-table.js';
 
   .wt .files, .wt .ranks{ position: absolute; display: grid; color: var(--textDim);
                    font-size: .66rem; letter-spacing: .08em; }
-  .wt .files{ left: 1.1rem; right: 0; bottom: 0; grid-template-columns: repeat(8, 1fr); text-align: center; }
+  .wt .files{ left: 1.1rem; right: 0; bottom: 0; grid-template-columns: repeat(var(--n, 9), 1fr); text-align: center; }
   .wt .ranks{ top: 0; bottom: 1.1rem; left: 0; width: 1.1rem;
-           grid-template-rows: repeat(8, 1fr); place-items: center; }
+           grid-template-rows: repeat(var(--n, 9), 1fr); place-items: center; }
 
   .wt /* ── veil and result ── */
   .veil, .wt .over{ position: absolute; inset: 0 0 1.1rem 1.1rem; display: grid; place-content: center;

@@ -4,7 +4,7 @@
 
 import {
   newGame, movesFrom, allMoves, play, visible, viewFor, material,
-  sq, nameOf, BANNERS, bannerById, VALUE, kingOf,
+  sq, nameOf, BANNERS, bannerById, VALUE, kingOf, N, onBoard,
 } from '../src/lib/war-table.js';
 import { chooseMove, SKILLS } from '../src/lib/war-table-ai.js';
 
@@ -15,7 +15,7 @@ const section = (t) => console.log(`\n${t}`);
 
 const empty = () => {
   const g = newGame();
-  g.board = new Array(64).fill(null);
+  g.board = new Array(N * N).fill(null);
   return g;
 };
 const put = (g, at, side, type, moved = false) => {
@@ -28,41 +28,61 @@ const put = (g, at, side, type, moved = false) => {
 section('The opening position');
 {
   const g = newGame();
-  ok(g.board.filter(Boolean).length === 32, 'a chess game starts with 32 pieces');
-  ok(g.board.filter((p) => p && p.type === 'p').length === 16, 'there should be 16 pawns');
+  ok(N === 9, 'the table is nine squares across');
+  ok(g.board.filter(Boolean).length === 36, `a game starts with 36 pieces, had ${g.board.filter(Boolean).length}`);
+  ok(g.board.filter((p) => p && p.type === 'p').length === 18, 'there should be nine pawns a side');
+  ok(g.board.filter((p) => p && p.type === 'c').length === 2, 'there should be one Champion a side');
+  ok(g.board.filter((p) => p && p.type === 'k').length === 2, 'there should be one King a side');
   ok(g.turn === 'w', 'white moves first');
-  ok(allMoves(g, 'w').length === 20, `white should have 20 opening moves, had ${allMoves(g, 'w').length}`);
-  ok(allMoves(g, 'b').length === 20, 'black should have 20 opening moves');
-  ok(nameOf(sq(0, 7)) === 'a1' && nameOf(sq(7, 0)) === 'h8', 'the board is lettered wrongly');
+  ok(allMoves(g, 'w').length === allMoves(g, 'b').length, 'the two sides opened with different numbers of moves');
+  ok(allMoves(g, 'w').length > 20, `white should have plenty of opening moves, had ${allMoves(g, 'w').length}`);
+  ok(nameOf(sq(0, N - 1)) === 'a1' && nameOf(sq(N - 1, 0)) === 'i9', 'the board is lettered wrongly');
+  ok(g.board[sq(4, N - 1)].type === 'k', 'the King is not on the centre file');
+  ok(g.board[sq(3, N - 1)].type === 'q', 'the Queen is not beside the King');
+  ok(g.board[sq(5, N - 1)].type === 'c', 'the Champion is not beside the King');
 }
 
 section('How the pieces move');
 {
   const g = empty();
-  put(g, sq(3, 3), 'w', 'n');
-  ok(movesFrom(g, sq(3, 3)).length === 8, 'a knight in the open has eight moves');
+  put(g, sq(4, 4), 'w', 'n');
+  ok(movesFrom(g, sq(4, 4)).length === 8, 'a knight in the open has eight moves');
 
   const b = empty();
-  put(b, sq(3, 3), 'w', 'b');
-  ok(movesFrom(b, sq(3, 3)).length === 13, 'a bishop on d5 has thirteen moves');
+  put(b, sq(4, 4), 'w', 'b');
+  ok(movesFrom(b, sq(4, 4)).length === 16, `a bishop at the centre of a nine board has 16 moves, had ${movesFrom(b, sq(4, 4)).length}`);
 
   const r = empty();
-  put(r, sq(3, 3), 'w', 'r');
-  ok(movesFrom(r, sq(3, 3)).length === 14, 'a rook in the open has fourteen moves');
+  put(r, sq(4, 4), 'w', 'r');
+  ok(movesFrom(r, sq(4, 4)).length === 16, 'a rook in the open has sixteen moves on a nine board');
 
   const q = empty();
-  put(q, sq(3, 3), 'w', 'q');
-  ok(movesFrom(q, sq(3, 3)).length === 27, 'a queen on d5 has twenty-seven moves');
+  put(q, sq(4, 4), 'w', 'q');
+  ok(movesFrom(q, sq(4, 4)).length === 32, `a queen at the centre of a nine board has 32 moves, had ${movesFrom(q, sq(4, 4)).length}`);
+
+  // The Champion: the whole two square ring, leaping whatever stands between.
+  const c = empty();
+  put(c, sq(4, 4), 'w', 'c');
+  ok(movesFrom(c, sq(4, 4)).length === 24, `a Champion in the open has 24 moves, had ${movesFrom(c, sq(4, 4)).length}`);
+  const hemmed = empty();
+  put(hemmed, sq(4, 4), 'w', 'c');
+  for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1], [1, 1], [-1, -1], [1, -1], [-1, 1]]) {
+    put(hemmed, sq(4 + dx, 4 + dy), 'w', 'p');
+  }
+  const leaps = movesFrom(hemmed, sq(4, 4));
+  ok(leaps.length === 16, `a Champion walled in by its own side keeps its outer ring, had ${leaps.length}`);
+  ok(leaps.every((m) => Math.max(Math.abs(m.to % N - 4), Math.abs(Math.floor(m.to / N) - 4)) === 2),
+     'a Champion landed on a square its own side was standing on');
 
   // A piece does not walk through its own side, and does take the other.
   const blocked = empty();
-  put(blocked, sq(0, 7), 'w', 'r');
+  put(blocked, sq(0, N - 1), 'w', 'r');
   put(blocked, sq(0, 5), 'w', 'p');
-  ok(movesFrom(blocked, sq(0, 7)).every((m) => m.to !== sq(0, 4)), 'a rook walked through its own pawn');
+  ok(movesFrom(blocked, sq(0, N - 1)).every((m) => m.to !== sq(0, 4)), 'a rook walked through its own pawn');
   const take = empty();
-  put(take, sq(0, 7), 'w', 'r');
+  put(take, sq(0, N - 1), 'w', 'r');
   put(take, sq(0, 5), 'b', 'p');
-  const ms = movesFrom(take, sq(0, 7));
+  const ms = movesFrom(take, sq(0, N - 1));
   ok(ms.some((m) => m.to === sq(0, 5) && m.takes), 'a rook could not take the piece in its way');
   ok(ms.every((m) => m.to !== sq(0, 4)), 'a rook took a piece and kept going');
 }
@@ -70,7 +90,7 @@ section('How the pieces move');
 section('Pawns');
 {
   const g = newGame();
-  const e2 = sq(4, 6);
+  const e2 = sq(4, N - 2);
   const m = movesFrom(g, e2);
   ok(m.length === 2, 'a pawn on its home square has two moves');
   ok(m.some((q) => q.double), 'a pawn cannot make its double step');
@@ -95,8 +115,8 @@ section('Pawns');
   // Promotion.
   const pr = empty();
   put(pr, sq(0, 1), 'w', 'p', true);
-  put(pr, sq(7, 7), 'w', 'k');
-  put(pr, sq(7, 0), 'b', 'k');
+  put(pr, sq(N - 1, N - 1), 'w', 'k');
+  put(pr, sq(N - 1, 0), 'b', 'k');
   play(pr, sq(0, 1), sq(0, 0), 'q');
   ok(pr.board[sq(0, 0)].type === 'q', 'a pawn reached the far rank and stayed a pawn');
 }
@@ -104,26 +124,26 @@ section('Pawns');
 section('Castling');
 {
   const g = empty();
-  put(g, sq(4, 7), 'w', 'k');
-  put(g, sq(7, 7), 'w', 'r');
-  put(g, sq(0, 7), 'w', 'r');
-  const m = movesFrom(g, sq(4, 7));
+  put(g, sq(4, N - 1), 'w', 'k');
+  put(g, sq(N - 1, N - 1), 'w', 'r');
+  put(g, sq(0, N - 1), 'w', 'r');
+  const m = movesFrom(g, sq(4, N - 1));
   ok(m.filter((q) => q.castle !== undefined).length === 2, 'both castles should be offered');
-  play(g, sq(4, 7), sq(6, 7));
-  ok(g.board[sq(6, 7)] && g.board[sq(6, 7)].type === 'k', 'the king did not arrive');
-  ok(g.board[sq(5, 7)] && g.board[sq(5, 7)].type === 'r', 'the rook did not come round with it');
+  play(g, sq(4, N - 1), sq(6, N - 1));
+  ok(g.board[sq(6, N - 1)] && g.board[sq(6, N - 1)].type === 'k', 'the king did not arrive');
+  ok(g.board[sq(5, N - 1)] && g.board[sq(5, N - 1)].type === 'r', 'the rook did not come round with it');
 
   const moved = empty();
-  const k = put(moved, sq(4, 7), 'w', 'k');
-  put(moved, sq(7, 7), 'w', 'r');
+  const k = put(moved, sq(4, N - 1), 'w', 'k');
+  put(moved, sq(N - 1, N - 1), 'w', 'r');
   k.moved = true;
-  ok(movesFrom(moved, sq(4, 7)).every((q) => q.castle === undefined), 'a king that had moved was allowed to castle');
+  ok(movesFrom(moved, sq(4, N - 1)).every((q) => q.castle === undefined), 'a king that had moved was allowed to castle');
 
   const inTheWay = empty();
-  put(inTheWay, sq(4, 7), 'w', 'k');
-  put(inTheWay, sq(7, 7), 'w', 'r');
-  put(inTheWay, sq(6, 7), 'w', 'n');
-  ok(movesFrom(inTheWay, sq(4, 7)).every((q) => q.castle !== 7), 'castled straight through a knight');
+  put(inTheWay, sq(4, N - 1), 'w', 'k');
+  put(inTheWay, sq(N - 1, N - 1), 'w', 'r');
+  put(inTheWay, sq(6, N - 1), 'w', 'n');
+  ok(movesFrom(inTheWay, sq(4, N - 1)).every((q) => q.castle !== N - 1), 'castled straight through a knight');
 }
 
 // ── the mist ────────────────────────────────────────────────────────────────
@@ -131,15 +151,29 @@ section('The mist');
 {
   const g = newGame();
   const w = visible(g, 'w');
-  // Its own half, and the rank it can reach. Nothing on black's back two.
-  for (let i = 0; i < 16; i++) ok(!w[i], `white can see ${nameOf(i)} at the start, and should not`);
-  for (let i = 48; i < 64; i++) ok(w[i], `white cannot see its own ${nameOf(i)}`);
-  ok(w[sq(0, 5)], 'white cannot see the square its own pawn may step to');
+  for (let i = 0; i < N * 2; i++) ok(!w[i], `white can see ${nameOf(i)} at the start, and should not`);
+  for (let i = N * (N - 2); i < N * N; i++) ok(w[i], `white cannot see its own ${nameOf(i)}`);
+  ok(w[sq(0, N - 3)], 'white cannot see the square its own pawn may step to');
   ok(w[sq(0, 2)] === 0, 'white can see too far up the board');
+
+  // The ring. A Rook walled in behind its own side still sees beside itself.
+  const boxed = empty();
+  put(boxed, sq(0, N - 1), 'w', 'r');
+  put(boxed, sq(0, N - 2), 'w', 'p');
+  put(boxed, sq(1, N - 1), 'w', 'n');
+  ok(visible(boxed, 'w')[sq(1, N - 2)],
+     'a piece hemmed in by its own side could not see the square beside it');
+  const lone = empty();
+  put(lone, sq(4, 4), 'w', 'k');
+  const lv = visible(lone, 'w');
+  for (let dx = -1; dx <= 1; dx++) {
+    for (let dy = -1; dy <= 1; dy++) ok(lv[sq(4 + dx, 4 + dy)], 'the ring round a piece is incomplete');
+  }
+  ok(!lv[sq(4, 1)], 'the ring reaches further than it should');
 
   const view = viewFor(g, 'w');
   const fogged = view.squares.filter((s) => s.fog).length;
-  ok(fogged > 16, `only ${fogged} squares are in mist at the start, which is too few`);
+  ok(fogged > N * 2, `only ${fogged} squares are in mist at the start, which is too few`);
   // Nothing black owns may appear in a white view unless white can see it.
   view.squares.forEach((s, i) => {
     if (s.fog) ok(!s.piece, 'a fogged square was sent with a piece on it');
@@ -152,7 +186,7 @@ section('The mist');
 section('A King is taken, not trapped');
 {
   const g = empty();
-  put(g, sq(4, 7), 'w', 'k');
+  put(g, sq(4, N - 1), 'w', 'k');
   put(g, sq(4, 0), 'b', 'k');
   put(g, sq(0, 0), 'w', 'r', true);
   ok(!g.over, 'the game was over before it began');
@@ -166,19 +200,19 @@ section('The Captains play fair');
   // Put a black piece where white cannot see it, move it, and check the
   // Captain playing white does not notice.
   const g = newGame();
-  play(g, sq(4, 6), sq(4, 4));          // 1. e4
+  play(g, sq(4, N - 2), sq(4, 4));          // 1. e4
   const first = chooseMove(g, 'b', 'warlord', () => 0.5);
   g.turn = 'b';
-  const hidden = g.board[sq(0, 6)];      // a white pawn black cannot see
+  const hidden = g.board[sq(0, N - 2)];      // a white pawn black cannot see
   const seenByBlack = visible(g, 'b');
-  if (hidden && !seenByBlack[sq(0, 6)]) {
-    g.board[sq(0, 6)] = null;
-    g.board[sq(1, 6)] = hidden;          // shuffle it inside the mist
+  if (hidden && !seenByBlack[sq(0, N - 2)]) {
+    g.board[sq(0, N - 2)] = null;
+    g.board[sq(1, N - 2)] = hidden;          // shuffle it inside the mist
     const second = chooseMove(g, 'b', 'warlord', () => 0.5);
     ok(first && second && first.from === second.from && first.to === second.to,
        'a Captain changed its mind over a piece it could not see');
-    g.board[sq(1, 6)] = null;
-    g.board[sq(0, 6)] = hidden;
+    g.board[sq(1, N - 2)] = null;
+    g.board[sq(0, N - 2)] = hidden;
   } else {
     console.log('  note  nothing was hidden from black here, fairness untested');
   }
@@ -215,7 +249,7 @@ for (const skill of SKILLS) {
 section('The banners');
 ok(BANNERS.length === 5, 'there should be five banners');
 for (const b of BANNERS) {
-  for (const r of ['k', 'q', 'r', 'b', 'n', 'p']) ok(b.ranks[r], `${b.id} has no name for the ${r}`);
+  for (const r of ['k', 'q', 'c', 'r', 'b', 'n', 'p']) ok(b.ranks[r], `${b.id} has no name for the ${r}`);
   ok(/^#[0-9a-f]{6}$/i.test(b.colour), `${b.id} has no colour`);
 }
 
