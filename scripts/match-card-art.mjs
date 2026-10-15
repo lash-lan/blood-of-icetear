@@ -4,45 +4,16 @@
 // knows where each card's portrait lives, so matching is a question of
 // reducing both to the same shape and seeing what pairs up.
 import fs from 'node:fs';
-import path from 'node:path';
-import { CARDS, artOf, numberOf, TIERS, typeLineOf, costOf } from '../src/data/cards.js';
+import { CARDS, TIERS } from '../src/data/cards.js';
+import { cardFor } from './lib/card-art-match.mjs';
 
 const DIR = process.argv[2] || 'C:/Users/lashl/Downloads/New Card Art';
-
-const slug = (s) => s.toLowerCase()
-  .replace(/\.(png|jpe?g|webp)$/, '')
-  .replace(/[’']/g, '')
-  .replace(/&/g, 'and')
-  .replace(/[^a-z0-9]+/g, '-')
-  .replace(/^-|-$/g, '');
-
-// Every card that already has a portrait, keyed by that portrait's filename
-// and also by the card's own name, so a painting can match on either.
-const byArtSlug = new Map();
-const byNameSlug = new Map();
-for (const k of CARDS) {
-  const a = artOf(k);
-  if (a) byArtSlug.set(slug(path.basename(a)), k);
-  byNameSlug.set(slug(k.name), k);
-}
 
 const files = fs.readdirSync(DIR).filter((f) => /\.(png|jpe?g|webp)$/i.test(f));
 const hit = [], miss = [];
 
 for (const f of files) {
-  const s = slug(f);
-  let k = byNameSlug.get(s) || byArtSlug.get(s);
-  // Fall back to the longest card name the filename starts with, which
-  // catches "Hannarial Icetear - Captain..." against "Hannarial Icetear,
-  // Captain...".
-  if (!k) {
-    let best = null;
-    for (const [ns, card] of byNameSlug) {
-      const a = s.replace(/-/g, ''), b = ns.replace(/-/g, '');
-      if ((a.startsWith(b) || b.startsWith(a)) && (!best || ns.length > slug(best.name).length)) best = card;
-    }
-    k = best;
-  }
+  const k = cardFor(f);
   (k ? hit : miss).push([f, k]);
 }
 
