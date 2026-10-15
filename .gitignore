@@ -26,3 +26,11 @@ pnpm-debug.log*
 
 # local secrets for the private atelier page (never committed)
 .dev.vars
+
+# Rendered cards. Built from the paintings by scripts/render-cards.mjs, about
+# 215 MB a set, so the script is kept and the output is not. The card back is
+# the exception and is committed, because nothing regenerates its design.
+docs/cards/*.png
+!docs/cards/card-back.png
+docs/cards-contact-sheet.png
+docs/cards-contact-sheet.jpg
