@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Offline · Lash 2026</title>
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="theme-color" content="#0c0d10" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100dvh; display: grid; place-items: center; padding: 2rem;
+      background: radial-gradient(1200px 600px at 80% -10%, rgba(227,179,65,0.07), transparent 60%), #0c0d10;
+      color: #d6d9df; font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      font-size: 15px; line-height: 1.5; -webkit-font-smoothing: antialiased; text-align: center;
+    }
+    .box { display: grid; gap: 1rem; justify-items: center; max-width: 22rem; }
+    svg { width: 4.5rem; height: 4.5rem; }
+    h1 { color: #f5f6f8; font-size: 1.3rem; font-weight: 800; letter-spacing: -0.01em; }
+    p { color: #8c929d; }
+    button {
+      font: inherit; font-weight: 600; color: #1b1405; background: #e3b341;
+      border: 0; border-radius: 9px; padding: 0.6rem 1.2rem; min-height: 2.6rem; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <!-- Drawn here rather than loaded, so this page needs nothing from the network. -->
+    <svg viewBox="0 0 100 100" aria-hidden="true" fill="none" stroke="#e3b341" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="50" cy="50" r="40.5" stroke-width="4.2" opacity="0.85" />
+      <path d="M31.5 51.5 L43.5 64.5 L70.5 34.5" stroke-width="9.2" />
+    </svg>
+    <h1>No connection</h1>
+    <p>Your plan is kept on the server, so it needs a connection to open. Nothing has been lost &mdash; try again once you are back online.</p>
+    <button type="button" onclick="location.replace('/plan')">Try again</button>
+  </div>
+</body>
+</html>

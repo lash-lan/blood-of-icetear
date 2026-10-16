@@ -24,7 +24,8 @@ const MOBILE = ['home', 'daily', 'gantt', 'money'];
   <link rel="icon" href="/favicon.ico" />
   <link rel="manifest" href="/plan.webmanifest" />
   <meta name="theme-color" content="#0c0d10" />
-  <link rel="apple-touch-icon" href="/atelier-192.png" />
+  <link rel="apple-touch-icon" href="/plan-192.png" />
+  <link rel="apple-touch-icon" sizes="192x192" href="/plan-192.png" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Lash 2026" />
@@ -176,6 +177,11 @@ const MOBILE = ['home', 'daily', 'gantt', 'money'];
     #toast.bad { border-color: var(--red); color: #ffb0b0; }
     @media (max-width: 900px) { #toast { bottom: calc(5.5rem + env(safe-area-inset-bottom)); } }
 
+    /* The offer to install, shown only when the browser says it can. */
+    .install { display: none; width: 100%; margin-top: 1.2rem; }
+    .install.can { display: inline-flex; }
+    .sheet .install { margin: 0.4rem 0 0.6rem; }
+
     .skeleton { height: 7rem; border-radius: var(--radius); background: linear-gradient(90deg, var(--panel) 0%, var(--panel2) 50%, var(--panel) 100%); background-size: 200% 100%; animation: shimmer 1.2s infinite; }
     @keyframes shimmer { to { background-position: -200% 0; } }
     @media (prefers-reduced-motion: reduce) { .skeleton { animation: none; } .bar > span { transition: none; } }
@@ -211,6 +217,7 @@ const MOBILE = ['home', 'daily', 'gantt', 'money'];
           ))}
         </nav>
       ))}
+      <button type="button" class="btn install" data-install>⤓ Install app</button>
     </aside>
 
     <main class="main">
@@ -236,6 +243,7 @@ const MOBILE = ['home', 'daily', 'gantt', 'money'];
           <span class="grab"></span>
           <button type="button" class="btn small" id="menuShut">Close</button>
         </div>
+        <button type="button" class="btn primary install" data-install>⤓ Install app</button>
         {NAV.map((g) => (
           <nav class="navgroup">
             <span>{g.group}</span>
@@ -249,6 +257,16 @@ const MOBILE = ['home', 'daily', 'gantt', 'money'];
   </div>
 )}
 
+<script is:inline>
+  // Lets the plan be installed to a home screen and opened as its own app.
+  // Registered from the lock screen too, so installing never needs a password.
+  if ('serviceWorker' in navigator) {
+    addEventListener('load', function () {
+      navigator.serviceWorker.register('/plan-sw.js', { scope: '/plan' }).catch(function () {});
+    });
+  }
+</script>
+
 {unlocked && (
   <script>
     import { start } from '../lib/plan/app.js';
@@ -259,6 +277,20 @@ const MOBILE = ['home', 'daily', 'gantt', 'money'];
     document.getElementById('menuShut')?.addEventListener('click', shut);
     sheet?.addEventListener('click', (e) => { if (e.target === sheet) shut(); });
     addEventListener('keydown', (e) => { if (e.key === 'Escape') shut(); });
+
+    // The install buttons only appear once the browser confirms it can install,
+    // and go away again the moment it is installed.
+    let offer = null;
+    const buttons = [...document.querySelectorAll('[data-install]')];
+    const show = (can) => buttons.forEach((b) => b.classList.toggle('can', can));
+    addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); offer = e; show(true); });
+    addEventListener('appinstalled', () => { offer = null; show(false); });
+    for (const b of buttons) b.addEventListener('click', async () => {
+      if (!offer) return;
+      offer.prompt();
+      const { outcome } = await offer.userChoice;
+      if (outcome === 'accepted') { offer = null; show(false); }
+    });
   </script>
 )}
 </body>

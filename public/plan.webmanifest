@@ -1,16 +1,27 @@
 {
+  "id": "/plan",
   "name": "Lash 2026",
   "short_name": "Lash 2026",
   "description": "Private plan: tasks, daily check-in, money and goals.",
+  "lang": "en",
+  "dir": "ltr",
   "start_url": "/plan",
   "scope": "/plan",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait",
   "background_color": "#0c0d10",
   "theme_color": "#0c0d10",
+  "categories": ["productivity", "lifestyle", "finance"],
   "icons": [
-    { "src": "/atelier-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "/atelier-512.png", "sizes": "512x512", "type": "image/png" },
-    { "src": "/atelier-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+    { "src": "/plan-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/plan-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/plan-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Today", "short_name": "Today", "url": "/plan", "icons": [{ "src": "/plan-192.png", "sizes": "192x192", "type": "image/png" }] },
+    { "name": "Daily history", "short_name": "History", "url": "/plan/daily" },
+    { "name": "Plan & Gantt", "short_name": "Plan", "url": "/plan/gantt" },
+    { "name": "Log Money", "short_name": "Money", "url": "/plan/money" }
   ]
 }
