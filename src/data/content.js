@@ -11,6 +11,7 @@ export const SECTIONS = [
   { slug: 'gallery', name: 'Hall of Memories',   kind: 'Image Gallery',        href: '/gallery' },
   { slug: 'trial',   name: 'Trial of Character', kind: 'Personality Quiz',     href: '/trial' },
   { slug: 'workshop', name: 'The Workshop',     kind: 'Utilities',            href: '/workshop' },
+  { slug: 'hard-way', name: 'The Hard Way',    kind: 'Lessons from Working Life', href: '/the-hard-way' },
 ];
 
 // The ages of the world. Used by both the Library and the Codex.
@@ -271,6 +272,8 @@ export const THEMES = {
   trial: theme('#761014', '#c5ced5', '#4a0a0d', '150,110,110', { bg: '#07090b' }),
   // the builders' workshop: faesilver and cold steel
   workshop: theme('#8fa8bb', '#e1e7ea', '#4f5d68', '150,170,190', { bg: '#060a0e' }),
+  // the lessons: iron just off the heat, the one section about this world
+  'hard-way': theme('#a8744a', '#e1e7ea', '#5c4330', '190,160,140', { bg: '#07090c' }),
 };
 
 // ─── STORY ARTWORK ───────────────────────────────────────────

@@ -1,0 +1,232 @@
+---
+import SiteHeader from '../../components/SiteHeader.astro';
+import { THEMES } from '../../data/content.js';
+import {
+  ARTICLES, articleHref, articleNumber, articleDate, readingMinutes,
+} from '../../data/the-hard-way.js';
+
+export function getStaticPaths() {
+  // Newest first on the page, so "previous" here means the piece written
+  // before this one, which is the one further down the list.
+  return ARTICLES.map((a, i) => ({
+    params: { article: a.slug },
+    props: {
+      article: a,
+      newer: i > 0 ? ARTICLES[i - 1] : null,
+      older: i < ARTICLES.length - 1 ? ARTICLES[i + 1] : null,
+    },
+  }));
+}
+
+const { article, newer, older } = Astro.props;
+
+const t = THEMES['hard-way'];
+const themeVars = [
+  `--bg:${t.bg}`,
+  `--accent:${t.accent}`,
+  `--accentLight:${t.accentLight}`,
+  `--accentDim:${t.accentDim}`,
+  `--text:${t.text}`,
+  `--textDim:${t.textDim}`,
+  `--textBright:${t.textBright}`,
+  `--line:${t.line}`,
+].join(';');
+---
+<!doctype html>
+<html lang="en" style={themeVars}>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{article.title} | The Hard Way | LASH</title>
+  <meta name="description" content={article.standfirst} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 19px;
+      line-height: 1.82;
+      overflow-x: hidden;
+    }
+
+    /* reading progress, as on the stories */
+    #rail { position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 90; background: rgba(255,255,255,0.06); }
+    #railfill { height: 100%; width: 0; background: var(--accent); }
+
+    main { position: relative; z-index: 1; }
+
+    /* ─── HEAD ─── */
+    .head { max-width: 44rem; margin: 0 auto; padding: 8.5rem 1.6rem 1rem; text-align: center; }
+    .head-no {
+      display: block;
+      font-family: 'Cormorant SC', Georgia, serif;
+      font-size: 0.66rem; letter-spacing: 0.36em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.1rem;
+    }
+    .head-title {
+      font-family: 'Cinzel', Georgia, serif; font-weight: 600;
+      font-size: clamp(1.6rem, 4.6vw, 2.7rem); line-height: 1.2;
+      letter-spacing: 0.01em; color: var(--textBright);
+    }
+    .head-stand {
+      max-width: 33rem; margin: 1.5rem auto 0;
+      font-size: 1.08rem; line-height: 1.7; font-style: italic;
+      color: var(--textDim);
+    }
+    .head-meta {
+      margin-top: 1.5rem;
+      font-family: 'Cormorant SC', Georgia, serif;
+      font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--textDim); opacity: 0.85;
+    }
+    .head-rule { width: 110px; height: 1px; margin: 2.2rem auto 0; background: linear-gradient(90deg, transparent, var(--accent), transparent); }
+
+    /* ─── WHAT IT COST ─── */
+    /* The epigraph that opens every lesson: the price paid for it. */
+    .cost {
+      max-width: 34rem; margin: 2.6rem auto 0; padding: 0 1.6rem;
+      text-align: center;
+    }
+    .cost-label {
+      display: block;
+      font-family: 'Cormorant SC', Georgia, serif;
+      font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: var(--accentDim); margin-bottom: 0.7rem;
+    }
+    .cost-text {
+      font-family: 'Cinzel', Georgia, serif; font-weight: 400;
+      font-size: clamp(0.98rem, 2.1vw, 1.12rem); line-height: 1.6;
+      color: var(--accent);
+    }
+
+    /* ─── BODY ─── */
+    .body { max-width: 36rem; margin: 0 auto; padding: 3.2rem 1.6rem 0; }
+    .body p { margin-bottom: 1.35rem; }
+    .body p:first-of-type::first-letter {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 3.1em; float: left; line-height: 0.8;
+      padding-right: 0.09em; padding-top: 0.05em;
+      color: var(--accent);
+    }
+    .body h2 {
+      font-family: 'Cinzel', Georgia, serif; font-weight: 600;
+      font-size: clamp(1.1rem, 2.4vw, 1.3rem); line-height: 1.35;
+      letter-spacing: 0.01em; color: var(--textBright);
+      margin: 2.6rem 0 1.2rem;
+    }
+    blockquote {
+      margin: 2.4rem 0;
+      padding-left: 1.4rem;
+      border-left: 2px solid var(--accent);
+      font-family: 'Cinzel', Georgia, serif; font-weight: 400;
+      font-size: clamp(1.06rem, 2.4vw, 1.26rem); line-height: 1.55;
+      color: var(--accentLight);
+    }
+    .divider {
+      width: 100%; margin: 2.8rem 0;
+      text-align: center; color: var(--accent); opacity: 0.5;
+      letter-spacing: 0.6em; font-size: 0.7rem;
+    }
+
+    /* ─── FOOT ─── */
+    .signoff {
+      max-width: 36rem; margin: 3.6rem auto 0; padding: 0 1.6rem;
+      text-align: center;
+      font-family: 'Cormorant SC', Georgia, serif;
+      font-size: 0.64rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--textDim); opacity: 0.8;
+    }
+    .foot {
+      max-width: 44rem; margin: 3.4rem auto 0;
+      padding: 3rem 1.6rem 7rem; border-top: 1px solid var(--line);
+      display: flex; flex-direction: column; gap: 1.4rem; align-items: center;
+    }
+    .foot-links { display: flex; flex-wrap: wrap; gap: 0.8rem; justify-content: center; }
+    .foot-links a {
+      font-family: 'Cormorant SC', Georgia, serif;
+      font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text); text-decoration: none;
+      border: 1px solid var(--line); padding: 0.6rem 0.95rem;
+      max-width: 15rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      transition: color 0.3s ease, border-color 0.3s ease;
+    }
+    .foot-links a:hover, .foot-links a:focus-visible {
+      color: var(--textBright); border-color: var(--accent); outline: none;
+    }
+
+    @media (max-width: 640px) {
+      body { font-size: 17.5px; }
+      .head { padding-top: 7rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+
+<div id="rail" aria-hidden="true"><div id="railfill"></div></div>
+
+<SiteHeader
+  back={{ href: '/the-hard-way', label: 'The Hard Way' }}
+  current="hard-way"
+  accent={t.accent}
+  dim={t.textDim}
+  bright={t.textBright}
+  bg="rgba(7,9,12,0.88)"
+/>
+
+<main>
+  <header class="head">
+    <span class="head-no">Lesson № {articleNumber(article.slug)}</span>
+    <h1 class="head-title">{article.title}</h1>
+    <p class="head-stand">{article.standfirst}</p>
+    <p class="head-meta">{articleDate(article)} · {readingMinutes(article)} min read</p>
+    <div class="head-rule"></div>
+  </header>
+
+  {article.cost && (
+    <aside class="cost">
+      <span class="cost-label">What it cost</span>
+      <p class="cost-text">{article.cost}</p>
+    </aside>
+  )}
+
+  <article class="body">
+    {article.body.map((b) => (
+      b.t === 'h'     ? <h2>{b.text}</h2>
+    : b.t === 'quote' ? <blockquote>{b.text}</blockquote>
+    : b.t === 'rule'  ? <div class="divider" aria-hidden="true">✦</div>
+    :                   <p>{b.text}</p>
+    ))}
+  </article>
+
+  <p class="signoff">Lash</p>
+
+  <div class="foot">
+    <div class="foot-links">
+      {older && <a href={articleHref(older)} title={older.title}
+                 aria-label={`Earlier lesson: ${older.title}`}>← Earlier Lesson</a>}
+      <a href="/the-hard-way">All lessons</a>
+      {newer && <a href={articleHref(newer)} title={newer.title}
+                 aria-label={`Later lesson: ${newer.title}`}>Later Lesson →</a>}
+    </div>
+  </div>
+</main>
+
+<script>
+  const fill = document.getElementById('railfill');
+  const onScroll = () => {
+    const max = document.body.scrollHeight - window.innerHeight;
+    fill.style.width = max > 0 ? (window.scrollY / max) * 100 + '%' : '0%';
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
+
+</body>
+</html>

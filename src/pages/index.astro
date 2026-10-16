@@ -5,12 +5,18 @@ import { SECTIONS, STORIES, storyHref, ageBySlug, storyArt } from '../data/conte
 
 const latest = [...STORIES].reverse();
 
+// Every other section is a way into the invented world. The Hard Way is about
+// this one, so it is kept out of the halls grid and given its own band below.
+const halls = SECTIONS.filter((s) => s.slug !== 'hard-way');
+const hardWay = SECTIONS.find((s) => s.slug === 'hard-way');
+
 const DESCRIPTIONS = {
   library: 'Shorter tales, gathered by the age of the world they belong to.',
   sagas:   'The long tellings. Whole lives and whole wars, followed through the peoples who carry them.',
   codex:   'The chronicle. Titans, mortals, realms, and relics, recorded age by age.',
   gallery: 'Faces and places of the world, kept somewhere they can still be looked at.',
   trial:   'A set of questions, and the figure of the age your nature answers to.',
+  'hard-way': 'What working life has taught me, written down so it costs you less than it cost me.',
 };
 
 // One image stands for each hall, chosen from the world's own artwork rather
@@ -22,6 +28,7 @@ const HALL_IMAGE = {
   gallery:  '/images/codex/deep-reaches.jpg',
   trial:    '/images/codex/morrigan.jpg',
   workshop: '/images/codex/shattered-lowlands.jpg',
+  'hard-way': '/images/codex/glorion.jpg',
 };
 ---
 <SectionLayout
@@ -54,7 +61,7 @@ const HALL_IMAGE = {
     </div>
 
     <div class="grid grid-3 halls">
-      {SECTIONS.map((s) => (
+      {halls.map((s) => (
         <a href={s.href} class:list={['tile', 'hall', 'reveal', { 'is-soon': s.comingSoon }]}>
           <span class="hall-plate">
             <img src={HALL_IMAGE[s.slug]} alt="" loading="lazy" decoding="async" width="640" height="480" />
@@ -67,6 +74,30 @@ const HALL_IMAGE = {
           {s.comingSoon && <span class="tile-meta">Coming Soon</span>}
         </a>
       ))}
+    </div>
+
+    <div class="ornament reveal">✦</div>
+
+    <!-- ─── THE HARD WAY ─── -->
+    <!-- Not a hall of the world: the one place on the site where I write as
+         myself, about work. Given its own band so it is never mistaken for
+         fiction. -->
+    <div class="band-head reveal">
+      <span class="band-label">Outside the world</span>
+      <h2 class="band-title">Lessons from working life</h2>
+    </div>
+
+    <div class="lessons">
+      <a href={hardWay.href} class="tile hall reveal">
+        <span class="hall-plate">
+          <img src={HALL_IMAGE['hard-way']} alt="" loading="lazy" decoding="async" width="640" height="480" />
+        </span>
+        <span class="hall-caption">
+          <span class="tile-eyebrow">{hardWay.kind}</span>
+          <span class="tile-title">{hardWay.name}</span>
+        </span>
+        <p class="tile-blurb">{DESCRIPTIONS['hard-way']}</p>
+      </a>
     </div>
 
     <div class="ornament reveal">✦</div>
@@ -108,4 +139,9 @@ const HALL_IMAGE = {
   }
   .about-text { font-size: 1.08rem; line-height: 1.85; color: var(--text); }
   .about-text strong { color: var(--textBright); font-weight: 500; }
+
+  /* One tile, kept to the width of a single column of the halls grid above
+     rather than stretched across the page, so it reads as one door and not
+     as a section that is missing its siblings. */
+  .lessons { max-width: 23rem; margin: 0 auto; }
 </style>

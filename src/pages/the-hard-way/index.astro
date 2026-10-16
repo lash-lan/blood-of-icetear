@@ -1,0 +1,119 @@
+---
+import SectionLayout from '../../layouts/SectionLayout.astro';
+import {
+  ARTICLES, articleHref, articleNumber, articleDate, readingMinutes,
+} from '../../data/the-hard-way.js';
+---
+<SectionLayout
+  title="The Hard Way | Lessons from Working Life | LASH"
+  description="Lash writes down what his working life has taught him: judgement, taste, standards, and the things that only get learned by paying for them."
+  theme="hard-way"
+  current="hard-way"
+  eyebrow="Lessons from Working Life"
+  heading="The Hard Way"
+  tagline="Everything here cost me something to learn. I am writing it down so it costs you less."
+>
+  <div class="wrap">
+    {ARTICLES.length === 0 ? (
+      <p class="empty">Nothing written down yet. The first lesson is on its way.</p>
+    ) : (
+      <ol class="pieces">
+        {ARTICLES.map((a) => (
+          <li class="reveal">
+            <a href={articleHref(a)} class="piece">
+              <span class="piece-no">№ {articleNumber(a.slug)}</span>
+              <span class="piece-body">
+                <h2 class="piece-title">{a.title}</h2>
+                <p class="piece-stand">{a.standfirst}</p>
+                <span class="piece-meta">
+                  {articleDate(a)} · {readingMinutes(a)} min read
+                </span>
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    )}
+  </div>
+</SectionLayout>
+
+<style>
+  .empty {
+    max-width: 30rem;
+    margin: 2rem auto;
+    text-align: center;
+    color: var(--textDim);
+    font-size: 1.02rem;
+  }
+
+  /* A reading list, not a grid of cards. Lessons are read one after another,
+     so they are set as a numbered column with the number in the margin. */
+  .pieces {
+    list-style: none;
+    max-width: 44rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .pieces li { border-top: 1px solid var(--line); }
+  .pieces li:last-child { border-bottom: 1px solid var(--line); }
+
+  .piece {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    gap: 0 1.2rem;
+    padding: 2.1rem 0.4rem;
+    transition: background-color 0.4s ease;
+  }
+  .piece:hover, .piece:focus-visible {
+    background: rgba(168,116,74,0.05);
+    outline: none;
+  }
+
+  .piece-no {
+    font-family: 'Cormorant SC', Georgia, serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accentDim);
+    padding-top: 0.5rem;
+    white-space: nowrap;
+    transition: color 0.4s ease;
+  }
+  .piece:hover .piece-no, .piece:focus-visible .piece-no { color: var(--accent); }
+
+  .piece-body { display: flex; flex-direction: column; gap: 0.7rem; min-width: 0; }
+
+  .piece-title {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(1.18rem, 2.6vw, 1.5rem);
+    line-height: 1.28;
+    letter-spacing: 0.01em;
+    color: var(--text);
+    transition: color 0.4s ease;
+  }
+  .piece:hover .piece-title, .piece:focus-visible .piece-title { color: var(--accentLight); }
+
+  .piece-stand {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--textDim);
+  }
+
+  .piece-meta {
+    font-family: 'Cormorant SC', Georgia, serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--textDim);
+    opacity: 0.8;
+  }
+
+  /* On a phone the number sits above the title rather than beside it, so the
+     headline keeps the full width of the screen. */
+  @media (max-width: 560px) {
+    .piece { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.7rem 0.2rem; }
+    .piece-no { padding-top: 0; }
+  }
+</style>
