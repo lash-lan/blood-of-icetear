@@ -251,6 +251,33 @@ export const TOOLS = [
     ],
   },
   {
+    slug: 'shift-voice', bench: 'forge', engine: 'voiceShift',
+    name: 'Recast the Voice', sub: 'Voice changer',
+    blurb: 'Reshape a recorded voice into another one: lighter, deeper, older, or a speaker nobody would place.',
+    accept: 'audio/*,video/*', multiple: true, quality: true,
+    fields: [
+      { id: 'voice', type: 'select', label: 'Recast as', options: [
+        { value: 'lighter', label: 'Lighter — higher and smaller' },
+        { value: 'deeper', label: 'Deeper — lower and larger' },
+        { value: 'disguise', label: 'Unplaceable — pitch down, resonance up' },
+        { value: 'child', label: 'A child' },
+        { value: 'elder', label: 'An elder — breathy and slower' },
+        { value: 'masculine', label: 'Masculine lean' },
+        { value: 'feminine', label: 'Feminine lean' },
+        { value: 'herald', label: 'A herald — sharp and carrying' },
+        { value: 'confidant', label: 'Close and breathy' },
+        { value: 'giant', label: 'A giant' },
+        { value: 'troll', label: 'A frost troll' },
+        { value: 'wraith', label: 'A wraith' },
+      ] },
+      { id: 'format', type: 'select', label: 'Save as', options: [
+        { value: 'mp3', label: 'MP3' },
+        { value: 'wav', label: 'WAV' },
+      ] },
+    ],
+    note: 'Pitch and the resonance of the throat and mouth are moved separately, which is what keeps the result sounding like a person rather than a recording played at the wrong speed. It will not turn one person into a named other person: that needs a trained model, not arithmetic.',
+  },
+  {
     slug: 'trim-media', bench: 'forge', engine: 'mediaTrim',
     name: 'Cut to Length', sub: 'Trim audio',
     blurb: 'Keep only the stretch you want. Works on audio, or on the soundtrack of a video.',
