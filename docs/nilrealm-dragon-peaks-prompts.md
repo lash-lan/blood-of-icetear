@@ -47,25 +47,27 @@ Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shad
 ## 2. Two peaks
 
 ```
-MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Landscape format, 1920 by 1080, sixteen to nine. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic animal anatomy with real weight and real bone beneath the hide, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Landscape format, 1920 by 1080, sixteen to nine. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
-RESTRAINT: do not render every surface. Sharp detail belongs only on the two heads. Scale is drawn as individual scales near the heads only and becomes large flat untextured shapes everywhere else. Rock is broad flat planes. The valley below is a soft grey mass with no detail at all.
+RESTRAINT: do not render every surface. Sharp detail belongs on the two heads and nowhere else. Scale is drawn as individual scales near the heads and shoulders only, and becomes large flat untextured shapes along the bodies, the tails and the far wings. Rock is broad flat planes. The valley below is a soft grey mass with no detail in it at all.
 
-NILREALM IN HIS TRUE FORM: an immense and extremely ancient white dragon, a cross of two kinds. The body is long and serpentine like an eastern dragon, with a mane of coarse pale hair along the spine and two long whiskers trailing from the snout, but the head is heavy and broad like a western dragon and he has thick clawed forelimbs and great ragged membranous wings. Branching antler-like horns sweep back from the skull, one of them broken off short. Pale bone white, cracked and chipped about the brow.
+THE TWO MUST NOT LOOK ALIKE. They are different kinds of animal and the picture depends on it.
 
-TIAMATRA IN HER TRUE FORM: an enormous four limbed western dragon queen. Heavy armoured scale in dark iron grey, a crest of short bone horns swept back like a crown, old scars across her chest healed pale, and wings whose membrane goes deep red where light passes through it.
+NILREALM, on the left peak: an immense and extremely ancient white dragon, long and serpentine like an eastern dragon, the neck and body curling around the summit rather than standing on it. A heavy broad western head, two long whiskers trailing from the snout, a shaggy mane of coarse pale hair down the spine, and branching antler-like horns sweeping back from the skull with one broken off short. Great ragged membranous wings held half folded, torn through with holes. Bone white and pale grey, cracked and chipped about the brow. He is coiled, low, and still.
 
-SCENE: two separate mountain peaks, far apart, with a vast drop and a valley of cloud between them. He is coiled around the summit of the left peak, white against grey. She is settled on the right peak with her wings still half open. They are each large enough that the mountain is a perch rather than a mountain. Neither is moving. They are looking at each other across the gap and they have been for some time.
+TIAMATRA, on the right peak: an enormous four limbed western dragon queen, built heavy, standing square on the rock with her weight on all four limbs. Dark iron grey armoured scale. A swept back crest of many long gold and bronze horns rising from the skull like a crown, and a ridge of hard spines running the length of her back and tail. Her wings are half open and the membrane is deep red where the light comes through it. Old scars across her chest healed pale. She is upright, planted, and watching.
 
-Scale: a ruined stone watchtower stands on her peak and reaches only to her forelimb.
+SCENE: two separate mountain peaks, far apart, with a long drop and a valley of low cloud lying between them. Each of them is large enough that a mountain is a perch rather than a mountain. Neither is moving. They are looking across the gap at one another and have been for some time, and neither has decided anything yet.
 
-LIGHT: flat overcast daylight from the left, no sun visible anywhere, both of their far sides falling into shadow.
+Scale: a ruined stone watchtower stands on her peak at her feet and reaches only partway up her forelimb. A second ruin sits broken under her claws.
 
-PALETTE: iron grey, bone white, and one deep red in her wing membrane.
+LIGHT: flat overcast daylight from the left, thick grey cloud, no sun visible anywhere. Both of their far sides fall away into shadow.
+
+PALETTE: three colours. Iron grey, bone white, and one deep red in her wing membrane. The sky is a single flat grey.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered tiny bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: anime, manga, cel shading, cartoon, clean line art, vector art, smooth digital rendering, fighting, fire, flames, breath weapon, roaring, open mouths, flying, mid air, wings fully spread, glowing eyes, treasure, hoard, riders, people, armour on the dragons, identical dragons, both dragons the same colour, sunset, warm light, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty rock, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, cel shading, flat shading, comic book, cartoon, clean line art, vector art, airbrushed, smooth digital rendering, identical dragons, matching dragons, both dragons the same build, both dragons the same colour, two western dragons, two serpentine dragons, mirrored poses, fighting, circling, lunging, biting, roaring, open mouths, fire, flames, breath weapon, flying, mid air, hovering, wings fully spread, glowing eyes, treasure, hoard, gold, riders, saddles, people, armour on the dragons, sunset, sunrise, golden hour, warm light, blue sky, clear sky, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
 
 ---
