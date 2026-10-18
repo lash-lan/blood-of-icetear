@@ -3431,8 +3431,13 @@ the first tool simply because it was easy.**
 say?"* She smiled. **"She dislikes your crown." "I don't have a crown yet."
 "Apparently she's planning ahead."**
 
-**Tiamel.** Daughter of **Osiris, an Ancient Dragon King** tied to the
-Phoenix-Dragon God, and **Galatrel, Hansall's sister.** Born with small gold-red
+**Tiamel.** Daughter of **an Ancient Dragon King who was Tiamatra's own son**,
+and of **Galatrel, Hansall's sister**, which makes her **Tiamatra's
+granddaughter** and places her one generation below the Dragon Gods rather
+than beside them. An earlier draft had her fathered by Osiris and tied to the
+Phoenix-Dragon God, and Lash has corrected that: the line runs through
+Tiamatra. **Her father still needs a name**, because Osiris was his and Osiris
+is her great uncle. Born with small gold-red
 scales on her cheeks, and Galatrel cried from relief rather than horror, because
 the pregnancy had frightened everyone and nobody knew what the child would be.
 Tiamel answered by screaming louder than any infant Hansall had encountered. He
