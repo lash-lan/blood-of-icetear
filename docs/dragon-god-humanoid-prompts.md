@@ -140,9 +140,10 @@ hold her brother's prison shut, and she lost a favoured daughter.*
 bones where a mantle would sit; a low crest of short bone horns through the
 hair; hands that are a little too large, with dark nails like claw sheaths.
 
-> A woman who looks about fifty and is not, tall, broad through the shoulders,
-> elven in the ears and human in the weathering of the face. Grey in dark
-> hair. A low crest of short bone horns runs back through it like a circlet
+> A woman whose face is young and always will be, no older than thirty and
+> entirely unlined, tall and broad through the shoulders, elven in the ears.
+> She does not age and never has. Her dark hair has gone grey anyway, which
+> against that face is the first thing that looks wrong about her. A low crest of short bone horns runs back through it like a circlet
 > that grew there. Heavy iron-grey scale lies across her shoulders and collar
 > bones where a mantle would sit, and her hands are slightly too large, the
 > nails dark and thick.
