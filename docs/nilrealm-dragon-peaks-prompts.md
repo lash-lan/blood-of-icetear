@@ -167,7 +167,11 @@ him deliberately.
 
 **The prison holds more than Bahamut.** The archive only records Bahamut sealed in the south-west of the Western Continent under Tiamatra's enchantment, which cost her ninety percent of herself to hold shut. You said black dragons, plural, so I have written several. If it is Bahamut alone, the scene becomes one enormous bound shape rather than many and I will rewrite it.
 
-**Does Tiamatra know he is her brother?** He is the sixth child and nobody was told. I have written the first scene as though she knows and he is expected. If she does not, it is a stranger walking into her hall claiming kinship, which is a completely different picture and a better one.
+**Settled: they sensed each other.** Ra's children know their own on sight,
+so nobody had to be told and nothing had to be proved. What they confirmed
+afterwards was only the detail, that the line runs through the World Titans
+either way. The first scene is written as recognition rather than
+introduction.
 
 **I read "feathered court" as her feathered coat.** Fully black robes with his mother's cloak over them. Say if you meant an actual court of feathered attendants.
 

@@ -253,6 +253,7 @@ chose all Nine. The traitor being the one who reads people best is a good
 irony either way, but whether Nilrealm saw it coming changes his character
 completely.
 
-**Does he ever meet his five siblings?** Nothing in the archive says he does.
+**Does he ever meet the other four?** He has met Tiamatra. Nothing in the
+archive says he ever finds Osiris, Ryujin or Delphyne, and Bahamut is sealed.
 
 **Does Ra ever learn?**

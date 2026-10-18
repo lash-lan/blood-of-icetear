@@ -545,6 +545,18 @@ painted in, but **black feathers, layered and ragged, over the dark dress of a
 sorcerer and strategist.** It is a son wearing a mother's coat, and it is the
 closest thing to her he can carry in a world she is not allowed to enter.
 
+**Ra's children know each other on sight.** When Nilrealm finally walked into
+Tiamatra's mountain kingdom, nobody had to tell her who he was and he did not
+have to argue it. **They sensed it**, immediately and from across a hall, the
+way two of a kind do. What they confirmed afterwards was only the detail, that
+the line runs through the World Titans either way, hers from Ra and his from Ra
+and Mór-Ríoghain both.
+
+That matters more than it looks. **It means the secret was never really a
+secret from the only people who could have told.** Ra did not know because Ra
+was not there. His siblings would have known the moment they stood in a room
+with him. He simply never stood in a room with them until he chose to.
+
 ### Demi-Gods
 
 All at 500 to 3,000 MJ: **Abel**, **Cain**, **Achilles**, **Heracles**,
