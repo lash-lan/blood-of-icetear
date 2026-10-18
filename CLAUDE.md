@@ -65,6 +65,13 @@ Cloudflare Workers via the `@astrojs/cloudflare` adapter. Cloudflare watches the
 hand. The domain is registered with Cloudflare too, so there is no separate
 nameserver step.
 
+The GitHub repo is **`lash-lan/blood-of-icetear`**, renamed from
+`personal-website` on 18 October 2026. GitHub redirects the old address, so
+older clones keep working. The **Cloudflare Worker is still named
+`personal-website`** (`wrangler.jsonc`), and renaming that would not rename
+anything: it would create a new, empty Worker and leave the `lash-plan`
+database and the domain attached to the old one. Leave it alone.
+
 - `src/pages/` — one file per page; the filename becomes the web address.
   Sections: `codex`, `gallery`, `library`, `sagas`, `trial`, `workshop`.
 - `src/data/` — the written content and structured data the pages read from.
