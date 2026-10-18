@@ -5,12 +5,9 @@ the mountains and into the High Elven Kingdom.
 
 **Each block is complete on its own.**
 
-Two assumptions are baked in and both are one line to change:
-
-- **Sederous is leonine.** The card calls him a Half Elf Lord and the lion
-  blood belongs to Ligarr, but he built the first city for the Elu-Dues and
-  a King of Scraps who is himself a scrap is the better character.
-- **Hansall's cracked white face is his own**, not a mask.
+Both open questions are now settled by Lash. **Sederous is half elf and half
+Leonar**, so the leonine head is correct. **Hansall's face is a mask** of white
+bark, featureless, with gold veins and two eye holes.
 
 ---
 
@@ -29,9 +26,9 @@ HEIGHT IS THE POINT. Nilrealm is not the same kind of being as any of them. He i
 
 NILREALM: a very tall slender man who looks about thirty and is not. Pale skin, long straight black hair, a thin moustache and a narrow goatee, narrow vertical slit pupils, a fine pale scale at his temples. Plain black robes and a plain black feathered cloak. A plain pale staff. Nothing he wears is decorated.
 
-HANSALL, the High King of the Elves: very tall for an elf and still shorter than Nilrealm. Long straight white hair, sharply pointed ears. His face is a smooth white surface finely cracked all over like old porcelain, with no visible mouth, and his eyes are two slits of pale blue light. Cream and deep red robes under gold shoulder plates and gold vambraces, and a tall crown of thin gold spikes. He is the most richly dressed person present and the least expressive.
+HANSALL, the High King of the Elves: very tall for an elf and still shorter than Nilrealm. Long straight white hair, sharply pointed ears. Over his face he wears a mask of pale white bark that covers it completely. The mask is featureless: no mouth, no carved nose, no expression, nothing worked into it at all, only two open eye holes and the faintest indent where a nose would be. Fine gold veins run through the bark the way grain runs through wood. His own pale blue eyes show through the holes. The edge of the mask is visible where it meets his skin and his hair, so it clearly reads as something worn rather than as a face. Cream and deep red robes under gold shoulder plates and gold vambraces, and a tall crown of thin gold spikes. He is the most richly dressed person present and the least expressive.
 
-SEDEROUS LIONHEART, the King of Scraps: a leonine half elf. A lion's head with a heavy gold blond mane, amber eyes, a broad flat nose, heavy clawed hands. Gold scaled armour over deep blue cloth, a dark blue cloak. Shorter and far broader than the other two, built like something that fights.
+SEDEROUS LIONHEART, the King of Scraps: half elf and half Leonar, and the lion side shows. A lion's head with a heavy gold blond mane, amber eyes, a broad flat nose, heavy clawed hands. Gold scaled armour over deep blue cloth, a dark blue cloak. Shorter and far broader than the other two, built like something that fights.
 
 TIAMEL: a young elven queen, long wavy blonde hair, pointed ears, small gold and red scales high on both cheekbones. Gold and dark green dragon scale armour over a cream gown, a tall crown of thin gold points, her gold dragon wings folded behind her.
 
@@ -41,7 +38,7 @@ LIGHT: cold daylight from tall windows out of frame on the left, even across all
 
 PALETTE: pale stone and black, with gold, and one deep red in Hansall's robes.
 
-Negative prompt: sketch, study, unfinished, rough brushwork, impasto, visible canvas, loose painting, blurry faces, soft faces, hyperdetailed, overrendered, every surface rendered, filigree, engraved panels, carved stone, patterned fabric everywhere, busy background, sharp detail everywhere, oversharpened, everyone the same height, the kings as tall as the tall man, short man, thrones, crowds, courtiers, guards, banners, bowing, kneeling, handshake, embracing, weapons drawn, fighting, dragons, wings spread, fire, glowing runes, magic effects, gold on the man in black, decorated staff, anime, manga, anime face, large eyes, cel shading, cartoon, clean line art, doll face, plastic skin, film grain, speckled, stippled, glitter, sparkles, text, watermark, signature, photorealistic
+Negative prompt: porcelain, ceramic, cracked porcelain, china, polished mask, metal mask, carved features on the mask, mouth on the mask, lips on the mask, nose on the mask, painted face, theatrical mask, smiling mask, expressive mask, helmet, visor, no mask at all, bare face on the king, sketch, study, unfinished, rough brushwork, impasto, visible canvas, loose painting, blurry faces, soft faces, hyperdetailed, overrendered, every surface rendered, filigree, engraved panels, carved stone, patterned fabric everywhere, busy background, sharp detail everywhere, oversharpened, everyone the same height, the kings as tall as the tall man, short man, thrones, crowds, courtiers, guards, banners, bowing, kneeling, handshake, embracing, weapons drawn, fighting, dragons, wings spread, fire, glowing runes, magic effects, gold on the man in black, decorated staff, anime, manga, anime face, large eyes, cel shading, cartoon, clean line art, doll face, plastic skin, film grain, speckled, stippled, glitter, sparkles, text, watermark, signature, photorealistic
 ```
 
 ---
@@ -59,7 +56,7 @@ HOW MUCH DETAIL EACH THING CARRIES. The two faces: full detail. The gate: one cl
 
 NILREALM: a very tall slender man who looks about thirty and is not, nine heads tall, a clear head and shoulders above the king beside him. Pale skin, long straight black hair, a thin moustache and a narrow goatee, narrow slit pupils. Plain black robes, a plain black feathered cloak, a plain pale staff.
 
-HANSALL: very tall for an elf and still shorter than Nilrealm. Long straight white hair, pointed ears, a smooth white face finely cracked like old porcelain with no visible mouth and two slits of pale blue light for eyes. Cream and deep red robes, gold shoulder plates, a tall crown of thin gold spikes.
+HANSALL: very tall for an elf and still shorter than Nilrealm. Long straight white hair, pointed ears, a featureless mask of pale white bark covering his whole face, no mouth and no carved features, only two eye holes with his pale blue eyes showing through and a slight indent where a nose would be, with fine gold veins running through the bark like grain. Cream and deep red robes, gold shoulder plates, a tall crown of thin gold spikes.
 
 SCENE: an enormous formal elven garden, old and well kept, with long clipped hedges and still water. At the far end of it stands the gate: a tall plain archway of pale stone, standing free with garden visible around both sides of it, and the opening filled by a flat sheet of soft green light that does not spill or flicker. Through that light, faintly, is somewhere that is not this garden.
 
@@ -71,7 +68,7 @@ LIGHT: the green light of the gate, which is the brightest thing in the picture,
 
 PALETTE: deep green, pale stone, and black. One warm note nowhere.
 
-Negative prompt: sketch, study, unfinished, rough brushwork, impasto, visible canvas, loose painting, blurry faces, hyperdetailed, overrendered, every leaf rendered, every flower rendered, detailed foliage, flowers everywhere, carved archway, ornate gate, runes on the gate, glowing runes, magic circles, swirling portal, vortex, whirlpool, particles, sparks, lens flare, light rays, fairies, creatures, crowds, guards, walking through the gate, reaching for the gate, touching the gate, everyone the same height, the king as tall as the tall man, gold on the man in black, decorated staff, anime, manga, anime face, large eyes, cel shading, cartoon, clean line art, doll face, plastic skin, film grain, speckled, stippled, glitter, sparkles, text, watermark, signature, photorealistic
+Negative prompt: porcelain, ceramic, cracked porcelain, china, polished mask, metal mask, carved features on the mask, mouth on the mask, lips on the mask, nose on the mask, painted face, theatrical mask, smiling mask, expressive mask, helmet, visor, no mask at all, bare face on the king, sketch, study, unfinished, rough brushwork, impasto, visible canvas, loose painting, blurry faces, hyperdetailed, overrendered, every leaf rendered, every flower rendered, detailed foliage, flowers everywhere, carved archway, ornate gate, runes on the gate, glowing runes, magic circles, swirling portal, vortex, whirlpool, particles, sparks, lens flare, light rays, fairies, creatures, crowds, guards, walking through the gate, reaching for the gate, touching the gate, everyone the same height, the king as tall as the tall man, gold on the man in black, decorated staff, anime, manga, anime face, large eyes, cel shading, cartoon, clean line art, doll face, plastic skin, film grain, speckled, stippled, glitter, sparkles, text, watermark, signature, photorealistic
 ```
 
 ---
@@ -91,7 +88,7 @@ THE CONTRAST IS THE PICTURE. Two immortals in black and gold, and two people wea
 
 NILREALM: a very tall slender man who looks about thirty and is not, nine heads tall, a clear head and shoulders above everyone. Pale skin, long straight black hair, a thin moustache and a narrow goatee, narrow slit pupils. Plain black robes, a plain black feathered cloak, a plain pale staff.
 
-HANSALL: very tall for an elf, shorter than Nilrealm. Long straight white hair, pointed ears, a smooth white face finely cracked like old porcelain with no visible mouth and two slits of pale blue light for eyes. Cream and deep red robes, gold shoulder plates, a tall crown of thin gold spikes.
+HANSALL: very tall for an elf, shorter than Nilrealm. Long straight white hair, pointed ears, a featureless mask of pale white bark covering his whole face, no mouth and no carved features, only two eye holes with his pale blue eyes showing through and a slight indent where a nose would be, with fine gold veins running through the bark like grain. Cream and deep red robes, gold shoulder plates, a tall crown of thin gold spikes.
 
 ADAMAS, the first man: young, ordinary human height, which makes him much the shortest here. Short white hair, a plain open face, pale eyes. Worn brown leather with a few small plain steel plates, a ragged brown cloak, scuffed boots. No gold, no jewellery, nothing decorated. He is looking up at Nilrealm and he is not frightened.
 
@@ -103,5 +100,5 @@ LIGHT: soft overcast daylight from above, even on all four.
 
 PALETTE: green, cream and black, with gold on Hansall alone.
 
-Negative prompt: sketch, study, unfinished, rough brushwork, impasto, visible canvas, loose painting, blurry faces, soft faces, hyperdetailed, overrendered, every leaf rendered, detailed foliage, flowers everywhere, filigree, patterned fabric, jewellery on the humans, armour on the humans, fine clothes on the humans, crowns on the humans, rich clothing on the humans, everyone the same height, the humans as tall as the others, kneeling, bowing, cowering, frightened, crying, crowds, guards, animals, apple tree, serpent, fruit, nudity, anime, manga, anime face, large eyes, cel shading, cartoon, clean line art, doll face, plastic skin, film grain, speckled, stippled, glitter, sparkles, text, watermark, signature, photorealistic
+Negative prompt: porcelain, ceramic, cracked porcelain, china, polished mask, metal mask, carved features on the mask, mouth on the mask, lips on the mask, nose on the mask, painted face, theatrical mask, smiling mask, expressive mask, helmet, visor, no mask at all, bare face on the king, sketch, study, unfinished, rough brushwork, impasto, visible canvas, loose painting, blurry faces, soft faces, hyperdetailed, overrendered, every leaf rendered, detailed foliage, flowers everywhere, filigree, patterned fabric, jewellery on the humans, armour on the humans, fine clothes on the humans, crowns on the humans, rich clothing on the humans, everyone the same height, the humans as tall as the others, kneeling, bowing, cowering, frightened, crying, crowds, guards, animals, apple tree, serpent, fruit, nudity, anime, manga, anime face, large eyes, cel shading, cartoon, clean line art, doll face, plastic skin, film grain, speckled, stippled, glitter, sparkles, text, watermark, signature, photorealistic
 ```
