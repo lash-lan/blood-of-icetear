@@ -18,7 +18,7 @@ frame does not work lying down.
 ## 1. The birth
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 RESTRAINT: do not render every surface. Sharp detail belongs only where the scene names it. Everything else is simplified, soft and sitting in shadow. Big simple shapes first, small detail last.
 
@@ -36,8 +36,10 @@ PALETTE: bone white, black, and one cold grey for the crater.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: crow head, raven head, bird person, beak instead of a face, visible face, hooded, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, individual zombie faces, gore, blood, horror, undead attacking, climbing, reaching, action, battle, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, crow head, raven head, bird person, beak instead of a face, visible face, hooded, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, individual zombie faces, gore, blood, horror, undead attacking, climbing, reaching, action, battle, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
@@ -46,7 +48,7 @@ Negative prompt: crow head, raven head, bird person, beak instead of a face, vis
 ## 2. Raising the dragon
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 RESTRAINT: do not render every surface. Sharp detail belongs only where the scene names it. Everything else is simplified, soft and sitting in shadow. Big simple shapes first, small detail last.
 
@@ -66,8 +68,10 @@ PALETTE: bone white, black, and one cold pale blue in the shadows.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: cute dragon, chibi, cartoon, hatchling, tiny dragon, wyvern, eyes open, awake, roaring, fire, flames, wings spread, flying, branching antlers, long horns, damaged scales, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, cute dragon, chibi, cartoon, hatchling, tiny dragon, wyvern, eyes open, awake, roaring, fire, flames, wings spread, flying, branching antlers, long horns, damaged scales, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
@@ -76,7 +80,7 @@ Negative prompt: cute dragon, chibi, cartoon, hatchling, tiny dragon, wyvern, ey
 ## 3. Teaching the visage
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 RESTRAINT: do not render every surface. Sharp detail belongs only where the scene names it. Everything else is simplified, soft and sitting in shadow. Big simple shapes first, small detail last.
 
@@ -96,8 +100,10 @@ PALETTE: bone white, black, and one cold pale blue in the dissolving light.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: two separate creatures, dragon and boy side by side, clean edge between forms, magic circles, glowing runes, spell effects, energy beams, sparkle transformation, cute, chibi, cartoon, clothed in armour, adult man, facial hair on the child, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, two separate creatures, dragon and boy side by side, clean edge between forms, magic circles, glowing runes, spell effects, energy beams, sparkle transformation, cute, chibi, cartoon, clothed in armour, adult man, facial hair on the child, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
@@ -106,7 +112,7 @@ Negative prompt: two separate creatures, dragon and boy side by side, clean edge
 ## 4. Guardians of the tree
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 RESTRAINT: do not render every surface. Sharp detail belongs only where the scene names it. Everything else is simplified, soft and sitting in shadow. Big simple shapes first, small detail last.
 
@@ -124,8 +130,10 @@ PALETTE: bone white, black, and one cold grey for the undead.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: gore, blood, rotting flesh detail, exposed organs, horror, screaming faces, undead attacking, reaching, grabbing, lunging, chasing, battle, weapons raised, individual zombie portraits, crowd of faces rendered, cute, chibi, cartoon, adult man, facial hair on the child, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, gore, blood, rotting flesh detail, exposed organs, horror, screaming faces, undead attacking, reaching, grabbing, lunging, chasing, battle, weapons raised, individual zombie portraits, crowd of faces rendered, cute, chibi, cartoon, adult man, facial hair on the child, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
@@ -134,7 +142,7 @@ Negative prompt: gore, blood, rotting flesh detail, exposed organs, horror, scre
 ## 5. The lesson
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 RESTRAINT: do not render every surface. Sharp detail belongs only where the scene names it. Everything else is simplified, soft and sitting in shadow. Big simple shapes first, small detail last.
 
@@ -142,7 +150,7 @@ MATERIALS MUST NOT MATCH: snow is smooth in a few large drifts, never crusted or
 
 THE MORRIGAN'S AVATAR: a slight woman, noticeably shorter and slimmer than anyone standing beside her. She wears one great cloak of large layered black feathers that falls unbroken from her shoulders all the way to the ground, full and heavy, covering her body completely. What reads as feminine is everything the cloak does not cover: narrow sloping shoulders, a slender bare throat, and thin pale arms ending in small delicate hands with long black nails. Her face is hidden behind a pale bone-white bird skull with a long beak, worn as a mask over a human face, never an animal head. Long black hair falls loose over the feathers.
 
-NILREALM, YOUNG ADULT: a tall slender young man of about twenty, pale skin, long straight black hair, clean shaven, no moustache and no beard. Three draconic things about him and no more: narrow vertical slit pupils, a fine pale scale at his temples and down the sides of his throat, and a neck slightly too long. He wears plain undyed robes, simply cut, no ornament.
+NILREALM, AS A YOUNG MAN: a tall slender man who looks about thirty and is not. Pale skin untouched by age, long straight black hair, and a thin drawn moustache with a narrow goatee, sparse and newly grown rather than full. A real adult man's face, weathered and particular, never a smooth stylised one. Three draconic things about him and no more: narrow vertical slit pupils, a fine pale scale at his temples and down the sides of his throat, and a neck slightly too long. He wears plain undyed robes, simply cut, no ornament.
 
 SCENE: a lesson in the snow among the roots of the colossal world tree. He sits cross legged on the ground with a heavy open book across his knees, bound in overlapping gold and white dragon scales, reading. She stands over him, and in her raised hand she holds an open fan of seven pale phoenix feathers. A thin ribbon of pale fire runs out from the fan and turns in a slow controlled arc in the air above them. He has looked up from the book to watch it.
 
@@ -154,8 +162,10 @@ PALETTE: black, snow white, and one warm pale gold from the fire, which is the o
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: readable text on the page, writing, letters, runes, glowing runes, magic circles, spell diagrams, explosion, large flames, fire filling the frame, moustache, beard, goatee, old man, child, armour, ornate robes, embroidery, gold trim, jewellery, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, readable text on the page, writing, letters, runes, glowing runes, magic circles, spell diagrams, explosion, large flames, fire filling the frame, old man, child, armour, ornate robes, embroidery, gold trim, jewellery, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
@@ -164,7 +174,7 @@ Negative prompt: readable text on the page, writing, letters, runes, glowing run
 ## 6. The staff is made
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 RESTRAINT: do not render every surface. Sharp detail belongs only where the scene names it. Everything else is simplified, soft and sitting in shadow. Big simple shapes first, small detail last.
 
@@ -182,8 +192,10 @@ PALETTE: bone white, black, and one soft warm grey in the wood.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: axe, saw, blade, cutting, chopping, sawdust, wound in the tree, bleeding sap, magic circles, glowing runes, spell effects, energy, carved staff, ornate staff, crystal on top, gemstone, metal fittings, crow head, raven head, bird person, visible face, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, bark texture everywhere, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, axe, saw, blade, cutting, chopping, sawdust, wound in the tree, bleeding sap, magic circles, glowing runes, spell effects, energy, carved staff, ornate staff, crystal on top, gemstone, metal fittings, crow head, raven head, bird person, visible face, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, bark texture everywhere, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
@@ -192,7 +204,7 @@ Negative prompt: axe, saw, blade, cutting, chopping, sawdust, wound in the tree,
 ## 7. The gift, and the parting
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 RESTRAINT: do not render every surface. Sharp detail belongs only where the scene names it. Everything else is simplified, soft and sitting in shadow. Big simple shapes first, small detail last.
 
@@ -200,7 +212,7 @@ MATERIALS MUST NOT MATCH: snow is smooth in a few large drifts, never crusted or
 
 THE MORRIGAN'S AVATAR: a slight woman, noticeably shorter and slimmer than anyone standing beside her. She wears one great cloak of large layered black feathers that falls unbroken from her shoulders all the way to the ground, full and heavy, covering her body completely. What reads as feminine is everything the cloak does not cover: narrow sloping shoulders, a slender bare throat, and thin pale arms ending in small delicate hands with long black nails. Her face is hidden behind a pale bone-white bird skull with a long beak, worn as a mask over a human face, never an animal head. Long black hair falls loose over the feathers.
 
-NILREALM, YOUNG ADULT: a tall slender young man of about twenty, pale skin, long straight black hair, clean shaven. Narrow vertical slit pupils, a fine pale scale at his temples and throat, a neck slightly too long. He wears long plain white robes, softly draped, no ornament.
+NILREALM, AS A YOUNG MAN: a tall slender man who looks about thirty and is not. Pale skin untouched by age, long straight black hair, and a thin drawn moustache with a narrow goatee, sparse and newly grown rather than full. A real adult man's face, weathered and particular, never a smooth stylised one. Narrow vertical slit pupils, a fine pale scale at his temples and throat, a neck slightly too long. He wears long plain white robes, softly draped, no ornament.
 
 SCENE: the very edge of the cliff, the colossal world tree rising behind them and out of frame, the vast crater falling away below and beyond. She holds out the tall pale staff in both hands, offering it. He has gone down on one knee in the snow in front of her, head bowed, both hands raised to receive it. Neither of them has let go of it yet. The sun is setting low and level at the cliff's edge straight ahead, directly behind her, so she is a black shape against it and he is lit.
 
@@ -214,8 +226,10 @@ PALETTE: black, and the pale gold of the low sun, and the white of the snow.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: embracing, hugging, touching faces, crying, tears, dramatic gesture, arms spread, facing away from each other, both standing, both kneeling, weapons, armour, crown, jewellery, ornate robes, embroidery, moustache, beard, child, old man, wings, dragon, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, lens flare, sun rays, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, embracing, hugging, touching faces, crying, tears, dramatic gesture, arms spread, facing away from each other, both standing, both kneeling, weapons, armour, crown, jewellery, ornate robes, embroidery, child, old man, wings, dragon, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, lens flare, sun rays, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
@@ -224,30 +238,36 @@ Negative prompt: embracing, hugging, touching faces, crying, tears, dramatic ges
 ## 8. In dreams, his true mother
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Portrait format, 1024 by 1536, two to three. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 RESTRAINT: do not render every surface. Sharp detail belongs only where the scene names it. Everything else is simplified, soft and sitting in shadow. Big simple shapes first, small detail last.
 
-MATERIALS MUST NOT MATCH: feathers are soft-edged clumps, never thousands of separate barbs. Cloth is matte with a few large folds. The void around them is flat and empty with no texture at all.
+MATERIALS MUST NOT MATCH: feathers are soft-edged clumps, never thousands of separate barbs. Cloth is matte and heavy with a few large folds, and the sigils on it are thin faint silver lines, not embroidery and not jewellery. Antler is smooth dark bone. The void around her is flat and empty with no texture at all.
 
-SCENE: not the world. Her own realm, which is not a place but a condition: a vast flat dark emptiness with no ground, no sky and no horizon.
+SCENE: not the world. Her own realm, which is not a place but a condition: a vast dark emptiness with no ground, no sky and no horizon, only slow depth.
 
-She is here as she truly is, not as her avatar: a titanic figure of a woman rising out of the dark, so large that only her head, her shoulders and one descending hand are inside the frame, the rest of her lost upward and outward beyond it. She is made of black feathers and deep shadow with no edges you could point to, and where a face should be there is the same pale bone-white bird skull, now immense, the beak alone longer than a man. Her form keeps almost resolving into a vast bird and almost resolving into a vast woman and settling as neither.
+She is here as she truly is, and she is colossal. She wears no mask here, because the bone skull belongs to the small shape she sends into the world. Her face is bare, pale, beautiful and entirely without warmth, the face of something that has never needed to be kind. Long black hair moves slowly around her as though she were underwater. From her head rises a crown of black branching antlers that spreads up and out of the frame, with fine chains and small silver crescents hanging through it and across her brow. Her gown is deep blue going to black, and across it run faint thin silver circles and sigils that are not decoration but writing, too large and too slow to read.
 
-At the very bottom of the frame, tiny, stands the young man: slender, pale, long black hair, plain white robes, looking up. He is not afraid. He has been coming here all his life, and this is the only place he is whole.
+In one hand, held low and out toward the small figure below, she carries a wrought iron lantern with a violet flame shut inside it.
 
-Scale: her descending hand alone is larger than he is.
+Only her head, her shoulders, one arm and the lantern are inside the frame. The rest of her is lost beyond it in every direction. Ravens the size of houses turn slowly through the dark around her, unhurried, paying no attention to anything.
 
-Sharp detail in two places only: the immense bone skull, and his small upturned face.
+At the very bottom of the frame, tiny, stands the young man: slender, pale, long black hair, a thin moustache and a narrow goatee, plain white robes, looking up. He is not afraid. He has been coming here all his life, and this is the only place he is whole.
 
-LIGHT: a cold pale glow coming from her and falling downward onto him, with no other source anywhere.
+Scale: the lantern in her hand alone is taller than he is.
 
-PALETTE: black, bone white, and one cold violet in the glow.
+Sharp detail in three places only: her face, the lantern, and his small upturned face. The antlers, the gown and the ravens are large soft shapes.
+
+LIGHT: the violet lantern alone, lighting her face from below and falling down onto him, with no other source anywhere in the realm.
+
+PALETTE: deep blue going to black, pale silver, and one violet from the lantern.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: landscape, ground, floor, horizon, sky, clouds, stars, trees, snow, buildings, throne, normal sized woman, human scale, full body in frame, cute, friendly, smiling, screaming, horror, gore, monster, demon, tentacles, many eyes, wings spread, flying, crow head on a human body, bird person, armour, crown, jewellery, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, landscape, ground, floor, horizon, sky, clouds, stars, trees, snow, buildings, throne, normal sized woman, human scale, full body in frame, cute, friendly, smiling, screaming, horror, gore, monster, demon, tentacles, many eyes, wings spread, flying, bone mask, skull mask, beak, crow head, bird person, armour, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
@@ -257,7 +277,7 @@ Negative prompt: landscape, ground, floor, horizon, sky, clouds, stars, trees, s
 ## 1. The birth, wide
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 FRAMING FOR THIS WIDE SHOT: the tree and the seated woman sit in the left third, and the crater opens away to the right across the whole width, the far rim near the right edge. Her against the trunk, and all that emptiness beside her.
 
@@ -277,15 +297,17 @@ PALETTE: bone white, black, and one cold grey for the crater.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: crow head, raven head, bird person, beak instead of a face, visible face, hooded, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, individual zombie faces, gore, blood, horror, undead attacking, climbing, reaching, action, battle, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, crow head, raven head, bird person, beak instead of a face, visible face, hooded, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, individual zombie faces, gore, blood, horror, undead attacking, climbing, reaching, action, battle, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
 ## 2. Raising the dragon, wide
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 FRAMING FOR THIS WIDE SHOT: the curled dragon runs across the full width of the frame, his head on the left and his coils receding to the right. She stands small beside his head.
 
@@ -307,15 +329,17 @@ PALETTE: bone white, black, and one cold pale blue in the shadows.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: cute dragon, chibi, cartoon, hatchling, tiny dragon, wyvern, eyes open, awake, roaring, fire, flames, wings spread, flying, branching antlers, long horns, damaged scales, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, cute dragon, chibi, cartoon, hatchling, tiny dragon, wyvern, eyes open, awake, roaring, fire, flames, wings spread, flying, branching antlers, long horns, damaged scales, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
 ## 3. Teaching the visage, wide
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 FRAMING FOR THIS WIDE SHOT: the boy stands in the left third, and the dissolving body of the dragon stretches away to the right and out of frame, thinning as it goes. She stands at the right edge, watching across the gap.
 
@@ -337,15 +361,17 @@ PALETTE: bone white, black, and one cold pale blue in the dissolving light.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: two separate creatures, dragon and boy side by side, clean edge between forms, magic circles, glowing runes, spell effects, energy beams, sparkle transformation, cute, chibi, cartoon, clothed in armour, adult man, facial hair on the child, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, two separate creatures, dragon and boy side by side, clean edge between forms, magic circles, glowing runes, spell effects, energy beams, sparkle transformation, cute, chibi, cartoon, clothed in armour, adult man, facial hair on the child, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
 ## 4. Guardians of the tree, wide
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 FRAMING FOR THIS WIDE SHOT: the crater floor runs the full width. The woman and the boy walk toward the camera down a narrow open path in the centre, with the kneeling undead massed on both sides out to the left and right edges.
 
@@ -365,15 +391,17 @@ PALETTE: bone white, black, and one cold grey for the undead.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: gore, blood, rotting flesh detail, exposed organs, horror, screaming faces, undead attacking, reaching, grabbing, lunging, chasing, battle, weapons raised, individual zombie portraits, crowd of faces rendered, cute, chibi, cartoon, adult man, facial hair on the child, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, gore, blood, rotting flesh detail, exposed organs, horror, screaming faces, undead attacking, reaching, grabbing, lunging, chasing, battle, weapons raised, individual zombie portraits, crowd of faces rendered, cute, chibi, cartoon, adult man, facial hair on the child, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
 ## 5. The lesson, wide
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 FRAMING FOR THIS WIDE SHOT: he sits on the left, she stands on the right, the arc of pale fire turning in the air in the space between them. The great roots fill the background across the whole width.
 
@@ -383,7 +411,7 @@ MATERIALS MUST NOT MATCH: snow is smooth in a few large drifts, never crusted or
 
 THE MORRIGAN'S AVATAR: a slight woman, noticeably shorter and slimmer than anyone standing beside her. She wears one great cloak of large layered black feathers that falls unbroken from her shoulders all the way to the ground, full and heavy, covering her body completely. What reads as feminine is everything the cloak does not cover: narrow sloping shoulders, a slender bare throat, and thin pale arms ending in small delicate hands with long black nails. Her face is hidden behind a pale bone-white bird skull with a long beak, worn as a mask over a human face, never an animal head. Long black hair falls loose over the feathers.
 
-NILREALM, YOUNG ADULT: a tall slender young man of about twenty, pale skin, long straight black hair, clean shaven, no moustache and no beard. Three draconic things about him and no more: narrow vertical slit pupils, a fine pale scale at his temples and down the sides of his throat, and a neck slightly too long. He wears plain undyed robes, simply cut, no ornament.
+NILREALM, AS A YOUNG MAN: a tall slender man who looks about thirty and is not. Pale skin untouched by age, long straight black hair, and a thin drawn moustache with a narrow goatee, sparse and newly grown rather than full. A real adult man's face, weathered and particular, never a smooth stylised one. Three draconic things about him and no more: narrow vertical slit pupils, a fine pale scale at his temples and down the sides of his throat, and a neck slightly too long. He wears plain undyed robes, simply cut, no ornament.
 
 SCENE: a lesson in the snow among the roots of the colossal world tree. He sits cross legged on the ground with a heavy open book across his knees, bound in overlapping gold and white dragon scales, reading. She stands over him, and in her raised hand she holds an open fan of seven pale phoenix feathers. A thin ribbon of pale fire runs out from the fan and turns in a slow controlled arc in the air above them. He has looked up from the book to watch it.
 
@@ -395,15 +423,17 @@ PALETTE: black, snow white, and one warm pale gold from the fire, which is the o
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: readable text on the page, writing, letters, runes, glowing runes, magic circles, spell diagrams, explosion, large flames, fire filling the frame, moustache, beard, goatee, old man, child, armour, ornate robes, embroidery, gold trim, jewellery, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, readable text on the page, writing, letters, runes, glowing runes, magic circles, spell diagrams, explosion, large flames, fire filling the frame, old man, child, armour, ornate robes, embroidery, gold trim, jewellery, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
 ## 6. The staff is made, wide
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 FRAMING FOR THIS WIDE SHOT: the vast trunk fills the right half of the frame, she stands against it on the left, and the parting root runs as a long diagonal between them. Empty snow across the left edge.
 
@@ -423,15 +453,17 @@ PALETTE: bone white, black, and one soft warm grey in the wood.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: axe, saw, blade, cutting, chopping, sawdust, wound in the tree, bleeding sap, magic circles, glowing runes, spell effects, energy, carved staff, ornate staff, crystal on top, gemstone, metal fittings, crow head, raven head, bird person, visible face, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, bark texture everywhere, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, axe, saw, blade, cutting, chopping, sawdust, wound in the tree, bleeding sap, magic circles, glowing runes, spell effects, energy, carved staff, ornate staff, crystal on top, gemstone, metal fittings, crow head, raven head, bird person, visible face, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, crusty snow, bark texture everywhere, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
 ## 7. The gift, and the parting, wide
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 FRAMING FOR THIS WIDE SHOT: the cliff edge runs horizontally across the frame. The two figures are in the left third, the setting sun low and level behind her, and the crater falls away to the right.
 
@@ -441,7 +473,7 @@ MATERIALS MUST NOT MATCH: snow is smooth in a few large drifts, never crusted or
 
 THE MORRIGAN'S AVATAR: a slight woman, noticeably shorter and slimmer than anyone standing beside her. She wears one great cloak of large layered black feathers that falls unbroken from her shoulders all the way to the ground, full and heavy, covering her body completely. What reads as feminine is everything the cloak does not cover: narrow sloping shoulders, a slender bare throat, and thin pale arms ending in small delicate hands with long black nails. Her face is hidden behind a pale bone-white bird skull with a long beak, worn as a mask over a human face, never an animal head. Long black hair falls loose over the feathers.
 
-NILREALM, YOUNG ADULT: a tall slender young man of about twenty, pale skin, long straight black hair, clean shaven. Narrow vertical slit pupils, a fine pale scale at his temples and throat, a neck slightly too long. He wears long plain white robes, softly draped, no ornament.
+NILREALM, AS A YOUNG MAN: a tall slender man who looks about thirty and is not. Pale skin untouched by age, long straight black hair, and a thin drawn moustache with a narrow goatee, sparse and newly grown rather than full. A real adult man's face, weathered and particular, never a smooth stylised one. Narrow vertical slit pupils, a fine pale scale at his temples and throat, a neck slightly too long. He wears long plain white robes, softly draped, no ornament.
 
 SCENE: the very edge of the cliff, the colossal world tree rising behind them and out of frame, the vast crater falling away below and beyond. She holds out the tall pale staff in both hands, offering it. He has gone down on one knee in the snow in front of her, head bowed, both hands raised to receive it. Neither of them has let go of it yet. The sun is setting low and level at the cliff's edge straight ahead, directly behind her, so she is a black shape against it and he is lit.
 
@@ -455,39 +487,45 @@ PALETTE: black, and the pale gold of the low sun, and the white of the snow.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: embracing, hugging, touching faces, crying, tears, dramatic gesture, arms spread, facing away from each other, both standing, both kneeling, weapons, armour, crown, jewellery, ornate robes, embroidery, moustache, beard, child, old man, wings, dragon, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, lens flare, sun rays, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, embracing, hugging, touching faces, crying, tears, dramatic gesture, arms spread, facing away from each other, both standing, both kneeling, weapons, armour, crown, jewellery, ornate robes, embroidery, child, old man, wings, dragon, crow head, raven head, bird person, visible face on the woman, androgynous, masculine build, fitted dress, corset, bodice, cinched waist, exposed chest, cleavage, bare midriff, tall woman, woman as tall as the man, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, lens flare, sun rays, bokeh dots, scattered bright dots, crusty snow, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, text, letters, watermark, signature, photorealistic
 ```
+
+---
 
 ---
 
 ## 8. In dreams, his true mother, wide
 
 ```
-MASTER STYLE, identical across this whole set. Painted fantasy illustration, visible brushwork, not photographic. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
+MASTER STYLE, identical across this whole set. An oil painting on canvas. Visible brush strokes, soft painterly edges, broken colour, the surface of real paint. Realistic anatomy and realistic adult faces with normal sized eyes and ordinary human proportion, the drawing of a classical painting. This is not anime, not manga, not cel shaded, not a comic, not a cartoon and not clean digital line art. Landscape format, 1920 by 1080, sixteen to nine, for video. One named light source only. Three colours only, no more. Large areas of flat unbroken colour with nothing happening in them, at least a third of the frame quiet.
 
 FRAMING FOR THIS WIDE SHOT: her immense skull and shoulders fill the upper right of the frame with one hand descending through the centre, and he stands tiny at the lower left. Flat empty void across the rest.
 
 RESTRAINT: do not render every surface. Sharp detail belongs only where the scene names it. Everything else is simplified, soft and sitting in shadow. Big simple shapes first, small detail last.
 
-MATERIALS MUST NOT MATCH: feathers are soft-edged clumps, never thousands of separate barbs. Cloth is matte with a few large folds. The void around them is flat and empty with no texture at all.
+MATERIALS MUST NOT MATCH: feathers are soft-edged clumps, never thousands of separate barbs. Cloth is matte and heavy with a few large folds, and the sigils on it are thin faint silver lines, not embroidery and not jewellery. Antler is smooth dark bone. The void around her is flat and empty with no texture at all.
 
-SCENE: not the world. Her own realm, which is not a place but a condition: a vast flat dark emptiness with no ground, no sky and no horizon.
+SCENE: not the world. Her own realm, which is not a place but a condition: a vast dark emptiness with no ground, no sky and no horizon, only slow depth.
 
-She is here as she truly is, not as her avatar: a titanic figure of a woman rising out of the dark, so large that only her head, her shoulders and one descending hand are inside the frame, the rest of her lost upward and outward beyond it. She is made of black feathers and deep shadow with no edges you could point to, and where a face should be there is the same pale bone-white bird skull, now immense, the beak alone longer than a man. Her form keeps almost resolving into a vast bird and almost resolving into a vast woman and settling as neither.
+She is here as she truly is, and she is colossal. She wears no mask here, because the bone skull belongs to the small shape she sends into the world. Her face is bare, pale, beautiful and entirely without warmth, the face of something that has never needed to be kind. Long black hair moves slowly around her as though she were underwater. From her head rises a crown of black branching antlers that spreads up and out of the frame, with fine chains and small silver crescents hanging through it and across her brow. Her gown is deep blue going to black, and across it run faint thin silver circles and sigils that are not decoration but writing, too large and too slow to read.
 
-At the very bottom of the frame, tiny, stands the young man: slender, pale, long black hair, plain white robes, looking up. He is not afraid. He has been coming here all his life, and this is the only place he is whole.
+In one hand, held low and out toward the small figure below, she carries a wrought iron lantern with a violet flame shut inside it.
 
-Scale: her descending hand alone is larger than he is.
+Only her head, her shoulders, one arm and the lantern are inside the frame. The rest of her is lost beyond it in every direction. Ravens the size of houses turn slowly through the dark around her, unhurried, paying no attention to anything.
 
-Sharp detail in two places only: the immense bone skull, and his small upturned face.
+At the very bottom of the frame, tiny, stands the young man: slender, pale, long black hair, a thin moustache and a narrow goatee, plain white robes, looking up. He is not afraid. He has been coming here all his life, and this is the only place he is whole.
 
-LIGHT: a cold pale glow coming from her and falling downward onto him, with no other source anywhere.
+Scale: the lantern in her hand alone is taller than he is.
 
-PALETTE: black, bone white, and one cold violet in the glow.
+Sharp detail in three places only: her face, the lantern, and his small upturned face. The antlers, the gown and the ravens are large soft shapes.
+
+LIGHT: the violet lantern alone, lighting her face from below and falling down onto him, with no other source anywhere in the realm.
+
+PALETTE: deep blue going to black, pale silver, and one violet from the lantern.
 
 NEVER: no all-over speckle, stipple, glitter, sparkles, floating dust motes or scattered bright dots. No fine noise over the image. Not hyper-detailed, not over-rendered. No text, letters, numbers, watermark, signature or border.
 
-Negative prompt: landscape, ground, floor, horizon, sky, clouds, stars, trees, snow, buildings, throne, normal sized woman, human scale, full body in frame, cute, friendly, smiling, screaming, horror, gore, monster, demon, tentacles, many eyes, wings spread, flying, crow head on a human body, bird person, armour, crown, jewellery, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
+Negative prompt: anime, manga, manhwa, webtoon, anime face, large eyes, cel shading, flat shading, comic book, cartoon, chibi, clean line art, vector art, airbrushed, plastic skin, doll face, smooth digital rendering, landscape, ground, floor, horizon, sky, clouds, stars, trees, snow, buildings, throne, normal sized woman, human scale, full body in frame, cute, friendly, smiling, screaming, horror, gore, monster, demon, tentacles, many eyes, wings spread, flying, bone mask, skull mask, beak, crow head, bird person, armour, oversaturated detail, hyperdetailed, overrendered, busy texture, high frequency noise, film grain, speckled, stippled, glitter, sparkles, bokeh dots, scattered bright dots, same texture on every material, oversharpened, cluttered, masterpiece, 8k, octane render, epic, majestic, volumetric god rays, lens flare, text, letters, watermark, signature, photorealistic
 ```
 
 ---
