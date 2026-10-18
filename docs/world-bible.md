@@ -253,7 +253,7 @@ above or below anyone, and the old numbers are the only thing that ever ranked
 them against the World Titans. **So they are not ranked here.**
 
 **What this corrects.** The powerscale spreadsheet files **Ra, Hyperion,
-Soulomon, the Morrigan, Nephthys, Freya and Frey** under a heading called
+Soulomon, Mór-Ríoghain, Nephthys, Freya and Frey** under a heading called
 **Ascendant Gods**, and files the Dwarf Titans under **World Titans**. **That is
 backwards and the heading is retired.** Every other document you have written
 calls Hyperion and Ra World Titans, the Law of Divine Distance says "from World
@@ -290,9 +290,15 @@ Twenty, with genders and alignments, ranked by power.
 **Conflict is the only Chaos-aligned Honourable Titan.** Theme 2 written into the
 pantheon.
 
-**And Morrigan is Magic's walking name.** The powerscale lists **Magic** the
-Primordial Titan and **The Morrigan** separately, while `Forces` writes them as
-one line, "Magic, The Morrigan." The clean reading is that **Morrigan is a World
+**Her name is Mór-Ríoghain.** That is what she is called in the archive and in
+the bible's own voice, always. **"The Morrigan" is a mortal word**, a worn down
+version of the real one that came into use in the later ages among people who
+had never been close enough to be corrected. It is not wrong to write it in a
+mortal's mouth. It is wrong anywhere else.
+
+**And Mór-Ríoghain is Magic's walking name.** The powerscale lists **Magic** the
+Primordial Titan and **Mór-Ríoghain** separately, while `Forces` writes them as
+one line, "Magic, Mór-Ríoghain." The clean reading is that **Mór-Ríoghain is a World
 Titan who carries the Primordial Titan's office**, which explains why the
 novellas call her a Prime Goddess, the plates call her a World Titan, and her
 Temple sits outside time.
@@ -405,7 +411,7 @@ are the old prototypes, kept only for the alignments beside them.
 | **Ra**, Father of Dragons and Phoenixes | 300 Million | Chaos | Honourable |
 | **Hyperion** | 130 Million | Order | Honourable |
 | **Soulomon** | 90 Million | - | - |
-| **The Morrigan** | 85 Million | Chaos | Cunning |
+| **Mór-Ríoghain** | 85 Million | Chaos | Cunning |
 | **Nephthys** | 70 Million | Order | Altruistic |
 | **Freya** | 35 Million | Order | Honourable |
 | **Frey** | 30 Million | Order | Altruistic |
@@ -417,7 +423,7 @@ made the beasts with him. **Atlor the Mountain Forger**, who made the humans of
 the north-east. **Lilith, Mother of Malice**, and **Tartarus**, both bound rather
 than seated. And **Typhon and Akidna**, below.
 
-**Soulomon is a World Titan**, and he stands above the Morrigan on the ledger.
+**Soulomon is a World Titan**, and he stands above Mór-Ríoghain on the ledger.
 **The ledger spells him Soulomon and every story spells him Solomon**, and the
 ledger's spelling looks deliberate, because **Soul** is exactly what he spends to
 open the Breach. This bible writes **Solomon** in the history and keeps
@@ -455,7 +461,7 @@ has happened before or since.
 Typhon at 130 thousand and Akidna at 50 thousand, inside the Prime God tier.
 **Those are the numbers of two defeated Titans, not two living ones**, which is
 one more reason not to rank anything by them. Typhon had
-already been slain and pinned beneath his own corpse, and **Morrigan drained
+already been slain and pinned beneath his own corpse, and **Mór-Ríoghain drained
 Akidna below Prime God strength** before Triton and Neptune were bound to her as
 jailors. The record was written afterwards, exactly as it was for Bahamut, whom
 it already calls the Black Abomination. **Mortals wrote down what was left.**
@@ -469,7 +475,7 @@ generation."**
 | Prime God | Power |
 |---|---|
 | **Soulomon's Avatar** | 960 thousand |
-| **The Morrigan Avatar** | 800 thousand |
+| **Mór-Ríoghain Avatar** | 800 thousand |
 | **Typhon** | 130 thousand |
 | **Ryujin** | 120 thousand |
 | **Delphyne** | 105 thousand |
@@ -504,10 +510,10 @@ Abomination in the ledger**, which means the record was written after his fall.
 **Ra had five children by his own making, and a sixth he did not make alone.**
 
 Ra went looking for knowledge he did not have, and the deepest of it was not in
-his own realm. He entered **the Morrigan's**. What happened there took eons, and
+his own realm. He entered **Mór-Ríoghain's**. What happened there took eons, and
 what it produced was not a thing either of them set out to produce: **they grew
 close enough to make a life, and the life took root inside her.** Ra went home.
-He did not know. **The Morrigan did**, and she carried it, and said nothing, for
+He did not know. **Mór-Ríoghain did**, and she carried it, and said nothing, for
 eons more.
 
 **She did not give birth as a World Titan. She gave birth as her Avatar**, in
@@ -516,10 +522,10 @@ decision is the most important fact about Nilrealm, and everything odd about him
 comes out of it.
 
 **Because he was born through an Avatar, most of him was never delivered.** A
-great weight of his essence and his power stayed behind in the Morrigan's realm,
+great weight of his essence and his power stayed behind in Mór-Ríoghain's realm,
 and it is still there. What walks the world is the part that fit through. It is
 also why he is a **dragon of dreams** rather than a dragon of fire: **sleep is
-the door home.** The Morrigan's Avatar raised him under the Tree, but **he saw
+the door home.** Mór-Ríoghain's Avatar raised him under the Tree, but **he saw
 his mother herself only when he slept**, in her realm, which is the one place he
 has ever been whole.
 
@@ -569,7 +575,7 @@ Gods watch and intervene only when existence itself is at stake, and **Hyperion
 made the Angels to serve them, "beings of vigilance and law, forged not to rule,
 but to endure."**
 
-**The Eternal Fae Realm**, opened through the veiled accord of **Morrigan of
+**The Eternal Fae Realm**, opened through the veiled accord of **Mór-Ríoghain of
 Magic, Selene of the Moon and Nyx of Night** - though even they were not its true
 makers, because **it was older than their names**, anchored in the Primordial
 Titans of **Dreams, Memory, Magic, Life and Hope.**
@@ -589,7 +595,7 @@ principles wearing crowns."**
 
 **And every World Titan holds a realm of their own**, which is not a palace but
 a condition, the Titan's nature given somewhere to stand. Ra has his. The
-Morrigan has hers. This is the rule that makes Nilrealm possible, and the rule
+Mór-Ríoghain has hers. This is the rule that makes Nilrealm possible, and the rule
 that explains why most of him is not here.
 
 | Throne | Title |
@@ -600,7 +606,7 @@ that explains why most of him is not here.
 | **Ra** | Father of Skies, Dragons and Phoenixes |
 | **Glorion** | of Earth and Forge |
 | **Thanatos** | Lord of Death and Ghosts |
-| **Morrigan** | Mistress of Magic |
+| **Mór-Ríoghain** | Mistress of Magic |
 | **Selene** | Lady of the Moon |
 | **Freyva** | Mother of Life and Nature |
 
@@ -899,7 +905,7 @@ resolution that serves the cosmology: **mortals can only summon with it. The
 restriction is the point.**
 
 `The God Realms` maps each school to a divine pairing, which is where the
-bloodlines come from: Dark from Morrigan and Izanami, **Gore from Typhon and
+bloodlines come from: Dark from Mór-Ríoghain and Izanami, **Gore from Typhon and
 Akidna**, Mist from Harlequin and Eris, **Tempest from Tiamat and Oceanus, which
 is Icetear's line**, Elemental from Athens and Bahamut, Fae from Bahamut and
 Alpharr, **Eldritch from Harlequin and Moirai**, Death from Izanami and Moirai,
@@ -943,7 +949,7 @@ magic. The system is self-consistent all the way to its root.
 rank of Nature, so his staff from the Northern World Tree is his rank rather than
 decoration. **Alice and Annie were both climbing the Nature ladder** -
 Herbalist, Witch, Druid - and Alice stepped off into Death while Annie refused
-and was given Morrigan's mysteries instead. And **the Dark and Light ladders are
+and was given Mór-Ríoghain's mysteries instead. And **the Dark and Light ladders are
 built on sensory deprivation and sensory fullness**, the Famished and the
 Nourished, the Numb and the Sense, Silence and Songs, the Blind and Sight, which
 is an idea nothing else in the archive uses.
@@ -1412,7 +1418,7 @@ the world, and the world is now full.
 | What | Where | Held by |
 |---|---|---|
 | **Typhon**, Father of Monsters | **his own corpse, made into a volcano** | his soul is **pinned beneath it, screaming through magma** |
-| **Akidna**, Mother of Monsters | **the Northern Sea Depths** | drained below Prime God strength by **Morrigan**, and jailed by **Triton and Neptune**, Oceanus's sons |
+| **Akidna**, Mother of Monsters | **the Northern Sea Depths** | drained below Prime God strength by **Mór-Ríoghain**, and jailed by **Triton and Neptune**, Oceanus's sons |
 | **Bahamut**, the Black | **deep in the south-west of the Western Continent** | Tiamatra's enchantment, **and his presence strengthens the corruption** |
 | **Plutarr** | the Ghost Realm | imprisonment by the Celestial Titans |
 | **Dagonn** | the Largest Mountain Range | imprisonment by the Celestial Titans |
@@ -1439,7 +1445,7 @@ North. **Each sea holds something.**
 ### The northern mist, settled
 
 **This is no longer a proposal.** `1. Foundation Age` states that Akidna was
-dragged into the Northern Sea Depths, drained by Morrigan until she was less than
+dragged into the Northern Sea Depths, drained by Mór-Ríoghain until she was less than
 a Prime God, and bound there by Triton and Neptune. `Origins` independently says
 she was **"banished to the North Seas, and only had daughters since her sons'
 waywardness."**
@@ -1568,7 +1574,7 @@ sitting under the Grey Knights' feet.
 | **Boudicarn** | Amelia's fortress, built from the GhoulClaw Clan's halls |
 | **Tritaneim** | the fishing hamlet where **Floki** appeared overnight |
 | **The Lantana Peaks** | the hot spring inn where **Annie** met **Landervale** |
-| **The Temple of Morrigan** | unmarked on any map, **because every traveller reaches it differently** |
+| **The Temple of Mór-Ríoghain** | unmarked on any map, **because every traveller reaches it differently** |
 | **The Night Forest** | the Moon Elves' sacred wood |
 | **Azaelion** | the Ice Kingdom, with eleven main families headed by **Icetear** |
 | **The Frostspine Mountains** | beyond which Seneal's coven kingdom lies |
@@ -1596,7 +1602,7 @@ alignments, then named the months for recognisable deities.
 | 7 | **Ifyr** | **Ifrith**, Devil Queen of Fire | the fires of life |
 | 8 | **Scorpio** | **Scorpius**, God of Will | building strong will |
 | 9 | **Surt** | **Surtur**, Devil Titan of Fire | driest time of the Fire Giants |
-| 10 | **Mortum** | **Morrigan**, Queen of the Witches | most activity from the dead and dark magic |
+| 10 | **Mortum** | **Mór-Ríoghain**, Queen of the Witches | most activity from the dead and dark magic |
 | 11 | **Yur** | **Ymir**, Devil Titan of Ice | darkest winter of the Ice Giant |
 | 12 | **Coius** | **Coeus**, Titan of Prophecy and Hope | hopeful winter |
 
@@ -1758,7 +1764,7 @@ the machinery of influence. If a creature is leashed, then the leash-holder is
 the true enemy. And if the leash-holder is removed, what remains might become
 simply an animal."*
 
-And Morrigan's teaching settled it: **"Magic corrupts by contact, but not all
+And Mór-Ríoghain's teaching settled it: **"Magic corrupts by contact, but not all
 touched things remain corrupt forever."**
 
 So: **not pardon, not friendship, containment.** Kill only the malicious nodes
@@ -1802,7 +1808,7 @@ land recoiled under their presence. Not in fear. In exhaustion."**
 - **Typhon was slain, his corpse became a volcano, and his soul was pinned
   beneath it, screaming through magma.**
 - **Akidna was dragged into the Northern Sea Depths.** She pleaded. She
-  manipulated. **Persephony listened.** Morrigan drained her below Prime God
+  manipulated. **Persephony listened.** Mór-Ríoghain drained her below Prime God
   strength, and **Oceanus bound his sons Triton and Neptune as her jailors.**
 
 > **By ancient law, the Titans were already dying the longer they remained. They
@@ -2201,7 +2207,7 @@ Abel's own children, protected by Godrian as the true royal line of humanity:
 - **Gilgamesh the True King**, who kills Caligula and later Solomon
 
 **So Annie the White Witch is Abel's daughter**, which makes the woman who refused
-Morrigan's forbidden power the sister of the man who wields their father's bound
+Mór-Ríoghain's forbidden power the sister of the man who wields their father's bound
 soul.
 
 ### The Demon Wars
@@ -2765,7 +2771,7 @@ make the world worthy of the name it already has.
   later binds the preserved heart of an **Ancient Grey Dragon** to his own soul
   through a First Age ritual. Its heartbeat becomes his heartbeat. **Should the
   dragon ever awaken completely, Landervale would cease being human altogether.**
-- **Annie the White Witch** passes the Temple of Morrigan's test by refusing it,
+- **Annie the White Witch** passes the Temple of Mór-Ríoghain's test by refusing it,
   and is named White Witch. **Alice the Black Witch** failed the same test in the
   Second Age. Neither document names the other.
 - **Seneal** rules the North. **Hannarial** commands the Reds. **Solenyra** holds
@@ -3696,7 +3702,7 @@ future:
 
 | Stage | Power |
 |---|---|
-| Morrigan's Chosen | 90,000 |
+| Mór-Ríoghain's Chosen | 90,000 |
 | **Dark Queen** | 179,000 |
 | Training with the **Titan Wardens** | 360,000 |
 | Completing the **Trials of the 1st Beings** | 530,000 |
@@ -3711,7 +3717,7 @@ future:
 | **Unlocking Titanic Force** | 2,500,000 |
 | **Maximum Limit Capacity Titanic Force**, power tripled | 7,500,000 |
 | **Voluntary Power Sealing** | 179,000 |
-| Morrigan's Chosen, again | 250,000 |
+| Mór-Ríoghain's Chosen, again | 250,000 |
 
 Read as a story: she rises, is corrupted by the Black Titan, **is purified by the
 Sea Titan at the cost of ninety-five percent of her power**, is defeated, rebuilds
@@ -3813,7 +3819,7 @@ playing with swords.
 > never existed.** Neither wizard nor knight, but something entirely new. **A
 > brotherhood of Mage Knights.**
 
-### Morrigan's two witches
+### Mór-Ríoghain's two witches
 
 **Alice** was a village healer in the Second Age, married to **Rorick**, a
 blacksmith who led the village's men against a goblin raid with wood axes and
@@ -3886,7 +3892,7 @@ priestesses sensed neither ambition nor pride in her and took her as a student,
 and whose teaching is: **healing and battle were never opposites. To protect life,
 one must sometimes stand before death.**
 
-Then the **Temple of Morrigan.**
+Then the **Temple of Mór-Ríoghain.**
 
 > **The temple did not test her magic. It tested something far more dangerous.
 > Hope.**
@@ -3903,7 +3909,7 @@ soul. *"So. Even you would abandon your oath."* **She withdrew her hand.**
 
 > **"I would rather mourn beside them than become the reason others must mourn."**
 
-Then the throne was no longer empty, and **Morrigan** had simply always been
+Then the throne was no longer empty, and **Mór-Ríoghain** had simply always been
 there: robes woven from moving night, a face shifting young, ancient, beautiful,
 terrible, **every version true and every version incomplete**, with thousands of
 runes drifting around her rearranging into languages no mortal civilisation has
@@ -4258,16 +4264,16 @@ Which means the existing names already decode:
 
 **And the witch names are a convention, not a collision.** `Witch Names` says
 outright: **"Most Legendary Witches start with M."** The convention is **Mor,
-death**, because that is what the Morrigan is. The legendary witches on record are
-**Morrigan, Morgana Pendragon, Megan, Helena, Susan Grimhildir** and **Marie
+death**, because that is what Mór-Ríoghain is. The legendary witches on record are
+**Mór-Ríoghain, Morgana Pendragon, Megan, Helena, Susan Grimhildir** and **Marie
 Adler.**
 
-**So Moraine, Morraine, Morrina, Morgana and Morrigan are not five mistakes.** They
+**So Moraine, Morraine, Morrina, Morgana and Mór-Ríoghain are not five mistakes.** They
 are five witches named by the same custom. **The only thing that needs fixing is
 clarity for the reader**, and the cleanest fix is to give each one a distinct
 second name and use it consistently: **Lady Moraine of Lionheart**, **Queen
 Morraine of Verneuil**, **Morrina Penfyre the Great Witch of the West**, **Morgana
-Pendragon**, and **the Morrigan**, who needs no second name because she is a god.
+Pendragon**, and **Mór-Ríoghain**, who needs no second name because she is a god.
 
 ### The elven naming system, by region
 
@@ -4306,7 +4312,7 @@ that naming space.
 3. **The novellas** are the newest and most detailed, written in the distinctive
    short-line style, **and they supersede the other two wherever they conflict.**
 
-**And one further rule, for tiers.** The novellas call Morrigan the **Prime Goddess
+**And one further rule, for tiers.** The novellas call Mór-Ríoghain the **Prime Goddess
 of Mysteries and Magic**, the canon ladder has **Mór-Ríoghain** as a **World
 Titan**, and `The God Realms` has her as an **Old God born of Nyx**. The fix costs
 nothing: **mortals say Prime Goddess because mortals cannot tell the tiers apart.
@@ -4388,10 +4394,10 @@ colour-monarchs are already in the main cosmology**, and this frame may be
 recoverable rather than discarded - especially alongside the six-world Fae Exodus,
 which also splits a conflict across planets.
 
-### Where the Morrigan's Temple came from
+### Where Mór-Ríoghain's Temple came from
 
 `Mór-Ríoghain` is a short first-person document in which the author describes the
-Morrigan as a presence who stands in the corner of his bedroom at night, watching
+Mór-Ríoghain as a presence who stands in the corner of his bedroom at night, watching
 with compassion rather than hostility but with a small intimidating presence, lists
 what she led him to and what she improved in him, and notes that **she tests his
 will constantly and disappears whenever he fails.**
@@ -4417,11 +4423,11 @@ treated as the source rather than as a curiosity.**
 | Why Cain killed Abel | **Jealousy of Abel's friendship with the elf Glorfarsall**, with Lucifial whispering |
 | Where the Grey Knights come from | **Tyberius Greyhide**, after watching Conquest kill his father. **Human only** |
 | What the Path of Vaen is for | It unlocks **Vaen State**, and it is the discipline **Slayer Angels** need to hold light and darkness at once |
-| What the northern mist is | **Akidna**, imprisoned beneath the Northern Sea by Morrigan, Triton and Neptune. It is leaking out of her |
+| What the northern mist is | **Akidna**, imprisoned beneath the Northern Sea by Mór-Ríoghain, Triton and Neptune. It is leaking out of her |
 | Why humanity is mortal | **Evalon traded its immortality in fear**, and the vial is in the Abyss |
 | Humanity's three origins | **Hyperion** in the West, **Atlor the Mountain Forger** in the north-east Central, **Ra** in the East |
 | What tier Typhon and Akidna are | **World Titans**, because **Lilith and Tartarus** are. The powerscale records them after their defeat |
-| Who the World Titans are | **Ra, Hyperion, Soulomon, the Morrigan, Nephthys, Freya, Frey**, plus Lucifial, Hades, Glorion, Freyva, Atlor, Lilith, Tartarus, Typhon and Akidna. **The spreadsheet's "Ascendant Gods" heading is retired** |
+| Who the World Titans are | **Ra, Hyperion, Soulomon, Mór-Ríoghain, Nephthys, Freya, Frey**, plus Lucifial, Hades, Glorion, Freyva, Atlor, Lilith, Tartarus, Typhon and Akidna. **The spreadsheet's "Ascendant Gods" heading is retired** |
 | What the billion tier is | the **Dwarf Titans**, the fourth planetary generation, **not World Titans** |
 | Whether the power numbers are canon | **No. They are early concept prototypes.** Kept for reference, never used to rank anything. **One exception: Hope at 17 and Fear at 16 is canon** |
 | Who kills Cainan | **Hansall breaks him. Anthurian kills him.** Both drafts were half right |
@@ -4486,7 +4492,7 @@ treated as the source rather than as a curiosity.**
     everywhere. **Hope is fleeting, and still wins by one.**
 16. **The MJD power figures are outdated concept prototypes**, not canon. The
     tiers are kinds of being, not strength brackets. **Ra, Hyperion, Soulomon,
-    the Morrigan, Nephthys, Freya and Frey are World Titans**, and the spreadsheet
+    Mór-Ríoghain, Nephthys, Freya and Frey are World Titans**, and the spreadsheet
     heading that called them Ascendant Gods is retired. The billion tier is the
     **Dwarf Titans**, the fourth planetary generation.
 17. **Prime Gods are born of the world, and the world is born of the Titans

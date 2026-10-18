@@ -217,10 +217,10 @@ realm: radiant cloud, white gold architecture, unbearable light behind.
 Guardian, not predator. Leave clear space above the mane.
 ```
 
-**The Morrigan's Avatar** - Ancient Avatar - `public/images/cards/morrigan-avatar.webp`
+**Mór-Ríoghain's Avatar** - Ancient Avatar - `public/images/cards/morrigan-avatar.webp`
 
 ```
-Waist-up portrait of the Avatar of The Morrigan, the World Titan of Magic. Not
+Waist-up portrait of the Avatar of Mór-Ríoghain, the World Titan of Magic. Not
 the goddess herself but the body she sends: a tall woman of black feathers and
 grey ash, her face a smooth crow-skull mask, three ravens riding her shoulders,
 in a cloak that is made of wings from a distance and of smoke up close. Arcane

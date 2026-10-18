@@ -126,7 +126,7 @@ export const GALLERY_CATEGORIES = [
       T('hades',      'Hades',              'World Titan of Judgment'),
       T('persephone', 'Persephone',         'World Titan of Redemption'),
       T('selene',     'Selene',             'World Titan of Moon and Cycles'),
-      T('morrigan',   'Morrigan',           'World Titan of Magic'),
+      T('morrigan',   'Mór-Ríoghain',           'World Titan of Magic'),
       T('ra',         'Ra',                 'World Titan of Sky, Dragons, and Flame'),
       T('oceanus',    'Oceanus',            'World Titan of the Seas'),
       T('freyva',     'Freyva',             'World Titan of Life and Nature'),

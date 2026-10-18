@@ -70,7 +70,7 @@ const MAP = {
   'World Sage Nilrealm, The White Dragon': 'mon-nilrealm',
   'Zhou Ying, Phoenix General': 'men-zhou',
   'Zhuge Guan, Dragon Strategist': 'men-zhuge',
-  "The Morrigan's Avatar": 'aby-morrigan-avatar',
+  "Mór-Ríoghain's Avatar": 'aby-morrigan-avatar',
   "Lucifial's Avatar, The Whisperer": 'aby-whisperer',
   'The Devil Kings Avatar': 'aby-devil-kings',
   'Archangel Skyrehaal': 'div-skyrehaal',

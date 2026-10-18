@@ -292,8 +292,8 @@ export const CARDS = [
   // themselves, so these have no Divine Distance and cost full price.
   c('aby-whisperer', 'Lucifial’s Avatar, The Whisperer', 'tier_6', 27, 'Titanic Avatar', ['Devil', 'Avatar'],
     'When The Whisperer enters the arena, take a character from your opponent’s hand.', 1),
-  c('aby-morrigan-avatar', 'The Morrigan’s Avatar', 'tier_6', 26, 'Ancient Avatar', ['Divine', 'Avatar'],
-    'When The Morrigan’s Avatar enters the arena, return a Legendary character from your graveyard and give it +13 Power while the Avatar remains.', 2),
+  c('aby-morrigan-avatar', 'Mór-Ríoghain’s Avatar', 'tier_6', 26, 'Ancient Avatar', ['Divine', 'Avatar'],
+    'When Mór-Ríoghain’s Avatar enters the arena, return a Legendary character from your graveyard and give it +13 Power while the Avatar remains.', 2),
   c('aby-devil-kings', 'The Devil Kings Avatar', 'tier_6', 29, 'Devil Avatar', ['Devil', 'Avatar'],
     'When The Devil Kings Avatar enters the arena, summon 4 Demons. After every strike, it loses 6 Power.', 2),
   c('demon-token', 'Demon', 'tier_1', 4, 'Demon', ['Demon', 'Token'],

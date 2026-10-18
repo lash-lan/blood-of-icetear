@@ -15,14 +15,14 @@ guessed at here.**
 ## I. Before he existed
 
 **1. Ra goes looking for knowledge he does not have.**
-The deepest of it is not in his own realm, so he enters the Morrigan's.
+The deepest of it is not in his own realm, so he enters Mór-Ríoghain's.
 
 **2. They make something neither of them intended.**
 What happens there takes eons. They grow close enough to make a life, and the
 life takes root inside her.
 
 **3. Ra goes home, and does not know.**
-The Morrigan does. She says nothing, and carries it for eons more.
+Mór-Ríoghain does. She says nothing, and carries it for eons more.
 
 ---
 
@@ -230,7 +230,7 @@ Listed rather than guessed at.
 **The staff conflicts with the picture.** The bible says the White World Staff
 was sprouted for him by the Great White World Tree after a week of meditation,
 from a willing root that was never severed and chose to leave. The parting
-scene has the Morrigan's Avatar holding it as a gift before she goes. Both are
+scene has Mór-Ríoghain's Avatar holding it as a gift before she goes. Both are
 good. They cannot both be how he got it. Either she is holding it for him
 while he meditates, or the Tree story is replaced.
 
