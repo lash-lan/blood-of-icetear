@@ -644,6 +644,55 @@ export const ENGINES = {
     return out;
   },
 
+  async voiceShift(files, opts, report) {
+    // the phase vocoder is a few hundred lines nothing else here needs
+    const { transform, voiceParams } = await import('./voice.js');
+    const kbps = { high: 320, medium: 192, low: 128 }[opts.quality] ?? 192;
+    const params = voiceParams(opts.voice);
+    const Ctx = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    const out = [];
+
+    for (const f of files) {
+      report(`Decoding ${f.name}`);
+      const audio = await decodeAudio(f);
+      if (audio.duration > 600) {
+        throw new Error(`${f.name} is ${Math.round(audio.duration / 60)} minutes long. Cut it to ten or less first, with Cut to Length.`);
+      }
+
+      const chans = [];
+      for (let c = 0; c < Math.min(2, audio.numberOfChannels); c++) chans.push(audio.getChannelData(c));
+      // a stereo pair that is really the same signal twice costs double to
+      // reshape and gains nothing, so fold it down first
+      if (chans.length === 2) {
+        let diff = 0, energy = 0;
+        for (let i = 0; i < chans[0].length; i += 7) {
+          const d = chans[0][i] - chans[1][i];
+          diff += d * d; energy += chans[0][i] * chans[0][i];
+        }
+        if (diff < energy * 1e-4) chans.length = 1;
+      }
+
+      const shifted = [];
+      for (let c = 0; c < chans.length; c++) {
+        shifted.push(await transform(chans[c], audio.sampleRate, params,
+          (p) => report(`Reshaping ${f.name}`, (c + p) / chans.length)));
+      }
+
+      const len = shifted[0].length;
+      const made = new Ctx(shifted.length, len, audio.sampleRate)
+        .createBuffer(shifted.length, len, audio.sampleRate);
+      for (let c = 0; c < shifted.length; c++) made.copyToChannel(shifted[c], c);
+
+      const wav = opts.format === 'wav';
+      out.push({
+        name: `${stem(f.name)} (${opts.voice}).${wav ? 'wav' : 'mp3'}`,
+        blob: wav ? encodeWav(made) : await encodeMp3(made, kbps, report),
+        note: `${len / audio.sampleRate < audio.duration ? 'faster' : len / audio.sampleRate > audio.duration ? 'slower' : 'same length'}, ${shifted.length === 1 ? 'mono' : 'stereo'}`,
+      });
+    }
+    return out;
+  },
+
   async mediaTrim(files, opts, report) {
     const start = timecode(opts.start, 0);
     const end = timecode(opts.end, Infinity);

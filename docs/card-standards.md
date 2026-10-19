@@ -222,10 +222,10 @@ A rule you have to invent an exception for is usually the rule talking.
 
 So:
 
-- **Avatars are cards.** The Morrigan's Avatar, Lucifial's Avatar, the Devil
+- **Avatars are cards.** Mór-Ríoghain's Avatar, Lucifial's Avatar, the Devil
   Kings Avatar. This is exactly the channel the Law leaves open.
 - **The gods behind them are not.** Hyperion, Lucifial, Thanatos, Hades,
-  Persephone, Selene, The Morrigan, Ra, Oceanus, Freyva, Glorion - and Typhon
+  Persephone, Selene, Mór-Ríoghain, Ra, Oceanus, Freyva, Glorion - and Typhon
   and Akidna, who are World Titans too.
 - **Their deeds are spells.** The Cataclysm carries Typhon's painting. The Law
   of Divine Distance carries Hyperion's, since he is the one who enacted it.
