@@ -10,6 +10,7 @@
 // calls window.print(). The print rules live at the bottom of plan.css.
 import { h, chip, refresh } from './client.js';
 import { HABITS, MONTHS, LINE_ITEMS } from './seed.js';
+import { activeOn } from './schema.js';
 import { fmtDay, fmtDayLong, fmtMonth, monthOf, pct, rm, num, lineItem } from './engine.js';
 import { empty } from './ui.js';
 
@@ -83,6 +84,9 @@ export function report(a) {
       stat('Career evidence', `${evidence.length}`, `target ${a.s.evidencePerMonth} a month`)));
 
   // ── every day, habit by habit ────────────────────────────────────────────
+  // A habit that did not exist in this month is left off it entirely.
+  const lastDay = days.length ? days[days.length - 1].date : '';
+  const shown = HABITS.filter((x) => !x.from || (lastDay && activeOn(x.id, lastDay)));
   const daily = h('section', { class: 'card page-break' },
     h('h2', {}, 'Every day'),
     days.length === 0 ? empty('Nothing logged', 'No check-ins were recorded in this month.') :
@@ -90,12 +94,12 @@ export function report(a) {
         h('table', { class: 'rpt' },
           h('thead', {}, h('tr', {},
             h('th', {}, 'Day'),
-            ...HABITS.map((x) => h('th', { class: 'tiny', title: x.name }, x.name.split(' ')[0])),
+            ...shown.map((x) => h('th', { class: 'tiny', title: x.name }, x.name.split(' ')[0])),
             h('th', {}, 'Steps'), h('th', {}, 'Score'))),
           h('tbody', {}, ...days.map((d) => h('tr', { class: d.score === null ? 'dim' : null },
             h('td', {}, fmtDay(d.date)),
-            ...HABITS.map((x) => {
-              const m = d.rec?.marks?.[x.id];
+            ...shown.map((x) => {
+              const m = activeOn(x.id, d.date) ? d.rec?.marks?.[x.id] : null;
               return h('td', { class: `mark mark-${m ?? 'none'}` }, MARK[m] ?? '');
             }),
             h('td', {}, d.rec?.steps ? num(d.rec.steps) : ''),
@@ -105,7 +109,7 @@ export function report(a) {
       h('div', { class: 'tablewrap' },
         h('table', { class: 'rpt' },
           h('thead', {}, h('tr', {}, h('th', {}, 'Habit'), h('th', {}, 'Target'), h('th', {}, 'Done'), h('th', {}, 'Logged'), h('th', {}, 'Rate'))),
-          h('tbody', {}, ...HABITS.map((x) => {
+          h('tbody', {}, ...shown.map((x) => {
             const counted = days.filter((d) => d.rec?.marks?.[x.id] && d.rec.marks[x.id] !== 'rest');
             const yes = counted.filter((d) => d.rec.marks[x.id] === 'yes').length;
             return h('tr', {}, h('td', {}, `${x.icon} ${x.name}`), h('td', { class: 'dim small' }, x.target),

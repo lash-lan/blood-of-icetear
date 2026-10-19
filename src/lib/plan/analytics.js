@@ -17,9 +17,8 @@
 //
 // And a V1 day is scored by V1 rules, forever. See schema.js.
 
-import { HABITS } from './seed.js';
 import {
-  STATE, SCHEMA, DOMAINS, SCORED, readDay, versionOf, readMark, NUTRITION,
+  STATE, SCHEMA, DOMAINS, SCORED, scoredOn, readDay, versionOf, readMark, NUTRITION, V1_HABITS,
 } from './schema.js';
 import { monthOf } from './engine-dates.js';
 
@@ -35,7 +34,7 @@ function scoreV1(rec) {
   if (!marks.length) return null;
   const rest = marks.filter((m) => m === 'rest').length;
   const yes = marks.filter((m) => m === 'yes').length;
-  return yes / Math.max(1, HABITS.length - rest);
+  return yes / Math.max(1, V1_HABITS - rest);
 }
 
 /** The V2 rule, over whichever habits are asked for. */
@@ -43,6 +42,9 @@ function scoreV2(day, ids) {
   let credit = 0, eligible = 0, recorded = 0, excused = 0, unrecorded = 0;
   for (const id of ids) {
     const st = day.habits[id]?.state ?? 'unrecorded';
+    // A habit that did not exist yet touches nothing — not the score, not the
+    // denominator, not how complete the day is counted as being.
+    if (st === 'dormant') continue;
     if (st === 'excused') { excused++; continue; }
     if (st === 'unrecorded') { unrecorded++; continue; }
     // Nutrition is three-state, so it contributes its own weight rather than
@@ -75,7 +77,8 @@ export function analyseDay(date, rec, s) {
     return { ...d, ...r, shape: shapeOf(r) };
   });
 
-  const overall = scoreV2(day, SCORED);
+  const scoredToday = scoredOn(date);
+  const overall = scoreV2(day, scoredToday);
   const score = legacy ? scoreV1(rec) : overall.score;
 
   const minComplete = (Number(s.minTracking) || 70) / 100;
@@ -91,7 +94,7 @@ export function analyseDay(date, rec, s) {
     completeness: legacy ? null : overall.completeness,
     recorded: overall.recorded, excused: overall.excused, unrecorded: overall.unrecorded,
     eligible: overall.eligible,
-    scoredHabits: SCORED.length,
+    scoredHabits: scoredToday.length,
     enough,
     // Three outcomes, not two. A day nobody wrote down is not a bad day.
     verdict: score === null ? 'untracked'
@@ -135,7 +138,7 @@ export function analyseRange(days) {
     else if (n.state === 'unrecorded') nutrition.unrecorded++;
   }
 
-  const states = { done: 0, rest: 0, missed: 0, excused: 0, unrecorded: 0 };
+  const states = { done: 0, rest: 0, missed: 0, excused: 0, unrecorded: 0, dormant: 0 };
   for (const d of days) for (const id of SCORED) states[d.habits[id]?.state ?? 'unrecorded']++;
 
   return {
@@ -157,7 +160,7 @@ export function analyseRange(days) {
       mean(days.map((d) => d.domain[dm.id].score).filter((x) => x != null))])),
     habits: Object.fromEntries(SCORED.map((id) => {
       const seen = days.map((d) => d.habits[id]).filter(Boolean);
-      const counted = seen.filter((hh) => hh.state !== 'excused' && hh.state !== 'unrecorded');
+      const counted = seen.filter((hh) => hh.state !== 'excused' && hh.state !== 'unrecorded' && hh.state !== 'dormant');
       const credit = counted.reduce((a, hh) => a + (STATE[hh.state].weight ?? 0), 0);
       return [id, {
         rate: counted.length ? credit / counted.length : null,
@@ -166,6 +169,7 @@ export function analyseRange(days) {
         missed: seen.filter((hh) => hh.state === 'missed').length,
         excused: seen.filter((hh) => hh.state === 'excused').length,
         unrecorded: seen.filter((hh) => hh.state === 'unrecorded').length,
+        dormant: seen.filter((hh) => hh.state === 'dormant').length,
         counted: counted.length,
       }];
     })),

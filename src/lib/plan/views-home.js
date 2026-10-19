@@ -1,5 +1,6 @@
 import { h, chip, refresh } from './client.js';
 import { PLAN_START, LAUNCH, HABITS } from './seed.js';
+import { habitsOn, activeOn } from './schema.js';
 import { fmtDay, fmtDayLong, fmtMonth, rm, pct, daysBetween, addDays } from './engine.js';
 import { ring, bar, taskRow, moneyForm, habitGrid, roadmap, spendBar, savingsMeter } from './ui.js';
 
@@ -56,7 +57,7 @@ export function home(a) {
     h('h2', {}, '✓ Today’s check-in', h('a', { class: 'more', href: '/plan/daily' }, 'Steps, back & notes →')),
     day
       ? [h('div', { class: 'sub' }, logged === 0 ? 'Nothing logged yet. Tap as you go through the day.'
-          : `${logged} of ${HABITS.length} logged · score ${pct(day.score)}${logged === HABITS.length ? ' · complete ✓' : ''}`),
+          : `${logged} of ${habitsOn(a.now).length} logged · score ${pct(day.score)}${logged === habitsOn(a.now).length ? ' · complete ✓' : ''}`),
         h('div', { class: 'mt' }, habitGrid(a.now, day.rec))]
       : h('p', { class: 'dim mt' }, 'Today is outside the plan dates.'));
 
@@ -129,7 +130,11 @@ export function home(a) {
       h('thead', {}, h('tr', {}, h('th', {}), recent.map((d) => h('th', { class: d.date === a.now ? 'today' : '' }, d.date.slice(8))))),
       h('tbody', {}, HABITS.map((hb) => h('tr', {},
         h('th', { title: hb.target }, `${hb.icon} ${hb.name}`),
-        recent.map((d) => h('td', { class: `c-${d.rec?.marks?.[hb.id] || (d.date < a.now ? 'missing' : 'none')}`, title: `${hb.name} · ${fmtDay(d.date)}` }))))))) : null,
+        // Before a habit existed its squares stay empty rather than red.
+        recent.map((d) => h('td', {
+          class: `c-${!activeOn(hb.id, d.date) ? 'none' : d.rec?.marks?.[hb.id] || (d.date < a.now ? 'missing' : 'none')}`,
+          title: `${hb.name} · ${fmtDay(d.date)}`,
+        }))))))) : null,
     h('div', { class: 'habitrates mt' }, a.habits.map((hb) =>
       h('div', { class: 'spread small' }, h('span', {}, `${hb.icon} ${hb.name}`), h('b', {}, pct(hb.rate))))));
 

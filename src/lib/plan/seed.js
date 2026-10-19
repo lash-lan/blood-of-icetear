@@ -163,9 +163,18 @@ export const TASKS = [
   t('C-08', 'Career', 'Strategy', 'Write 2027 salary / job strategy', '12-16', '12-31'),
 ];
 
+/**
+ * A habit added part-way through the plan carries the date it started. Days
+ * before it are not missed and not unrecorded: the habit simply did not exist
+ * yet, and nothing earlier is rescored because of it.
+ */
 export const HABITS = [
   { id: 'reading', name: 'Reading', target: '≥1 page', icon: '📖' },
   { id: 'voice', name: 'Voice', target: '≥5 minutes', icon: '🎙' },
+  // Build is the work meant to replace the job; Create is the making that is
+  // recreation first and may yet become something real.
+  { id: 'build', name: 'Build', target: 'Heritage Site Services', icon: '🛠', from: '2026-10-19' },
+  { id: 'create', name: 'Create', target: 'World of Blood of Icetear', icon: '🎨', from: '2026-10-19' },
   { id: 'walking', name: 'Walking', target: '≥5,000 steps (once back permits)', icon: '🚶' },
   { id: 'strength', name: 'Strength', target: '10+ squats (once back permits)', icon: '💪' },
   { id: 'aigp', name: 'AIGP', target: '≥15 minutes study', icon: '🎓' },

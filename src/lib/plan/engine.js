@@ -6,6 +6,7 @@ import {
   PLAN_START, PLAN_END, LAUNCH, RECURRING,
 } from './seed.js';
 import { analyseDay, analyseRange, consistency, streaks, knownMonths, daysInMonth } from './analytics.js';
+import { V1_HABITS, habitsOn } from './schema.js';
 
 // Dates, formatting and money live in engine-dates.js so analytics.js can
 // share them without the two files importing each other. Re-exported here so
@@ -48,13 +49,14 @@ export function dayScore(rec) {
   if (!marks.length) return null;
   const rest = marks.filter((m) => m === 'rest').length;
   const yes = marks.filter((m) => m === 'yes').length;
-  return yes / Math.max(1, HABITS.length - rest);
+  return yes / Math.max(1, V1_HABITS - rest);
 }
 export function dayStatus(date, rec, now) {
   if (date > now) return 'upcoming';
   const n = Object.values(rec?.marks ?? {}).filter(Boolean).length;
   if (n === 0) return date < now ? 'missed' : 'today';
-  return n < HABITS.length ? 'partial' : 'logged';
+  // Against the habits that existed on that day, not today's list.
+  return n < habitsOn(date).length ? 'partial' : 'logged';
 }
 
 export const savingsRating = (amount, s) =>

@@ -1,5 +1,6 @@
 import { h, chip, pick, segmented, patch, save, remove, newId, refresh, toast } from './client.js';
-import { HABITS, BACK, PLAN_START, PLAN_END, SKILLS, USE_FOR, TRAFFIC, BOI_DROPOFF, MONTHS } from './seed.js';
+import { BACK, PLAN_START, PLAN_END, SKILLS, USE_FOR, TRAFFIC, BOI_DROPOFF, MONTHS } from './seed.js';
+import { habitsOn } from './schema.js';
 import { fmtDay, fmtDayLong, fmtMonth, addDays, daysBetween, weekday, pct, rm, num } from './engine.js';
 import { ring, bar, habitGrid, empty } from './ui.js';
 
@@ -30,7 +31,7 @@ export function daily(a) {
     ring(day.score ?? 0, 96, 9, (day.score ?? 0) * 100 >= a.s.goodDay ? '#56cf8a' : '#f2b04b',
       h('div', { class: 'ring-label sm' }, h('b', {}, day.score === null ? '–' : pct(day.score)))),
     h('div', {},
-      h('strong', {}, logged === 0 ? 'Nothing logged yet' : `${logged} of ${HABITS.length} habits logged`),
+      h('strong', {}, logged === 0 ? 'Nothing logged yet' : `${logged} of ${habitsOn(date).length} habits logged`),
       h('div', { class: 'small dim' }, `A good day is ${a.s.goodDay}% or more. Rest days are left out of the score.`),
       h('div', { class: 'row mt' }, chip(`🔥 ${a.streak} good day${a.streak === 1 ? '' : 's'} in a row`, a.streak ? 'gold' : 'grey'), chip(`Last 7 days ${pct(a.avg7)}`, 'grey'))));
 

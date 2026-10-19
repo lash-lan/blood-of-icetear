@@ -20,7 +20,7 @@ import { HABITS, STATUSES, LINE_ITEMS, PAY_FROM, SKILLS } from './seed.js';
 import { fmtDayLong, fmtDay, rm, num, pct, addDays } from './engine.js';
 import {
   STATE, STATES, DOMAINS, CARE_PARTS, NUTRITION_ORDER, NUTRITION,
-  DAY_CONTEXTS, SUGGEST_EXCUSE, BACK_SUGGESTS, stepBand,
+  DAY_CONTEXTS, SUGGEST_EXCUSE, BACK_SUGGESTS, stepBand, EVIDENCE,
 } from './schema.js';
 import { empty } from './ui.js';
 import { downloadDailyReport } from './views-dailyreport.js';
@@ -128,6 +128,27 @@ function familyRow(date, day, marks) {
       })));
 }
 
+/**
+ * Build and Create. The mark says whether the effort happened; the line says
+ * what it was, because a tick on its own can be told a story and a sentence
+ * cannot. The line also carries straight into the daily report.
+ */
+function evidenceRow(date, day, id, marks) {
+  const hb = day.habits[id];
+  const { field, placeholder } = EVIDENCE[id];
+  return h('div', { class: 'hrow' },
+    h('div', { class: 'hrow-top' },
+      h('div', { class: 'hname' }, h('span', { class: 'hi' }, hb.icon), h('strong', {}, hb.name),
+        h('span', { class: 'dim tiny' }, hb.target)),
+      marker(date, id, hb.state, marks)),
+    h('div', { class: 'hrow-body' },
+      h('input', {
+        type: 'text', class: 'notefield', placeholder,
+        value: day[field] ?? '',
+        onchange: (e) => setDay(date, { [field]: e.target.value }),
+      })));
+}
+
 function plainRow(date, day, id, marks) {
   const hb = day.habits[id];
   return h('div', { class: 'hrow' },
@@ -149,12 +170,17 @@ function domainCard(date, day, dm, marks) {
       h('h2', {}, dm.label),
       h('div', { class: 'domain-state' }, dots,
         h('span', { class: 'shape-label' }, d.shape.label))),
-    h('div', { class: 'hrows' }, ...dm.habits.map((id) =>
-      id === 'walking' ? walkingRow(date, day, marks)
-        : id === 'nutrition' ? nutritionRow(date, day)
-        : id === 'care' ? careRow(date, day, marks)
-        : id === 'family' ? familyRow(date, day, marks)
-        : plainRow(date, day, id, marks))),
+    // A habit that did not exist on this day is not drawn at all, so an older
+    // day looks exactly as it did when it was recorded.
+    h('div', { class: 'hrows' }, ...dm.habits
+      .filter((id) => day.habits[id]?.state !== 'dormant')
+      .map((id) =>
+        id === 'walking' ? walkingRow(date, day, marks)
+          : id === 'nutrition' ? nutritionRow(date, day)
+          : id === 'care' ? careRow(date, day, marks)
+          : id === 'family' ? familyRow(date, day, marks)
+          : EVIDENCE[id] ? evidenceRow(date, day, id, marks)
+          : plainRow(date, day, id, marks))),
     // Reflection sits with Life but outside its score, which is the honest
     // place for it: worth recording, not a wellbeing behaviour to be marked.
     dm.id === 'life' ? reflectionRow(date, day, marks) : null);

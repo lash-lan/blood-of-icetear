@@ -27,8 +27,8 @@
 // dialog does not reliably give you that.
 
 import { fmtDay, fmtDayLong, fmtMonth, monthOf, rm, num, pct } from './engine-dates.js';
-import { STATE, DOMAINS, SCORED, UNSCORED, CARE_PARTS, NUTRITION, V2_FROM } from './schema.js';
-import { HABITS, LINE_ITEMS } from './seed.js';
+import { STATE, DOMAINS, SCORED, UNSCORED, CARE_PARTS, NUTRITION, V2_FROM, V1_HABITS } from './schema.js';
+import { LINE_ITEMS } from './seed.js';
 
 const A4 = [595.28, 841.89];
 const M = 48;                 // page margin
@@ -299,7 +299,11 @@ export async function buildDailyReport(a, date, opts = {}) {
 
   for (const dm of DOMAINS) {
     sub(dm.label);
-    for (const id of dm.habits) habitBlock(day.habits[id], detailFor(day, id, s));
+    // Habits that did not exist on the day being reported are left out.
+    for (const id of dm.habits) {
+      if (day.habits[id]?.state === 'dormant') continue;
+      habitBlock(day.habits[id], detailFor(day, id, s));
+    }
   }
   sub('Recorded but not scored');
   for (const id of UNSCORED) habitBlock(day.habits[id], detailFor(day, id, s));
@@ -326,6 +330,14 @@ export async function buildDailyReport(a, date, opts = {}) {
   if (String(nutritionNote || '').trim()) {
     sub('Food');
     verbatim(nutritionNote);
+  }
+  if (String(day.buildNote || '').trim()) {
+    sub('Build');
+    verbatim(day.buildNote);
+  }
+  if (String(day.createNote || '').trim()) {
+    sub('Create');
+    verbatim(day.createNote);
   }
 
   // ── priorities ────────────────────────────────────────────────────────────
@@ -419,7 +431,7 @@ export async function buildDailyReport(a, date, opts = {}) {
     { size: 9, colour: MUTE, gap: 7 });
 
   if (day.legacy) {
-    para(`Scoring era: the original rules, which apply to every day before ${fmtDay(V2_FROM)}. Under them a Rest left the sum entirely, and a habit left blank counted against the day exactly as a miss did. Behaviour = marks done divided by (${HABITS.length} - rests).`,
+    para(`Scoring era: the original rules, which apply to every day before ${fmtDay(V2_FROM)}. Under them a Rest left the sum entirely, and a habit left blank counted against the day exactly as a miss did. Behaviour = marks done divided by (${V1_HABITS} - rests).`,
       { size: 9, gap: 7 });
     para('These days are never re-scored under the current rules. The day happened under the contract it was recorded under, and rewriting it afterwards would make the record untrustworthy in both directions.',
       { size: 9, colour: MUTE, gap: 7 });
@@ -522,6 +534,13 @@ function detailFor(day, id, s) {
     out.push('A note was written and is reproduced in full further down.');
   }
 
+  // Build and Create: the sentence is the point, so it is quoted here in full
+  // rather than summarised, and its absence is stated plainly.
+  if (id === 'build' || id === 'create') {
+    const note = String(hb.detail?.note || '').trim();
+    out.push(note ? `What was done: "${note}"` : 'No account of the work was written.');
+  }
+
   if (id === 'aunty') out.push('Recorded, never scored.');
 
   if (hb.state === 'unrecorded' && SCORED.includes(id)) {
@@ -539,7 +558,7 @@ function creditOf(day) {
   for (const id of SCORED) {
     const hb = day.habits[id];
     const st = hb?.state;
-    if (!st || st === 'excused' || st === 'unrecorded') continue;
+    if (!st || st === 'excused' || st === 'unrecorded' || st === 'dormant') continue;
     credit += id === 'nutrition' && hb.detail?.rating
       ? NUTRITION[hb.detail.rating].weight
       : STATE[st].weight;

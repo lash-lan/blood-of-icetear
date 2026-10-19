@@ -21,6 +21,13 @@ import { HABITS } from './seed.js';
 /** The date V2 scoring begins. Days before this keep V1 rules forever. */
 export const V2_FROM = '2026-10-01';
 
+/**
+ * September's denominator, pinned. The old rule divided by the number of
+ * habits there were at the time, so it has to stay nine however many are
+ * added later, or every September score would move whenever the list grows.
+ */
+export const V1_HABITS = 9;
+
 export const SCHEMA = { V1: 1, V2: 2 };
 
 /** Which generation a stored record belongs to. */
@@ -35,6 +42,9 @@ export const STATE = {
   missed:     { id: 'missed',     label: 'Missed',     glyph: '✗', weight: 0,    counts: true },
   excused:    { id: 'excused',    label: 'Excused',    glyph: '–', weight: null, counts: false },
   unrecorded: { id: 'unrecorded', label: 'Unrecorded', glyph: '·', weight: null, counts: false },
+  // A habit that did not exist yet on that day. Not a miss, not a blank: it
+  // leaves every sum untouched, so adding a habit never rewrites the past.
+  dormant:    { id: 'dormant',    label: 'Not yet tracked', glyph: '', weight: null, counts: false },
 };
 export const STATES = ['done', 'rest', 'missed', 'excused'];   // the four you can choose
 
@@ -58,12 +68,29 @@ export const readMark = (raw) =>
 
 export const DOMAINS = [
   { id: 'body',   label: 'Body',   habits: ['walking', 'strength', 'nutrition', 'care'] },
-  { id: 'growth', label: 'Growth', habits: ['aigp', 'reading', 'voice'] },
+  { id: 'growth', label: 'Growth', habits: ['aigp', 'reading', 'voice', 'build', 'create'] },
   { id: 'life',   label: 'Life',   habits: ['family'] },
 ];
 export const SCORED = DOMAINS.flatMap((d) => d.habits);
 export const UNSCORED = ['aunty'];                  // Reflection / Aunty check-in
 export const domainOf = (id) => DOMAINS.find((d) => d.habits.includes(id))?.id ?? null;
+
+// ─── habits that started part-way through ───────────────────────────────────
+
+/** Was this habit part of the plan on that day? */
+export const activeOn = (id, date) => {
+  const from = HABITS.find((hb) => hb.id === id)?.from;
+  return !from || date >= from;
+};
+/** The habits that existed on that day, and the scored ones among them. */
+export const habitsOn = (date) => HABITS.filter((hb) => activeOn(hb.id, date));
+export const scoredOn = (date) => SCORED.filter((id) => activeOn(id, date));
+
+/** Habits that keep a line of their own about what the effort actually was. */
+export const EVIDENCE = {
+  build: { field: 'buildNote', placeholder: 'What did you build today?' },
+  create: { field: 'createNote', placeholder: 'What did you make today?' },
+};
 
 export const DAY_CONTEXTS = ['normal', 'injured', 'sick', 'travel', 'exceptional'];
 
@@ -111,6 +138,16 @@ export function readDay(date, rec, settings = {}) {
     const id = h.id;
     let state = readMark(marks[id]);
     let detail = null;
+
+    // A habit added later simply was not there. Say so and move on, so no
+    // earlier day gains a miss it could never have avoided.
+    if (!activeOn(id, date)) {
+      out.habits[id] = { id, name: h.name, target: h.target, icon: h.icon, state: 'dormant', detail: null, domain: domainOf(id), from: h.from };
+      continue;
+    }
+
+    // Build and Create: the mark says whether, the line says what.
+    if (EVIDENCE[id]) detail = { note: rec?.[EVIDENCE[id].field] ?? '' };
 
     // Walking: an explicit mark always wins, steps only fill a gap.
     if (id === 'walking') {
@@ -165,10 +202,12 @@ export function readDay(date, rec, settings = {}) {
   out.notes = rec?.notes ?? '';
   out.reflection = rec?.reflection ?? '';
   out.familyNote = rec?.familyNote ?? '';
+  out.buildNote = rec?.buildNote ?? '';
+  out.createNote = rec?.createNote ?? '';
   out.priorities = Array.isArray(rec?.priorities) ? rec.priorities.slice(0, 3) : [];
   out.steps = rec?.steps === '' || rec?.steps == null ? null : Number(rec.steps);
   out.hasAnything = Object.values(marks).some(Boolean) || out.steps != null
-    || Boolean(rec?.nutrition || rec?.care || rec?.reflection || rec?.notes);
+    || Boolean(rec?.nutrition || rec?.care || rec?.reflection || rec?.notes || rec?.buildNote || rec?.createNote);
   return out;
 }
 
