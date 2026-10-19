@@ -63,7 +63,7 @@ export function home(a) {
 
   // ─── focus ───
   const focus = a.tasks
-    .filter((t) => t.type !== 'Backlog' && t.type !== 'Milestone' && t.status !== 'Done' && t.start <= addDays(a.now, 2))
+    .filter((t) => t.type !== 'Backlog' && t.type !== 'Milestone' && t.status !== 'Done' && t.status !== 'Scrap' && t.start <= addDays(a.now, 2))
     .sort((x, y) => RANK[x.flag] - RANK[y.flag] || x.end.localeCompare(y.end))
     .slice(0, 7);
   const focusCard = h('section', { class: 'card' },

@@ -27,6 +27,7 @@ export const FLAG = {
   done: { label: 'Done', tone: 'green' },
   overdue: { label: 'Overdue', tone: 'red' },
   blocked: { label: 'Blocked', tone: 'red' },
+  scrapped: { label: 'Scrapped', tone: 'grey' },
   late: { label: 'Late start', tone: 'amber' },
   stale: { label: 'Needs update', tone: 'amber' },
   upcoming: { label: 'Upcoming', tone: 'grey' },
@@ -34,6 +35,8 @@ export const FLAG = {
 };
 
 export function taskFlag(t, now, s) {
+  // Scrapped first: a task out of the plan is never overdue, late or stale.
+  if (t.status === 'Scrap') return 'scrapped';
   if (t.status === 'Done') return 'done';
   if (t.end < now) return 'overdue';
   if (t.status === 'Blocked') return 'blocked';
@@ -223,7 +226,7 @@ export function analyse(state, now = today()) {
 
   // gates
   const gates = PHASES.map((p) => {
-    const inPhase = tasks.filter((t) => t.type === 'Task' && t.phase.id === p.id);
+    const inPhase = tasks.filter((t) => t.type === 'Task' && t.phase.id === p.id && t.status !== 'Scrap');
     const done = inPhase.filter((t) => t.status === 'Done').length;
     const readiness = inPhase.length ? done / inPhase.length : 0;
     const criticalOpen = inPhase.filter((t) => t.critical && t.status !== 'Done').length;
@@ -240,12 +243,12 @@ export function analyse(state, now = today()) {
 
   // pillars
   const pillars = PILLARS.filter((p) => p.id !== 'Programme').map((p) => {
-    const mine = tasks.filter((t) => t.pillar === p.id && t.type === 'Task');
+    const mine = tasks.filter((t) => t.pillar === p.id && t.type === 'Task' && t.status !== 'Scrap');
     const done = mine.filter((t) => t.status === 'Done').length;
     return { ...p, total: mine.length, done, progress: mine.length ? done / mine.length : 0,
       overdue: tasks.filter((t) => t.pillar === p.id && t.flag === 'overdue').length };
   });
-  const realTasks = tasks.filter((t) => t.type === 'Task');
+  const realTasks = tasks.filter((t) => t.type === 'Task' && t.status !== 'Scrap');
   const overall = realTasks.length ? realTasks.filter((t) => t.status === 'Done').length / realTasks.length : 0;
   const criticalOpen = realTasks.filter((t) => t.critical && t.status !== 'Done').length;
 

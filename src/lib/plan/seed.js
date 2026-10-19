@@ -32,7 +32,10 @@ export const PILLARS = [
   { id: 'Career', icon: '↗', colour: '#9fd36b' },
 ];
 
-export const STATUSES = ['Not started', 'In progress', 'Blocked', 'Done'];
+// Scrap sits below Blocked: a task that is not going to happen. It keeps its
+// record and its history, and leaves every total alone, so dropping work out
+// of the plan never has to mean destroying it.
+export const STATUSES = ['Not started', 'In progress', 'Blocked', 'Scrap', 'Done'];
 export const TYPES = ['Task', 'Milestone', 'Ongoing', 'Backlog'];
 export const PERCENTS = [0, 10, 25, 50, 75, 90, 100];
 

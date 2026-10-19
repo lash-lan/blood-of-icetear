@@ -29,6 +29,7 @@ export const bar = (fraction, tone = '', cls = '') =>
 export const flagChip = (flag) => chip(FLAG[flag].label, FLAG[flag].tone);
 
 export function dueText(t, now) {
+  if (t.status === 'Scrap') return 'Scrapped · out of the plan';
   if (t.status === 'Done') return `Finished · was due ${fmtDay(t.end)}`;
   const d = daysBetween(now, t.end);
   if (d < 0) return `${-d} day${d === -1 ? '' : 's'} overdue`;
@@ -39,6 +40,9 @@ export function dueText(t, now) {
 
 /** Change a task. The "last updated" date is stamped for you. */
 export function updateTask(t, fields, now) {
+  // Scrapping leaves how far along it was exactly as it stands, so putting it
+  // back later shows the real progress rather than a number invented here.
+  if (fields.status === 'Scrap') return patch('tasks', t.id, { ...fields, updated: now });
   const next = { ...fields, updated: now };
   if (fields.status === 'Done') next.pct = 100;
   if (fields.status && fields.status !== 'Done' && Number(t.pct) === 100) next.pct = 90;

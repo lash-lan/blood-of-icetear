@@ -17,11 +17,15 @@ const SHOW = [
   { value: 'upcoming', label: 'Upcoming' },
   { value: 'critical', label: '★ Launch-critical' },
   { value: 'done', label: 'Done' },
+  { value: 'scrapped', label: 'Scrapped' },
   { value: 'backlog', label: 'Backlog (after launch)' },
 ];
 
 function matches(t, now) {
   if (g.pillar && t.pillar !== g.pillar) return false;
+  // Scrapped work is out of the plan, so it only appears when asked for by name.
+  if (t.status === 'Scrap') return g.show === 'scrapped';
+  if (g.show === 'scrapped') return false;
   switch (g.show) {
     case '': return true;
     case 'attention': return ['overdue', 'late', 'stale', 'blocked'].includes(t.flag);
@@ -99,7 +103,7 @@ export function gantt(a) {
       h('label', { class: 'field' }, 'View', segmented([{ value: 'timeline', label: '▤ Timeline' }, { value: 'list', label: '☰ List' }], g.mode, (v) => { g.mode = v; refresh(); })),
       h('div', { class: 'field' }, h('button', { class: 'btn primary', onclick: () => { g.adding = !g.adding; refresh(); } }, g.adding ? 'Close form' : '＋ Add task'))),
     h('div', { class: 'row mt' },
-      ['overdue', 'blocked', 'stale', 'late', 'ok', 'upcoming', 'done'].map((k) =>
+      ['overdue', 'blocked', 'stale', 'late', 'ok', 'upcoming', 'done', 'scrapped'].map((k) =>
         h('button', { class: `chipbtn ${g.show === k ? 'on' : ''}`, onclick: () => { g.show = g.show === k ? '' : k; refresh(); } },
           chip(`${counts[k]} ${FLAG[k].label.toLowerCase()}`, FLAG[k].tone)))));
 
@@ -166,7 +170,7 @@ export function gantt(a) {
 // ─── Phases & Gates ───
 export function gates(a) {
   const cards = a.gates.map((gt) => {
-    const open = a.tasks.filter((t) => t.type === 'Task' && t.phase.id === gt.id && t.status !== 'Done')
+    const open = a.tasks.filter((t) => t.type === 'Task' && t.phase.id === gt.id && t.status !== 'Done' && t.status !== 'Scrap')
       .sort((x, y) => (y.critical - x.critical) || x.end.localeCompare(y.end));
     const current = a.phase?.id === gt.id;
     return h('section', { class: `card gate ${current ? 'current' : ''}`, style: { '--c': phaseColour(gt.id) } },

@@ -233,7 +233,7 @@ export async function buildDailyReport(a, date, opts = {}) {
   const dueToday = a.tasks.filter((t) => t.end === date);
   const startedToday = a.tasks.filter((t) => t.start === date);
   const touchedToday = a.tasks.filter((t) => t.updated === date);
-  const openNow = a.tasks.filter((t) => t.type === 'Task' && t.status !== 'Done' && t.start <= date && t.end >= date);
+  const openNow = a.tasks.filter((t) => t.type === 'Task' && t.status !== 'Done' && t.status !== 'Scrap' && t.start <= date && t.end >= date);
 
   // ── cover block ───────────────────────────────────────────────────────────
 
