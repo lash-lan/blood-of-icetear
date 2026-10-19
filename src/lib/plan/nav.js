@@ -10,7 +10,7 @@ export const NAV = [
   ] },
   { group: 'Every day', items: [
     { view: 'daily', href: '/plan/daily', icon: '▦', label: 'Daily history', short: 'History', blurb: 'The calendar, and how each habit has gone.' },
-    { view: 'gantt', href: '/plan/gantt', icon: '▤', label: 'Plan & Gantt', short: 'Plan', blurb: 'Every task from 14 Sep to 31 Dec. Change a status and it saves instantly.' },
+    { view: 'gantt', href: '/plan/gantt', icon: '▤', label: 'Plan & Gantt', short: 'Plan', blurb: 'Every task from 14 Sep to 31 Jan. Change a status and it saves instantly.' },
     { view: 'weekly', href: '/plan/weekly', icon: '☀', label: 'Sunday Review', blurb: 'Twenty minutes every Sunday. The row turns red if you skip it.' },
   ] },
   { group: 'Money', items: [

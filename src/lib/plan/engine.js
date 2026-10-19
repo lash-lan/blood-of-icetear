@@ -28,6 +28,7 @@ export const FLAG = {
   overdue: { label: 'Overdue', tone: 'red' },
   blocked: { label: 'Blocked', tone: 'red' },
   scrapped: { label: 'Scrapped', tone: 'grey' },
+  review: { label: 'Under review', tone: 'purple' },
   late: { label: 'Late start', tone: 'amber' },
   stale: { label: 'Needs update', tone: 'amber' },
   upcoming: { label: 'Upcoming', tone: 'grey' },
@@ -40,6 +41,9 @@ export function taskFlag(t, now, s) {
   if (t.status === 'Done') return 'done';
   if (t.end < now) return 'overdue';
   if (t.status === 'Blocked') return 'blocked';
+  // Waiting on a check is not the same as going stale: it stops nagging, but
+  // an overdue deadline above still wins, so review is never a hiding place.
+  if (t.status === 'Under review') return 'review';
   if (t.status === 'Not started' && t.start < now && t.type !== 'Backlog') return 'late';
   if (t.status === 'In progress' && (!t.updated || daysBetween(t.updated, now) > s.staleDays)) return 'stale';
   if (t.start > now) return 'upcoming';

@@ -18,6 +18,7 @@ const SHOW = [
   { value: 'critical', label: '★ Launch-critical' },
   { value: 'done', label: 'Done' },
   { value: 'scrapped', label: 'Scrapped' },
+  { value: 'review', label: 'Under review' },
   { value: 'backlog', label: 'Backlog (after launch)' },
 ];
 
@@ -49,9 +50,19 @@ function editor(t, now) {
         onchange: (e) => e.target.value && (e.target.value >= t.start ? set({ end: e.target.value }) : toast('End must be after the start date.', 'bad')) })),
       h('label', { class: 'field' }, 'Launch-critical?', pick([{ value: 'yes', label: '★ Yes' }, { value: 'no', label: 'No' }], t.critical ? 'yes' : 'no', (v) => set({ critical: v === 'yes' }))),
       h('label', { class: 'field' }, 'Kind', pick(TYPES, t.type, (v) => set({ type: v }))),
+      h('label', { class: 'field wide' }, 'Done when', h('input', { type: 'text', value: t.doneWhen ?? '',
+        placeholder: 'What has to be true for this to be finished', onchange: (e) => set({ doneWhen: e.target.value }) })),
+      h('label', { class: 'field wide' }, 'Depends on', h('input', { type: 'text', value: t.dependsOn ?? '',
+        placeholder: 'Task IDs that must finish first, e.g. TCC-007, TCC-027', onchange: (e) => set({ dependsOn: e.target.value }) })),
+      h('label', { class: 'field wide' }, 'Evidence', h('input', { type: 'text', value: t.evidence ?? '',
+        placeholder: 'Where the finished thing lives — a link or a file name', onchange: (e) => set({ evidence: e.target.value }) })),
+      h('label', { class: 'field' }, 'Hours spent', h('input', { type: 'number', min: '0', step: '0.5', inputmode: 'decimal', value: t.hours ?? '',
+        placeholder: 'e.g. 4.5', onchange: (e) => set({ hours: e.target.value === '' ? '' : Number(e.target.value) }) })),
+      h('label', { class: 'field' }, 'Cost (RM)', h('input', { type: 'number', min: '0', step: '0.01', inputmode: 'decimal', value: t.cost ?? '',
+        placeholder: 'e.g. 120', onchange: (e) => set({ cost: e.target.value === '' ? '' : Number(e.target.value) }) })),
       h('label', { class: 'field wide' }, 'Notes', h('input', { type: 'text', value: t.notes ?? '', placeholder: 'Anything worth remembering', onchange: (e) => set({ notes: e.target.value }) }))),
     h('div', { class: 'spread mt small' },
-      h('span', { class: 'dim' }, `${t.id} · ${t.workstream} · ${t.updated ? `last updated ${fmtDay(t.updated)}` : 'never updated'}`),
+      h('span', { class: 'dim' }, `${t.id} · ${t.workstream}${t.addedBy ? ` · added by ${t.addedBy}` : ''} · ${t.updated ? `last updated ${fmtDay(t.updated)}` : 'never updated'}`),
       h('div', { class: 'row' },
         custom ? h('button', { class: 'btn small danger', onclick: () => { if (confirm(`Delete “${t.task}”?`)) { g.open = null; remove('tasks', t.id); } } }, 'Delete task') : null,
         h('button', { class: 'btn small', onclick: () => { g.open = null; refresh(); } }, 'Close'))));
@@ -103,7 +114,7 @@ export function gantt(a) {
       h('label', { class: 'field' }, 'View', segmented([{ value: 'timeline', label: '▤ Timeline' }, { value: 'list', label: '☰ List' }], g.mode, (v) => { g.mode = v; refresh(); })),
       h('div', { class: 'field' }, h('button', { class: 'btn primary', onclick: () => { g.adding = !g.adding; refresh(); } }, g.adding ? 'Close form' : '＋ Add task'))),
     h('div', { class: 'row mt' },
-      ['overdue', 'blocked', 'stale', 'late', 'ok', 'upcoming', 'done', 'scrapped'].map((k) =>
+      ['overdue', 'blocked', 'review', 'stale', 'late', 'ok', 'upcoming', 'done', 'scrapped'].map((k) =>
         h('button', { class: `chipbtn ${g.show === k ? 'on' : ''}`, onclick: () => { g.show = g.show === k ? '' : k; refresh(); } },
           chip(`${counts[k]} ${FLAG[k].label.toLowerCase()}`, FLAG[k].tone)))));
 

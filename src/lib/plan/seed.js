@@ -4,7 +4,7 @@
 // is only consulted for the fixed lists (pillars, habits, line items).
 
 export const PLAN_START = '2026-09-14';
-export const PLAN_END = '2026-12-31';
+export const PLAN_END = '2027-01-31';
 export const LAUNCH = '2026-11-15';
 
 export const PHASES = [
@@ -20,6 +20,8 @@ export const PHASES = [
     criterion: 'Real traffic, real KPIs, first paying strangers, at least one measured experiment per product.' },
   { id: 'P6', name: 'Review & 2027', start: '2026-12-16', end: '2026-12-31', gate: '31 December Review', gateDate: '2026-12-31',
     criterion: 'All four pillars evaluated, scorecard complete, 2027 strategy written.' },
+  { id: 'P7', name: 'Commercial Activation', start: '2027-01-01', end: '2027-01-31', gate: '16 January Commercial Review', gateDate: '2027-01-16',
+    criterion: 'The Chronicle Company is operationally credible, legally prepared and commercially testable: outreach done, buyer objections recorded, pricing and profitability judged against real conversations.' },
 ];
 
 export const PILLARS = [
@@ -30,12 +32,13 @@ export const PILLARS = [
   { id: 'Portfolio', icon: '▣', colour: '#6fd0c0' },
   { id: 'Health & Family', icon: '♥', colour: '#ef7b8b' },
   { id: 'Career', icon: '↗', colour: '#9fd36b' },
+  { id: 'The Chronicle Company', icon: '🏛', colour: '#d9a441' },
 ];
 
 // Scrap sits below Blocked: a task that is not going to happen. It keeps its
 // record and its history, and leaves every total alone, so dropping work out
 // of the plan never has to mean destroying it.
-export const STATUSES = ['Not started', 'In progress', 'Blocked', 'Scrap', 'Done'];
+export const STATUSES = ['Not started', 'In progress', 'Blocked', 'Under review', 'Scrap', 'Done'];
 export const TYPES = ['Task', 'Milestone', 'Ongoing', 'Backlog'];
 export const PERCENTS = [0, 10, 25, 50, 75, 90, 100];
 
@@ -176,7 +179,7 @@ export const HABITS = [
   { id: 'voice', name: 'Voice', target: '≥5 minutes', icon: '🎙' },
   // Build is the work meant to replace the job; Create is the making that is
   // recreation first and may yet become something real.
-  { id: 'build', name: 'Build', target: 'Heritage Site Services', icon: '🛠', from: '2026-10-19' },
+  { id: 'build', name: 'Build', target: 'The Chronicle Company', icon: '🛠', from: '2026-10-19' },
   { id: 'create', name: 'Create', target: 'World of Blood of Icetear', icon: '🎨', from: '2026-10-19' },
   { id: 'walking', name: 'Walking', target: '≥5,000 steps (once back permits)', icon: '🚶' },
   { id: 'strength', name: 'Strength', target: '10+ squats (once back permits)', icon: '💪' },
@@ -247,7 +250,7 @@ export const USE_FOR = ['Portfolio', 'CV', 'Interview story', 'Salary negotiatio
 export const TRAFFIC = ['Instagram', 'TikTok', 'YouTube', 'Reddit', 'Google search', 'Facebook', 'Direct / word of mouth', 'Paid ads', 'Other'];
 export const BOI_DROPOFF = ['Landing page', 'Trial start', 'Mid-trial', 'Free result', 'Premium offer', 'Checkout', 'Not sure yet'];
 
-export const MONTHS = ['2026-09', '2026-10', '2026-11', '2026-12'];
+export const MONTHS = ['2026-09', '2026-10', '2026-11', '2026-12', '2027-01'];
 
 /**
  * What the real accounts said when they were last checked. Three separate
