@@ -5,7 +5,7 @@
 // daily-report.js and the recording lives on Today, so this page never becomes
 // a third place where a day can be edited.
 
-import { h, chip, patch, toast, refresh } from './client.js';
+import { h, chip, patch, toast, refresh, loadPart } from './client.js';
 import { fmtDay, fmtDayLong, addDays, pct } from './engine.js';
 import { empty } from './ui.js';
 import { DOMAINS } from './schema.js';
@@ -14,7 +14,7 @@ const ui = { date: null, busy: false };
 
 /** Make the file and hand it to the browser. Shared with the button on Today. */
 export async function downloadDailyReport(a, date) {
-  const { buildDailyReport } = await import('./daily-report.js');
+  const { buildDailyReport } = await loadPart(() => import('./daily-report.js'));
   const { blob, filename } = await buildDailyReport(a, date, { finances: a.s.dailyPdfFinances !== false });
   const url = URL.createObjectURL(blob);
   const link = Object.assign(document.createElement('a'), { href: url, download: filename });

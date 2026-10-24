@@ -29,6 +29,7 @@
 import { fmtDay, fmtDayLong, fmtMonth, monthOf, rm, num, pct } from './engine-dates.js';
 import { STATE, DOMAINS, SCORED, UNSCORED, CARE_PARTS, NUTRITION, V2_FROM, V1_HABITS } from './schema.js';
 import { LINE_ITEMS } from './seed.js';
+import { loadPart } from './client.js';
 
 const A4 = [595.28, 841.89];
 const M = 48;                 // page margin
@@ -64,7 +65,7 @@ const GLYPH = { done: '[x]', rest: '[-]', missed: '[ ]', excused: '[/]', unrecor
  * @returns      { blob, filename }
  */
 export async function buildDailyReport(a, date, opts = {}) {
-  const { PDFDocument, StandardFonts, rgb } = await import('pdf-lib');
+  const { PDFDocument, StandardFonts, rgb } = await loadPart(() => import('pdf-lib'));
   const pdf = await PDFDocument.create();
   const body = await pdf.embedFont(StandardFonts.Helvetica);
   const bold = await pdf.embedFont(StandardFonts.HelveticaBold);

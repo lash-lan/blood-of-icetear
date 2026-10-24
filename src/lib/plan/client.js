@@ -134,6 +134,52 @@ export async function remove(collection, id) {
   }
 }
 
+/**
+ * Parts of the plan that are only fetched when they are needed, such as the
+ * code that makes a PDF, carry the build's version in their filename. A page
+ * left open across a publish therefore asks for a file that no longer exists.
+ *
+ * That is not a broken feature. It is a page that has gone out of date, and
+ * the cure is to fetch the page again: the newest version answers, and the
+ * part loads. Everything is kept on the server, so nothing is lost by
+ * reloading.
+ */
+const STALE = /dynamically imported module|Importing a module script failed|error loading dynamically imported|Failed to fetch/i;
+
+/** Reload at most once a minute, so a genuine failure cannot loop forever. */
+function reloadForNewVersion() {
+  let last = 0;
+  try { last = Number(sessionStorage.getItem('planReloadedAt')) || 0; } catch {}
+  if (Date.now() - last < 60000) return false;
+  try {
+    sessionStorage.setItem('planReloadedAt', String(Date.now()));
+    // The reload wipes the screen, so the reason has to outlive it.
+    sessionStorage.setItem('planReloadNote', '1');
+  } catch {}
+  setTimeout(() => location.reload(), 1200);
+  return true;
+}
+
+/** Load a part of the plan, recovering if the page is older than the site. */
+export async function loadPart(load) {
+  try {
+    return await load();
+  } catch (err) {
+    if (!STALE.test(String(err?.message ?? err))) throw err;
+    if (reloadForNewVersion()) {
+      toast('The plan was updated. Reloading…');
+      throw new Error('The plan was updated while this page was open. It is reloading now; try again in a moment.');
+    }
+    throw new Error('That part of the plan could not be fetched. Check your connection and try again.');
+  }
+}
+
+/** Vite reports a failed part before the import itself rejects. */
+addEventListener('vite:preloadError', (e) => {
+  e.preventDefault();
+  if (reloadForNewVersion()) toast('The plan was updated. Reloading…');
+});
+
 export const newId = () => `${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`;
 
 let lastDay = today();
@@ -162,6 +208,12 @@ export async function boot(render) {
     if (!res.ok) throw new Error(out.error || 'Could not load the plan.');
     state = out.collections;
     redraw();
+    try {
+      if (sessionStorage.getItem('planReloadNote')) {
+        sessionStorage.removeItem('planReloadNote');
+        toast('The plan had been updated, so it reloaded. Try that again.');
+      }
+    } catch {}
   } catch (err) {
     app.replaceChildren(h('div', { class: 'card empty' }, h('strong', {}, 'The plan could not be loaded.'), err.message));
     return;
