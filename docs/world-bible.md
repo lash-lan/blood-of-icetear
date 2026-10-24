@@ -1274,6 +1274,21 @@ who has swung a hammer for three centuries is sinewy and iron-hard, not wide.
 silhouette comes from plate, aprons, cloaks and packs, and it comes off at the
 end of the day.
 
+**And elven clothing is cut to the body.** Sleeves fit the arm, trousers fit the
+leg, bodices and jackets follow the ribs and the waist. **No elven garment is
+loose above the hip.** Volume is permitted below it and nowhere else, so a floor
+length vestment is close through the shoulder and chest and only begins to fall
+at the hip. Nothing sacks, nothing bunches, nothing is oversized.
+
+Layers are thin and close, stacked rather than padded. Lines run long and
+vertical. Collars sit high on the throat. Closures wrap across the body or sit
+off to one side, never a row of buttons down the centre.
+
+**Where a garment is heavy, it hangs straight down from a narrow shoulder rather
+than widening it.** An apron, a mantle or a cloak falls from a thin frame and
+the frame stays visible underneath. **An elf dressed in loose draped cloth is an
+elf dressed by a human**, and in the later ages that is exactly what it means.
+
 ### The Great Trees, and where the elves woke
 
 The **Song of Becoming** had a place. The first elves woke along the **Great Trees
