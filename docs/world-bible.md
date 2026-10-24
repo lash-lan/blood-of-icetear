@@ -192,6 +192,8 @@ themselves."* And:
 
 ## 3. Before anything: the Pre-existence
 
+![Light and Darkness](images/plate-pre-existence.jpg)
+
 **The Light Entity** is the momentum of the universe, the masculine drive that
 struggles to strive for greatness, to shine out of the darkness and be known,
 the potential in everything, the warmth and burning nature of matter.
@@ -291,6 +293,8 @@ is no longer a rank in this bible.**
 
 ### The Primordial Pantheon
 
+![The Primordial Pantheon](images/plate-primordial-titans.jpg)
+
 Twenty, with genders and alignments, ranked by power.
 
 | Titan | Power | Alignment | Personality | Gender |
@@ -340,6 +344,8 @@ of Magic under another name, and the two have never met. **Mór-Ríoghain is not
 the Primordial Titan of Magic. She is what Magic looks like here.**
 
 ### The Genesis Titans
+
+![The Universal Titans, called Genesis and Sustainer elsewhere in the archive](images/plate-universal-titans.jpg)
 
 Fifteen, each with a described function. **Nothing of this tier was in the bible
 before and it is the best-written tier in the archive.**
@@ -446,6 +452,8 @@ his strength to the Dark Angel.**
 
 ### The World Titans
 
+![The World Titans of Archavalon](images/plate-world-titans.jpg)
+
 **The ones who shaped this world, and then had to leave it.** The spreadsheet
 files these seven under "Ascendant Gods" and that heading is retired. The figures
 are the old prototypes, kept only for the alignments beside them.
@@ -525,6 +533,8 @@ jailors. The record was written afterwards, exactly as it was for Bahamut, whom
 it already calls the Black Abomination. **Mortals wrote down what was left.**
 
 ### Prime Gods
+
+![Prime Gods](images/plate-prime-gods.jpg)
 
 Headed in the sheet as **"The Gods the monsters and mortals worship and fear"**,
 and footnoted **"These immortals are considered the pinnacle of the first
@@ -1291,6 +1301,8 @@ elf dressed by a human**, and in the later ages that is exactly what it means.
 
 ### The Great Trees, and where the elves woke
 
+![The Awakening Grove](images/the-awakening-grove.jpg)
+
 The **Song of Becoming** had a place. The first elves woke along the **Great Trees
 of the Western continent**, and every elven line still living can name the tree
 its blood began beneath.
@@ -1741,7 +1753,7 @@ than erased the threat."**
 
 ### The continents
 
-![The world as it stands](map-web.jpg)
+![The world as it stands](images/map-web.jpg)
 
 **Western.** Elves and humans dominant, with beast-lords and mountainkin among
 them. Medieval aesthetic with high elven elegance. Birthplace of the Elu-Dragar
@@ -2685,6 +2697,8 @@ Bloodwing's reign. **After she becomes the Dark Angel she vanquishes the invadin
 Black Sea Angel there.** The Western Continent is not yet lost.
 
 ### The elven north, and the fall of Ashwinter
+
+![What is left of the Snoweinter tree](images/ashwinter-tree.jpg)
 
 **Hansall Whitegrove** is summoned to the Eternal Fae Realm to become the **Fae
 Lord of Fables**, and before he leaves he takes **Antharaiel** onto the
@@ -4374,6 +4388,8 @@ the ones who were asked. See section 12.
 
 ## 24. Orders, houses and factions
 
+![The four Ranger corps, the four Dark Houses, and House Icetear](images/plate-lineups.jpg)
+
 ### The elven Houses and the Dark Pact Accords
 
 Founded in the **Great Monster Wars**, because Mythical-Class creatures made
@@ -4477,6 +4493,8 @@ Caused by the ascension of **Kalbeliya**, with the **Five Dancing Gods**.
 Gypsy kingdom is unearthed in the Age of Freedom.**
 
 ### Heraldry, and the one rule underneath it
+
+![The marks as they stand](images/plate-sigils.jpg)
 
 **The older a thing is, the less designed its mark is.** Mortals draw devices.
 Gods leave impressions. Titans leave damage and nothing else. Every rule below
@@ -4620,6 +4638,8 @@ A mark that claims custody while performing surveillance is exactly the kind of
 object this world produces.
 
 ### The Dragon Gods, and the sixth
+
+![Five marks, and the sixth is the space between them](images/plate-dragon-god-marks.jpg)
 
 **A Dragon God's mark is not a picture of a dragon.** It is the shape their
 element makes when it moves: the line water takes, the way fire climbs, what
