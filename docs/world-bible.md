@@ -457,8 +457,8 @@ are the old prototypes, kept only for the alignments beside them.
 | **Soulomon** | 90 Million | - | - |
 | **Mór-Ríoghain** | 85 Million | Chaos | Cunning |
 | **Nephthys** | 70 Million | Order | Altruistic |
-| **Freya** | 35 Million | Order | Honourable |
-| **Frey** | 30 Million | Order | Altruistic |
+| ~~**Freya**~~ | 35 Million | Order | Honourable |
+| ~~**Frey**~~ | 30 Million | Order | Altruistic |
 
 **And the documents name more of this tier than the spreadsheet does:**
 **Lucifial**, World Titan of Punishment and Necessary Darkness. **Hades**, Lord
@@ -467,7 +467,19 @@ of the Underworld, and **Persephony**, Lady of Redemption, beside him.
 **Aionia**, Titan of Time. **Glorion**, who made the mountains and the stone-born races. **Freyva**, who
 made the beasts with him. **Atlor the Mountain Forger**, who made the humans of
 the north-east. **Lilith, Mother of Malice**, struck from Pain and Chaos
-together, and **Tartarus**, both bound rather than seated. And **Typhon and Akidna**, below.
+together, and **Tartaras, the Weight Beneath**, both bound rather than
+seated. **Tartaras is not named for a pit.** His own scene describes him
+arriving not as a form but **as weight**, a gravitational assertion so ancient
+that the Abyss bent around it and he did not breach Lilith's prison, **he
+overlapped it.** And **Typhon and Akidna**, below.
+
+**Freya and Frey are not two Titans. They are Freyva, twice.** The spreadsheet
+is the only document in the archive that names them, and it is the same file
+that writes **Solomon as Soulomon** and **Thanatos as Thanathus**. Every other
+source has **Freyva**, Mother of Life and Nature, who made the beasts beside
+Glorion. **Two more spelling drifts in a file already full of them is the
+likeliest reading**, and the two rows are struck through above rather than
+deleted, so nobody re-adds them later.
 
 **Soulomon is a World Titan**, and he stands above Mór-Ríoghain on the ledger.
 **The ledger spells him Soulomon and every story spells him Solomon**, and the
@@ -1306,8 +1318,8 @@ nothing.**
 | Continent | Tree | What stands there |
 |---|---|---|
 | **Western** | **Snoweinter** | one of the **Three Great Elven Cities**, and the tree Garod Khan burned. See below |
-| **Western** | not yet recorded | - |
-| **Western** | not yet recorded | - |
+| **Western** | **Illuminaire** | the High Elven capital and a massive eastern port, the tree of **Magic** |
+| **Western** | **Hollan** | the third Great Elven City, **fallen long ago.** Its tree still stands, in **Hollanheart Forest**. See below |
 | **Central** | the **North East** tree | close enough to the Eastern continent that the two trade branches |
 | **Central** | the **Great Savannah Tree**, south-east | the savannah warrior kingdoms and the Beast Lord alliance |
 | **Central** | the **Deep South** tree | **corrupted** |
@@ -1377,7 +1389,25 @@ the branch was never severed, it chose to leave.
 **The Western three, and what was done to one of them.** The **Three Great Elven
 Cities** of the Western continent are the three trees. The cities did not choose
 their sites. **They are what grew around a tree once elves had woken there**, and
-**Snoweinter** was one.
+**Snoweinter** was one, and it is the tree of **Dream**: pale stone beneath
+white forests, blue Fae lanterns, frozen canals, and the Great Elu-Hsal
+Temple ringing its soul bells over the oldest district. A city where the dead
+pass through is the closest thing in the world to a place that is dreaming.
+**Illuminaire** is the tree of **Magic**, which is why the High Elves put
+their capital and their largest port there, because knowledge gathers where
+it can be carried away.
+
+**And the third is the tree of Life, and its city is dead.** **Hollan** stood
+at the heart of the forest that is still named after it: **Hollanheart** is
+the heart of Hollan. The city fell long ago and the tree did not, which is
+the reverse of what happened at Snoweinter.
+
+**This is where the Crimson Veil is.** The Red Rangers' hidden fortress sits
+deep in Hollanheart in enchanted summer woodlands, veiled by ancient magic
+and illusion, and nothing in the archive says where that veiling came from.
+**It is Hollan's.** A thousand Rangers are not hiding behind their own craft.
+**They are living inside the last working thing a dead city left behind**, and
+an order whose own tree was burned has made its home under somebody else's.
 
 Which means **Ashwinter was not the burning of a city.** Baron Garod Khan's Arson
 Knights assembled their engines inside the Great Northern Forest and killed a
@@ -3645,8 +3675,11 @@ and of **Galatrel, Hansall's sister**, which makes her **Tiamatra's
 granddaughter** and places her one generation below the Dragon Gods rather
 than beside them. An earlier draft had her fathered by Osiris and tied to the
 Phoenix-Dragon God, and Lash has corrected that: the line runs through
-Tiamatra. **Her father still needs a name**, because Osiris was his and Osiris
-is her great uncle. Born with small gold-red
+Tiamatra. **Her father is Dagrhan**, the Ancient Dragon King, and the Elu-Dragar
+carry his name rather than hers: **Princess Nyrial Dagrhan** is of his line.
+Tiamel founded the people and they took her father's name for the house,
+which is the elven habit of naming a House for the thing that came before it.
+Osiris is her great uncle, not her father. Born with small gold-red
 scales on her cheeks, and Galatrel cried from relief rather than horror, because
 the pregnancy had frightened everyone and nobody knew what the child would be.
 Tiamel answered by screaming louder than any infant Hansall had encountered. He
@@ -3769,7 +3802,20 @@ Nilrealm preserved them in marble until their time.
 | **Cholo Puto** | her counterpart | twin daggers, and **moves like the moment before thunder.** He notices the hand inching toward a dagger, the lie inside a compliment, the frightened child beneath a table. **"Fear could travel farther than any arrow"** |
 | **Prince Leon Godrick** | second son of **Lionheart** | shield and horse, and the whole objection to prophecy |
 | **Duke Lycareon Tyberious of Wolfsbane** | lord of spies, assassins and border knights | the unsettling courtesy of a man **capable of killing everyone in a room while apologising for the inconvenience.** Carves runes into spear shafts. **Kills the ones shouting orders, not the strongest men** |
-| **Sedrick** | born above a gemsmith's workshop | son of a man who cut jewels for nobles who would never remember his name. Every title purchased through suffering. **Becomes, through no official decision, the spine of the group** |
+| **Sedrick** | born above a gemsmith's workshop | son of a man who cut jewels for nobles who would never remember his name. Every title purchased through suffering. **Becomes, through no official decision, the spine of the group.** Sword and shield, heavy infantry, **and no gift of any kind.** See below |
+
+**Sedrick is the only one of the Nine with nothing.** Every other member has a
+bloodline, a magic or a title that arrived before they did. He has a plain
+sword, a shield, and a father who cut stones for people who never learned his
+name. **He becomes the spine because he is the only one who earned all of
+it**, and because the single thing he does better than any of them is fail to
+break.
+
+**And he has his father's eye.** A gemcutter finds the one plane along which a
+stone will split cleanly, and strikes there. Sedrick reads a shield wall, a
+suit of plate and an argument between friends the same way. **It is a
+tactician's gift that costs nothing supernatural**, and it is why eight people
+who all outrank him do what he says.
 
 **Two live threads inside the Nine.** **Edmonta Lothrin** committed his people's
 one unforgivable sin in order to save his kin from extinction when enemy armies
@@ -3817,10 +3863,26 @@ underestimated.** That is a rule, not a coincidence.
 |---|---|
 | **Salomei** | a dancer, a wandering lady knight, a jolly old man, a holy captain |
 | **Nilrealm** | a half-elven servant's companion, and a manservant's wizard |
-| **Merlin** | a manservant |
+| **Merlin** | a manservant, **and it stopped being a disguise.** See below |
 | **Floki** | a drunk carpenter |
 | **The Grey King** | **Fang**, a wanderer |
 | **Glorfarsall Elysium** | nobody knows, which is the point |
+
+**Merlin is the Preparer, and he casts nothing.** Salomei already holds the
+mind, so he does not duplicate her. **Every effect Merlin has was arranged
+decades before it is needed**: the object left in the right room, the person
+placed in the right post, the road built to the wrong town on purpose. He is
+useless in an ambush and unbeatable in a war. **Which is exactly why a being
+of his power can spend a century carrying somebody's coat and lose nothing by
+it.** The manservant is not where he hides. It is where he works.
+
+**The Grey King's discipline is Seren State, and it is stillness.** Not a
+technique but a condition: a calm so complete that nothing he is about to do
+can be read off him, by a man or by a demon. A greatsword and no magic. **His
+power is expenditure, not endurance.** He can do anything once. He sealed the
+Demon Breach twice, **and he has spent two ages healing from it**, which is
+the whole reason he is wandering the Third Age as a man called Fang instead of
+sitting on anything.
 
 **Salomei**, the most dangerous character in the archive. **An immortal primordial
 being who has lived as human, archangel, lichlord and devil queen**, whose role is
@@ -4356,7 +4418,7 @@ The archive has three versions and they need consolidating into one.
 | **Golden Wings** | the Queen's own | - | - |
 | Others | - | - | a **Ranger Lord**, **Grey Rangers** as covert operatives and executioners, a **Black Ranger**, **White Rangers** under *"the awakened and his white legion"*, **Verdant** and **Black** |
 
-**The Garden Queen version should win**, because it is the newest layer and it has
+**The Garden Queen version is canon**, because it is the newest layer and it has
 a reason for every corps including the political one.
 
 **The Crimson Veil**, their camp: a hidden fortress deep in **Hollanheart Forest**,

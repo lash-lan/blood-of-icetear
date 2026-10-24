@@ -74,7 +74,7 @@ clearly statted group in the whole archive.
 | **Cholo Puto** | **Rogue.** Twin daggers, moves like the moment before thunder, and reads people better than anyone. **He is also the one who betrays Arthur** | Stated |
 | **Prince Leon Godrick** | **Cavalry knight.** Shield and horse | Stated |
 | **Duke Lycareon Tyberious of Wolfsbane** | **Rune-spearman and decapitation specialist.** Carves runes into spear shafts, and **kills the ones shouting orders rather than the strongest men** | Stated |
-| **Sedrick** | **Open.** No weapon, no discipline, no magic recorded. He becomes the spine of the group through no official decision, so he may be the leader rather than a fighter, but the archive does not say | Open |
+| **Sedrick** | **Heavy infantry with no gift at all.** Plain sword and shield, no bloodline and no magic, among eight people who all have one. He reads where a thing will break the way his father read stones, and he is the spine because he is the only one who earned everything | Stated |
 
 ---
 
@@ -85,8 +85,8 @@ clearly statted group in the whole archive.
 | **Salomei** | **Mentalist.** Master of mental sorcery who can soothe despair, expose lies or **break a tyrant's resolve without drawing a blade.** Also a lady knight in one age, so she can fight, she simply prefers not to need to | Stated |
 | **Nilrealm** | **Sorcerer-prophet and strategist.** Three implements: a staff from a willing root of the White World Tree, a **seven-feather white phoenix fan** controlling flame that **both burns and heals** plus the winds of Gehenna, and a dragon-scale tome of his own shed scales | Stated |
 | **Floki** | **Spymaster-oracle.** A Prime God of Death and Prophecy hiding as a drunk carpenter, running the Whisperers. His prophecies are engineered from intelligence, not sight | Stated |
-| **Merlin** | **Open.** Named as a wizard by tradition and hiding as a manservant, but the archive gives him no scene | Open |
-| **The Grey King**, as **Fang** | **Open.** Sealed the Demon Breach twice and revealed **Seren State**, which implies enormous raw power, but no weapon or discipline is recorded | Open |
+| **Merlin** | **The Preparer.** He casts nothing on a battlefield. Every effect he has was arranged decades earlier, which is why a being of his power loses nothing by spending a century carrying somebody's coat | Stated |
+| **The Grey King**, as **Fang** | **Greatsword duelist, no magic.** His discipline is **Seren State**, a stillness so complete that nothing he is about to do can be read off him. His power is expenditure rather than endurance: he can do anything once, and he has spent two ages healing from doing it twice | Stated |
 | **Glorfarsall Elysium** | **Paladin**, still alive and hidden somewhere in the mortal world | Stated |
 
 ---
@@ -150,13 +150,10 @@ The clearest deliberate design in the archive: three brothers, three answers.
 
 Three gaps worth filling, in order of how much they matter.
 
-**Sedrick.** He is one of the Nine and he becomes their spine, and he has no
-weapon, no discipline and no magic anywhere in the archive. Every other member
-of the Nine is statted in a sentence. He is the only one who is not.
+**Sedrick, the Grey King and Merlin are now settled** and their rows above are
+stated rather than open.
 
-**The Grey King.** He sealed the Demon Breach twice and revealed Seren State,
-which puts him near the top of the mortal power ladder, and nothing anywhere
-says what he actually does in a fight.
-
-**Merlin.** Present in the Seven Knights of Determination, hiding as a
-manservant, and given no scene at all.
+What remains open is **Morgana**, who assembles twelve to resurrect the land
+three hundred years after everyone else is dead. That reads as necromancy or as
+deep druidry and the archive does not choose, which matters because Mordred, the
+first of her twelve, is already a druid.
