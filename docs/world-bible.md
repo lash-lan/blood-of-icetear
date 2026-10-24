@@ -2697,9 +2697,16 @@ compromised.
 | Corps | Captain | What they are |
 |---|---|---|
 | **Red Rangers** | **Hannarial Icetear** | women only. Assassins, scouts, hunters, unconventional warfare. Feared for reaching places armies cannot |
-| **Blue Rangers** | **Golian Gravespine** | warriors, smiths, engineers, craftsmen. They forge what the others carry and build the fortifications the Queen considered excessive |
+| **Blue Rangers** | **Golian Gravespine** | **men only.** Warriors, smiths, engineers, craftsmen. They forge what the others carry and build the fortifications the Queen considered excessive |
 | **Emerald Rangers** | **Santhur Nyxthorn** | the largest corps, men and women, merged with the older **Green Wardens**. Scouts, warriors, wilderness guardians, pathfinders |
 | **Golden Wings** | the Queen's own | created so she would have one corps she could own. Gold for royalty, Wing from Whitewing. Officially they coordinate the corps and investigate internal threats. **Everyone understood the real job was watching Hannarial** |
+
+**So the corps are split by more than discipline.** **The Reds are women only
+and the Blues are men only**, the Emeralds take anyone, and the Golden Wings are
+uniformed. Nobody designed that as a statement and it became one anyway: the two
+corps that lose the most at Ashwinter are the two single-sex ones, **and the
+Blues die saving the people the Reds could not reach.** Hannarial loses a family
+and Solenyra loses a brother in the same fire, from opposite sides of it.
 
 **Emperor Hadrian Dravus** invades. He is a distant descendant of Cainan,
 generations removed, carrying Gods Blood somewhere in the line, **and his hatred
@@ -4413,7 +4420,7 @@ The archive has three versions and they need consolidating into one.
 | | The Garden Queen version, which is canon | The Arthur White layer | `Ranger Society` |
 |---|---|---|---|
 | **Red** | women only, assassins and scouts | the same, **highly prejudiced against males** | **outsourced to cities** |
-| **Blue** | smiths, engineers, craftsmen | **male only, espionage, politics and magic** | - |
+| **Blue** | **men only**, smiths, engineers, craftsmen | **male only, espionage, politics and magic** | - |
 | **Emerald / Green** | the largest, mixed, merged with the Green Wardens | mixed-gender, inclusive, multiracial | - |
 | **Golden Wings** | the Queen's own | - | - |
 | Others | - | - | a **Ranger Lord**, **Grey Rangers** as covert operatives and executioners, a **Black Ranger**, **White Rangers** under *"the awakened and his white legion"*, **Verdant** and **Black** |
@@ -4568,6 +4575,18 @@ tree**. The corps is the treatment, not the subject.
 | **Blue Rangers** | **a scaffold.** The tree drawn as structure, beams and joints, the way a smith sees a standing thing | blue, grief that can still be wept. **Golian died holding a building up** |
 | **Emerald Rangers** | **roots only**, spreading outward past the edge of the field like a map of paths | green, what grows without permission |
 | **Golden Wings** | the tree with **a wing where the crown should be** | gold, what is kept |
+
+**And the Golden Wings wear crimson.** Their capes are the deep crimson of the
+Red Rangers, worn over the gold, and the court explanation is that crimson is a
+royal colour older than any corps. **Nobody believes it.** Crimson in this world
+means a debt owed in blood, it is the field the Reds fly their burned tree on,
+and it was taken by the one corps created to watch them. **It is an insult
+pitched exactly low enough to be deniable**: too small to protest without looking
+petty, too deliberate to be an accident, and visible to every elf in the room.
+
+**Hannarial has never once mentioned it**, which the Golden Wings read as not
+having noticed and the Red Rangers read as the worst thing she could have done
+with it.
 
 **The Golden Wings mark is the only dishonest one in the set.** Gold means held
 in trust, the wing is taken from Whitewing, and the corps was created so the
