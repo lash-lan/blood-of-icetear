@@ -573,7 +573,11 @@ Tiamatra at 96 and **Bahamut at 86**, which makes his lone stand against the
 Angels a choice rather than a qualification. And he is **already called
 Abomination in the ledger**, which means the record was written after his fall.
 
+![Ra's five, and the sixth he never acknowledged](images/plate-dragon-gods.jpg)
+
 ### Nilrealm, the sixth child
+
+![Nilrealm, the World Sage](images/nilrealm.jpg)
 
 **Ra had five children by his own making, and a sixth he did not make alone.**
 
@@ -1238,6 +1242,8 @@ Gods could shape land, sea and sky, but not make life.
 | **Lucifial and Hecatre**, in secret | serpents and insects, **"not as demons, but as mortal creatures seeded with malice"** |
 
 **Settled: Freyva and Glorion made the Beast Lords, and they made them to cull
+
+![Beast Kings](images/plate-beast-kings.jpg)
 corruption and sustain the world**, which is exactly what the website says. The
 long-open question of who shaped them is answered.
 
@@ -1471,6 +1477,8 @@ carries is a portrait of that particular tree.
 
 ### The six Elu-Dues, and how new races are made
 
+![The elven kinds](images/plate-elu.jpg)
+
 The Union of Beasts, Dragons and Fae did not dissolve after the Serpent Wars.
 *"That was the mistake the Titans had made long ago. They had believed victory
 meant separation."* The mortals lingered. **When blood is spilled side by side,
@@ -1519,6 +1527,8 @@ general term for half-elves. And the **lakebourne elves**, born of river Fae and
 High Elves, **exterminated by the Human Empire in the Age of the Races.**
 
 ### Humanity has three origins
+
+![The first family](images/plate-first-humans.jpg)
 
 **Settled, and it was never a contradiction. Humanity was created three times, by
 three hands, on three continents.**
@@ -3373,6 +3383,8 @@ blaming her brother for its ruin.
 ---
 
 ## 21. The Black Sea, and where the corruption is age by age
+
+![The Black Sea, forming and arriving](images/plate-black-sea.jpg)
 
 **The Black Sea is the only thing in the buried world with no jailer.** It lies in
 the Southern Sea and in the void above, it was built by **the Primordial Titan of
