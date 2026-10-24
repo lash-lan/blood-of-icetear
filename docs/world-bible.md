@@ -241,21 +241,49 @@ order they are:
 |---|---|
 | **The Pre-existence** | Light and Darkness. Not beings so much as conditions |
 | **The Primordial Pantheon** | the twenty: Death, Time, Hope, Fear, Life, Magic and the rest. Offices rather than persons |
-| **The Genesis Titans** | the fifteen who built the physical universe, each with a job |
+| **The Universal Titans** | the fifteen who crafted the astral bodies, each with a job. Called the **Genesis Titans** and the **Sustainer Titans** elsewhere in the archive. One tier, three names |
 | **The World Titans** | the ones who shaped **this** world and then had to leave it. **Hyperion, Ra, Lucifial, Hades, Glorion, Freyva** |
 | **The Prime Gods** | the world's own immune system. Planetary functions with faces |
 | **The Demi-Gods** | the children of unions |
 
-**And one branch that sits beside the ladder rather than on it: the planetary
-generations**, four of them, of whom the **Sustainer Titans** and the **Dwarf
-Titans** still matter. They are cousins to the first beings rather than a rung
-above or below anyone, and the old numbers are the only thing that ever ranked
-them against the World Titans. **So they are not ranked here.**
+**The Sustainer Titans are not a side branch. They are the second rung.** The
+archive calls this tier **Universal**, **Genesis** and **Sustainer** in different
+documents, and they are one group: **the Titans who craft the astral bodies.**
+Primordial Titans are pure concepts holding a consciousness and build nothing.
+The Universal Titans build the worlds. **Then each astral body receives its own
+World Titans**, which is why Mór-Ríoghain is Archavalon's chip of Magic and not
+Magic, and why another world somewhere holds a different chip of the same
+Primordial under a different name.
+
+**But a World Titan's origin is not fixed, and it is usually not obvious.** A
+chip is not struck cleanly from one concept every time. **Mór-Ríoghain is purely
+Magic**, which is the simple case and the rare one. **Lilith is Pain and Chaos
+together**, and Malice is what those two make when they are struck off into one
+being. Others are a blend of three. And some World Titans do not come down
+from the Primordial Pantheon at all, **they come from the Universal Titans**,
+which is a different inheritance entirely: built rather than conceptual.
+
+**So you cannot read a World Titan's parentage off their title**, and the bible
+does not try. It explains why **Power**, **Light** and **Night** sit as offices
+of this tier while no Primordial of Power, Light or Night exists. Ra, Hyperion
+and Nyx are not failures of the mapping. **There was never a mapping.**
+
+**And nothing else is a Titan.** The archive's **Dwarf Titans** are retired
+from the ladder entirely. The name was used for two unrelated groups, neither of
+this tier: the **mountainkin** the World Titans made to help shape the world,
+and the lesser powers who fought the **Age of Betrayal**. The old numbers are
+the only thing that ever ranked either against the World Titans. **So they are
+not ranked here, and they are not Titans.**
+
+**What is still unsettled** is section 4's table of **four planetary
+generations**, which files Sustainers as the third of four and uses the word
+Universal for the first. That table predates this ruling and needs rewriting
+against it.
 
 **What this corrects.** The powerscale spreadsheet files **Ra, Hyperion,
 Soulomon, Mór-Ríoghain, Nephthys, Freya and Frey** under a heading called
 **Ascendant Gods**, and files the Dwarf Titans under **World Titans**. **That is
-backwards and the heading is retired.** Every other document you have written
+backwards, and both headings are retired.** Every other document you have written
 calls Hyperion and Ra World Titans, the Law of Divine Distance says "from World
 Titan to Angel" and Hyperion is the one who issued it, and `Forces` itself calls
 Lucifial the **World Titan of Punishment and Necessary Darkness**. **Ascendant God
@@ -296,12 +324,20 @@ version of the real one that came into use in the later ages among people who
 had never been close enough to be corrected. It is not wrong to write it in a
 mortal's mouth. It is wrong anywhere else.
 
-**And Mór-Ríoghain is Magic's walking name.** The powerscale lists **Magic** the
-Primordial Titan and **Mór-Ríoghain** separately, while `Forces` writes them as
-one line, "Magic, Mór-Ríoghain." The clean reading is that **Mór-Ríoghain is a World
-Titan who carries the Primordial Titan's office**, which explains why the
-novellas call her a Prime Goddess, the plates call her a World Titan, and her
-Temple sits outside time.
+**And Mór-Ríoghain is Magic's chip, not Magic.** The powerscale lists **Magic**
+the Primordial Titan and **Mór-Ríoghain** separately, while `Forces` writes them
+as one line, "Magic, Mór-Ríoghain." Both are right, and the ladder is what
+reconciles them. **A Primordial Titan is a pure concept holding a consciousness,
+and it does not walk anywhere.** What walks is a fragment struck off it and
+seated in a single world. **Mór-Ríoghain is Archavalon's chip of Magic**, which
+is why the novellas call her a Prime Goddess, the plates call her a World Titan,
+and her Temple sits outside time. She is small enough to stand in a world and
+old enough not to obey it.
+
+**Which means there is more than one of her.** Every astral body the Sustainer
+Titans crafted carries its own World Titans, so somewhere there is another chip
+of Magic under another name, and the two have never met. **Mór-Ríoghain is not
+the Primordial Titan of Magic. She is what Magic looks like here.**
 
 ### The Genesis Titans
 
@@ -340,65 +376,73 @@ trench to shape the landscape, **Ouroboros** sparks life in planets that can
 sustain it, and **Apophis** consumes planets that lose all their benevolent
 energies.
 
-### The four planetary generations
+### What the World Titans did early, and the mountain folk they made
 
-| Gen | What they are | What they did |
-|---|---|---|
-| **1st, Universal** | Astral Body shapers, Star shapers | **became** the celestial bodies |
-| **2nd, Galaxies** | Galaxy Rulers, Life shapers | gifted Celestial Knowledge to create the potential for life, procreated the 3rd gen, then left to form a universal Titan Pantheon |
-| **3rd, planetary** | **Sustainer Titans**, the first Planetary Walkers | guided the 1st Beings. **Sacrificed two thirds of their power to manipulate the afterlife**, creating three realms. **Thanathus** took charge of the Ghost Realms. **Oceanus went into a deep slumber under the ocean.** The rest left |
-| **4th, planetary** | **Dwarf Titans**, the Guides, almost cousins to the first beings | guided the generations after the first beings, then wanted the planet for themselves |
+The archive files this as **four planetary generations** and that framing is
+retired. **Two of the four were never a planetary tier at all.** The
+**Universal** shapers who became the celestial bodies and the **Galaxy Rulers**
+who gifted the knowledge for life are the **Universal Titans** of section 4, the
+second rung of the ladder, and they belong there rather than in a sequence of
+planet-walkers.
+
+**And what the table called the third generation, the Sustainer Titans, were the
+World Titans.** The name was wrong. These are the ones who shaped this realm
+early and walked it, and the act that defines them is the one the table already
+recorded without noticing what it was saying: **they sacrificed two thirds of
+their power to reach into the afterlife and build three realms inside this
+world's own space.** **Thanatos** took charge of the Ghost Realm. **Oceanus**
+went into a deep slumber under the ocean. The rest left.
+
+> **The tier that shaped this world spent most of itself making somewhere for
+> the dead to go, before anything here had died.**
+
+**The mountain folk were made, and they were never Titans.** They are the
+**original mountainkin, created by the World Titans to help shape the world**,
+which is why the stone of Archavalon is worked rather than merely old. **Most of
+them were slain in the Titan Wars.** Those who remain are the remnant of a
+remnant, and they are the only beings still walking who were built for the job
+of building.
+
+**The archive calls them Dwarf Titans and that name is retired**, because it was
+doing double duty: it was also applied to the lesser powers of the **Age of
+Betrayal** below, who are a different group entirely and equally not Titans.
+**Neither set belongs on the ladder.**
 
 **The 1st Beings** were the Old Gods, the Colossal Behemoths, the 1st Archdragon
 and the Great Leviathans.
 
-### The Dwarf Titans, the fourth planetary generation
+### The Age of Betrayal, and the Celestial Titans
 
-**These are the Guides who wanted the planet for themselves**, and their war
-against the 1st Beings is the **Age of Betrayal**.
+**They were never Titans.** The archive calls them **Dwarf Titans** and files
+them as a fourth planetary generation. Both are retired. They were lesser
+powers seated beneath the World Titans, and the old ledger's figures for them
+are prototypes of a tier that does not exist.
 
-**Two of the seven below do not belong with the other five.** **Thanathus** and
-**Oceanus** are **World Titans**, which is how the gallery on the site lists
-them, and they are **surviving Sustainer Titans** of the third generation on top
-of that. **That is why they hold realms rather than ambitions**, and why Oceanus
-is asleep by his own choice while Plutarr and Dagonn are imprisoned. **The other
-five are the Dwarf Titans.**
+**Their war against the 1st Beings is the Age of Betrayal.** Outnumbered but far
+stronger than the divine and mortal races, they nearly won, **and they were
+beaten only from the inside.**
 
-| Titan | Domain | Prototype figure | Gender |
-|---|---|---|---|
-| **Chronorus** | Sky | 5 Billion | Male |
-| **Nyx** | Night | 4 Billion | Female |
-| **Plutarr** | The Underworld | 4 Billion | Female |
-| **Thanathus** | Ghost Realm | 3 Billion | Male |
-| **Oceanus** | Oceans | 2 Billion | Male |
-| **Ceres** | Nature | 1 Billion | Female |
-| **Dagonn** | Mountains | 0.3 Billion | Male |
+**Nyx, Erebus and Eris turned on their siblings**, remembered what they had been
+made for, and sided with the Elder Gods. They **slew Makemake, Haumea and
+Chronorus**, **imprisoned Plutarr in the Ghost Realm**, and **imprisoned Dagonn
+in the Largest Mountain Range.**
 
-Nine are named across the documents: **Sol, Pluto, Erebus, Eris, Makemake,
-Haumea, Dagonn, Chronorus, Nyx.** Outnumbered but far more powerful than the
-divine and mortal races, they nearly won, **and they were beaten only from the
-inside.**
+The three were named the **Celestial Titans** for staying on course, which is a
+title granted rather than a tier earned, and given one charge: **to defend this
+world from the external threats of the Black Titan and its Eldritch
+nightmares.**
 
-**Then Nyx, Erebus and Eris betrayed their siblings**, remembered their purpose,
-and sided with the Elder Gods. They:
-
-- **slew Makemake, Haumea and Chronorus**
-- **imprisoned Plutarr in the Ghost Realm**
-- **imprisoned Dagonn in the Largest Mountain Range**
-
-They were renamed the **Celestial Titans** as a reward for staying on course, and
-given a new charge: **to defend this world from the external threats of the Black
-Titan and its Eldritch nightmares.**
-
-> **Now we see these three Titans as star constellations.**
+> **Now we see these three as star constellations.**
 
 **So the Black Sea invasion is the failure of the Celestial Titans at their one
 assigned job, and every constellation in Archavalon's sky is one of the three
-sentries who let it through.** That is the best single idea in the archive.
+sentries who let it through.** That is the best single idea in the archive and
+it survives the tier being retired, because it never depended on what rank they
+held.
 
 **Sol survives**, and is the "Titan of the 1st Flame" whom Ra fought in the early
-draft. **Dagonn is the weakest of them, buried in a mountain range, and he later
-gives his strength to the Dark Angel.**
+draft. **Dagonn is the weakest, buried in a mountain range, and he later gives
+his strength to the Dark Angel.**
 
 ### The World Titans
 
@@ -417,11 +461,13 @@ are the old prototypes, kept only for the alignments beside them.
 | **Frey** | 30 Million | Order | Altruistic |
 
 **And the documents name more of this tier than the spreadsheet does:**
-**Lucifial**, World Titan of Punishment and Necessary Darkness. **Hades.**
-**Glorion**, who made the mountains and the stone-born races. **Freyva**, who
+**Lucifial**, World Titan of Punishment and Necessary Darkness. **Hades**, Lord
+of the Underworld, and **Persephony**, Lady of Redemption, beside him.
+**Nephthys**, Lady of the Skies, Ra's partner, who holds the office he put down.
+**Aionia**, Titan of Time. **Glorion**, who made the mountains and the stone-born races. **Freyva**, who
 made the beasts with him. **Atlor the Mountain Forger**, who made the humans of
-the north-east. **Lilith, Mother of Malice**, and **Tartarus**, both bound rather
-than seated. And **Typhon and Akidna**, below.
+the north-east. **Lilith, Mother of Malice**, struck from Pain and Chaos
+together, and **Tartarus**, both bound rather than seated. And **Typhon and Akidna**, below.
 
 **Soulomon is a World Titan**, and he stands above Mór-Ríoghain on the ledger.
 **The ledger spells him Soulomon and every story spells him Solomon**, and the
@@ -615,7 +661,8 @@ that explains why most of him is not here.
 | **Hyperion** | Lord of Light |
 | **Nyx** | Mother of Night |
 | **Oceanus** | Grandfather of the Seas |
-| **Ra** | Father of Skies, Dragons and Phoenixes |
+| **Ra** | Titan of Power, Dragons and Phoenixes |
+| **Nephthys** | Lady of the Skies |
 | **Glorion** | of Earth and Forge |
 | **Thanatos** | Lord of Death and Ghosts |
 | **Mór-Ríoghain** | Mistress of Magic |
@@ -656,7 +703,7 @@ and that is what the Elu-Hsal exist to provide.
 
 **The thing the Age of First Walkers made irreversible was that death became
 permanent and structured instead of cyclical.** So the whole apparatus above is
-an invention, not a law of nature, and the Sustainer Titans **paid two thirds of
+an invention, not a law of nature, and the **World Titans paid two thirds of
 their power to build it.**
 
 ---
@@ -1204,6 +1251,156 @@ locals.**
 force that arrived ahead of a Dark God, among people who do not know a war is
 coming. It also gives a win condition: **the combined energies of all six
 planets can raise a god to a Titan.**
+
+### The Great Trees, and where the elves woke
+
+The **Song of Becoming** had a place. The first elves woke along the **Great Trees
+of the Western continent**, and every elven line still living can name the tree
+its blood began beneath.
+
+A Great Tree is not simply a large tree. It is a **structure standing in three
+realms at once**: roots in the earth of Archavalon, a crown that reaches the
+stars, and branches that leave the world entirely and open into the **Eternal Fae
+Realm**. An elf standing at the foot of one is standing in all three places.
+
+This is the plain meaning of the fragment that calls the elves **"a living bridge
+between the Fae Realms and the material plane."** They are not a bridge by
+metaphor. **They are what grew where the bridge touched ground.**
+
+It also gives the convergence a location. The elves **"emerged from the
+convergence of fae matter and the ambient natural energies of the world itself"**
+because the Great Trees are the one place those two things meet. Fae matter
+arrives down the branches. The world's own energy rises through the roots. The
+elves woke in the band between, which is the trunk, which is the only part of a
+Great Tree that belongs to Archavalon at all.
+
+**And it explains the purpose they woke already knowing.** They were to guide the
+cycle of souls back to the **Great Soul Lake** of the Primordial Titans. The
+branches are the road the souls take. The elves were not appointed to that work
+abstractly. **They were made standing at the gate, and the gate needed keeping.**
+
+> Death as later understood did not exist among the elven races because nothing
+> had anywhere else to go. A soul rose through the branches, was enriched, and
+> came back down. **The cycle was not a belief. It was a piece of visible
+> architecture, and they lived at the bottom of it.**
+
+**They grew from tear seeds.** The Primordial Titans of **Dream**, **Life** and
+**Magic** each wept a seed into the world, and where a seed fell a Great Tree
+rose. **Three Great Trees to a continent, one of each Titan**, standing in the
+Western, Central and Eastern lands alike. An elven house traces its blood through
+its own tree back to whichever of the three wept it, so every elven line in the
+world belongs to Dream, to Life or to Magic, and no fourth answer exists.
+
+**Hope wept nothing, and that is deliberate.** The **Fae Garden Sanctuary** is
+anchored by four Primordial Titans, **Dream, Life, Magic and Hope**, and only
+three of them put a seed into the world. Hope stayed. **There is no tree of
+Hope, no grove where she woke anyone, and no elven line that can trace itself
+back to her**, which means she is the one anchor who holds the Sanctuary up and
+has nothing of herself growing anywhere outside it. Section 2 ranks Hope at 17
+against Fear at 16, the one pairing in the whole pantheon this bible treats as
+canon. **The strongest argument in the work is made by the Titan who planted
+nothing.**
+
+**The nine, as far as they are placed.**
+
+| Continent | Tree | What stands there |
+|---|---|---|
+| **Western** | **Snoweinter** | one of the **Three Great Elven Cities**, and the tree Garod Khan burned. See below |
+| **Western** | not yet recorded | - |
+| **Western** | not yet recorded | - |
+| **Central** | the **North East** tree | close enough to the Eastern continent that the two trade branches |
+| **Central** | the **Great Savannah Tree**, south-east | the savannah warrior kingdoms and the Beast Lord alliance |
+| **Central** | the **Deep South** tree | **corrupted** |
+| **Eastern** | the **North West** tree | **a few of its branches reach across to the Central continent's North East tree.** The only place two Great Trees touch |
+| **Eastern** | the tree of **Ra's lineage** | in the regions settled by the humans descended from Ra |
+| **Eastern** | the **Great South Jungle** tree | the jungle elves, the **Silvankari** |
+
+**The corrupted one is not a coincidence.** The bible already records that **the
+south-centre is where the Black Sea first came ashore.** That is the same ground.
+**The Black Sea did not merely land in the Central continent, it landed on a
+Great Tree**, and a Great Tree is a root running down into the Fae Garden
+Sanctuary and a branch running up into the Eternal Fae Realm. The corruption did
+not have to travel. **It arrived at a junction.**
+
+**And two of the nine touch.** The Eastern continent's north-western tree throws
+a few branches across to the Central continent's north-eastern one. Nowhere else
+in the world do two Great Trees meet above ground, which makes that crossing the
+only place a soul, a Fae, or anything else can pass between two trees without
+going down into the Sanctuary first.
+
+**The deep roots, and why they reach the Sanctuary.** A Great Tree's branches
+leave the world upward into the Eternal Fae Realm. Its roots leave it downward,
+running far beneath the continents and joining in the **Fae Garden Sanctuary**,
+which the bible already records as **anchored by the Primordial Titans of Dream,
+Life, Magic and Hope**. The same three hold both ends. **The trees are not
+connected to the Sanctuary. They are the Sanctuary, surfacing where the seeds
+fell.** This is why the Sanctuary is unreachable by force and why **Lucifial could
+not push his way into it**: there is no door into a root.
+
+**The two World Trees are a different order of thing.** One stands in the
+**Frozen North**, the **Great White World Tree**. The other stands at the far
+southern end of the world, wrapped in mist, and **its roots are what the Sacred
+Order's seals on the Great King of the Dead are anchored in.** The Winter King is
+not held down by the Order's craft alone. He is held by a World Tree, and the
+Order's seals are the knotwork tying their work to its roots. They are not seeded
+from one Titan each. **Each carries all three at once, Dream and Life and Magic together, and
+a speck of three more: Time, Memory and Death.**
+
+**Three that make, and three that keep.** Dream, Life and Magic are the makers,
+and theirs are the nine trees that mothered the waking races. **Time, Memory and
+Death keep what the makers made**, and they are planted nowhere in the body of
+the world, only at its two ends. That is the whole difference between a Great
+Tree and a World Tree, and it is why only two of them carry the name.
+
+It also settles something the bible already states and never explained.
+**Death as later understood did not exist among the first elves** because Death
+was never planted where they woke. She is in the North and in the southern mist
+and nowhere between. The elves did not transcend dying. **They simply woke a
+very long way from it.**
+
+And it puts the two strongest beings in the Primordial Pantheon in the same two
+places. **Death and Time both sit at 25 vigintillion**, above every other Titan
+on the list, and neither of them is in any of the nine. A World Tree is not a
+bigger tree. **It is the only kind with the two eldest powers in it.**
+
+The White World Tree is the one that grew Nilrealm's **White World Staff** from a
+willing root, which is a larger act than it first reads: the North did not lend a
+branch to a sorcerer, **a tree holding Time, Memory and Death chose to send part
+of itself travelling with Mór-Ríoghain's son.** Mór-Ríoghain is Archavalon's
+chip of the Primordial Titan of Magic, so Nilrealm's mother is not one of the
+three who wept the seeds. **She is the piece of one of them that stayed**, which
+makes him the nearest thing in this world to a Great Tree with legs. The staff
+in his hand is cut from the only wood in the world that holds all six. **Mortals call him the Great
+Prophet. He is carrying foresight, recollection and ending in one branch**, and
+the branch was never severed, it chose to leave.
+
+**The Western three, and what was done to one of them.** The **Three Great Elven
+Cities** of the Western continent are the three trees. The cities did not choose
+their sites. **They are what grew around a tree once elves had woken there**, and
+**Snoweinter** was one.
+
+Which means **Ashwinter was not the burning of a city.** Baron Garod Khan's Arson
+Knights assembled their engines inside the Great Northern Forest and killed a
+Great Tree, and a Great Tree is one third of the Western continent's road to the
+**Great Soul Lake**. The elves lost a city, a forest, and **a piece of the
+architecture they were made to keep**, in one night, to siege components carried
+through a gate the Queen ordered opened.
+
+**This is why the Red Ranger banner is what it is.** They do not fly a burned
+tree out of sentiment for Snoweinter. **They fly the corpse of one of the three
+things their entire race exists to tend**, and they fly it in the faces of the
+court that let it through.
+
+**House Icetear and the Snoweinter tree.** The Icetears revered it, and the
+reason is buried at its foot: **Hansall Whitegrove left an heirloom of the Prime
+Goddess Icetear, Child of Winter, under that tree.** So the house did not simply
+wake there. **It kept something there**, which is why its mark is that tree in
+gold and living, and why the house still draws it that way after the tree
+stopped being either.
+
+**This is the root of elven heraldry.** An elven house is not known by a
+conquest or a colour. It is known by **where its blood woke**, and the mark it
+carries is a portrait of that particular tree.
 
 ### The six Elu-Dues, and how new races are made
 
@@ -4185,6 +4382,189 @@ Caused by the ascension of **Kalbeliya**, with the **Five Dancing Gods**.
 **Queen Khabelia** of the Third Age is Kalbeliya's line, and the **underground
 Gypsy kingdom is unearthed in the Age of Freedom.**
 
+### Heraldry, and the one rule underneath it
+
+**The older a thing is, the less designed its mark is.** Mortals draw devices.
+Gods leave impressions. Titans leave damage and nothing else. Every rule below
+is that sentence applied to a different tier, and it means divinity can be read
+at a glance without anyone being told.
+
+| Tier | What it carries |
+|---|---|
+| **Primordial Titans** | **nothing.** A pure concept cannot be drawn. What can be drawn is the shape left where one touched the world, which is what the Great Trees are |
+| **Universal Titans** | **nothing.** They built the astral bodies. The sky is their signature and they did not sign it twice |
+| **World Titans** | **a seal, not a crest.** One shape, never enclosed, never divided, never combined with another. A World Titan is a chip struck off something, and a chip has one edge |
+| **Prime Gods** | **a natural form.** Not a device but a thing the world already does. Icetear's mark is a shape frost makes on its own |
+| **Races** | **a shape language**, not a mark. See below |
+| **Kingdoms and Houses** | full heraldry |
+| **Orders** | full heraldry, under the enclosure rule |
+| **Individuals** | the house mark with one difference |
+
+### The shape language of the races
+
+**This is the most useful rule in the system**, because it lets a viewer who has
+never seen a particular crest name the race that made it.
+
+| Race | How their marks are built | Why |
+|---|---|---|
+| **Elves** | a tree, read bottom to top. **The crown may never be enclosed** and must break any frame it is placed in | roots in earth, trunk in the world, branches out of it. Nothing that reaches the Fae Realm can be bounded |
+| **Humans** | a shield. Fully enclosed, hard bordered, bilaterally symmetrical | humans claim land, and land has edges. They were made three times by three hands, so a human mark says **who holds you**, never where you woke |
+| **Mountainkin** | assembled from identical repeating units, geometric, no curves | they were built for the job of building, and a wall is the only honest thing they could put on a banner |
+| **Beast Lords** | the creature alone, no field and no border, drawn as a track or a silhouette | a beast's mark is the mark it leaves on the ground |
+| **Fae** | described, not drawn, and never the same twice | the same reason **every traveller reaches the Temple differently** |
+| **Gypsy tribes** | worn on the body, not flown on a pole | a mark that has to move with you cannot be planted in soil |
+
+### Colour, which means the same thing everywhere
+
+Seven, obeyed by every race and every tier. **A colour is never chosen for
+looking well.**
+
+| Colour | Meaning |
+|---|---|
+| **Crimson** | a debt owed in blood. Not war and not passion. Something that must be repaid |
+| **Gold** | what is kept. Inheritance, custody, a thing held in trust for someone else |
+| **White** | what is lost. Ash, bone, frost |
+| **Blue** | grief that can still be wept |
+| **Black** | what was chosen. Deliberate, and answerable |
+| **Green** | what grows without permission |
+| **Grey** | what endures without being asked |
+
+### Charges, and the only test they must pass
+
+**A charge must be a thing that exists in the world.** If you cannot pick it up
+or point at it, it cannot go on a banner. No abstract devices, no invented
+geometry, no symbols of ideas. The idea arrives through the object.
+
+Already in use across the archive: **the tree** (elven lineage), **the tear**
+(Icetear), **the raven** and **the black feathered cloak**, **the phoenix
+feather**, **the thorn, the spine, the bloom and the fall** (the four Dark
+Houses), **the star** (Gravespine), **the wall** (the Grey Knights), **the
+stag** (the Order of the Stag), **the wing** (Whitewing, Bloodwing, the Golden
+Wings), **the constellation** (the Celestial Titans), and **the broken chain**.
+
+### How marks combine
+
+| Event | What happens to the mark |
+|---|---|
+| **Marriage** | two crowns over one root for elves, the shield divided vertically for humans. **Neither mark is reduced** |
+| **A cadet branch** | the same mark, smaller, with **one element removed**. Never added. A younger line always carries less |
+| **Conquest** | the taken mark is placed **beneath** the conqueror's, **intact and undefaced**. Damaging a mark you have taken is read as an admission you could not take it cleanly |
+| **An oath between houses** | each adds the other's smallest element, so **neither mark is complete on its own** |
+| **Disgrace** | the house **keeps its mark and loses its field.** The device floats on bare cloth. Everyone can see what you were and that nothing is holding you up |
+| **Extinction** | the mark is drawn once more **in white** and retired |
+
+### The mark of the world
+
+**Archavalon has no designed mark. It has a tally.**
+
+Eleven points on a single vertical line: **the two World Trees at the ends and
+the nine Great Trees between them**, set where they actually stand. Nobody
+composed it. It is simply where the trees are, which makes it the only mark in
+the world that cannot be granted, revoked or disputed.
+
+**And it already carries two wounds.** One of the nine is **burned**, which is
+Snoweinter. One is **corrupted**, which is the Deep South tree the Black Sea
+came ashore on. **Anyone who draws the world honestly has to draw them both.** A
+version with eleven clean points is not a different style. It is a lie, and in
+the later ages it is the lie the Empire prefers.
+
+### The four Dark Houses, which are one plant
+
+**Nyxthorn. Gravespine. Shadebloom. Duskfall.** Thorn, spine, bloom, fall. The
+archive named them as one plant before anyone noticed, and the marks should say
+so: **four parts of a single black growth**, founded together in the Great
+Monster Wars and useless apart.
+
+| House | Charge | Discipline |
+|---|---|---|
+| **Nyxthorn** | the thorn | shadow |
+| **Gravespine** | the spine, with a single star | soul |
+| **Shadebloom** | the bloom | poison |
+| **Duskfall** | the fall, a single shed leaf | silence and intelligence |
+
+**All four are black**, because black is what was chosen and these are four
+disciplines that chose themselves.
+
+**And they are read top to bottom**, which is the exact inverse of every other
+elven mark in the world. An elven house grows up toward the Fae Realm. **A Dark
+House is drawn descending**, because its work is done beneath the place everyone
+else is looking. That is the Nyxthorn doctrine written as a shape:
+
+> Darkness is not evil. Darkness is merely where sight fails.
+
+**Leadership is never inherited in the Pact**, so none of the four marks may
+carry a difference for a ruling line. There is nothing to difference.
+
+### The four Ranger corps, which are one tree
+
+All four descend from Hansall's companions and all four draw **the Snoweinter
+tree**. The corps is the treatment, not the subject.
+
+| Corps | The tree, drawn as | Field |
+|---|---|---|
+| **Red Rangers** | **bare and white.** The tree as it actually stood after Ashwinter | crimson, a debt owed in blood |
+| **Blue Rangers** | **a scaffold.** The tree drawn as structure, beams and joints, the way a smith sees a standing thing | blue, grief that can still be wept. **Golian died holding a building up** |
+| **Emerald Rangers** | **roots only**, spreading outward past the edge of the field like a map of paths | green, what grows without permission |
+| **Golden Wings** | the tree with **a wing where the crown should be** | gold, what is kept |
+
+**The Golden Wings mark is the only dishonest one in the set.** Gold means held
+in trust, the wing is taken from Whitewing, and the corps was created so the
+Queen would own one. **Everyone understood the real job was watching Hannarial.**
+A mark that claims custody while performing surveillance is exactly the kind of
+object this world produces.
+
+### The Dragon Gods, and the sixth
+
+**A Dragon God's mark is not a picture of a dragon.** It is the shape their
+element makes when it moves: the line water takes, the way fire climbs, what
+wind does to grass, how stone fractures. Five shapes, no creatures.
+
+**Nilrealm has no mark, and that is his mark.** Arrange the five and they do not
+sit comfortably. There is a space between them, and the space is the right shape
+for a sixth. **Anyone who has ever laid the five out has felt it, and most have
+assumed they arranged them badly.** The old bloodlines who revere him leave the
+gap deliberately. The younger generation close the five into a ring and call the
+arrangement corrected.
+
+### Still to be drawn
+
+The rules above are enough to produce the rest, and these are not done yet:
+**Hearthwinter's eleven Elven Houses**, each of which must trace to one of the
+three Western trees. **The eleven human orders**, all enclosed, with the
+enclosure chosen to say what they protect, so the Grey Knights take the Wall and
+the Order of the Stag takes a stag within a ring. **The five Gypsy tribes**,
+worn rather than flown, one per element. **The Ice Kingdom of Azaelion's eleven
+families headed by Icetear.** And **the Prime Gods**, each a natural form rather
+than a device.
+
+### The marks, and what they record
+
+Elven heraldry is tree heraldry, because an elven house is known by **where its
+blood woke** rather than by what it conquered. The mark is a portrait of a
+particular Great Tree, and it is kept honest: when something happens to the tree,
+it happens to the mark.
+
+| Mark | Whose | What it shows |
+|---|---|---|
+| **A living tree in gold, its branches curling, enclosed by a blue tear** | **House Icetear** | the house tree in full leaf, worked in gold, with the tear drawn around it rather than falling from it |
+| **A bare white tree on a red field** | **the Red Rangers** | the same corps banner they always carried. **Before Ashwinter the tree was in leaf** |
+
+**The Red Ranger tree is a record, not a design.** The corps flew a living tree on
+red until the night the Great Northern Forest burned with Snoweinter inside it.
+They did not replace the banner. **They redrew the tree as it actually stood
+afterwards, white and bare, and kept flying it.** Every woman who joined in the
+years after, and recruitment tripled and kept going, enlisted under a picture of
+the thing that was done to her.
+
+> **They still protected the Queen's kingdom. They did not fight for the Garden
+> Queen. They fought for Ashwinter.** The banner says so without a word on it.
+
+**And the two marks are the same tree twice**, which is not coincidence, because
+**Hannarial Icetear** was the Red Ranger Captain who lost her family that night.
+House Icetear carries the tree gold and living inside a blue tear. The Rangers
+carry it white and dead on a red field. **A tear is grief that can still be wept.
+The red field is what is left when it cannot.**
+
 ---
 
 ## 25. Artifacts
@@ -4445,7 +4825,7 @@ treated as the source rather than as a curiosity.**
 | Humanity's three origins | **Hyperion** in the West, **Atlor the Mountain Forger** in the north-east Central, **Ra** in the East |
 | What tier Typhon and Akidna are | **World Titans**, because **Lilith and Tartarus** are. The powerscale records them after their defeat |
 | Who the World Titans are | **Ra, Hyperion, Soulomon, Mór-Ríoghain, Nephthys, Freya, Frey**, plus Lucifial, Hades, Glorion, Freyva, Atlor, Lilith, Tartarus, Typhon and Akidna. **The spreadsheet's "Ascendant Gods" heading is retired** |
-| What the billion tier is | the **Dwarf Titans**, the fourth planetary generation, **not World Titans** |
+| What the billion tier is | the lesser powers of the **Age of Betrayal**, **not Titans of any tier.** The **Dwarf Titan** name is retired, and so is the fourth planetary generation |
 | Whether the power numbers are canon | **No. They are early concept prototypes.** Kept for reference, never used to rank anything. **One exception: Hope at 17 and Fear at 16 is canon** |
 | Who kills Cainan | **Hansall breaks him. Anthurian kills him.** Both drafts were half right |
 | Where vampires come from | **the Prime God of Blood.** Elves first, corrupted into **Strigoi**. Strigoi and humans made the **intelligent vampires**. Direct conversion made the **High Vampires** |
@@ -4511,7 +4891,7 @@ treated as the source rather than as a curiosity.**
     tiers are kinds of being, not strength brackets. **Ra, Hyperion, Soulomon,
     Mór-Ríoghain, Nephthys, Freya and Frey are World Titans**, and the spreadsheet
     heading that called them Ascendant Gods is retired. The billion tier is the
-    **Dwarf Titans**, the fourth planetary generation.
+    lesser powers of the **Age of Betrayal**, who are not Titans at all.
 17. **Prime Gods are born of the world, and the world is born of the Titans
     before the World Titans.** The **Prime God of Blood** is one of them, born of
     the life essence in all living things, **manifesting after the Cataclysm's
