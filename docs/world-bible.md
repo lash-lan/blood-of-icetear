@@ -1264,6 +1264,16 @@ force that arrived ahead of a Dark God, among people who do not know a war is
 coming. It also gives a win condition: **the combined energies of all six
 planets can raise a god to a Titan.**
 
+**Elves are slender, and strength never changes that.** However much muscle an
+elf carries, the frame stays long and narrow. Strength shows as hard, defined,
+corded muscle on a lean body, **never as bulk**. No broad shoulders, no thick
+necks, no heavy builds, at any age and in any discipline. A Blue Ranger smith
+who has swung a hammer for three centuries is sinewy and iron-hard, not wide.
+
+**The widest thing on an elf is what they are wearing.** Bulk in an elven
+silhouette comes from plate, aprons, cloaks and packs, and it comes off at the
+end of the day.
+
 ### The Great Trees, and where the elves woke
 
 The **Song of Becoming** had a place. The first elves woke along the **Great Trees
