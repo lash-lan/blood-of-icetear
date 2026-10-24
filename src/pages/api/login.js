@@ -8,10 +8,10 @@ export const prerender = false;
 // impractical.
 const PAUSE_MS = 700;
 
-// The same door opens the atelier, the private plan and the council. Where you
-// go back to afterwards is only ever one of this site's own private pages,
-// never a web address supplied from outside.
-const RETURN = /^\/(plan(\/[a-z]+)?|council)$/;
+// The same door opens the atelier, the private plan, the council and the world
+// bible. Where you go back to afterwards is only ever one of this site's own
+// private pages, never a web address supplied from outside.
+const RETURN = /^\/(plan(\/[a-z]+)?|council|bible)$/;
 
 export async function POST({ request, cookies, redirect }) {
   const form = await request.formData();
