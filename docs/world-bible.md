@@ -582,16 +582,34 @@ against its shoulders and sat below its head, and heavy enough that where it
 came to rest became geography. Mountains were the thing it was bigger than.
 Anyone standing on the ground saw part of one and never the whole.
 
-**Then the Law of Divine Departure took it from them.** Any of Ra's children
-could have withdrawn to his pocket realms and kept every inch of what they
-were. **Staying in the world was the thing that cost.** All six stayed, and all
-six paid, and what they paid in was size. **They are mountains now.** Still
-beyond anything mortal, still unanswerable, and a tenth of what they were born
-to be.
+**Then the Law of Divine Departure, and only three are left.** Any of Ra's
+children could withdraw to his pocket realms and keep every inch of what they
+were. **Staying in the world was the thing that cost**, and what it cost was
+size.
+
+| | | |
+|---|---|---|
+| **Tiamatra** | stayed | she refused to go |
+| **Nilrealm** | stayed | he refused to go |
+| **Bahamut** | stayed | he could not go. He was already in the ground |
+| **Ryujin** | went | his line remained along the misty rivers of the East |
+| **Delphyne** | went | her wyverns remained in the Central mountains |
+| **Osiris** | went | his nature dragons remained in the Great South Jungle |
+
+**The three who remain are the two who refused and the one who could not.**
+They are mountains now, still beyond anything mortal, still unanswerable, and a
+fraction of what they were born to be.
+
+**The three who left are still islands.** They gave up nothing, because they
+gave up the world instead. Which means the East is **governed in the name of
+gods who left** by people who have never seen what those gods actually are, and
+**if Ryujin, Delphyne or Osiris ever came back, they would come back as the
+thing nobody alive has seen.** The three diminished gods in the world are the
+only ones anyone has ever had to deal with, and they are the small ones.
 
 > **Nobody alive has seen a Dragon God at full size.** Every account of it is
-> inherited, and every account is dismissed by someone who has met one and
-> found a mountain.
+> inherited, and every account is dismissed by someone who has met one of the
+> three and found a mountain. **They are arguing from the wrong three.**
 
 ![The Dragon Gods at the size they were born](images/plate-dragon-gods-true-size.jpg)
 
