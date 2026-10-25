@@ -1,25 +1,16 @@
 ---
-// The world bible, readable on the site and behind the same door as the
-// atelier, the plan and the council. It is working material: it carries
-// unsettled decisions and notes to self, so it is never public.
+// The world bible, readable on the site by anyone who has the address.
+//
+// It has no password, on Lash's instruction, so a link can simply be sent to
+// someone. It keeps noindex, so it will not turn up in a search for anyone who
+// was not sent it, and it is deliberately not linked from the site's own
+// navigation. Unlisted rather than secret.
 //
 // The markdown lives at docs/world-bible.md and is the same file GitHub
 // renders. Astro compiles it at build time, so nothing has to be copied or
 // kept in step by hand, and the images beside it come through the asset
 // pipeline on their own.
-import { env } from 'cloudflare:workers';
-import { ticketHolds, ticketFrom } from '../lib/session.js';
 import { Content, getHeadings } from '../../docs/world-bible.md';
-
-export const prerender = false;
-
-const unlocked = await ticketHolds(env.ATELIER_SESSION_SECRET, ticketFrom(Astro.cookies));
-
-const PROBLEMS = {
-  wrong: 'That is not the password.',
-  unconfigured: 'The password has not been set on the server yet.',
-};
-const problem = PROBLEMS[Astro.url.searchParams.get('e')] ?? '';
 
 // Only the numbered sections go in the contents. The sub-headings inside them
 // would run to well over a hundred entries.
@@ -55,29 +46,6 @@ const sections = getHeadings().filter((h) => h.depth === 2);
       font-size: 19px;
       line-height: 1.68;
     }
-
-    /* The password gate, matching the other private pages. */
-    .lock { min-height: 100dvh; display: grid; place-items: center; padding: 1.5rem; }
-    .lock form {
-      width: min(22rem, 100%);
-      background: var(--panel);
-      border: 1px solid var(--rule);
-      border-radius: 0.6rem;
-      padding: 1.6rem;
-    }
-    .lock h1 { margin: 0 0 1.1rem; font-size: 1.5rem; font-weight: 400; letter-spacing: 0.02em; }
-    .lock label { display: block; font-family: Inter, system-ui, sans-serif; font-size: 0.78rem; color: var(--dim); margin-bottom: 0.35rem; }
-    .lock input {
-      width: 100%; padding: 0.6rem 0.7rem; font: inherit;
-      background: #100f15; color: var(--ink);
-      border: 1px solid var(--rule); border-radius: 0.35rem;
-    }
-    .lock button {
-      margin-top: 1.1rem; width: 100%; padding: 0.6rem;
-      font-family: Inter, system-ui, sans-serif; font-size: 0.9rem;
-      background: var(--gold); color: #17140c; border: 0; border-radius: 0.35rem; cursor: pointer;
-    }
-    .problem { min-height: 1.2em; margin: 0.6rem 0 0; font-family: Inter, system-ui, sans-serif; font-size: 0.8rem; color: #d08a7a; }
 
     /* The reading view. */
     .shell { display: grid; grid-template-columns: 17rem minmax(0, 1fr); }
@@ -142,6 +110,35 @@ const sections = getHeadings().filter((h) => h.depth === 2);
       margin: 2.2rem auto; border: 1px solid var(--rule); border-radius: 0.3rem;
     }
 
+    /* The listen controls, and the block currently being read. */
+    .bar {
+      position: fixed; z-index: 20;
+      right: 1.4rem; bottom: 1.4rem;
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.55rem 0.8rem;
+      background: rgba(27, 26, 34, 0.94);
+      border: 1px solid var(--rule); border-radius: 2rem;
+      backdrop-filter: blur(6px);
+      font-family: Inter, system-ui, sans-serif;
+    }
+    .bar button {
+      font: inherit; font-size: 0.82rem;
+      padding: 0.35rem 0.9rem; border-radius: 1.4rem; cursor: pointer;
+      background: var(--gold); color: #17140c; border: 0;
+    }
+    .bar button#stop { background: transparent; color: var(--dim); border: 1px solid var(--rule); }
+    .bar .where { font-size: 0.72rem; color: var(--faint); min-width: 5.5rem; }
+
+    .read :global(.speaking) {
+      background: rgba(201, 164, 76, 0.1);
+      box-shadow: -0.9rem 0 0 rgba(201, 164, 76, 0.1), 0.9rem 0 0 rgba(201, 164, 76, 0.1);
+      border-radius: 0.15rem;
+    }
+    .read :global(img.speaking), .read :global(table.speaking) {
+      outline: 2px solid var(--gold); outline-offset: 0.4rem; background: none; box-shadow: none;
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
     @media (max-width: 60rem) {
       body { font-size: 18px; }
       .shell { grid-template-columns: 1fr; }
@@ -158,33 +155,182 @@ const sections = getHeadings().filter((h) => h.depth === 2);
 </head>
 <body>
 
-{!unlocked && (
-  <div class="lock">
-    <form method="POST" action="/api/login">
-      <h1>World Bible</h1>
-      <input type="hidden" name="next" value="/bible" />
-      <div>
-        <label for="p">Password</label>
-        <input type="password" id="p" name="password" autocomplete="current-password" autofocus required />
-      </div>
-      <p class="problem">{problem}</p>
-      <button type="submit">Enter</button>
-    </form>
-  </div>
-)}
-
-{unlocked && (
   <div class="shell">
     <nav class="side">
       <p class="brand">Archavalon</p>
       <p class="note">The world bible. Working material, not published lore.</p>
       {sections.map((h) => <a href={`#${h.slug}`}>{h.text}</a>)}
     </nav>
-    <main class="read">
+    <main class="read" id="read">
       <Content />
     </main>
+
+    <div class="bar" id="bar" hidden>
+      <button type="button" id="play">Listen</button>
+      <button type="button" id="stop" hidden>Stop</button>
+      <span class="where" id="where"></span>
+    </div>
   </div>
-)}
+
+<script is:inline>
+  // Reads the page aloud, block by block, and holds on the things that are
+  // meant to be looked at rather than heard.
+  //
+  // Images hold two seconds. Tables hold a little longer, scaled to how many
+  // rows they have, because a table read aloud is gibberish but you still want
+  // time to see it.
+  //
+  // This uses the browser's own voice. It is flat, and it is a placeholder for
+  // the narration proper, but it means the mechanism works today and only the
+  // sound has to be swapped later.
+  (function () {
+    var synth = window.speechSynthesis;
+    var read = document.getElementById('read');
+    var bar = document.getElementById('bar');
+    if (!read || !bar || !synth) return;
+    bar.hidden = false;
+
+    var playBtn = document.getElementById('play');
+    var stopBtn = document.getElementById('stop');
+    var where = document.getElementById('where');
+
+    var IMAGE_HOLD = 2000;
+    var ROW_HOLD = 900;        // per table row
+    var TABLE_MAX = 9000;
+    var SPOKEN = 'P,H1,H2,H3,H4,LI,BLOCKQUOTE'.split(',');
+
+    // Chrome cuts off utterances longer than about fifteen seconds, so
+    // everything is spoken in sentence sized pieces.
+    function pieces(text) {
+      var out = [], buf = '';
+      text.replace(/\s+/g, ' ').trim().split(/(?<=[.!?])\s+/).forEach(function (s) {
+        if ((buf + ' ' + s).trim().length > 220) { if (buf) out.push(buf.trim()); buf = s; }
+        else { buf = (buf + ' ' + s).trim(); }
+      });
+      if (buf) out.push(buf);
+      return out;
+    }
+
+    // One flat list of steps: speak this, or hold on that.
+    var steps = [];
+    Array.prototype.forEach.call(read.querySelectorAll('*'), function (el) {
+      if (el.closest('table') && el.tagName !== 'TABLE') return;
+      if (el.tagName === 'IMG') { steps.push({ el: el, hold: IMAGE_HOLD }); return; }
+      if (el.tagName === 'TABLE') {
+        var rows = el.querySelectorAll('tr').length;
+        steps.push({ el: el, hold: Math.min(TABLE_MAX, rows * ROW_HOLD) });
+        return;
+      }
+      if (SPOKEN.indexOf(el.tagName) === -1) return;
+      if (el.querySelector('p, li, blockquote')) return;   // containers, not lines
+      var text = el.textContent.trim();
+      if (text) steps.push({ el: el, say: pieces(text) });
+    });
+
+    var at = -1, playing = false, timer = null;
+
+    function voice() {
+      var vs = synth.getVoices() || [];
+      var want = ['Google UK English Male', 'Microsoft Ryan', 'Daniel', 'Microsoft George'];
+      for (var i = 0; i < want.length; i++) {
+        for (var j = 0; j < vs.length; j++) {
+          if (vs[j].name.indexOf(want[i]) === 0) return vs[j];
+        }
+      }
+      return vs.filter(function (v) { return /^en/i.test(v.lang); })[0] || null;
+    }
+
+    function mark(el) {
+      var old = read.querySelector('.speaking');
+      if (old) old.classList.remove('speaking');
+      el.classList.add('speaking');
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      where.textContent = (at + 1) + ' of ' + steps.length;
+    }
+
+    function run() {
+      if (!playing) return;
+      at++;
+      if (at >= steps.length) return halt();
+      var step = steps[at];
+      mark(step.el);
+      if (step.hold) { timer = setTimeout(run, step.hold); return; }
+      sayAll(step.say.slice());
+    }
+
+    // Never chain on onend alone. If a browser loses that event, and some do,
+    // the whole reading freezes with no way out. Every utterance therefore
+    // carries a watchdog set a little past how long it ought to take, and
+    // whichever fires first moves us on. Only once, hence the guard.
+    var guard = null;
+
+    function sayAll(queue) {
+      if (!playing) return;
+      if (!queue.length) return run();
+      var text = queue.shift();
+      var u = new SpeechSynthesisUtterance(text);
+      var v = voice();
+      if (v) { u.voice = v; u.lang = v.lang; }
+      u.rate = 0.95;
+      u.pitch = 0.9;
+
+      var done = false;
+      function next() {
+        if (done) return;
+        done = true;
+        clearTimeout(guard);
+        sayAll(queue);
+      }
+      u.onend = next;
+      u.onerror = next;
+
+      // Roughly fourteen characters a second at this rate, plus four seconds
+      // of slack, and a floor so very short lines are not cut off.
+      var expected = Math.max(2500, (text.length / 14) * 1000 / u.rate + 4000);
+      guard = setTimeout(function () { synth.cancel(); next(); }, expected);
+
+      synth.speak(u);
+    }
+
+    // Chrome stops speaking after about fifteen seconds unless it is nudged.
+    setInterval(function () {
+      if (playing && synth.speaking && !synth.paused) { synth.pause(); synth.resume(); }
+    }, 9000);
+
+    function halt() {
+      playing = false;
+      clearTimeout(timer);
+      clearTimeout(guard);
+      synth.cancel();
+      var old = read.querySelector('.speaking');
+      if (old) old.classList.remove('speaking');
+      playBtn.textContent = 'Listen';
+      stopBtn.hidden = true;
+      where.textContent = '';
+      at = -1;
+    }
+
+    playBtn.addEventListener('click', function () {
+      if (playing) {                       // pause
+        playing = false;
+        clearTimeout(timer);
+        clearTimeout(guard);
+        synth.cancel();
+        playBtn.textContent = 'Resume';
+        at--;                              // repeat the block we interrupted
+        return;
+      }
+      playing = true;
+      playBtn.textContent = 'Pause';
+      stopBtn.hidden = false;
+      run();
+    });
+
+    stopBtn.addEventListener('click', halt);
+    window.addEventListener('beforeunload', function () { synth.cancel(); });
+    if (synth.onvoiceschanged !== undefined) synth.onvoiceschanged = function () {};
+  })();
+</script>
 
 </body>
 </html>
