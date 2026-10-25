@@ -1,0 +1,406 @@
+<title>The Chronicle Build Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Inter:wght@300;400;500;600&display=swap">
+<style>
+/* Layout: one vertical flow spine, five numbered stages, each a band of tool cards. */
+:root {
+  --paper: #0a0908;
+  --raised: #15120f;
+  --raised-2: #1d1913;
+  --line: #2b2419;
+  --line-lit: #4a3d26;
+  --gold: #c8a96a;
+  --gold-deep: #9a7f45;
+  --ivory: #f2ece1;
+  --soft: #cfc6b6;
+  --dim: #9a9182;
+  --faint: #6f6759;
+  --free: #7fa88a;
+  --paid: #c9a06a;
+  --display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --paper: #f6f2ea; --raised: #fffdf8; --raised-2: #f1ece1;
+    --line: #e0d8c7; --line-lit: #cbbb98;
+    --gold: #8a6a2e; --gold-deep: #9a7f45;
+    --ivory: #1b1713; --soft: #3d372e; --dim: #6b6456; --faint: #8b8474;
+    --free: #3f6b4f; --paid: #8a6a2e;
+    color-scheme: light;
+  }
+}
+:root[data-theme="light"] {
+  --paper: #f6f2ea; --raised: #fffdf8; --raised-2: #f1ece1;
+  --line: #e0d8c7; --line-lit: #cbbb98;
+  --gold: #8a6a2e; --gold-deep: #9a7f45;
+  --ivory: #1b1713; --soft: #3d372e; --dim: #6b6456; --faint: #8b8474;
+  --free: #3f6b4f; --paid: #8a6a2e;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--paper); color: var(--soft);
+  font-family: var(--body); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+
+/* ---------- masthead ---------- */
+.mast { padding-block: clamp(2.5rem, 7vw, 4.5rem) clamp(1.5rem, 4vw, 2.5rem); }
+.eyebrow {
+  font-size: .68rem; letter-spacing: .26em; text-transform: uppercase;
+  color: var(--gold-deep); font-weight: 500; margin: 0 0 .9rem;
+}
+h1 {
+  font-family: var(--display); font-weight: 300;
+  font-size: clamp(2.4rem, 8vw, 4.2rem); line-height: 1.04;
+  color: var(--ivory); letter-spacing: -0.01em;
+}
+.standfirst {
+  margin: 1.1rem 0 0; max-width: 34em;
+  font-size: clamp(1rem, 2.4vw, 1.18rem); color: var(--dim);
+}
+.key { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.8rem; }
+.chip {
+  display: inline-flex; align-items: center; gap: .45rem;
+  border: 1px solid var(--line); border-radius: 100px;
+  padding: .32rem .78rem; font-size: .74rem; color: var(--dim);
+  background: var(--raised);
+}
+.dot { width: 7px; height: 7px; border-radius: 50%; flex: none; }
+.dot.free { background: var(--free); }
+.dot.paid { background: var(--paid); }
+.dot.you  { background: var(--ivory); }
+
+/* ---------- the spine ---------- */
+.flow { position: relative; padding-bottom: 3rem; }
+.stage { position: relative; padding-block: clamp(1.6rem, 4vw, 2.4rem); }
+.stage + .stage { border-top: 1px solid var(--line); }
+.stage-head { display: flex; gap: 1rem; align-items: baseline; margin-bottom: 1.4rem; }
+.num {
+  flex: none; width: 2.1rem; height: 2.1rem; border-radius: 50%;
+  border: 1px solid var(--gold-deep); color: var(--gold);
+  display: grid; place-items: center;
+  font-size: .9rem; font-weight: 600; font-variant-numeric: tabular-nums;
+  transform: translateY(.35rem);
+}
+.stage-title {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(1.5rem, 4.4vw, 2.1rem); color: var(--ivory); line-height: 1.15;
+}
+.stage-note { margin: .3rem 0 0; color: var(--dim); font-size: .95rem; max-width: 46em; }
+
+/* ---------- tool cards ---------- */
+.cards { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); }
+.card {
+  background: var(--raised); border: 1px solid var(--line);
+  border-top: 2px solid var(--line-lit);
+  padding: 1.15rem 1.15rem 1.25rem; min-width: 0;
+  display: flex; flex-direction: column; gap: .6rem;
+}
+.card.lead { border-top-color: var(--gold); }
+.card-top { display: flex; align-items: baseline; justify-content: space-between; gap: .6rem; }
+.card h3 {
+  font-family: var(--body); font-size: 1.04rem; font-weight: 600;
+  color: var(--ivory); letter-spacing: -0.005em; min-width: 0;
+}
+.cost {
+  flex: none; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--dim); white-space: nowrap;
+}
+.cost.free { color: var(--free); }
+.row { display: grid; grid-template-columns: 3.7rem 1fr; gap: .55rem; align-items: start; }
+.lab {
+  font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--gold-deep); font-weight: 500; padding-top: .28rem;
+}
+.val { font-size: .9rem; color: var(--soft); min-width: 0; }
+.val.why { color: var(--dim); }
+
+/* ---------- the arrow between stages ---------- */
+.down { display: grid; place-items: center; padding-block: .2rem; }
+.down svg { display: block; }
+
+/* ---------- panels ---------- */
+.panel {
+  background: var(--raised-2); border: 1px solid var(--line);
+  padding: clamp(1.2rem, 3.5vw, 1.9rem); margin-top: 1.1rem;
+}
+.panel h3 {
+  font-family: var(--display); font-weight: 400; font-size: 1.35rem;
+  color: var(--ivory); margin-bottom: .5rem;
+}
+.panel p { margin: 0 0 .7rem; font-size: .94rem; }
+.panel p:last-child { margin-bottom: 0; }
+ul.plain { margin: 0; padding: 0; list-style: none; display: grid; gap: .55rem; }
+ul.plain li { display: grid; grid-template-columns: auto 1fr; gap: .6rem; font-size: .93rem; }
+ul.plain li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--gold-deep); transform: translateY(.62rem); }
+
+/* ---------- moments ---------- */
+.moments { display: grid; gap: .9rem; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); margin-top: 1.2rem; }
+.moment { border: 1px solid var(--line-lit); background: var(--raised); padding: 1.1rem; min-width: 0; }
+.moment .m-num { font-family: var(--display); font-size: 2rem; color: var(--gold); line-height: 1; }
+.moment h4 { margin: .4rem 0 .35rem; font-size: .98rem; color: var(--ivory); font-weight: 600; }
+.moment p { margin: 0; font-size: .87rem; color: var(--dim); }
+
+/* ---------- close ---------- */
+.close { border-top: 1px solid var(--line); padding-block: clamp(2rem, 5vw, 3rem) clamp(2.5rem, 6vw, 4rem); }
+.close .line {
+  font-family: var(--display); font-size: clamp(1.2rem, 3.4vw, 1.7rem);
+  color: var(--ivory); font-weight: 300; line-height: 1.4; max-width: 30em;
+}
+.foot { margin-top: 1.4rem; font-size: .8rem; color: var(--faint); }
+
+@media (max-width: 460px) {
+  .row { grid-template-columns: 1fr; gap: .15rem; }
+  .lab { padding-top: 0; }
+  .stage-head { gap: .75rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .card { transition: border-color .4s ease, background-color .4s ease; }
+  .card:hover { border-color: var(--line-lit); background: var(--raised-2); }
+}
+</style>
+
+<div class="wrap">
+
+  <header class="mast">
+    <p class="eyebrow">The Chronicle Company</p>
+    <h1>Every tool, and why it is there</h1>
+    <p class="standfirst">The whole machine that turns a family's photographs and memories into a living, speaking archive. Read it top to bottom. That is the order things actually happen in.</p>
+    <div class="key">
+      <span class="chip"><span class="dot free"></span>Free</span>
+      <span class="chip"><span class="dot paid"></span>You pay</span>
+      <span class="chip"><span class="dot you"></span>Gold edge means you must be present</span>
+    </div>
+  </header>
+
+  <div class="flow">
+
+    <!-- 1 -->
+    <section class="stage">
+      <div class="stage-head">
+        <div class="num">1</div>
+        <div>
+          <h2 class="stage-title">What the family gives you</h2>
+          <p class="stage-note">Nothing starts until this exists. No tool on this page can invent a single one of these things, and none of them is allowed to try.</p>
+        </div>
+      </div>
+      <div class="cards">
+        <article class="card lead">
+          <div class="card-top"><h3>Signed consent</h3><span class="cost">Yours to get</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Written permission from every living person: their picture, their words, their voice.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">This is the one risk that can end the business. It is not paperwork, it is the foundation.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>Interviews and papers</h3><span class="cost">Your time</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">The stories, the dates, the career record, the letters.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">Every fact needs a source you can point at later. No source, no sentence.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>Photographs</h3><span class="cost">Theirs</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">The family's own pictures, named and dated as far as anyone knows.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">The film is made from real photographs. Unknowns stay marked unknown rather than guessed.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>A voice recording</h3><span class="cost">Optional</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Only if a family member wants to be heard reading their own words.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">They must record it themselves and agree in writing. Never for someone who has died.</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2 -->
+    <section class="stage">
+      <div class="stage-head">
+        <div class="num">2</div>
+        <div>
+          <h2 class="stage-title">Who makes it</h2>
+          <p class="stage-note">Three makers and two quiet helpers. None of them decides anything about the family. They shape what the family already gave you.</p>
+        </div>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top"><h3>Claude Code</h3><span class="cost">Subscription</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Writes the entire website: every page, the opening film, the read-aloud machinery, the reader dashboard.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">You are not a developer and do not intend to become one. This does the building and the checking.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>ChatGPT</h3><span class="cost">Subscription</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Generates and improves images. Sharpens the writing before it reaches the page.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">A second opinion on words, and artwork you control rather than buy.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>Text to speech</h3><span class="cost">Under $5</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Reads the whole Chronicle aloud in a professional narrator's voice.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">An eighty year old relative presses one button instead of reading three thousand words.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>Voice cloning</h3><span class="cost">Only if sold</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Reads a person's own letter in that person's own voice.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">The single most powerful thing in the product, and the thing that cannot be bought later.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>Python and Pillow</h3><span class="cost free">Free</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Makes three sizes of every photograph, plus the blurred backdrops behind the film.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">A phone downloads a small picture and a laptop a large one. Nobody waits.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>ffmpeg</h3><span class="cost free">Free</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Lays the music under the narrator and ducks it out of the way of the words.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">It is the plumbing underneath almost every media tool on earth, and it costs nothing.</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3 -->
+    <section class="stage">
+      <div class="stage-head">
+        <div class="num">3</div>
+        <div>
+          <h2 class="stage-title">What it is built with</h2>
+          <p class="stage-note">One tool, deliberately. The shorter this list, the longer the Chronicle survives without anyone maintaining it.</p>
+        </div>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top"><h3>Astro</h3><span class="cost free">Free</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Turns your organised files into finished web pages, in advance, before anybody visits.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">Its entire ingredient list is one item. Nothing to rot, nothing to update, nothing to break in ten years.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>The house style gate</h3><span class="cost free">Free</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Reads the finished pages and refuses to publish if a banned character slipped into anything a visitor can read.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">A mistake cannot reach a client's live site. The old version simply stays up.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>One content file</h3><span class="cost free">Free</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Holds all the writing, with every unknown left as a marked gap that shows as nothing.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">The family edits their own Chronicle for twenty years without hiring anyone again.</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4 -->
+    <section class="stage">
+      <div class="stage-head">
+        <div class="num">4</div>
+        <div>
+          <h2 class="stage-title">Where it lives</h2>
+          <p class="stage-note">Two companies carry everything from here on. Each client gets their own separate set of all of it.</p>
+        </div>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top"><h3>GitHub</h3><span class="cost free">Free</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Stores every page, photograph and recording, and every older version of all of them, forever.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">It is the filing cabinet and it is also the backup. One private store per client.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>Cloudflare Workers</h3><span class="cost free">Free</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Shows the site from the nearest of about three hundred cities.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">Set up so that a visitor asking for a real file never touches any code. Almost nothing can break.</span></div>
+        </article>
+        <article class="card lead">
+          <div class="card-top"><h3>Cloudflare Registrar</h3><span class="cost">$10 to $15 a year</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Owns the web address and points it at the site.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">Bought in the same account as the hosting, so there is no connecting step. The only running cost there is.</span></div>
+        </article>
+        <article class="card lead">
+          <div class="card-top"><h3>Workers Builds</h3><span class="cost free">Free</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Watches the filing cabinet. Anything that changes is live in about five minutes.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">Nothing is ever uploaded by hand, which is the commonest way a site gets accidentally broken.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>Cloudflare Analytics</h3><span class="cost free">Free</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Counts readers from traffic Cloudflare already sees, and feeds the owner's private dashboard.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">No tracker on the page, no cookie on the visitor, nothing personal stored. Nothing to disclose.</span></div>
+        </article>
+        <article class="card lead">
+          <div class="card-top"><h3>Cloudflare Secrets</h3><span class="cost free">Free</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Holds two values per client: the dashboard password, and a read only analytics key for that one address.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">Typed by you alone. Never in the code, never in a chat, never in a file.</span></div>
+        </article>
+      </div>
+
+      <div class="panel">
+        <h3>Nothing is shared between clients</h3>
+        <p>Every family gets their own store, their own hosting, their own web address and their own two passwords. One client's letters can never appear on another client's site, and a problem with one reaches nothing else.</p>
+        <p>What stays yours, and never belongs to a client: the template, the consent pack, the contract, and your Claude, ChatGPT and narration accounts.</p>
+      </div>
+    </section>
+
+    <!-- 5 -->
+    <section class="stage">
+      <div class="stage-head">
+        <div class="num">5</div>
+        <div>
+          <h2 class="stage-title">Who sees it</h2>
+          <p class="stage-note">The point of all of it.</p>
+        </div>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <div class="card-top"><h3>The family</h3><span class="cost">Anywhere</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">They open a link on a phone. It loads fast, it reads itself aloud, and it scrolls itself as it speaks.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">A link travels through a family group chat. A printed book does not.</span></div>
+        </article>
+        <article class="card">
+          <div class="card-top"><h3>The private dashboard</h3><span class="cost">Owner only</span></div>
+          <div class="row"><span class="lab">Does</span><span class="val">Shows the owner how many people read it, which parts, and from which countries.</span></div>
+          <div class="row"><span class="lab">Why</span><span class="val why">Signing in is a form, never the browser's password box, because messaging app browsers refuse that box.</span></div>
+        </article>
+      </div>
+    </section>
+
+  </div>
+
+  <section class="stage" style="border-top:1px solid var(--line)">
+    <div class="stage-head">
+      <div class="num">&#9733;</div>
+      <div>
+        <h2 class="stage-title">The four moments that need you</h2>
+        <p class="stage-note">Everything else on this page runs without you. These four do not.</p>
+      </div>
+    </div>
+    <div class="moments">
+      <div class="moment">
+        <div class="m-num">1</div>
+        <h4>Buy the web address</h4>
+        <p>Your card, so it has to be you. Buy it in the same Cloudflare account that will host the site.</p>
+      </div>
+      <div class="moment">
+        <div class="m-num">2</div>
+        <h4>Connect the hosting</h4>
+        <p>Once per client. Six clicks and four boxes. After that it republishes itself forever.</p>
+      </div>
+      <div class="moment">
+        <div class="m-num">3</div>
+        <h4>Type the two passwords</h4>
+        <p>Only if the client wants their reader dashboard. Each command hides what you type.</p>
+      </div>
+      <div class="moment">
+        <div class="m-num">4</div>
+        <h4>Get the consent signed</h4>
+        <p>Not technical at all, and the most important thing on this entire page.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="close">
+    <p class="line">Fifteen dollars a year to run. Five and a half to nine thousand to build. The gap between those two numbers is the business, and every tool above exists to keep that gap honest.</p>
+    <p class="foot">Nothing on a Chronicle is ever invented. Where a fact is not known, the page shows a gap, and the gap waits.</p>
+  </section>
+
+</div>
