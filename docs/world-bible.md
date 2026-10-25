@@ -3551,78 +3551,160 @@ forgetting the last clause of his own order's oldest rule: enter darkness, use i
 
 ### Amelia, and why she is Anthurian's mirror
 
+**Her whole life happens in the deep south of the Central continent**, in the
+Black Sea territories, and it begins during **Uther's crusade against magic** in
+the West. That matters: while a human king is burning sorcerers on one
+continent, a girl on another is being raised by the thing he is pretending does
+not exist.
+
 **Phase I, the Child of Ashes.** Her village belonged to a Baron whose greed had
 buried whatever honour his bloodline once had. Justice could be bought, murder
 could be forgiven, and the **GhoulClaw Clan** rode openly through his lands
 because fear kept peasants obedient better than soldiers ever could. Every few
-months the riders came, and people stopped speaking when they heard horses. Doors
-closed. Candles went out. **Children learned not to cry.**
+months the riders came, and people stopped speaking when they heard horses.
+Doors closed. Candles went out. **Children learned not to cry.**
 
 Her mother was taken on a cold autumn evening. *She remembered reaching for her
-hand. She remembered missing.* **Her father never tried to stop them, and she hated
-him for that long before she hated the bandits.**
-
-**Then the Black Sea came, and it came with silence.** Not thunder, not fire. Birds
-vanished. Dogs whimpered under houses. Even the wind seemed unwilling to move.
+hand. She remembered missing.* **Her father never tried to stop them, and she
+hated him for that long before she hated the bandits.**
 
 **Phase II.** Two years among the GhoulClaw, *wolves wearing human skin.* She
-smiled the first time she realised she could herd them. **At nineteen she destroyed
-them from the inside**, and the clan's blood-soaked halls became the stone bastion
-of **Boudicarn**. **By twenty-one she was Warleader.** The women who had survived
-the GhoulClaw no longer wore chains. They carried axes, hunting bows and short
-spears, behind reinforced palisades, watchtowers above the forest canopy, trenches
-lined with stakes, and hidden platforms in the branches.
+smiled the first time she realised she could herd them. **At nineteen she
+destroyed them from the inside**, and the clan's blood-soaked halls became the
+bastion of **Boudicarn**. **By twenty-one she was Warleader**, and the women who
+had survived the GhoulClaw carried axes and short spears instead of chains,
+behind palisades, watchtowers and trenches lined with stakes.
 
 **Her teaching**, which belongs beside the Nyxthorn doctrine:
 
-> Fear was not something to overcome. It was a sense like hearing or sight. Ignore
-> it and it would get them killed. **Understand it and it would reveal what others
-> tried to hide.**
+> Fear was not something to overcome. It was a sense like hearing or sight.
+> Ignore it and it would get them killed. **Understand it and it would reveal
+> what others tried to hide.**
 
 **That is the Titan of Fear's own domain turned into a discipline by a mortal
-woman.** And she built Boudicarn in the middle of the Black Sea's leavings
+woman**, and she built Boudicarn in the middle of the Black Sea's leavings
 **because nightmares made excellent walls.**
 
-**Phase III, the fall.** The Baron sent mercenaries, and at their head **Victor
-Lash**, Champion of the Iron Marches, the man who killed the **Red Oath Giant**,
-who **held the Bridge of Carrion alone for an entire night.** He arrived having
-already cut his way through the ghoul-infested forest. Boudicarn fell. Amelia
-fought him personally with chained daggers and a short sword, cut his neck, and
-lost.
+**Phase III, the fall.** The Baron sent **Victor Lash**, Champion of the Iron
+Marches, who killed the **Red Oath Giant** and **held the Bridge of Carrion
+alone for an entire night.** Boudicarn fell. Amelia fought him personally with
+chained daggers and a short sword, cut his neck, and lost.
 
 > **Victor Lash had dismantled every belief she possessed in a single day.** For
-> the first time since she was a child beneath the cellar floor, Amelia understood
-> that she was no longer the most dangerous thing in her world.
+> the first time since she was a child beneath the cellar floor, Amelia
+> understood that she was no longer the most dangerous thing in her world.
 
-Then the **House of Chains**, and the road to the **City of Light.**
+**Phase IV, and this is the turn.** He did not kill her and he did not hand her
+over. **They left together**, and the man who had taken everything from her
+became the only person who ever taught her anything.
 
-> The Warleader of Boudicarn was approaching the gates of the City of Light. The
-> world would one day remember her as the **Saint Paragon**. For now she was simply
-> a broken soul riding toward the first place that might finally teach her there
-> was another way to live.
+They hunted the deep south for years: necromancers, Lich cults, the cell work
+nobody else would take. Eventually they took a station in a **Duke's kingdom at
+the edge of the Black Sea territory** and carried out his hunts. Corrupted
+trolls. Whole fortifications gone over to the dark. **Victor took her as his
+disciple and trained her into one of the Warrior Queens of Darkness**, and she
+put down the chained daggers for **a great black blade**, and wore plate cut
+away to almost nothing, because at her weight speed was the only armour that
+had ever worked.
 
-**And then she becomes the second Dark Lord anyway.**
+**And they met a Ghoul Mother and did not win.** They got out alive by severing
+one of its arms, and they ran. **That arm is the thread that ties the next
+decade together.**
+
+**Phase V, Morgana.** After Arthur took the throne and **Morgana was discovered
+and exiled**, she came to the Central continent's southern borders and set up as
+a mysterious and powerful witch, earning her living in the open on **elemental
+mastery** while quietly going further and further into necromancy in private.
+She was called on constantly. **Victor and Amelia fought beside her on many
+missions**, and they grew close on the long escort runs where there is nothing
+to do but talk.
+
+**The three of them are a working unit and each covers a real hole.** Morgana is
+devastating given time and distance and nearly helpless when swarmed or reached,
+which is exactly the gap a great black blade and a champion of the Iron Marches
+fill.
+
+**When the one-armed Ghoul Mother was finally posted as a bounty, the three of
+them took it.** They succeeded and it cost many lives. **Morgana's meteor storm
+and tempest brought the beast down**, and Victor and Amelia went into the swarm
+and tore it apart.
+
+**Phase VI, the Southern continent.** Morgana gathered a cult following and left
+to win herself a kingdom in the south. History takes its course and **she is
+defeated.**
+
+**Then Amelia descends.** She makes a pact with the **Prime God of Blood** to
+put down most of the Dark Angel's Lords, and she does.
+
+**And then she betrays it.** **She slays the Prime God of Blood and absorbs its
+essence**, which makes her not a High Vampire but the thing High Vampires were
+made out of. **The true Blood Queen.** She carries the dead god's madness with
+her for the rest of her life, and it both wrecks her and wins for her, because a
+mind that is not entirely her own is a mind nobody can read. **She slew the Dark
+Angel and took the crown.**
+
+**She co-rules the Southern continent with Morgana, and stays in the shadow of
+it.** Morgana wears the throne. Amelia is the reason it holds.
+
+**Phase VII, the long disguise.** Decades later she walks back into the Central
+continent and **joins the City of Light under a false face.** Nobody detects the
+vampirism, and the reason is almost funny: **they are testing for a High
+Vampire, and she stopped being one the day she ate the god.** She rose through
+the order quickly, which was easy, because the **Black Sea invasion** had begun
+in earnest across the Southern and Western continents and the Light needed
+anyone who could fight.
+
+**A few decades of war later they beat back the Black Sea Angels and win it.**
+And in the same hour, on the other continent, **humanity opens its war against
+the elves**, so the victory buys nothing.
+
+**Phase VIII, Isdowrath.** A few years on, she arrived at the Grey Knights'
+southernmost citadel with her own squad, as a **Sister of Light**, bringing aid
+against the darkness pushing up from the south. By then she was revered as an
+**Arch Saint Knight**, and in the Southern continent, by people who had never
+seen her face, as the **Blood Queen**.
+
+**And the two titles are the same operation.** She had been quietly turning her
+most devoted sisters into the **Knight Sisters of Darkness**, presented to the
+Light as a specialist sect raised to find and destroy Black Sea abominations,
+and granted leave to base themselves in the Southern continent.
+
+**They based themselves at Gothica**, which is the one choice in her whole life
+that nobody could argue with. The **Gothica Knight Sisters** exist because
+something in that region **turned ninety-eight percent of its men into
+eldritch, lust-driven horrors**, and Gothica is the last city in those lands
+that has not fallen. It is a sisterhood because there are almost no men left to
+make it anything else. **No organisation in the world has a better reason to
+exist**, and no posting is a more convincing act of faith.
+
+> **The Knight Sisters do not know what their founder is.** Everything outside
+> Gothica's walls is hostile to them, they fight it honestly and they bleed for
+> it, **and that hostility is the proof of loyalty that keeps the Light from
+> ever looking twice.** Amelia built an order that protects her by sincerely
+> trying to destroy everything she rules.
+
+**And she chose the one place where that could never be questioned.** A woman
+who wanted to hide what she was could not have found better cover than a city
+under permanent siege by monsters, defended by women who have every reason to
+hate the dark and no reason at all to suspect the Arch Saint Knight who
+garrisoned them there.
+
+### Amelia against Anthurian
 
 | | Anthurian | Amelia |
 |---|---|---|
 | Born into | slavery under Cainan | a village farmed by the GhoulClaw |
 | The wound | her mother died and nobody came | her mother was taken and her father did nothing |
 | What she built | a dominion out of freed slaves | a sisterhood out of freed women, in the bandits' own halls |
-| The title offered | Queen, Empress, Demon Sovereign | **Saint Paragon** |
-| What she did with it | **refused the throne** and ruled without sitting on it | **took the throne she killed for** |
+| Who taught her | nobody | **the man who destroyed her** |
+| What she did with power | **refused the throne** and ruled without sitting on it | **took every throne and every offer** |
 
-**And then the Prime God of Blood asks her, and she says yes.** Amelia becomes a
-**High Vampire**, one of only four on record, which means the woman who was carried
-into the City of Light and taught there was another way to live ends up having
-taken every offer that was ever made to her. **Anthurian was never asked
-anything.**
+**And the line that separates them is still the same one.** Anthurian was never
+asked anything. Amelia was asked by the Prime God of Blood, said yes, and then
+killed the thing that asked.
 
-**So when Amelia slays Anthurian, she is killing the version of herself who chose
-differently.** One was given every reason to become a monster and ruled without a
-chair. The other was carried into the Light, taught there was another way to live,
-seated beside the Arch-Saint, **and became the second Dark Lord.** That is the
-strongest spine in the whole archive, and it is theme 9 and theme 13 argued against
-each other by two women with the same childhood.
+**So when the two of them meet, Amelia is facing the version of herself that
+refused.**
 
 ---
 
