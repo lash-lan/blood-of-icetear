@@ -963,9 +963,14 @@ one fact:
 
 - **It whispers rather than commands**, because command is not in its nature and
   the splinter can only suggest.
-- **It only ever takes volunteers.** Llanahs, Dracule, Melissra, Amelia. **It
-  asks.** The rule of consent is not a tactic it chose, it is the limit of what a
-  wounded god of life is able to do.
+- **It only ever took volunteers.** Llanahs, Dracule, Melissra, Amelia. **It
+  asked.** The rule of consent was not a tactic it chose, it is the limit of
+  what a wounded god of life was able to do.
+- **And it is dead.** The fourth volunteer killed it. **Amelia slew the Prime
+  God of Blood and absorbed its essence**, which means those four are not the
+  first High Vampires, **they are all of them there will ever be.** Nothing can
+  make another, because the thing that asked is gone and the only being
+  carrying its essence has no interest in asking anyone.
 - **What it offers is always the same thing**, and it is the thing a god of life
   would genuinely value: **freedom from ever watching something beautiful fade
   again.** It means it.
@@ -3706,6 +3711,24 @@ killed the thing that asked.
 **So when the two of them meet, Amelia is facing the version of herself that
 refused.**
 
+**Two things this history breaks, and both need deciding.**
+
+**Who she actually kills.** This bible says twice that *Amelia slays the first
+Dark Lord and takes the title*, meaning **Anthurian**, in the Age of Broken
+Crowns. Her history above has her slaying **the Dark Angel** to take the
+southern crown. Those can be two separate kills decades apart, which would make
+her a woman who has taken two thrones by killing whoever was sitting on them,
+and that reads well. **But the Dark Angel is also the vessel carrying Helena's
+soul**, and Helena's arc runs long past this point, so if it is that Dark Angel
+then one of the two accounts has to give.
+
+**When it happens.** The age table has Amelia taking the Dark Lord title in
+**950 to 1010**, and Morgana betraying Arthur and retreating south in **1010 to
+1060.** Her history above requires **Morgana's exile first**, because the three
+of them hunt together for years before Amelia ever goes south. **One of those
+two datings has to move**, and the age table has not been touched pending that
+decision.
+
 ---
 
 ## 23. The people
@@ -4602,6 +4625,38 @@ cannot be settled, and no Dark House may ritually brand a former slave.**
 | **The Sun-Night Inquisitorium** | exists because the Black Sea Cults poison kingdoms from within rather than conquering them, **which is why information is its sharpest weapon** |
 | **The Mage Knights** | Nadring Hemarc's brotherhood, neither wizard nor knight |
 | **The Whisperers** | Floki's network |
+
+### The enemies of the dark
+
+Three bodies exist specifically to hunt what the Black Sea leaves behind, and
+they are not the same kind of thing as the knightly orders above.
+
+**The Gothica Knight Sisters.** A sisterhood of knights in the dark land of
+**Gothica**, raised against an evil that **turned ninety-eight percent of the
+men in their region into eldritch horrors driven by lust and madness.**
+**Gothica is the last city in those lands that has not fallen**, and it is a
+sisterhood for the plainest possible reason: there are almost no men left to
+make it anything else. They are the stalwart guard of a besieged homeland, and
+they hold it.
+
+> **No order in the world has a better reason to exist**, which is exactly why
+> Amelia chose it to hide inside. See section 22.
+
+**The Inquisition.** Given the power and the authority to hunt beings of
+darkness, **malicious or not**, and that last clause is the whole character of
+them. They are not asked to judge whether a thing has done harm. They are asked
+to find it.
+
+**The Slayers.** Not an order but **a trade**, solitary and isolated, charged
+and trusted with destroying malicious dark forces. You cannot join it. **A
+Slayer must be born under a Gods Lamp tree during the Winter Solstice, on the
+darkest night of the year**, and children born that way carry a heightened
+perception of the dead and a natural pull toward harvesting magic. There are
+never many. **The Gothica Knight Sisters, the Grey Rangers and the Grey Cloaks
+all compete for them**, because the gift cannot be trained into anyone else.
+
+**Which makes a Slayer the rarest thing in this part of the world**, and makes
+the Gods Lamp trees worth watching every midwinter by people who want one.
 
 ### The Ranger Corps, and three competing schemes
 
