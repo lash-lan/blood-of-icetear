@@ -2034,10 +2034,10 @@ is the authority, and the site's shorter list is the public simplification.
 | 800 to 850 | **Age of the Races** | the Human Empire exterminates the **lakebourne elves** and the **Trogans**, racial war follows, the Empire is destroyed and humans scattered, **despised by every other race** |
 | 850 to 900 | **Age of Darkness, Invasion** | the **thirteen Angels** come, and the **City of Light** becomes the last bastion. Old hatreds are forgotten because only survival matters |
 | 900 to 950 | **Age of Darkness, Revenge** | the Angels are hunted. The **First Dark Lord** contains the infected races on a far continent. Parts of the Fae, human and demihuman races are permanently altered into **darker races**, carrying a mind-scar as well as power |
-| 950 to 1010 | **Age of Broken Crowns** | a Saint Knight betrays the Archsaintess, 60 percent of the Night Sisters die, **Amelia slays the first Dark Lord and takes the title**, and the alliance disbands |
+| 950 to 1010 | **Age of Broken Crowns** | a Saint Knight betrays the Archsaintess, 60 percent of the Night Sisters die, and the alliance disbands |
 | 1010 to 1060 | **Age of Fractured Ideals** | the Archsaintess dies, the Shadow Human Emperor declares war on all non-humans, **Arthur** rises as the rival ideal, the Empire collapses after the Elven pincer war, **Morgana** betrays Arthur and retreats south. **Ideals can no longer unify the world** |
 | 1060 to 1113 | **Age of Freedom** | a Grand Archangel takes the dark domain and becomes **the Dark Angel**, the Dark Domain is rehabilitated and accepted, and the underground **Gypsy kingdom** is unearthed. **Freedom is granted, but memory is not erased** |
-| 1113 to 1161 | **Age of Darkness II** | the **Black Sea Leviathan** invades with a hoard of eldritch nightmares |
+| 1113 to 1161 | **Age of Darkness II** | the **Black Sea Leviathan** invades with a hoard of eldritch nightmares, and **Amelia slays Anthurian and takes the Dark Lord title** while serving inside the City of Light under a false name |
 | 1161 to 1200 | **The Great Ice Age** | **thirteen Ice Lords**, powered by consuming the heart of the **Great Dwarf Ice Titan**, turn 60 percent of the world to ice before being defeated, slain or purified |
 
 **The site's nine ages map on as follows.** Foundation Age covers the cosmic ages
@@ -3386,10 +3386,10 @@ exception exists because somebody has to be able to hold both.
 
 | Years | Age | What happens |
 |---|---|---|
-| 950 to 1010 | **Age of Broken Crowns** | a Saint Knight betrays the Archsaintess. **60 percent of the Night Sisters die.** Amelia slays the first Dark Lord and takes the title. The alliance disbands |
+| 950 to 1010 | **Age of Broken Crowns** | a Saint Knight betrays the Archsaintess. **60 percent of the Night Sisters die.** The alliance disbands |
 | 1010 to 1060 | **Age of Fractured Ideals** | the Archsaintess dies. The **Shadow Human Emperor** declares war on all non-humans. **Arthur** rises as the rival ideal. The Empire collapses after the Elven pincer war. **Morgana betrays Arthur and retreats south.** Ideals can no longer unify the world |
 | 1060 to 1113 | **Age of Freedom** | a Grand Archangel takes the dark domain and becomes **the Dark Angel**. The Dark Domain is rehabilitated and accepted. The underground **Gypsy kingdom** is unearthed. **Freedom is granted, but memory is not erased** |
-| 1113 to 1161 | **Age of Darkness II** | the **Black Sea Leviathan** invades with a hoard of eldritch nightmares |
+| 1113 to 1161 | **Age of Darkness II** | the **Black Sea Leviathan** invades with a hoard of eldritch nightmares, and **Amelia slays Anthurian and takes the Dark Lord title** while serving inside the City of Light under a false name |
 | 1161 to 1200 | **The Great Ice Age** | **thirteen Ice Lords**, powered by consuming the heart of the **Great Dwarf Ice Titan**, turn 60 percent of the world to ice before being defeated, slain or purified |
 
 **The Age of Freedom is the strangest and best of them**, because it is the age in
@@ -3711,23 +3711,78 @@ killed the thing that asked.
 **So when the two of them meet, Amelia is facing the version of herself that
 refused.**
 
-**Two things this history breaks, and both need deciding.**
+**The Dark Angel she slays is Anthurian Bloodwing.** They are not two kills and
+not two Angels. This bible's own settled list already records that **Bloodwing
+becomes the Dark Angel** and that **she** is the one who vanquished the invading
+Black Sea Angel in the southern dark continent, so by the time Amelia comes down
+there the throne of the south and the Dark Lord title are **the same chair with
+the same woman in it.**
 
-**Who she actually kills.** This bible says twice that *Amelia slays the first
-Dark Lord and takes the title*, meaning **Anthurian**, in the Age of Broken
-Crowns. Her history above has her slaying **the Dark Angel** to take the
-southern crown. Those can be two separate kills decades apart, which would make
-her a woman who has taken two thrones by killing whoever was sitting on them,
-and that reads well. **But the Dark Angel is also the vessel carrying Helena's
-soul**, and Helena's arc runs long past this point, so if it is that Dark Angel
-then one of the two accounts has to give.
+So the pact, the Lords, the god and the crown are one campaign. Amelia bargains
+with the Prime God of Blood, puts down most of the Dark Angel's Lords, betrays
+and devours the god that armed her, and then kills the Dark Angel herself. **One
+throne, taken by killing the only other person in the world who had lived her
+life.**
 
-**When it happens.** The age table has Amelia taking the Dark Lord title in
-**950 to 1010**, and Morgana betraying Arthur and retreating south in **1010 to
-1060.** Her history above requires **Morgana's exile first**, because the three
-of them hunt together for years before Amelia ever goes south. **One of those
-two datings has to move**, and the age table has not been touched pending that
-decision.
+**And the dating runs in this order.** Morgana is exiled and the three of them
+hunt together through the **Age of Fractured Ideals**. Morgana goes south, wins
+her kingdom and loses it. Amelia follows, kills the Lords, eats the god and
+co-rules the south from the shadow across the **Age of Freedom**. She walks into
+the City of Light under a false face as the **Age of Darkness II** opens, and it
+is in that age, with the Black Sea Leviathan invading and every eye turned
+outward, that she **kills Anthurian and takes the title.** Which is exactly what
+the settled list already said: in the Age of Darkness, not before. The age table
+has been moved to match, and the Age of Broken Crowns keeps its betrayal and its
+dead Night Sisters without the claim it was making about Amelia.
+
+**One thing in this is still tangled, and it was tangled before today.** Three
+passages name the Dark Angel differently: the age table says **a Grand Archangel
+takes the dark domain** and becomes it in the Age of Freedom, the settled list
+says **Bloodwing** becomes it, and Helena's arc ends with her as **the soul
+inside the Dark Angel.** Those can be reconciled, since Helena is a fallen
+archangel and the Dark Angel may be an office rather than a person, but nothing
+written says so. **Amelia's history does not depend on which answer you pick**,
+and it is left alone here.
+
+### Amelia against Anthurian
+
+| | Anthurian | Amelia |
+|---|---|---|
+| Born into | slavery under Cainan | a village farmed by the GhoulClaw |
+| The wound | her mother died and nobody came | her mother was taken and her father did nothing |
+| What she built | a dominion out of freed slaves | a sisterhood out of freed women, in the bandits' own halls |
+| Who taught her | nobody | **the man who destroyed her** |
+| What she did with power | **refused the throne** and ruled without sitting on it | **took every throne and every offer** |
+
+**And the line that separates them is still the same one.** Anthurian was never
+asked anything. Amelia was asked by the Prime God of Blood, said yes, and then
+killed the thing that asked.
+
+**So when the two of them meet, Amelia is facing the version of herself that
+refused.**
+
+**She kills two of them, and they are not the same Angel.** The thing she
+destroys in the south, after putting down its Lords, is **one of the thirteen
+Black Sea Angels**, which came in the Age of Darkness and have been seated in
+the dark continent ever since. **It is not the Dark Angel that carries Helena's
+soul.** That one does not exist yet: a Grand Archangel takes the dark domain
+and becomes the Dark Angel in the **Age of Freedom**, decades after Amelia
+takes the southern crown. The two are separated by the calendar, not by
+argument.
+
+**So she takes two thrones by killing whoever was sitting on them.** A Black
+Sea Angel in the south, and **Anthurian** much later, and the second one she
+does while wearing the colours of the City of Light.
+
+**And the dating now runs in this order.** Morgana is exiled and the three of
+them hunt together through the **Age of Fractured Ideals**. Morgana goes south,
+wins her kingdom and loses it. Amelia follows, kills the Angel, eats the god
+and co-rules from the shadow across the **Age of Freedom**. She walks into the
+City of Light under a false face as the **Age of Darkness II** opens, and it is
+in that age, with the Black Sea Leviathan invading and every eye turned
+outward, that **she kills Anthurian and takes the Dark Lord title.** The age
+table has been moved to match: the Age of Broken Crowns keeps its betrayal and
+its dead Night Sisters, and loses the claim it was making about Amelia.
 
 ---
 
