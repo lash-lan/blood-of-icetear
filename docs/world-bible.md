@@ -573,24 +573,37 @@ Tiamatra at 96 and **Bahamut at 86**, which makes his lone stand against the
 Angels a choice rather than a qualification. And he is **already called
 Abomination in the ledger**, which means the record was written after his fall.
 
-**At their true size the six are islands.** Not large animals and not large
-monsters. **A Dragon God at full extension is a landmass**, long enough that
-one end of it stands in weather the other end cannot see, high enough that
-cloud banks break against its shoulders and sit below its head, and heavy
-enough that where it comes to rest becomes geography. Mountains are the thing
-it is bigger than. **Anyone standing on the ground sees part of one and never
-the whole.**
+**The six have three sizes, and two of them are gone.**
 
-Which is the practical reason for the visage. A being that size cannot enter a
-hall, hold a conversation, bless a child or sit on a throne, so each of the six
-wears a humanoid form to do any of it. **The visage is not a disguise, it is an
+**Born, they were islands.** Not large animals and not large monsters. **A
+Dragon God at full extension was a landmass**, long enough that one end stood
+in weather the other end could not see, high enough that cloud banks broke
+against its shoulders and sat below its head, and heavy enough that where it
+came to rest became geography. Mountains were the thing it was bigger than.
+Anyone standing on the ground saw part of one and never the whole.
+
+**Then the Law of Divine Departure took it from them.** Any of Ra's children
+could have withdrawn to his pocket realms and kept every inch of what they
+were. **Staying in the world was the thing that cost.** All six stayed, and all
+six paid, and what they paid in was size. **They are mountains now.** Still
+beyond anything mortal, still unanswerable, and a tenth of what they were born
+to be.
+
+> **Nobody alive has seen a Dragon God at full size.** Every account of it is
+> inherited, and every account is dismissed by someone who has met one and
+> found a mountain.
+
+**And the visage is the third size.** A mountain cannot enter a hall, hold a
+conversation, bless a child or sit on a throne, so each of the six wears a
+humanoid form to do any of it. **The visage is not a disguise, it is an
 accommodation**, and mortals who have only ever met the visage tend to forget
-there is anything else, right up until there is.
+there is anything behind it, right up until there is.
 
-It also settles what Bahamut's imprisonment actually required. **He is not in a
-cell. The south-west of the Western continent is the cell**, and the reason his
-presence feeds the corruption across a whole region is that the region is
-roughly the size of him.
+**Which settles what Bahamut's imprisonment required.** He is not in a cell.
+**The south-west of the Western continent is the cell**, and his presence feeds
+the corruption across a whole region because the region is roughly the size of
+him. It also means the enchantment Tiamatra laid on him was laid on something
+already diminished. **Nobody has ever had to hold the thing he was born as.**
 
 ![Ra's five, and the sixth he never acknowledged](images/plate-dragon-gods.jpg)
 
