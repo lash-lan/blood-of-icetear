@@ -593,6 +593,8 @@ to be.
 > inherited, and every account is dismissed by someone who has met one and
 > found a mountain.
 
+![The Dragon Gods at the size they were born](images/plate-dragon-gods-true-size.jpg)
+
 **And the visage is the third size.** A mountain cannot enter a hall, hold a
 conversation, bless a child or sit on a throne, so each of the six wears a
 humanoid form to do any of it. **The visage is not a disguise, it is an
