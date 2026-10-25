@@ -573,6 +573,25 @@ Tiamatra at 96 and **Bahamut at 86**, which makes his lone stand against the
 Angels a choice rather than a qualification. And he is **already called
 Abomination in the ledger**, which means the record was written after his fall.
 
+**At their true size the six are islands.** Not large animals and not large
+monsters. **A Dragon God at full extension is a landmass**, long enough that
+one end of it stands in weather the other end cannot see, high enough that
+cloud banks break against its shoulders and sit below its head, and heavy
+enough that where it comes to rest becomes geography. Mountains are the thing
+it is bigger than. **Anyone standing on the ground sees part of one and never
+the whole.**
+
+Which is the practical reason for the visage. A being that size cannot enter a
+hall, hold a conversation, bless a child or sit on a throne, so each of the six
+wears a humanoid form to do any of it. **The visage is not a disguise, it is an
+accommodation**, and mortals who have only ever met the visage tend to forget
+there is anything else, right up until there is.
+
+It also settles what Bahamut's imprisonment actually required. **He is not in a
+cell. The south-west of the Western continent is the cell**, and the reason his
+presence feeds the corruption across a whole region is that the region is
+roughly the size of him.
+
 ![Ra's five, and the sixth he never acknowledged](images/plate-dragon-gods.jpg)
 
 ### Nilrealm, the sixth child
