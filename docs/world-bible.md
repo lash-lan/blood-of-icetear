@@ -597,6 +597,9 @@ size.
 | **Osiris** | went | his nature dragons remained in the Great South Jungle |
 
 **The three who remain are the two who refused and the one who could not.**
+
+![The three who remained](images/plate-the-three-who-remained.jpg)
+
 They are mountains now, still beyond anything mortal, still unanswerable, and a
 fraction of what they were born to be.
 
