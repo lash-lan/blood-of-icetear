@@ -3665,9 +3665,14 @@ the elves**, so the victory buys nothing.
 
 **Phase VIII, Isdowrath.** A few years on, she arrived at the Grey Knights'
 southernmost citadel with her own squad, as a **Sister of Light**, bringing aid
-against the darkness pushing up from the south. By then she was revered as an
-**Arch Saint Knight**, and in the Southern continent, by people who had never
-seen her face, as the **Blood Queen**.
+against the darkness pushing up from the south. By then she was a **Saint Knight**, a
+paladin of the Light serving under **Arch-Saint Lady Shallon**, and in the
+Southern continent, among people who had never seen her face, **the Blood
+Queen**. The world would remember the first of those as the **Saint Paragon**.
+
+**Both titles are earned and neither is a lie.** She genuinely fights for the
+Light and she genuinely rules the dark continent, and the reason nobody catches
+her is that she is not pretending at either one.
 
 **And the two titles are the same operation.** She had been quietly turning her
 most devoted sisters into the **Knight Sisters of Darkness**, presented to the
@@ -3691,7 +3696,7 @@ exist**, and no posting is a more convincing act of faith.
 **And she chose the one place where that could never be questioned.** A woman
 who wanted to hide what she was could not have found better cover than a city
 under permanent siege by monsters, defended by women who have every reason to
-hate the dark and no reason at all to suspect the Arch Saint Knight who
+hate the dark and no reason at all to suspect the Saint Knight who
 garrisoned them there.
 
 ### Amelia against Anthurian
@@ -3735,14 +3740,24 @@ the settled list already said: in the Age of Darkness, not before. The age table
 has been moved to match, and the Age of Broken Crowns keeps its betrayal and its
 dead Night Sisters without the claim it was making about Amelia.
 
-**One thing in this is still tangled, and it was tangled before today.** Three
-passages name the Dark Angel differently: the age table says **a Grand Archangel
-takes the dark domain** and becomes it in the Age of Freedom, the settled list
-says **Bloodwing** becomes it, and Helena's arc ends with her as **the soul
-inside the Dark Angel.** Those can be reconciled, since Helena is a fallen
-archangel and the Dark Angel may be an office rather than a person, but nothing
-written says so. **Amelia's history does not depend on which answer you pick**,
-and it is left alone here.
+**And the Dark Angel is a seat, not a person**, which is what reconciles the
+three passages that name it differently. The age table says a **Grand
+Archangel** takes the dark domain and becomes the Dark Angel in the Age of
+Freedom. The settled list says **Bloodwing** becomes it. Helena's arc ends with
+her as **the soul inside** it. All three are true at once if the Dark Angel is
+an office with a vessel attached:
+
+- **The vessel was made when a Grand Archangel took the dark domain**, and
+  **Helena is the soul bound inside that vessel.** She does not hold the office.
+  She is the thing the office is worn over.
+- **Whoever rules the dark domain is the Dark Angel.** Bloodwing took the seat.
+  Amelia killed her and took it after her.
+- **Which is why Helena survives Amelia entirely.** Amelia killed the holder,
+  not the vessel, and the soul inside it was never hers to reach.
+
+**So Helena has been inside the thing through every Dark Lord since**, watching
+one woman kill another for a chair she is sitting underneath. Nothing in the
+archive says she has ever been asked about it.
 
 ### Amelia against Anthurian
 
