@@ -3635,8 +3635,11 @@ and tempest brought the beast down**, and Victor and Amelia went into the swarm
 and tore it apart.
 
 **Phase VI, the Southern continent.** Morgana gathered a cult following and left
-to win herself a kingdom in the south. History takes its course and **she is
-defeated.**
+to win herself a kingdom in the south, **and she won it.** She burned **Calor
+Nightwing's** vampire kingdom, killed him, and took the Dark Lord title as the
+fourth to hold it. She lost it later, not to an army but to **Anthurian
+returning as the Dark Angel**, who faced her down, refused the throne herself
+and left it empty, and Morgana retreated to the eastern borderlands.
 
 **Then Amelia descends.** She makes a pact with the **Prime God of Blood** to
 put down most of the Dark Angel's Lords, and she does.
