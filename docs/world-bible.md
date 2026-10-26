@@ -3762,46 +3762,6 @@ an office with a vessel attached:
 one woman kill another for a chair she is sitting underneath. Nothing in the
 archive says she has ever been asked about it.
 
-### Amelia against Anthurian
-
-| | Anthurian | Amelia |
-|---|---|---|
-| Born into | slavery under Cainan | a village farmed by the GhoulClaw |
-| The wound | her mother died and nobody came | her mother was taken and her father did nothing |
-| What she built | a dominion out of freed slaves | a sisterhood out of freed women, in the bandits' own halls |
-| Who taught her | nobody | **the man who destroyed her** |
-| What she did with power | **refused the throne** and ruled without sitting on it | **took every throne and every offer** |
-
-**And the line that separates them is still the same one.** Anthurian was never
-asked anything. Amelia was asked by the Prime God of Blood, said yes, and then
-killed the thing that asked.
-
-**So when the two of them meet, Amelia is facing the version of herself that
-refused.**
-
-**She kills two of them, and they are not the same Angel.** The thing she
-destroys in the south, after putting down its Lords, is **one of the thirteen
-Black Sea Angels**, which came in the Age of Darkness and have been seated in
-the dark continent ever since. **It is not the Dark Angel that carries Helena's
-soul.** That one does not exist yet: a Grand Archangel takes the dark domain
-and becomes the Dark Angel in the **Age of Freedom**, decades after Amelia
-takes the southern crown. The two are separated by the calendar, not by
-argument.
-
-**So she takes two thrones by killing whoever was sitting on them.** A Black
-Sea Angel in the south, and **Anthurian** much later, and the second one she
-does while wearing the colours of the City of Light.
-
-**And the dating now runs in this order.** Morgana is exiled and the three of
-them hunt together through the **Age of Fractured Ideals**. Morgana goes south,
-wins her kingdom and loses it. Amelia follows, kills the Angel, eats the god
-and co-rules from the shadow across the **Age of Freedom**. She walks into the
-City of Light under a false face as the **Age of Darkness II** opens, and it is
-in that age, with the Black Sea Leviathan invading and every eye turned
-outward, that **she kills Anthurian and takes the Dark Lord title.** The age
-table has been moved to match: the Age of Broken Crowns keeps its betrayal and
-its dead Night Sisters, and loses the claim it was making about Amelia.
-
 ---
 
 ## 23. The people
